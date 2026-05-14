@@ -60,7 +60,8 @@
     "specific_heat":       { "value": 896,   "ref": "asm-handbook-v2-1990" },
     "thermal_diffusivity": { "value": 0.689, "ref": null },
     "melting_point_tm":    { "value": 652,   "ref": "asm-handbook-v2-1990" },
-    "glass_transition_tg": { "value": null,  "ref": null }
+    "glass_transition_tg": { "value": null,  "ref": null },
+    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
   "references": ["asm-handbook-v2-1990", "mil-hdbk-5j-2003"],

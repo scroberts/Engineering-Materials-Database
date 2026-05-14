@@ -221,7 +221,21 @@
         "specific_heat":       { "$ref": "#/definitions/valued_property", "description": "J/kg·K" },
         "thermal_diffusivity": { "$ref": "#/definitions/valued_property", "description": "cm²/s" },
         "melting_point_tm":    { "$ref": "#/definitions/valued_property", "description": "°C — for crystalline materials. Leave null for amorphous materials." },
-        "glass_transition_tg": { "$ref": "#/definitions/valued_property", "description": "°C — for amorphous materials. Leave null for crystalline materials." }
+        "glass_transition_tg": { "$ref": "#/definitions/valued_property", "description": "°C — for amorphous materials. Leave null for crystalline materials." },
+        "magnetic_classification": {
+          "type": "object",
+          "required": ["value", "ref"],
+          "additionalProperties": false,
+          "description": "Magnetic behaviour classification",
+          "properties": {
+            "value": {
+              "type": ["string", "null"],
+              "enum": ["Ferromagnetic", "Paramagnetic", "Diamagnetic", null],
+              "description": "Ferromagnetic (including ferrimagnetic): strongly magnetic, use with caution near field-sensitive instruments. Paramagnetic: weakly magnetic, generally acceptable. Diamagnetic: magnetically benign, preferred for precision optical/astronomical instruments."
+            },
+            "ref": { "$ref": "#/definitions/ref_key" }
+          }
+        }
       }
     },
 

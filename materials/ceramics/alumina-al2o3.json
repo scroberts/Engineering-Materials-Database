@@ -55,7 +55,8 @@
     "specific_heat":       { "value": 880,    "ref": "callister2020" },
     "thermal_diffusivity": { "value": 0.0874, "ref": null },
     "melting_point_tm":    { "value": 2072,   "ref": "callister2020" },
-    "glass_transition_tg": { "value": null,   "ref": null }
+    "glass_transition_tg": { "value": null,   "ref": null },
+    "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
   "references": ["callister2020"],

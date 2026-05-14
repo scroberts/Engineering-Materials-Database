@@ -53,3 +53,18 @@ export async function loadMaterial(slug) {
 export async function loadMaterialBatch(slugs) {
   return Promise.all(slugs.map(loadMaterial));
 }
+
+/**
+ * Load the shared reference database. Subsequent calls return the cached result.
+ * @returns {Promise<Object>}  keyed by BibTeX citation key
+ */
+export async function loadReferences() {
+  if (store.has('references')) return store.get('references');
+
+  const res = await fetch('references/index.json');
+  if (!res.ok) throw new Error(`Failed to fetch references (${res.status})`);
+
+  const data = await res.json();
+  store.set('references', data);
+  return data;
+}

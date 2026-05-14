@@ -50,6 +50,10 @@
   --sp-6: 24px;
   --sp-8: 32px;
 
+  /* Aliases (used by components and page styles) */
+  --color-muted:   #64748b;   /* same as --color-text-muted */
+  --skeleton-bg:   #e2e8f0;
+
   /* Shape */
   --radius:    6px;
   --radius-lg: 10px;
