@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UVIC Engineering Materials Database</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/browse.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-title">
+        <h1>Materials Database</h1>
+        <span class="site-subtitle">UVIC Design Engineering</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html"    class="nav-link active">Browse</a>
+        <a href="compare.html"  class="nav-link">Compare</a>
+        <a href="submit.html"   class="nav-link">Submit</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="browse-layout">
+
+    <!-- Filter sidebar -->
+    <aside class="filter-sidebar" id="filter-sidebar" aria-label="Filter materials">
+
+      <div class="filter-section">
+        <label for="search-input" class="filter-heading">Search</label>
+        <input type="search" id="search-input" class="filter-search"
+               placeholder="Material name…" autocomplete="off">
+      </div>
+
+      <div class="filter-section">
+        <p class="filter-heading">Category</p>
+        <div class="checkbox-group" id="filter-category">
+          <!-- populated by browse.js -->
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <p class="filter-heading">Fabrication Process</p>
+        <div class="checkbox-group" id="filter-fabrication">
+          <!-- populated by browse.js -->
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <p class="filter-heading">Common Forms</p>
+        <div class="checkbox-group" id="filter-forms">
+          <!-- populated by browse.js -->
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <label class="filter-toggle">
+          <input type="checkbox" id="filter-common-only">
+          Commonly available only
+        </label>
+      </div>
+
+      <div class="filter-section">
+        <button class="filter-reset" id="filter-reset" type="button">
+          Clear all filters
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- Main content -->
+    <main class="browse-main">
+      <div class="browse-toolbar">
+        <span class="result-count" id="result-count"></span>
+      </div>
+      <div class="materials-grid" id="materials-grid" role="list">
+        <!-- populated by browse.js -->
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Compare bar (appears when materials are selected) -->
+  <div class="compare-bar" id="compare-bar" hidden role="status">
+    <span class="compare-bar-count" id="compare-count"></span>
+    <button class="compare-bar-btn" id="btn-compare" type="button">
+      Compare →
+    </button>
+    <button class="compare-bar-clear" id="btn-clear-compare" type="button">
+      Clear
+    </button>
+  </div>
+
+  <script type="module" src="js/pages/browse.js"></script>
+</body>
+</html>

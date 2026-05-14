@@ -1,0 +1,70 @@
+{
+  "generated": "2026-05-14T21:10:28Z",
+  "materials": [
+    {
+      "slug": "alumina-al2o3",
+      "path": "materials/ceramics/alumina-al2o3.json",
+      "name": "Alumina (Al\u2082O\u2083, 99.5%)",
+      "category": "Ceramic",
+      "fabrication_processes": [
+        "Casting",
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 370,
+      "yield_strength": null,
+      "tensile_strength": 0.3,
+      "density": 3.9
+    },
+    {
+      "slug": "aluminum-6061-t6",
+      "path": "materials/metals/aluminum-6061-t6.json",
+      "name": "Aluminum 6061-T6",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Forging",
+        "Extrude",
+        "Plateable"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Angles and Structural Profiles"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 68.9,
+      "yield_strength": 0.276,
+      "tensile_strength": 0.31,
+      "density": 2.7
+    },
+    {
+      "slug": "abs",
+      "path": "materials/plastics/abs.json",
+      "name": "ABS (Acrylonitrile Butadiene Styrene)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Injection Moulding",
+        "3D Print (FDM)"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Filament"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 2.1,
+      "yield_strength": 0.04,
+      "tensile_strength": 0.045,
+      "density": 1.05
+    }
+  ]
+}

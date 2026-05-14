@@ -1,0 +1,70 @@
+/* browse.css — Layout for the browse/search page */
+
+.browse-layout {
+  display: flex;
+  min-height: calc(100vh - var(--header-height));
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────────── */
+
+.filter-sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  background: var(--color-surface);
+  border-right: 1px solid var(--color-border);
+  overflow-y: auto;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100vh - var(--header-height));
+}
+
+/* ── Main content ─────────────────────────────────────────────────────── */
+
+.browse-main {
+  flex: 1;
+  padding: var(--sp-5) var(--sp-6);
+  min-width: 0;
+}
+
+.browse-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-4);
+  gap: var(--sp-4);
+}
+
+.result-count {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+/* ── Material grid ────────────────────────────────────────────────────── */
+
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--sp-4);
+}
+
+/* ── Loading skeleton ─────────────────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+  border-radius: var(--radius);
+}
+
+.skeleton-card {
+  height: 190px;
+  border-radius: var(--radius-lg);
+}
