@@ -50,18 +50,23 @@ All values are stored in canonical units in the JSON files. The display layer co
 
 ### Supported Display Unit Conversions
 
-Where a field supports unit selection, a dropdown appears beside the entry or display field.
+Where a field supports unit selection, a dropdown appears beside the entry or display field. A global **Metric / Imperial** toggle on the detail page switches all unit dropdowns simultaneously.
 
-| Unit Type           | Options                                   | Notes                                              |
-|---------------------|-------------------------------------------|----------------------------------------------------|
-| Pressure            | GPa, MPa, psi, ksi                        |                                                    |
-| Density             | g/cm³ and kg/m³                           | Both values displayed simultaneously; no selector  |
-| Strain / Ductility  | %                                         | No conversion needed                               |
-| Hardness            | Vickers (HV), Brinell (HB), Rockwell      | Rockwell requires scale selection (A, B, C, etc.)  |
-| Fracture Toughness  | MPa·m^0.5, ksi·in^0.5                    | Multiply MPa·m^0.5 by 0.9099 to get ksi·in^0.5   |
-| Fatigue Cycles      | Cycles                                    | Displayed in scientific notation                   |
+| Unit Type               | Options                                    | Metric default  | Imperial default | Notes                                                         |
+|-------------------------|--------------------------------------------|-----------------|------------------|---------------------------------------------------------------|
+| Pressure                | GPa, MPa, psi, ksi                         | GPa             | ksi              |                                                               |
+| Compressive Strength    | MPa, psi, ksi                              | MPa             | ksi              | Stored in MPa (exception to GPa rule)                         |
+| Fracture Toughness      | MPa·m½, ksi·in½                            | MPa·m½          | ksi·in½          | Multiply MPa·m½ by 0.9099 to get ksi·in½. Displayed with superscript ½ in HTML. |
+| Density                 | g/cm³ and kg/m³                            | Both shown      | Both shown       | Both values displayed simultaneously; no selector             |
+| Temperature             | K, °C, °F                                  | K               | °F               | Global dropdown applies to all temperature fields on the page |
+| Electrical Conductivity | % IACS, MS/m, S/m                          | % IACS          | % IACS           | 1 % IACS = 0.58 MS/m = 580,000 S/m                           |
+| Strain / Ductility      | %                                          | %               | %                | No conversion needed                                          |
+| Hardness                | Vickers (HV), Brinell (HB), Rockwell       | —               | —                | No selector; all available scales shown simultaneously        |
+| Fatigue Cycles          | Cycles                                     | —               | —                | Displayed in condensed scientific notation (e.g. 500 × 10⁶)  |
 
 > **Note — Rockwell hardness:** Rockwell has multiple scales (A, B, C, etc.). The scale must be recorded alongside the value. Conversion between Vickers and Rockwell uses the ASTM E140 standard conversion tables.
+
+> **Note — Fracture toughness notation:** The unit key stored internally is `MPa·m^0.5`; it is rendered as `MPa·m½` with a proper superscript in the browser. Dropdown option text uses the plain form to avoid HTML-rendering limitations in `<select>` elements.
 
 ---
 
@@ -69,14 +74,33 @@ Where a field supports unit selection, a dropdown appears beside the entry or di
 
 References are stored in a shared database (`references/index.json`) keyed by their BibTeX citation key. Material entries reference this database by key — they do not embed the full BibTeX text.
 
-Short labels are auto-generated in the format **"Author Year"** (e.g. "Paquin 1997"). For multi-author works, the first author's surname is used.
+Short labels are in the format **"Author Year"** (e.g. "Paquin 1997"). For multi-author works, the first author's surname is used.
+
+### Inline Reference Badges
+
+On the material detail page, each property with an attached reference displays a small numbered badge (e.g. **[1]**) as a superscript after the value. Numbers are assigned in the order the references appear in the material's `references` array. Clicking a badge scrolls to the numbered entry in the References section at the bottom of the page.
+
+A reference badge is only shown when a value is actually displayed. Fields that show "—" do not display a badge even if a reference key is present in the JSON.
+
+### Reference Section
+
+The References section at the bottom of each material detail page is open by default and lists all cited references in numbered order. Each entry shows:
+
+- **[N]** — number matching the inline badge
+- Short label (e.g. "ASM Handbook V2 1990")
+- Title extracted from BibTeX
+- A hyperlink, resolved in priority order:
+  1. DOI link: `https://doi.org/{doi}` (if a DOI is present)
+  2. URL extracted from the BibTeX `url` field
+  3. WorldCat link via ISBN: `https://www.worldcat.org/isbn/{isbn}` (for books with no DOI)
+  4. No link shown if none of the above are available
 
 ### Entering References
 
 References can be added to the database in two ways:
 
 1. **Upload a `.bib` file** — the system parses the file and adds all new entries to the reference database.
-2. **Manual entry form** — the user fills in BibTeX fields (author, title, year, journal/booktitle, doi, etc.) through a structured input screen.
+2. **Manual entry form** — the user fills in BibTeX fields (author, title, year, journal/booktitle, doi, isbn, etc.) through a structured input screen.
 
 ### Attaching References to Properties
 
@@ -110,55 +134,55 @@ When submitting a new material, if the required reference is not yet in the data
 
 Each field has a unit selector dropdown and a reference selector dropdown.
 
-| Field                    | Value(s)                 | Unit Picker  | Notes |
-|--------------------------|--------------------------|--------------|-------|
-| Young's Modulus          | Float                    | Pressure     | |
-| Poisson's Ratio          | Float                    | —            | Dimensionless |
-| Yield Strength           | Float                    | Pressure     | 0.2% offset or elastic limit |
-| Tensile Strength         | Float                    | Pressure     | Ultimate tensile strength |
-| Compressive Modulus      | Float                    | Pressure     | Leave blank if equal to Young's Modulus |
-| Compressive Strength     | Float                    | MPa          | Maximum compressive stress before failure. Stored in MPa (not GPa). Hover tooltip distinguishes this from Compressive Modulus. |
-| Usable Temperature Range | Float (min), Float (max) | °C           | Operating temperature range |
+| Field                    | Value(s)                 | Unit Picker        | Notes |
+|--------------------------|--------------------------|------------------  |-------|
+| Young's Modulus          | Float                    | Pressure           | |
+| Poisson's Ratio          | Float                    | —                  | Dimensionless; no unit conversion |
+| Yield Strength           | Float                    | Pressure           | 0.2% offset or elastic limit |
+| Tensile Strength         | Float                    | Pressure           | Ultimate tensile strength |
+| Compressive Modulus      | Float                    | Pressure           | Leave blank if equal to Young's Modulus |
+| Compressive Strength     | Float                    | MPa, psi, ksi      | Maximum compressive stress before failure. Stored in MPa (exception to GPa rule). Hover tooltip distinguishes this from Compressive Modulus. |
+| Usable Temperature Range | Float (min), Float (max) | Temperature (K/°C/°F) | Stored in °C; displayed in the globally selected temperature unit. |
 
 ### 5.4 Mechanical Properties — Other
 
 Each field has a unit selector dropdown and a reference selector dropdown.
 
-| Field               | Value(s)                                                          | Unit Picker        | Notes |
-|---------------------|-------------------------------------------------------------------|--------------------|-------|
-| Microyield Strength | Float                                                             | Pressure           | |
-| Creep Strength      | Float                                                             | Pressure           | |
-| Fatigue (S-N Curve) | Table of up to 10 rows: Float (stress amplitude), Integer (cycles)| Pressure / Cycles  | Enter data points from low cycle to high cycle. A curve is fitted through the points for display. |
-| Fracture Toughness  | Float                                                             | Fracture Toughness | Mode I (K_Ic) unless noted |
-| Hardness            | Float, Scale selector                                             | Hardness           | Rockwell entry requires scale (A, B, C, etc.) |
-| Ductility (% Elongation) | Float (min), Float (max), Float (typical)                    | %                  | If only min and max are entered, typical is calculated as their average and flagged as "(calculated)" |
-| Shear Strength      | Float, or calculated                                              | Pressure           | May be entered directly, or calculated from Yield Strength using the von Mises criterion: τ = σ_y / √3 ≈ 0.577 × σ_y. If left blank and Yield Strength is available, the calculated value is shown with a "(von Mises)" label. |
+| Field               | Value(s)                                                          | Unit Picker             | Notes |
+|---------------------|-------------------------------------------------------------------|-------------------------|-------|
+| Microyield Strength | Float                                                             | Pressure                | |
+| Creep Strength      | Float                                                             | Pressure                | |
+| Fatigue (S-N Curve) | Table of up to 10 rows: Float (stress amplitude), Integer (cycles)| Pressure / Cycles       | Enter data points from low cycle to high cycle. A curve is fitted through the points for display. |
+| Fracture Toughness  | Float                                                             | MPa·m½, ksi·in½         | Mode I (K_IC) unless noted. Rendered with superscript ½ in the browser. |
+| Hardness            | Float, Scale selector                                             | —                       | All available scales shown simultaneously. Missing scales are estimated (HV ↔ HB ≈ ×1.05; Rockwell per ASTM E140). Rockwell entry requires scale (A, B, C, etc.). |
+| Ductility (% Elongation) | Float (min), Float (max), Float (typical)                   | %                       | Typical shown if entered. If only min and max are given, typical is the average flagged "(avg of range)". If only one bound is given, shown as "≥ min %" or "≤ max %". If no data, "—" is shown and no reference badge appears. |
+| Shear Strength      | Float, or calculated                                              | Pressure                | May be entered directly. If left blank and Yield Strength is available, the von Mises estimate τ = σ_y / √3 is shown with a "(von Mises estimate)" note and is also shown in the Calculated Properties section. |
 
 ### 5.5 Physical and Thermal Properties
 
 Each field has a reference selector dropdown.
 
-| Field                   | Value(s)                                                                 | Unit       | Notes |
-|-------------------------|--------------------------------------------------------------------------|------------|-------|
-| Density                 | Float                                                                    | g/cm³      | Displayed in both g/cm³ and kg/m³ |
-| Electrical Conductivity | Float                                                                    | % IACS     | % of International Annealed Copper Standard; copper = 100% IACS |
-| Vapour Pressure         | Float                                                                    | Pa         | |
-| Thermal Expansion (CTE) | Float (single value) or table of up to 10 (Temperature °C, CTE µm/m·°C) pairs | µm/m·°C | A single value is stored as a one-row table. A curve is fitted through multi-point data for display. |
-| Thermal Conductivity    | Float                                                                    | W/m·K      | |
-| Specific Heat           | Float                                                                    | J/kg·K     | |
-| Thermal Diffusivity           | Float  | cm²/s | |
-| Melting Point (Tm)            | Float  | °C    | For crystalline materials (metals, ceramics, crystalline polymers). Leave blank for amorphous materials. |
-| Glass Transition Temp. (Tg)   | Float  | °C    | For amorphous materials (glasses, most polymers, amorphous metals). Leave blank for crystalline materials. |
+| Field                         | Value(s)                                                                        | Display Units              | Notes |
+|-------------------------------|---------------------------------------------------------------------------------|----------------------------|-------|
+| Density                       | Float                                                                           | g/cm³ and kg/m³            | Both values displayed simultaneously; no selector |
+| Electrical Conductivity       | Float                                                                           | % IACS, MS/m, S/m          | Stored in % IACS. 1 % IACS = 0.58 MS/m = 580,000 S/m. Copper = 100 % IACS. |
+| Vapour Pressure               | Float                                                                           | Pa                         | No conversion |
+| Thermal Expansion (CTE)       | Float (single value) or table of up to 10 (Temperature °C, CTE µm/m·°C) pairs  | µm/m·°C                    | Stored in °C. Temperature column in multi-point table is displayed in the globally selected temperature unit. A curve is fitted through multi-point data for display. |
+| Thermal Conductivity          | Float                                                                           | W/m·K                      | |
+| Specific Heat                 | Float                                                                           | J/kg·K                     | |
+| Thermal Diffusivity           | Float                                                                           | cm²/s                      | If not entered, computed from k / (ρ · Cp) and labelled "(k/ρCp)" |
+| Melting Point (Tm)            | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For crystalline materials (metals, ceramics). Leave blank for amorphous materials. |
+| Glass Transition Temp. (Tg)   | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For amorphous polymers and glasses. Leave blank for crystalline materials. |
 
 ### 5.6 Calculated Properties (Display Only)
 
 These are computed from entered values and displayed automatically. They are not stored in the JSON file.
 
-| Field             | Formula                                   | Unit     | Required Inputs                          |
-|-------------------|-------------------------------------------|----------|------------------------------------------|
-| Specific Stiffness| E / ρ                                     | MN·m/kg  | Young's Modulus, Density                 |
-| Shear Modulus     | E / (2 × (1 + ν))                         | GPa      | Young's Modulus, Poisson's Ratio         |
-| Shear Strength    | σ_y / √3                                  | GPa      | Yield Strength; only shown if Shear Strength not directly entered |
+| Field              | Formula              | Unit       | Required Inputs                                                          |
+|--------------------|----------------------|------------|--------------------------------------------------------------------------|
+| Specific Stiffness | E / ρ                | GPa·cm³/g  | Young's Modulus, Density                                                 |
+| Shear Modulus      | E / (2 × (1 + ν))   | GPa        | Young's Modulus, Poisson's Ratio                                         |
+| Shear Strength     | σ_y / √3            | MPa        | Yield Strength; shown only when Shear Strength is not directly entered   |
 
 Calculated fields display "—" if any required input is missing.
 
@@ -172,7 +196,14 @@ All property names throughout the site display a brief definition when the user 
 
 ### 6.2 Single Material View
 
-Displays all properties for one material in a structured table, grouped by section. Unit selectors allow switching display units per property group.
+Displays all properties for one material in a structured table, grouped by collapsible sections. A toolbar at the top of the page provides:
+
+- **Metric / Imperial toggle** — switches all unit dropdowns simultaneously to their metric or imperial defaults (see Section 3 for defaults).
+- **Temperature unit selector** — independently selects K, °C, or °F; applies document-wide to every temperature value on the page (usable temp range, Tm, Tg, CTE table column).
+
+Per-section unit dropdowns are also available for finer control (pressure, compressive strength, fracture toughness, electrical conductivity).
+
+Inline reference badges (**[1]**, **[2]**, …) appear after each value that has a source. Clicking a badge scrolls to the numbered entry in the References section at the bottom of the page. The References section is open by default.
 
 ### 6.3 Multi-Material Comparison — Bar Charts
 

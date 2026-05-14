@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Material — UVIC Engineering Materials Database</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/submit.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-title">
+        <h1>Materials Database</h1>
+        <span class="site-subtitle">UVIC Design Engineering</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html"   class="nav-link">Browse</a>
+        <a href="compare.html" class="nav-link">Compare</a>
+        <a href="submit.html"  class="nav-link active">Submit</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="submit-layout">
+
+    <div class="submit-disclaimer">
+      <strong>For educational use only.</strong>
+      This database is intended to support early-stage design decisions in UVIC coursework.
+      Values are not guaranteed to be accurate or complete.
+      <strong>Do not use this data for safety-critical applications.</strong>
+      Always verify properties against manufacturer datasheets or peer-reviewed sources before use.
+    </div>
+
+    <div class="submit-columns">
+
+      <!-- ── Left: form ──────────────────────────────────────────────── -->
+      <main class="submit-main">
+
+        <div class="submit-header">
+          <h2 class="submit-title">Submit a New Material</h2>
+          <p class="submit-subtitle">
+            Fill in as many fields as you have data for. Download the JSON and submit it as a
+            GitHub Pull Request for admin review.
+          </p>
+          <div class="submit-prefill-row">
+            <label class="submit-prefill-label" for="prefill-upload">Pre-fill from JSON:</label>
+            <input type="file" id="prefill-upload" accept=".json" class="submit-prefill-input">
+            <span id="prefill-status" class="submit-prefill-status"></span>
+          </div>
+        </div>
+
+        <form id="submit-form" novalidate>
+          <!-- sections injected by submit.js -->
+        </form>
+
+        <div class="submit-actions">
+          <button type="button" id="btn-download" class="btn-download">
+            Download JSON
+          </button>
+        </div>
+
+        <div id="post-download" class="post-download" hidden>
+          <h3>Next steps — submit via GitHub Pull Request</h3>
+          <ol class="pr-steps">
+            <li>
+              <strong>Fork</strong> the repository at
+              <a href="https://github.com/uvic-design-eng/materials-database" target="_blank" rel="noopener">
+                uvic-design-eng/materials-database
+              </a>
+            </li>
+            <li>
+              Place your JSON file in the correct subfolder:<br>
+              <code>materials/metals/</code>, <code>materials/plastics/</code>,
+              <code>materials/ceramics/</code>, or <code>materials/composites/</code>
+            </li>
+            <li>
+              Name the file exactly as the slug — e.g. <code id="pr-filename-hint">your-material-slug.json</code>
+            </li>
+            <li>
+              Open a Pull Request with the title format:<br>
+              <code>Add material: <em>Material Name</em></code>
+            </li>
+            <li>
+              The GitHub Actions CI will validate your JSON automatically.
+              An admin will review and merge once everything checks out.
+            </li>
+          </ol>
+        </div>
+
+      </main>
+
+      <!-- ── Right: reference panel ──────────────────────────────────── -->
+      <aside class="ref-panel">
+        <div class="ref-panel-header">
+          <h3 class="ref-panel-title">References</h3>
+          <button type="button" id="btn-add-ref" class="btn-add-ref">+ Add</button>
+        </div>
+
+        <ul id="ref-panel-list" class="ref-panel-list">
+          <!-- populated by submit.js -->
+        </ul>
+
+        <div id="ref-add-form" class="ref-add-form" hidden>
+          <div class="ref-add-tabs">
+            <button type="button" class="ref-tab is-active" data-tab="bibtex">BibTeX / Manual</button>
+            <button type="button" class="ref-tab" data-tab="url">URL</button>
+          </div>
+
+          <!-- BibTeX tab -->
+          <div id="ref-tab-bibtex" class="ref-tab-panel">
+            <p class="ref-add-hint">Paste a BibTeX entry or fill fields manually.</p>
+            <textarea id="ref-bibtex-input" class="ref-bibtex-input"
+              placeholder="@article{key, author = {...}, title = {...}, ...}" rows="5"></textarea>
+            <div class="ref-add-fields">
+              <label>Key (cite key)
+                <input type="text" id="ref-key-input" placeholder="e.g. callister2020">
+              </label>
+              <label>Short label
+                <input type="text" id="ref-shortlabel-input" placeholder="e.g. Callister 2020">
+              </label>
+              <label>DOI (optional)
+                <input type="text" id="ref-doi-input" placeholder="10.xxxx/xxxxx">
+              </label>
+            </div>
+            <div class="ref-add-or">— or upload —</div>
+            <label class="ref-bib-upload-label">
+              Upload .bib file
+              <input type="file" id="ref-bib-upload" accept=".bib" class="ref-bib-upload-input">
+            </label>
+          </div>
+
+          <!-- URL tab -->
+          <div id="ref-tab-url" class="ref-tab-panel" hidden>
+            <p class="ref-add-hint">Add a web page or online resource as a reference.</p>
+            <div class="ref-add-fields">
+              <label>Short label <span class="ref-required">*</span>
+                <input type="text" id="ref-url-label-input" placeholder="e.g. MatWeb Al 6061">
+              </label>
+              <label>URL <span class="ref-required">*</span>
+                <input type="url" id="ref-url-input" placeholder="https://...">
+              </label>
+              <label>Key (auto-generated if blank)
+                <input type="text" id="ref-url-key-input" placeholder="e.g. matweb-al6061">
+              </label>
+            </div>
+          </div>
+
+          <div class="ref-add-actions">
+            <button type="button" id="btn-ref-save" class="btn-ref-save">Add Reference</button>
+            <button type="button" id="btn-ref-cancel" class="btn-ref-cancel">Cancel</button>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <script type="module" src="js/pages/submit.js"></script>
+</body>
+</html>
