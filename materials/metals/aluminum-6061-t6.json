@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Aluminum 6061-T6",
+    "slug": "aluminum-6061-t6",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Welding", "Forging", "Extrude", "Plateable"],
+    "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
+    "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
+    "commonly_available": true,
+    "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design."
+  },
+
+  "typical_usage": "Structural frames and enclosures, aircraft components and skin panels, marine fittings, bicycle frames, electronic chassis and heat sinks, machined precision parts. Chosen for its excellent balance of strength, machinability, weldability, and corrosion resistance.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 68.9,  "ref": "asm-handbook-v2-1990" },
+    "poissons_ratio":      { "value": 0.33,  "ref": "asm-handbook-v2-1990" },
+    "yield_strength":      { "value": 0.276, "ref": "asm-handbook-v2-1990" },
+    "tensile_strength":    { "value": 0.310, "ref": "asm-handbook-v2-1990" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 276,   "ref": "asm-handbook-v2-1990" },
+    "usable_temp_range":   { "min": -80, "max": 150, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [
+        { "stress": 0.150, "cycles": 10000 },
+        { "stress": 0.130, "cycles": 100000 },
+        { "stress": 0.110, "cycles": 1000000 },
+        { "stress": 0.097, "cycles": 500000000 }
+      ],
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "fracture_toughness":  { "value": 29.0, "ref": "asm-handbook-v2-1990" },
+    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_brinell":    { "value": 107,  "ref": "asm-handbook-v2-1990" },
+    "hardness_rockwell":   { "value": 60,   "scale": "B", "ref": "asm-handbook-v2-1990" },
+    "ductility":           { "min": 8, "max": null, "typical": null, "ref": "asm-handbook-v2-1990" },
+    "shear_strength":      { "value": 0.207, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "physical": {
+    "density":                { "value": 2.70,  "ref": "asm-handbook-v2-1990" },
+    "electrical_conductivity":{ "value": 43.0,  "ref": "asm-handbook-v2-1990" },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 23.6,
+      "table": [
+        { "temp": 20,  "cte": 23.6 },
+        { "temp": 100, "cte": 24.3 },
+        { "temp": 200, "cte": 25.2 }
+      ],
+      "ref": "asm-handbook-v2-1990"
+    },
+    "thermal_conductivity":{ "value": 167,   "ref": "asm-handbook-v2-1990" },
+    "specific_heat":       { "value": 896,   "ref": "asm-handbook-v2-1990" },
+    "thermal_diffusivity": { "value": 0.689, "ref": null },
+    "melting_point_tm":    { "value": 652,   "ref": "asm-handbook-v2-1990" },
+    "glass_transition_tg": { "value": null,  "ref": null }
+  },
+
+  "references": ["asm-handbook-v2-1990", "mil-hdbk-5j-2003"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

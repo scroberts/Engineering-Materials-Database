@@ -1,0 +1,22 @@
+{
+  "10.1117/12.279804": {
+    "short_label": "Paquin 1997",
+    "doi": "10.1117/12.279804",
+    "bibtex": "@inproceedings{10.1117/12.279804,\n  author       = {Roger A. Paquin},\n  title        = {{Advanced materials: an overview}},\n  volume       = {10289},\n  booktitle    = {Advanced Materials for Optics and Precision Structures: A Critical Review},\n  editor       = {Mark A. Ealey and Roger A. Paquin and Thomas B. Parsonage},\n  organization = {International Society for Optics and Photonics},\n  publisher    = {SPIE},\n  pages        = {1028902},\n  year         = {1997},\n  doi          = {10.1117/12.279804},\n  url          = {https://doi.org/10.1117/12.279804}\n}"
+  },
+  "asm-handbook-v2-1990": {
+    "short_label": "ASM Handbook V2 1990",
+    "doi": null,
+    "bibtex": "@book{asm-handbook-v2-1990,\n  title     = {{ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-378-1}\n}"
+  },
+  "callister2020": {
+    "short_label": "Callister 2020",
+    "doi": null,
+    "bibtex": "@book{callister2020,\n  author    = {Callister, William D. and Rethwisch, David G.},\n  title     = {Materials Science and Engineering: An Introduction},\n  edition   = {10},\n  publisher = {Wiley},\n  year      = {2020},\n  isbn      = {978-1-119-40549-8}\n}"
+  },
+  "mil-hdbk-5j-2003": {
+    "short_label": "MIL-HDBK-5J 2003",
+    "doi": null,
+    "bibtex": "@techreport{mil-hdbk-5j-2003,\n  title       = {{MIL-HDBK-5J: Metallic Materials and Elements for Aerospace Vehicle Structures}},\n  institution = {U.S. Department of Defense},\n  year        = {2003},\n  number      = {MIL-HDBK-5J}\n}"
+  }
+}

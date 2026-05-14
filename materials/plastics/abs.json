@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "ABS (Acrylonitrile Butadiene Styrene)",
+    "slug": "abs",
+    "category": "Plastic",
+    "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)"],
+    "common_forms": ["Sheet", "Filament"],
+    "common_form_notes": "FDM filament available in 1.75 mm and 2.85 mm diameters. Sheet stock available in various thicknesses.",
+    "commonly_available": true,
+    "notes": "Properties vary with grade, manufacturer, and processing conditions. FDM-printed parts have significantly lower strength (typically 50–80% of bulk) and are anisotropic. Values here represent bulk injection-moulded properties."
+  },
+
+  "typical_usage": "Consumer product housings, automotive interior trim, electronic enclosures, prototyping and end-use FDM printed parts, pipe fittings. Chosen for its ease of processing, reasonable impact resistance, and dimensional stability. A common first choice for injection-moulded plastic parts.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 2.1,   "ref": "callister2020" },
+    "poissons_ratio":      { "value": 0.38,  "ref": "callister2020" },
+    "yield_strength":      { "value": 0.040, "ref": "callister2020" },
+    "tensile_strength":    { "value": 0.045, "ref": "callister2020" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 65,    "ref": "callister2020" },
+    "usable_temp_range":   { "min": -20, "max": 80, "ref": "callister2020" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": 105,  "scale": "R", "ref": "callister2020" },
+    "ductility":           { "min": 5, "max": 50, "typical": null, "ref": "callister2020" },
+    "shear_strength":      { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.05,  "ref": "callister2020" },
+    "electrical_conductivity":{ "value": null,  "ref": null },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 72.0,
+      "table": [
+        { "temp": 23, "cte": 72.0 }
+      ],
+      "ref": "callister2020"
+    },
+    "thermal_conductivity":{ "value": 0.17,   "ref": "callister2020" },
+    "specific_heat":       { "value": 1400,   "ref": "callister2020" },
+    "thermal_diffusivity": { "value": 0.00116,"ref": null },
+    "melting_point_tm":    { "value": null,   "ref": null },
+    "glass_transition_tg": { "value": 105,    "ref": "callister2020" }
+  },
+
+  "references": ["callister2020"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

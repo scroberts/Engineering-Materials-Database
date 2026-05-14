@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Alumina (Al\u2082O\u2083, 99.5%)",
+    "slug": "alumina-al2o3",
+    "category": "Ceramic",
+    "fabrication_processes": ["Casting", "Machining", "Polishable"],
+    "common_forms": ["Sheet", "Plate", "Round Bar"],
+    "common_form_notes": "Typically sourced as custom-machined blanks or standard rod/plate stock from specialist ceramic suppliers. Post-sintering grinding/lapping required for tight tolerances. Casting here refers to slip casting and dry pressing followed by sintering.",
+    "commonly_available": true,
+    "notes": "Properties are for 99.5% purity sintered alumina. Purity and porosity strongly affect mechanical properties. Alumina is brittle — design must account for low fracture toughness. Yield strength is not applicable; tensile value given is the flexural strength (modulus of rupture)."
+  },
+
+  "typical_usage": "High-wear components (seal rings, nozzles, grinding media), electrical insulators and substrates, cutting tool inserts, biomedical implants, optical window substrates. Selected when extreme hardness, wear resistance, chemical inertness, and electrical insulation are required at elevated temperatures.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 370,   "ref": "callister2020" },
+    "poissons_ratio":      { "value": 0.22,  "ref": "callister2020" },
+    "yield_strength":      { "value": null,  "ref": null },
+    "tensile_strength":    { "value": 0.300, "ref": "callister2020" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 2000,  "ref": "callister2020" },
+    "usable_temp_range":   { "min": -200, "max": 1500, "ref": "callister2020" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness":  { "value": 3.5,  "ref": "callister2020" },
+    "hardness_vickers":    { "value": 1800, "ref": "callister2020" },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":      { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 3.90,   "ref": "callister2020" },
+    "electrical_conductivity":{ "value": null,   "ref": null },
+    "vapour_pressure":        { "value": null,   "ref": null },
+    "thermal_expansion": {
+      "value": 8.1,
+      "table": [
+        { "temp": 25,   "cte": 8.1 },
+        { "temp": 500,  "cte": 8.8 },
+        { "temp": 1000, "cte": 9.3 }
+      ],
+      "ref": "callister2020"
+    },
+    "thermal_conductivity":{ "value": 30.0,   "ref": "callister2020" },
+    "specific_heat":       { "value": 880,    "ref": "callister2020" },
+    "thermal_diffusivity": { "value": 0.0874, "ref": null },
+    "melting_point_tm":    { "value": 2072,   "ref": "callister2020" },
+    "glass_transition_tg": { "value": null,   "ref": null }
+  },
+
+  "references": ["callister2020"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

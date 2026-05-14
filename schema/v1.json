@@ -1,0 +1,247 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Engineering Material v1",
+  "description": "Schema for UVIC Engineering Materials Database. All pressure/moduli in GPa except compressive_strength (MPa). Temperatures in °C. Density in g/cm³. Electrical conductivity in % IACS.",
+  "type": "object",
+  "required": ["schema_version", "identification", "references", "metadata"],
+  "additionalProperties": false,
+
+  "definitions": {
+    "nullable_number": {
+      "type": ["number", "null"]
+    },
+    "ref_key": {
+      "type": ["string", "null"],
+      "description": "BibTeX citation key matching an entry in references/index.json, or null"
+    },
+    "valued_property": {
+      "type": "object",
+      "required": ["value", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "$ref": "#/definitions/nullable_number" },
+        "ref":   { "$ref": "#/definitions/ref_key" }
+      }
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "URL-safe identifier: lowercase letters, digits, hyphens only"
+    },
+    "fabrication_process": {
+      "type": "string",
+      "enum": [
+        "Machining",
+        "Welding",
+        "Forging",
+        "Casting",
+        "Extrude",
+        "Injection Moulding",
+        "3D Print (FDM)",
+        "3D Print (SLA)",
+        "3D Print (SLS)",
+        "Vacuum Infusion",
+        "Composite Layup",
+        "Plateable",
+        "Polishable"
+      ]
+    },
+    "common_form": {
+      "type": "string",
+      "enum": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Angles and Structural Profiles",
+        "Filament"
+      ]
+    }
+  },
+
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "enum": [1],
+      "description": "Schema version. Must be 1 for this schema."
+    },
+
+    "identification": {
+      "type": "object",
+      "required": ["name", "slug", "category", "commonly_available"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Full descriptive material name, e.g. 'Aluminum 6061-T6'"
+        },
+        "slug": {
+          "$ref": "#/definitions/slug",
+          "description": "URL-safe identifier matching the filename without extension"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["Metal", "Plastic", "Ceramic", "Composite"]
+        },
+        "fabrication_processes": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/fabrication_process" },
+          "uniqueItems": true
+        },
+        "common_forms": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/common_form" },
+          "uniqueItems": true
+        },
+        "common_form_notes": { "type": ["string", "null"] },
+        "commonly_available": {
+          "type": "boolean",
+          "description": "False flags the material as uncommon or hard to source"
+        },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+
+    "typical_usage": {
+      "type": ["string", "null"],
+      "description": "Common engineering applications for this material"
+    },
+
+    "mechanical_common": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "youngs_modulus":      { "$ref": "#/definitions/valued_property", "description": "GPa" },
+        "poissons_ratio":      { "$ref": "#/definitions/valued_property", "description": "Dimensionless" },
+        "yield_strength":      { "$ref": "#/definitions/valued_property", "description": "GPa — 0.2% offset or elastic limit. Use null for brittle materials with no distinct yield point." },
+        "tensile_strength":    { "$ref": "#/definitions/valued_property", "description": "GPa — ultimate tensile strength" },
+        "compressive_modulus": { "$ref": "#/definitions/valued_property", "description": "GPa — leave null if equal to Young's Modulus" },
+        "compressive_strength":{ "$ref": "#/definitions/valued_property", "description": "MPa — NOTE: stored in MPa, not GPa. Maximum compressive stress before failure." },
+        "usable_temp_range": {
+          "type": "object",
+          "required": ["min", "max", "ref"],
+          "additionalProperties": false,
+          "properties": {
+            "min": { "$ref": "#/definitions/nullable_number", "description": "°C" },
+            "max": { "$ref": "#/definitions/nullable_number", "description": "°C" },
+            "ref": { "$ref": "#/definitions/ref_key" }
+          }
+        }
+      }
+    },
+
+    "mechanical_other": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "microyield_strength": { "$ref": "#/definitions/valued_property", "description": "GPa" },
+        "creep_strength":      { "$ref": "#/definitions/valued_property", "description": "GPa" },
+        "fatigue_sn_curve": {
+          "type": "object",
+          "required": ["points", "ref"],
+          "additionalProperties": false,
+          "properties": {
+            "points": {
+              "type": "array",
+              "maxItems": 10,
+              "description": "S-N data points ordered from low to high cycle count",
+              "items": {
+                "type": "object",
+                "required": ["stress", "cycles"],
+                "additionalProperties": false,
+                "properties": {
+                  "stress": { "type": "number", "exclusiveMinimum": 0, "description": "Stress amplitude in GPa" },
+                  "cycles": { "type": "number", "exclusiveMinimum": 0, "description": "Cycle count" }
+                }
+              }
+            },
+            "ref": { "$ref": "#/definitions/ref_key" }
+          }
+        },
+        "fracture_toughness":  { "$ref": "#/definitions/valued_property", "description": "MPa·m^0.5 — Mode I (K_Ic) unless noted in material notes" },
+        "hardness_vickers":    { "$ref": "#/definitions/valued_property", "description": "HV — canonical hardness unit" },
+        "hardness_brinell":    { "$ref": "#/definitions/valued_property", "description": "HB" },
+        "hardness_rockwell": {
+          "type": "object",
+          "required": ["value", "scale", "ref"],
+          "additionalProperties": false,
+          "properties": {
+            "value": { "$ref": "#/definitions/nullable_number" },
+            "scale": { "type": ["string", "null"], "description": "Rockwell scale letter: A, B, C, etc." },
+            "ref":   { "$ref": "#/definitions/ref_key" }
+          }
+        },
+        "ductility": {
+          "type": "object",
+          "required": ["min", "max", "typical", "ref"],
+          "additionalProperties": false,
+          "description": "Percent elongation (%)",
+          "properties": {
+            "min":     { "$ref": "#/definitions/nullable_number" },
+            "max":     { "$ref": "#/definitions/nullable_number" },
+            "typical": { "$ref": "#/definitions/nullable_number", "description": "Null means compute avg(min, max) at runtime" },
+            "ref":     { "$ref": "#/definitions/ref_key" }
+          }
+        },
+        "shear_strength": { "$ref": "#/definitions/valued_property", "description": "GPa — null means compute from yield_strength via von Mises (σ_y/√3) at runtime" }
+      }
+    },
+
+    "physical": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "density":                { "$ref": "#/definitions/valued_property", "description": "g/cm³" },
+        "electrical_conductivity":{ "$ref": "#/definitions/valued_property", "description": "% IACS — copper = 100%" },
+        "vapour_pressure":        { "$ref": "#/definitions/valued_property", "description": "Pa" },
+        "thermal_expansion": {
+          "type": "object",
+          "required": ["value", "table", "ref"],
+          "additionalProperties": false,
+          "description": "CTE in µm/m·°C. A single value is stored as a one-row table.",
+          "properties": {
+            "value": { "$ref": "#/definitions/nullable_number", "description": "µm/m·°C — representative value" },
+            "table": {
+              "type": "array",
+              "maxItems": 10,
+              "items": {
+                "type": "object",
+                "required": ["temp", "cte"],
+                "additionalProperties": false,
+                "properties": {
+                  "temp": { "type": "number", "description": "°C" },
+                  "cte":  { "type": "number", "description": "µm/m·°C" }
+                }
+              }
+            },
+            "ref": { "$ref": "#/definitions/ref_key" }
+          }
+        },
+        "thermal_conductivity":{ "$ref": "#/definitions/valued_property", "description": "W/m·K" },
+        "specific_heat":       { "$ref": "#/definitions/valued_property", "description": "J/kg·K" },
+        "thermal_diffusivity": { "$ref": "#/definitions/valued_property", "description": "cm²/s" },
+        "melting_point_tm":    { "$ref": "#/definitions/valued_property", "description": "°C — for crystalline materials. Leave null for amorphous materials." },
+        "glass_transition_tg": { "$ref": "#/definitions/valued_property", "description": "°C — for amorphous materials. Leave null for crystalline materials." }
+      }
+    },
+
+    "references": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "description": "BibTeX citation keys used in this entry. All keys must exist in references/index.json."
+    },
+
+    "metadata": {
+      "type": "object",
+      "required": ["submitted_by", "submitted_date", "approved_by", "approved_date"],
+      "additionalProperties": false,
+      "properties": {
+        "submitted_by":  { "type": ["string", "null"] },
+        "submitted_date":{ "type": ["string", "null"], "format": "date", "description": "ISO 8601 date" },
+        "approved_by":   { "type": ["string", "null"] },
+        "approved_date": { "type": ["string", "null"], "format": "date", "description": "ISO 8601 date" }
+      }
+    }
+  }
+}
