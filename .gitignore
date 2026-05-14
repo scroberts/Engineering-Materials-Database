@@ -1,0 +1,16 @@
+# Claude Code local settings
+.claude/
+
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Admin tool backups
+tools/backup/
+
+# OS files
+.DS_Store
+Thumbs.db
