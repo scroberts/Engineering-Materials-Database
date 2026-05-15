@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely stocked as plate, sheet, and bar. Typically purchased in T6 or T651 temper (stress-relieved plate). Not recommended for welding in most applications.",
     "commonly_available": true,
-    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding (susceptible to hot cracking and strength loss in HAZ)."
+    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (freely available); eFunda linked for cross-reference."
   },
 
   "typical_usage": "Aerospace structural members, aircraft fittings and bulkheads, high-performance bicycle frames, rock climbing equipment, competitive cycling components, and any application requiring maximum specific strength in aluminum.",
@@ -36,16 +36,16 @@
       "ref": "mil-hdbk-5j-2003"
     },
     "fracture_toughness":  { "value": 27,   "ref": "mil-hdbk-5j-2003" },
-    "hardness_vickers":    { "value": 175,  "ref": "asm-handbook-v2-1990" },
-    "hardness_brinell":    { "value": 150,  "ref": "asm-handbook-v2-1990" },
-    "hardness_rockwell":   { "value": 87, "scale": "B", "ref": "asm-handbook-v2-1990" },
+    "hardness_vickers":    { "value": 175,  "ref": "mil-hdbk-5j-2003" },
+    "hardness_brinell":    { "value": 150,  "ref": "mil-hdbk-5j-2003" },
+    "hardness_rockwell":   { "value": 87, "scale": "B", "ref": "mil-hdbk-5j-2003" },
     "ductility":           { "min": 11, "max": null, "typical": null, "ref": "mil-hdbk-5j-2003" },
     "shear_strength":      { "value": 0.331, "ref": "mil-hdbk-5j-2003" }
   },
 
   "physical": {
-    "density":                { "value": 2.81,  "ref": "asm-handbook-v2-1990" },
-    "electrical_conductivity":{ "value": 33.0,  "ref": "asm-handbook-v2-1990" },
+    "density":                { "value": 2.81,  "ref": "mil-hdbk-5j-2003" },
+    "electrical_conductivity":{ "value": 33.0,  "ref": "mil-hdbk-5j-2003" },
     "vapour_pressure":        { "value": null,  "ref": null },
     "thermal_expansion": {
       "value": 23.6,
@@ -54,17 +54,17 @@
         { "temp": 100, "cte": 24.1 },
         { "temp": 200, "cte": 24.7 }
       ],
-      "ref": "asm-handbook-v2-1990"
+      "ref": "mil-hdbk-5j-2003"
     },
-    "thermal_conductivity":{ "value": 130,  "ref": "asm-handbook-v2-1990" },
-    "specific_heat":       { "value": 960,  "ref": "asm-handbook-v2-1990" },
+    "thermal_conductivity":{ "value": 130,  "ref": "mil-hdbk-5j-2003" },
+    "specific_heat":       { "value": 960,  "ref": "mil-hdbk-5j-2003" },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 635,  "ref": "asm-handbook-v2-1990" },
+    "melting_point_tm":    { "value": 635,  "ref": "mil-hdbk-5j-2003" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["asm-handbook-v2-1990", "mil-hdbk-5j-2003"],
+  "references": ["efunda-aluminum-7075", "mil-hdbk-5j-2003"],
 
   "metadata": {
     "submitted_by": "admin",

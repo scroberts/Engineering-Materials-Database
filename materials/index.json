@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T05:25:03Z",
+  "generated": "2026-05-15T06:09:37Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -17,10 +17,10 @@
         "Round Bar"
       ],
       "commonly_available": true,
-      "youngs_modulus": 370,
+      "youngs_modulus": 375,
       "yield_strength": null,
-      "tensile_strength": 0.3,
-      "density": 3.9
+      "tensile_strength": 0.262,
+      "density": 3.89
     },
     {
       "slug": "aluminum-1100-o",
@@ -36,7 +36,7 @@
         "Plate"
       ],
       "commonly_available": true,
-      "youngs_modulus": 68.9,
+      "youngs_modulus": 70,
       "yield_strength": 0.034,
       "tensile_strength": 0.09,
       "density": 2.71
@@ -136,7 +136,7 @@
       ],
       "commonly_available": true,
       "youngs_modulus": 193,
-      "yield_strength": 0.241,
+      "yield_strength": 0.19,
       "tensile_strength": 0.62,
       "density": 8.03
     },
@@ -158,9 +158,9 @@
       ],
       "commonly_available": true,
       "youngs_modulus": 193,
-      "yield_strength": 0.207,
+      "yield_strength": 0.2,
       "tensile_strength": 0.517,
-      "density": 7.99
+      "density": 8.0
     },
     {
       "slug": "steel-a2",
@@ -237,7 +237,7 @@
       "commonly_available": true,
       "youngs_modulus": 2.1,
       "yield_strength": 0.04,
-      "tensile_strength": 0.045,
+      "tensile_strength": 0.047,
       "density": 1.05
     },
     {

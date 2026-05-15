@@ -14,29 +14,29 @@
   "typical_usage": "Structural frames, beams, columns, gussets, brackets, machine bases, weldments, and general fabrication. The default steel for structural and general-purpose work where high strength is not required.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 200,   "ref": "asm-handbook-v1-1990" },
-    "poissons_ratio":      { "value": 0.29,  "ref": "asm-handbook-v1-1990" },
-    "yield_strength":      { "value": 0.250, "ref": "asm-handbook-v1-1990" },
-    "tensile_strength":    { "value": 0.400, "ref": "asm-handbook-v1-1990" },
+    "youngs_modulus":      { "value": 200,   "ref": "azom-a36" },
+    "poissons_ratio":      { "value": 0.26,  "ref": "azom-a36" },
+    "yield_strength":      { "value": 0.250, "ref": "azom-a36" },
+    "tensile_strength":    { "value": 0.400, "ref": "azom-a36" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 250,   "ref": "asm-handbook-v1-1990" },
-    "usable_temp_range":   { "min": -30, "max": 425, "ref": "asm-handbook-v1-1990" }
+    "compressive_strength":{ "value": 250,   "ref": null },
+    "usable_temp_range":   { "min": -30, "max": 425, "ref": null }
   },
 
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
-    "hardness_vickers":    { "value": 155,  "ref": "asm-handbook-v1-1990" },
-    "hardness_brinell":    { "value": 149,  "ref": "asm-handbook-v1-1990" },
-    "hardness_rockwell":   { "value": 77, "scale": "B", "ref": "asm-handbook-v1-1990" },
-    "ductility":           { "min": 20, "max": null, "typical": 21, "ref": "asm-handbook-v1-1990" },
-    "shear_strength":      { "value": 0.240, "ref": "asm-handbook-v1-1990" }
+    "hardness_vickers":    { "value": 155,  "ref": null },
+    "hardness_brinell":    { "value": 149,  "ref": null },
+    "hardness_rockwell":   { "value": 77, "scale": "B", "ref": null },
+    "ductility":           { "min": 20, "max": null, "typical": 21, "ref": "azom-a36" },
+    "shear_strength":      { "value": 0.240, "ref": null }
   },
 
   "physical": {
-    "density":                { "value": 7.85, "ref": "asm-handbook-v1-1990" },
-    "electrical_conductivity":{ "value": 10.0, "ref": "asm-handbook-v1-1990" },
+    "density":                { "value": 7.85, "ref": "azom-a36" },
+    "electrical_conductivity":{ "value": 10.0, "ref": null },
     "vapour_pressure":        { "value": null, "ref": null },
     "thermal_expansion": {
       "value": 11.7,
@@ -45,17 +45,17 @@
         { "temp": 200, "cte": 12.3 },
         { "temp": 400, "cte": 13.0 }
       ],
-      "ref": "asm-handbook-v1-1990"
+      "ref": null
     },
-    "thermal_conductivity":{ "value": 50.2, "ref": "asm-handbook-v1-1990" },
-    "specific_heat":       { "value": 486,  "ref": "asm-handbook-v1-1990" },
+    "thermal_conductivity":{ "value": 50.2, "ref": null },
+    "specific_heat":       { "value": 486,  "ref": null },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 1510, "ref": "asm-handbook-v1-1990" },
+    "melting_point_tm":    { "value": 1510, "ref": null },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
 
-  "references": ["asm-handbook-v1-1990"],
+  "references": ["azom-a36"],
 
   "metadata": {
     "submitted_by": "admin",

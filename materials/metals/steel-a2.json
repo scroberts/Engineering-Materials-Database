@@ -8,52 +8,52 @@
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Supplied in annealed condition for machining; hardened and tempered in-shop after roughing.",
     "commonly_available": true,
-    "notes": "Air-hardening tool steel (AISI A2 / DIN 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC 60). Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state. 5% Cr content provides significantly better hardenability and wear resistance than O1."
+    "notes": "Air-hardening tool steel (AISI A2 / DIN 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC 60). AZoM lists hardness as 64 HRC in the as-air-hardened condition (no temper); the database value of 60 HRC reflects the typical working condition after a 200 °C double-temper. Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state."
   },
 
   "typical_usage": "Punches, blanking and forming dies, shear blades, gauges, thread-rolling dies, and precision cutting tools requiring high hardness with good dimensional stability after heat treatment.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 200,   "ref": "asm-handbook-v1-1990" },
-    "poissons_ratio":      { "value": 0.28,  "ref": "asm-handbook-v1-1990" },
-    "yield_strength":      { "value": 1.586, "ref": "asm-handbook-v1-1990" },
-    "tensile_strength":    { "value": 2.068, "ref": "asm-handbook-v1-1990" },
+    "youngs_modulus":      { "value": 200,   "ref": "azom-a2-tool-steel" },
+    "poissons_ratio":      { "value": 0.28,  "ref": "azom-a2-tool-steel" },
+    "yield_strength":      { "value": 1.586, "ref": null },
+    "tensile_strength":    { "value": 2.068, "ref": null },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 1586,  "ref": "asm-handbook-v1-1990" },
-    "usable_temp_range":   { "min": -40, "max": 175, "ref": "asm-handbook-v1-1990" }
+    "compressive_strength":{ "value": 1586,  "ref": null },
+    "usable_temp_range":   { "min": -40, "max": 175, "ref": null }
   },
 
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
-    "fracture_toughness":  { "value": 14,   "ref": "asm-handbook-v1-1990" },
-    "hardness_vickers":    { "value": 697,  "ref": "asm-handbook-v1-1990" },
+    "fracture_toughness":  { "value": 14,   "ref": null },
+    "hardness_vickers":    { "value": 697,  "ref": null },
     "hardness_brinell":    { "value": null, "ref": null },
-    "hardness_rockwell":   { "value": 60, "scale": "C", "ref": "asm-handbook-v1-1990" },
-    "ductility":           { "min": 1, "max": 3, "typical": 2, "ref": "asm-handbook-v1-1990" },
+    "hardness_rockwell":   { "value": 60, "scale": "C", "ref": null },
+    "ductility":           { "min": 1, "max": 3, "typical": 2, "ref": null },
     "shear_strength":      { "value": null, "ref": null }
   },
 
   "physical": {
-    "density":                { "value": 7.86, "ref": "asm-handbook-v1-1990" },
-    "electrical_conductivity":{ "value": 2.0,  "ref": "asm-handbook-v1-1990" },
+    "density":                { "value": 7.86, "ref": "azom-a2-tool-steel" },
+    "electrical_conductivity":{ "value": 2.0,  "ref": null },
     "vapour_pressure":        { "value": null, "ref": null },
     "thermal_expansion": {
-      "value": 10.8,
+      "value": 10.7,
       "table": [
-        { "temp": 20, "cte": 10.8 }
+        { "temp": 20, "cte": 10.7 }
       ],
-      "ref": "asm-handbook-v1-1990"
+      "ref": "azom-a2-tool-steel"
     },
-    "thermal_conductivity":{ "value": 17,   "ref": "asm-handbook-v1-1990" },
-    "specific_heat":       { "value": 460,  "ref": "asm-handbook-v1-1990" },
+    "thermal_conductivity":{ "value": 17,   "ref": null },
+    "specific_heat":       { "value": 460,  "ref": null },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 1425, "ref": "asm-handbook-v1-1990" },
+    "melting_point_tm":    { "value": 1424, "ref": "azom-a2-tool-steel" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
 
-  "references": ["asm-handbook-v1-1990"],
+  "references": ["azom-a2-tool-steel"],
 
   "metadata": {
     "submitted_by": "admin",

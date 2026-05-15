@@ -8,54 +8,54 @@
     "common_forms": ["Round Bar"],
     "common_form_notes": "Primarily stocked as round bar for turned parts. Sheet and plate are uncommon for 303 — use 304 or 316 for those applications.",
     "commonly_available": true,
-    "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability, corrosion resistance, and transverse toughness. Not suitable for welding (sulfur causes hot cracking). Slightly lower corrosion resistance than 304 in chloride environments. Annealed condition."
+    "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability and corrosion resistance. Not suitable for welding. Yield strength (190 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A582 specifies a minimum of 241 MPa (35 ksi). Typical as-produced material falls between these values."
   },
 
   "typical_usage": "CNC-turned shafts, fittings, fasteners, bushings, valve stems, and precision machined parts requiring good corrosion resistance combined with high-volume machinability. The default stainless for turned parts.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 193,   "ref": "asm-handbook-v1-1990" },
-    "poissons_ratio":      { "value": 0.28,  "ref": "asm-handbook-v1-1990" },
-    "yield_strength":      { "value": 0.241, "ref": "asm-handbook-v1-1990" },
-    "tensile_strength":    { "value": 0.620, "ref": "asm-handbook-v1-1990" },
+    "youngs_modulus":      { "value": 193,   "ref": "azom-stainless-303" },
+    "poissons_ratio":      { "value": 0.28,  "ref": null },
+    "yield_strength":      { "value": 0.190, "ref": "azom-stainless-303" },
+    "tensile_strength":    { "value": 0.620, "ref": "azom-stainless-303" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 241,   "ref": "asm-handbook-v1-1990" },
-    "usable_temp_range":   { "min": -200, "max": 870, "ref": "asm-handbook-v1-1990" }
+    "compressive_strength":{ "value": 190,   "ref": "azom-stainless-303" },
+    "usable_temp_range":   { "min": -200, "max": 870, "ref": null }
   },
 
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
-    "hardness_vickers":    { "value": 190,  "ref": "asm-handbook-v1-1990" },
-    "hardness_brinell":    { "value": 183,  "ref": "asm-handbook-v1-1990" },
-    "hardness_rockwell":   { "value": 88, "scale": "B", "ref": "asm-handbook-v1-1990" },
-    "ductility":           { "min": 35, "max": null, "typical": null, "ref": "asm-handbook-v1-1990" },
-    "shear_strength":      { "value": 0.370, "ref": "asm-handbook-v1-1990" }
+    "hardness_vickers":    { "value": 190,  "ref": null },
+    "hardness_brinell":    { "value": 183,  "ref": null },
+    "hardness_rockwell":   { "value": 88, "scale": "B", "ref": null },
+    "ductility":           { "min": 35, "max": null, "typical": null, "ref": "azom-stainless-303" },
+    "shear_strength":      { "value": 0.370, "ref": null }
   },
 
   "physical": {
-    "density":                { "value": 8.03, "ref": "asm-handbook-v1-1990" },
-    "electrical_conductivity":{ "value": 2.4,  "ref": "asm-handbook-v1-1990" },
+    "density":                { "value": 8.03, "ref": "azom-stainless-303" },
+    "electrical_conductivity":{ "value": 2.4,  "ref": null },
     "vapour_pressure":        { "value": null, "ref": null },
     "thermal_expansion": {
-      "value": 17.2,
+      "value": 17.3,
       "table": [
-        { "temp": 100, "cte": 17.2 },
+        { "temp": 100, "cte": 17.3 },
         { "temp": 315, "cte": 17.8 },
         { "temp": 538, "cte": 18.0 }
       ],
-      "ref": "asm-handbook-v1-1990"
+      "ref": "azom-stainless-303"
     },
-    "thermal_conductivity":{ "value": 16.2, "ref": "asm-handbook-v1-1990" },
-    "specific_heat":       { "value": 500,  "ref": "asm-handbook-v1-1990" },
+    "thermal_conductivity":{ "value": 16.3, "ref": "azom-stainless-303" },
+    "specific_heat":       { "value": 500,  "ref": null },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 1400, "ref": "asm-handbook-v1-1990" },
+    "melting_point_tm":    { "value": 1455, "ref": "azom-stainless-303" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["asm-handbook-v1-1990"],
+  "references": ["azom-stainless-303"],
 
   "metadata": {
     "submitted_by": "admin",

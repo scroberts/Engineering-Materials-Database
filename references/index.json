@@ -1,4 +1,64 @@
 {
+  "azom-a2-tool-steel": {
+    "short_label": "AZoM: A2 Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6218"
+  },
+  "azom-a36": {
+    "short_label": "AZoM: ASTM A36 Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6117"
+  },
+  "azom-abs": {
+    "short_label": "AZoM: ABS Medium Impact",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=358"
+  },
+  "azom-alumina": {
+    "short_label": "AZoM: Alumina 99.5%",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/properties.aspx?ArticleID=105"
+  },
+  "azom-aluminum-1100": {
+    "short_label": "AZoM: Aluminium 1100 Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6588"
+  },
+  "azom-aluminum-5052": {
+    "short_label": "AZoM: Aluminium 5052 Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6626"
+  },
+  "azom-aluminum-6061": {
+    "short_label": "AZoM: Aluminium 6061 Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6636"
+  },
+  "azom-stainless-303": {
+    "short_label": "AZoM: Grade 303 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=2866"
+  },
+  "azom-stainless-316": {
+    "short_label": "AZoM: Grade 316 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=2868"
+  },
+  "efunda-aluminum-7075": {
+    "short_label": "eFunda: Aluminium 7075",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.efunda.com/Materials/alloys/aluminum/show_aluminum.cfm?ID=AA_7075&show_prop=all"
+  },
   "simplify3d-materials-guide": {
     "short_label": "Simplify3D Materials Guide",
     "doi": null,

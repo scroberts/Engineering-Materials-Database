@@ -1,26 +1,26 @@
 {
   "schema_version": 1,
   "identification": {
-    "name": "Alumina (Al\u2082O\u2083, 99.5%)",
+    "name": "Alumina (Al₂O₃, 99.5%)",
     "slug": "alumina-al2o3",
     "category": "Ceramic",
     "fabrication_processes": ["Casting", "Machining", "Polishable"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as custom-machined blanks or standard rod/plate stock from specialist ceramic suppliers. Post-sintering grinding/lapping required for tight tolerances. Casting here refers to slip casting and dry pressing followed by sintering.",
     "commonly_available": true,
-    "notes": "Properties are for 99.5% purity sintered alumina. Purity and porosity strongly affect mechanical properties. Alumina is brittle — design must account for low fracture toughness. Yield strength is not applicable; tensile value given is the flexural strength (modulus of rupture)."
+    "notes": "Properties are for 99.5% purity sintered alumina, from AZoM article on alumina as a biomaterial (same composition, same crystal structure). Purity and porosity strongly affect mechanical properties — 96% purity alumina has lower E (~360 GPa) and toughness (~3.5 MPa·m½). Alumina is brittle — design must account for low fracture toughness. Tensile strength given is the flexural strength (modulus of rupture); yield strength is not applicable. Specific heat and melting point are well-established values not listed on the AZoM page."
   },
 
   "typical_usage": "High-wear components (seal rings, nozzles, grinding media), electrical insulators and substrates, cutting tool inserts, biomedical implants, optical window substrates. Selected when extreme hardness, wear resistance, chemical inertness, and electrical insulation are required at elevated temperatures.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 370,   "ref": "callister2020" },
-    "poissons_ratio":      { "value": 0.22,  "ref": "callister2020" },
+    "youngs_modulus":      { "value": 375,   "ref": "azom-alumina" },
+    "poissons_ratio":      { "value": 0.22,  "ref": null },
     "yield_strength":      { "value": null,  "ref": null },
-    "tensile_strength":    { "value": 0.300, "ref": "callister2020" },
+    "tensile_strength":    { "value": 0.262, "ref": "azom-alumina" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 2000,  "ref": "callister2020" },
-    "usable_temp_range":   { "min": -200, "max": 1500, "ref": "callister2020" }
+    "compressive_strength":{ "value": 2350,  "ref": "azom-alumina" },
+    "usable_temp_range":   { "min": -200, "max": 1500, "ref": null }
   },
 
   "mechanical_other": {
@@ -30,8 +30,8 @@
       "points": [],
       "ref": null
     },
-    "fracture_toughness":  { "value": 3.5,  "ref": "callister2020" },
-    "hardness_vickers":    { "value": 1800, "ref": "callister2020" },
+    "fracture_toughness":  { "value": 4.0,  "ref": "azom-alumina" },
+    "hardness_vickers":    { "value": 2000, "ref": "azom-alumina" },
     "hardness_brinell":    { "value": null, "ref": null },
     "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
@@ -39,7 +39,7 @@
   },
 
   "physical": {
-    "density":                { "value": 3.90,   "ref": "callister2020" },
+    "density":                { "value": 3.89,   "ref": "azom-alumina" },
     "electrical_conductivity":{ "value": null,   "ref": null },
     "vapour_pressure":        { "value": null,   "ref": null },
     "thermal_expansion": {
@@ -49,17 +49,17 @@
         { "temp": 500,  "cte": 8.8 },
         { "temp": 1000, "cte": 9.3 }
       ],
-      "ref": "callister2020"
+      "ref": "azom-alumina"
     },
-    "thermal_conductivity":{ "value": 30.0,   "ref": "callister2020" },
-    "specific_heat":       { "value": 880,    "ref": "callister2020" },
+    "thermal_conductivity":{ "value": 30.0,   "ref": "azom-alumina" },
+    "specific_heat":       { "value": 880,    "ref": null },
     "thermal_diffusivity": { "value": 0.0874, "ref": null },
-    "melting_point_tm":    { "value": 2072,   "ref": "callister2020" },
+    "melting_point_tm":    { "value": 2072,   "ref": null },
     "glass_transition_tg": { "value": null,   "ref": null },
     "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["callister2020"],
+  "references": ["azom-alumina"],
 
   "metadata": {
     "submitted_by": "admin",
