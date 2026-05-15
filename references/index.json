@@ -1,4 +1,10 @@
 {
+  "onlinemetals-a2": {
+    "short_label": "Online Metals: A2 Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.onlinemetals.com/en/product-guide/alloy/a2"
+  },
   "azom-a2-tool-steel": {
     "short_label": "AZoM: A2 Tool Steel",
     "doi": null,

@@ -8,16 +8,16 @@
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Supplied in annealed condition for machining; hardened and tempered in-shop after roughing.",
     "commonly_available": true,
-    "notes": "Air-hardening tool steel (AISI A2 / DIN 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC 60). AZoM lists hardness as 64 HRC in the as-air-hardened condition (no temper); the database value of 60 HRC reflects the typical working condition after a 200 °C double-temper. Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state."
+    "notes": "Air-hardening tool steel (AISI A2 / DIN 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC 60). AZoM lists hardness as 64 HRC in the as-air-hardened condition (no temper); the database value of 60 HRC reflects the typical working condition after a 200 °C double-temper. Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state. Thermal conductivity (38 W/m·K) is higher than AZoM's figure; Online Metals value consistent with low Cr content (5%) vs. stainless steels (18% Cr, ~16 W/m·K)."
   },
 
   "typical_usage": "Punches, blanking and forming dies, shear blades, gauges, thread-rolling dies, and precision cutting tools requiring high hardness with good dimensional stability after heat treatment.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 200,   "ref": "azom-a2-tool-steel" },
-    "poissons_ratio":      { "value": 0.28,  "ref": "azom-a2-tool-steel" },
+    "youngs_modulus":      { "value": 203,   "ref": "onlinemetals-a2" },
+    "poissons_ratio":      { "value": 0.30,  "ref": "onlinemetals-a2" },
     "yield_strength":      { "value": 1.586, "ref": null },
-    "tensile_strength":    { "value": 2.068, "ref": null },
+    "tensile_strength":    { "value": 2.068, "ref": "onlinemetals-a2" },
     "compressive_modulus": { "value": null,  "ref": null },
     "compressive_strength":{ "value": 1586,  "ref": null },
     "usable_temp_range":   { "min": -40, "max": 175, "ref": null }
@@ -26,18 +26,22 @@
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
-    "fracture_toughness":  { "value": 14,   "ref": null },
-    "hardness_vickers":    { "value": 697,  "ref": null },
-    "hardness_brinell":    { "value": null, "ref": null },
-    "hardness_rockwell":   { "value": 60, "scale": "C", "ref": null },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness":  { "value": 14,  "ref": null },
+    "hardness_vickers":    { "value": 697, "ref": null },
+    "hardness_brinell":    { "value": 661, "ref": "onlinemetals-a2" },
+    "hardness_rockwell":   { "value": 60, "scale": "C", "ref": "onlinemetals-a2" },
     "ductility":           { "min": 1, "max": 3, "typical": 2, "ref": null },
     "shear_strength":      { "value": null, "ref": null }
   },
 
   "physical": {
-    "density":                { "value": 7.86, "ref": "azom-a2-tool-steel" },
-    "electrical_conductivity":{ "value": 2.0,  "ref": null },
-    "vapour_pressure":        { "value": null, "ref": null },
+    "density":                { "value": 7.86,  "ref": "azom-a2-tool-steel" },
+    "electrical_conductivity":{ "value": 8.2,   "ref": "onlinemetals-a2" },
+    "vapour_pressure":        { "value": null,  "ref": null },
     "thermal_expansion": {
       "value": 10.7,
       "table": [
@@ -45,15 +49,15 @@
       ],
       "ref": "azom-a2-tool-steel"
     },
-    "thermal_conductivity":{ "value": 17,   "ref": null },
-    "specific_heat":       { "value": 460,  "ref": null },
+    "thermal_conductivity":{ "value": 38,   "ref": "onlinemetals-a2" },
+    "specific_heat":       { "value": 460,  "ref": "onlinemetals-a2" },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 1424, "ref": "azom-a2-tool-steel" },
+    "melting_point_tm":    { "value": 1432, "ref": "onlinemetals-a2" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
 
-  "references": ["azom-a2-tool-steel"],
+  "references": ["azom-a2-tool-steel", "onlinemetals-a2"],
 
   "metadata": {
     "submitted_by": "admin",
