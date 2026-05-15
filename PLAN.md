@@ -369,11 +369,13 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 10. `material.html` · `js/pages/detail.js`
 - [x] 11. `compare.html` · `js/pages/compare.js`
 - [x] 12. `submit.html` · `js/pages/submit.js`
-- [ ] 13. `tools/migrate.py` · `tools/import_bibtex.py`
-- [ ] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
-- [ ] 15. `edit.html` · `js/pages/edit.js` — admin edit-existing-material workflow
-- [ ] 16. Additional seed materials — carbon fibre/epoxy composite, steel 4340, PEEK
-- [ ] 17. `404.html`
+- [x] 13. `tools/migrate.py` · `tools/import_bibtex.py`
+- [x] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
+- [x] 15. Edit mode — implemented as dual-mode `submit.html` (`?slug=` pre-fills form, locks slug, "Download Updated JSON")
+- [ ] 16. Additional seed materials — steel 4340, PEEK, CFRP (composites/cfrp-ud.json started)
+- [x] 17. `404.html`
+- [x] 18. Merit index table improvements — shortName, augmented descriptions, reference footnotes in `derived.js` + `compare.js`
+- [ ] 19. `js/core/export.js` · Download dropdown in detail.js + compare.js · SheetJS CDN in compare.html + material.html
 
 ---
 

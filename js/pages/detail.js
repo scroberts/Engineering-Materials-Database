@@ -48,9 +48,10 @@ function convertFromCanonical(canonical, canonicalUnit, toUnit) {
   return canonical;
 }
 
-// ── Reference numbering (set by render() before any section renderer runs) ───
+// ── Module-level state ────────────────────────────────────────────────────────
 
-let _refNums = new Map();  // refKey → 1-based display number
+let _refNums    = new Map();  // refKey → 1-based display number
+let _currentMat = null;       // current material (for export)
 
 // ── HTML helpers ──────────────────────────────────────────────────────────────
 
@@ -173,6 +174,15 @@ function renderToolbar() {
       <select class="unit-select unit-toolbar-select" id="temp-unit-select"
               data-canonical-unit="°C">${tempOpts}</select>
     </div>
+    <div class="unit-toolbar-group export-dropdown" id="export-dropdown">
+      <button class="export-btn" id="export-trigger">Download ▾</button>
+      <div class="export-menu" id="export-menu" hidden>
+        <button class="export-option" data-fmt="csv"  data-scope="display">CSV — current units</button>
+        <button class="export-option" data-fmt="csv"  data-scope="canonical">CSV — canonical units</button>
+        <button class="export-option" data-fmt="xlsx" data-scope="display">Excel — current units</button>
+        <button class="export-option" data-fmt="xlsx" data-scope="canonical">Excel — canonical units</button>
+      </div>
+    </div>
   </div>`;
 }
 
@@ -204,6 +214,34 @@ function wireToolbar(layout) {
       });
     });
   });
+
+  // Export dropdown
+  const trigger = layout.querySelector('#export-trigger');
+  const menu    = layout.querySelector('#export-menu');
+  if (!trigger || !menu) return;
+
+  trigger.addEventListener('click', e => {
+    e.stopPropagation();
+    menu.toggleAttribute('hidden');
+  });
+
+  menu.querySelectorAll('.export-option').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      menu.setAttribute('hidden', '');
+      if (!_currentMat) return;
+      const scope  = btn.dataset.scope;
+      const preset = layout.querySelector('.unit-preset-btn.is-active')?.dataset.preset ?? 'metric';
+      const us     = scope === 'canonical' ? 'canonical' : preset;
+      const slug   = _currentMat.identification?.slug ?? 'material';
+      const filename = slug + (btn.dataset.fmt === 'xlsx' ? '.xlsx' : '.csv');
+      const { buildRows, downloadCSV, downloadXLSX } = await import('../core/export.js');
+      const rows = buildRows([_currentMat], us);
+      if (btn.dataset.fmt === 'xlsx') downloadXLSX(rows, [_currentMat], filename);
+      else downloadCSV(rows, [_currentMat], filename);
+    });
+  });
+
+  document.addEventListener('click', () => menu.setAttribute('hidden', ''));
 }
 
 // ── Render helpers ────────────────────────────────────────────────────────────
@@ -639,6 +677,7 @@ function renderHeader(mat) {
 // ── Main render ───────────────────────────────────────────────────────────────
 
 function render(mat, refs) {
+  _currentMat = mat;
   const refKeys = mat.references ?? [];
   _refNums = new Map(refKeys.map((k, i) => [k, i + 1]));
 

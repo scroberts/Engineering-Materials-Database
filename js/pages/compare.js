@@ -880,6 +880,15 @@ function renderToolbarHTML() {
         <button class="unit-preset-btn is-active" data-preset="metric">Metric</button>
         <button class="unit-preset-btn" data-preset="imperial">Imperial</button>
       </div>
+      <div class="unit-toolbar-group export-dropdown" id="export-dropdown">
+        <button class="export-btn" id="export-trigger">Download ▾</button>
+        <div class="export-menu" id="export-menu" hidden>
+          <button class="export-option" data-fmt="csv"  data-scope="display">CSV — current units</button>
+          <button class="export-option" data-fmt="csv"  data-scope="canonical">CSV — canonical units</button>
+          <button class="export-option" data-fmt="xlsx" data-scope="display">Excel — current units</button>
+          <button class="export-option" data-fmt="xlsx" data-scope="canonical">Excel — canonical units</button>
+        </div>
+      </div>
     </div>`;
 }
 
@@ -894,6 +903,34 @@ function wireToolbar() {
       renderAllCharts();
     });
   });
+
+  // Export dropdown
+  const trigger = document.getElementById('export-trigger');
+  const menu    = document.getElementById('export-menu');
+  if (!trigger || !menu) return;
+
+  trigger.addEventListener('click', e => {
+    e.stopPropagation();
+    menu.toggleAttribute('hidden');
+  });
+
+  menu.querySelectorAll('.export-option').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      menu.setAttribute('hidden', '');
+      const scope = btn.dataset.scope;
+      const us    = scope === 'canonical' ? 'canonical' : unitSystem;
+      const base  = materials.length === 1
+        ? (materials[0].identification?.slug ?? 'material')
+        : 'materials_comparison';
+      const filename = base + (btn.dataset.fmt === 'xlsx' ? '.xlsx' : '.csv');
+      const { buildRows, downloadCSV, downloadXLSX } = await import('../core/export.js');
+      const rows = buildRows(materials, us);
+      if (btn.dataset.fmt === 'xlsx') downloadXLSX(rows, materials, filename);
+      else downloadCSV(rows, materials, filename);
+    });
+  });
+
+  document.addEventListener('click', () => menu.setAttribute('hidden', ''));
 }
 
 // ── Main page HTML shell ───────────────────────────────────────────────────

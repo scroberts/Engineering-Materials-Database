@@ -173,6 +173,7 @@ Each field has a reference selector dropdown.
 | Thermal Diffusivity           | Float                                                                           | cm²/s                      | If not entered, computed from k / (ρ · Cp) and labelled "(k/ρCp)" |
 | Melting Point (Tm)            | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For crystalline materials (metals, ceramics). Leave blank for amorphous materials. |
 | Glass Transition Temp. (Tg)   | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For amorphous polymers and glasses. Leave blank for crystalline materials. |
+| Magnetic Classification       | Single select                                                                   | —                          | One of: Ferromagnetic (strongly magnetic — caution near field-sensitive instruments), Paramagnetic (weakly magnetic, generally acceptable), Diamagnetic (magnetically benign, preferred for precision optical/astronomical instruments). Displayed as a colour-coded badge. |
 
 ### 5.6 Calculated Properties (Display Only)
 
@@ -205,7 +206,9 @@ Per-section unit dropdowns are also available for finer control (pressure, compr
 
 Inline reference badges (**[1]**, **[2]**, …) appear after each value that has a source. Clicking a badge scrolls to the numbered entry in the References section at the bottom of the page. The References section is open by default.
 
-### 6.3 Multi-Material Comparison — Bar Charts
+### 6.3 Multi-Material Comparison — Properties Summary and Bar Charts
+
+A **Properties Summary** table appears at the top of the comparison view, before the charts. It lists all material properties side-by-side with one column per material. A dedicated Unit column shows the display unit for each row; value cells show bare numbers. Identification fields (Category, Common Forms, Fabrication Processes, Magnetic Classification) render as colour-coded badges. The table respects the global Metric/Imperial toggle.
 
 Allows the user to select up to **10 materials** and plot any single numerical property as a bar chart across the selected materials. A global unit selector rescales all bars without reloading. Materials are colour-coded consistently across all charts.
 
@@ -275,12 +278,21 @@ A merit index is displayed as "—" for a given material if any required propert
 
 ### 6.7 Data Export
 
-On any material view or comparison view, a **Download CSV** button is available. Before downloading, the user is presented with a choice:
+On any material view or comparison view, a **Download** dropdown button is available with two format options:
 
-- **Visible properties only** — exports only the properties currently shown on screen, in the current display units.
-- **All properties** — exports every property in the database for the selected material(s), in canonical units, regardless of what is currently displayed.
+- **CSV** — comma-separated text, opens in any spreadsheet application.
+- **Excel (.xlsx)** — formatted spreadsheet using the SheetJS library.
 
-The exported file uses the material slug as the filename (single material) or `materials_comparison.csv` (multiple materials).
+Before downloading, the user selects a unit scope:
+
+- **Current units** — properties exported in the unit currently shown on screen (metric or imperial, as selected by the toolbar toggle).
+- **Canonical units** — every property exported in its canonical storage unit (GPa for pressure/moduli, MPa for compressive strength, g/cm³ for density, °C for temperature, etc.), regardless of the current display setting.
+
+**File format:** columns are `Property`, `Unit`, then one column per material name. Section divider rows (IDENTIFICATION, MECHANICAL, PHYSICAL, MERIT INDICES) separate the property groups. Missing values are empty cells; text values (category, fabrication processes, magnetic classification) appear as plain text.
+
+The compare page export also includes a MERIT INDICES section (M1–M13 Ashby indices) with the computed value for each material.
+
+Single material: filename is `<slug>.csv` or `<slug>.xlsx`. Multiple materials: `materials_comparison.csv` or `materials_comparison.xlsx`.
 
 ---
 
@@ -398,7 +410,7 @@ This ensures old entries are never broken by format changes.
 
 > Items in this section are incomplete or pending decisions. Remove entries once resolved.
 
-*(No open items at this time.)*
+- **Additional seed materials** — steel 4340, PEEK, carbon fibre/epoxy composite
 
 ---
 
