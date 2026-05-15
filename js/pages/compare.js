@@ -555,9 +555,281 @@ function renderMeritTable() {
     <ol class="merit-footnotes">${footnotesHtml}</ol>`;
 }
 
+// ── Properties summary table ───────────────────────────────────────────────
+
+function renderPropertiesTable() {
+  const container = document.getElementById('props-table-container');
+  if (!container) return;
+
+  const toTempVal = (c) => unitSystem === 'imperial' ? Math.round(c * 9 / 5 + 32) : c;
+
+  // Each row: label, unit() → string, get(mat) → {text} | {html} | null
+  const SECTIONS = [
+    {
+      title: 'Identification',
+      rows: [
+        {
+          label: 'Category',
+          unit: () => '',
+          get: mat => {
+            const cat = mat.identification?.category;
+            if (!cat) return null;
+            return { html: `<span class="badge badge-${cat.toLowerCase().replace(/\s+/g, '-')}">${escHtml(cat)}</span>` };
+          },
+        },
+        {
+          label: 'Common Forms',
+          unit: () => '',
+          get: mat => {
+            const forms = mat.identification?.common_forms ?? [];
+            if (!forms.length) return null;
+            return { html: forms.map(f => `<span class="badge badge-form">${escHtml(f)}</span>`).join(' ') };
+          },
+        },
+        {
+          label: 'Fabrication',
+          unit: () => '',
+          get: mat => {
+            const procs = mat.identification?.fabrication_processes ?? [];
+            if (!procs.length) return null;
+            return { html: procs.map(p => `<span class="badge badge-process">${escHtml(p)}</span>`).join(' ') };
+          },
+        },
+      ],
+    },
+    {
+      title: 'Mechanical',
+      rows: [
+        {
+          label: "Young's Modulus",
+          unit: () => pressureUnit(),
+          get: mat => {
+            const w = mat.mechanical_common?.youngs_modulus?.value ?? null;
+            return w != null ? { text: fmt(toPressure(w), null, 1) } : null;
+          },
+        },
+        {
+          label: 'Shear Modulus',
+          unit: () => pressureUnit(),
+          get: mat => {
+            const G = shearModulus(mat);
+            return G != null ? { text: fmt(toPressure(G), null, 1) } : null;
+          },
+        },
+        {
+          label: "Poisson's Ratio",
+          unit: () => '',
+          get: mat => {
+            const w = mat.mechanical_common?.poissons_ratio?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'Yield Strength',
+          unit: () => strengthUnit(),
+          get: mat => {
+            const w = mat.mechanical_common?.yield_strength?.value ?? null;
+            return w != null ? { text: fmt(toStrength(w * 1000), null, 0) } : null;
+          },
+        },
+        {
+          label: 'Tensile Strength',
+          unit: () => strengthUnit(),
+          get: mat => {
+            const w = mat.mechanical_common?.tensile_strength?.value ?? null;
+            return w != null ? { text: fmt(toStrength(w * 1000), null, 0) } : null;
+          },
+        },
+        {
+          label: 'Compressive Strength',
+          unit: () => strengthUnit(),
+          get: mat => {
+            const w = mat.mechanical_common?.compressive_strength?.value ?? null;
+            return w != null ? { text: fmt(toStrength(w), null, 0) } : null;
+          },
+        },
+        {
+          label: 'Shear Strength',
+          unit: () => strengthUnit(),
+          get: mat => {
+            const raw = mat.mechanical_other?.shear_strength?.value ?? shearStrengthVonMises(mat);
+            return raw != null ? { text: fmt(toStrength(raw * 1000), null, 0) } : null;
+          },
+        },
+        {
+          label: 'Fracture Toughness',
+          unit: () => fractureTooltipUnit(),
+          get: mat => {
+            const w = mat.mechanical_other?.fracture_toughness?.value ?? null;
+            return w != null ? { text: fmt(toFracture(w), null, 1) } : null;
+          },
+        },
+        {
+          label: 'Hardness (HV)',
+          unit: () => 'HV',
+          get: mat => {
+            const w = mat.mechanical_other?.hardness_vickers?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'Hardness (HB)',
+          unit: () => 'HB',
+          get: mat => {
+            const w = mat.mechanical_other?.hardness_brinell?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'Hardness (Rockwell)',
+          unit: () => 'Rockwell',
+          get: mat => {
+            const h = mat.mechanical_other?.hardness_rockwell;
+            return h?.value != null ? { text: `${h.value}${h.scale}` } : null;
+          },
+        },
+        {
+          label: 'Ductility',
+          unit: () => '%',
+          get: mat => {
+            const d = mat.mechanical_other?.ductility;
+            if (!d) return null;
+            if (d.typical != null) return { text: String(d.typical) };
+            if (d.min != null)     return { text: `≥ ${d.min}` };
+            return null;
+          },
+        },
+        {
+          label: 'Usable Temp Range',
+          unit: () => unitSystem === 'imperial' ? '°F' : '°C',
+          get: mat => {
+            const r = mat.mechanical_common?.usable_temp_range;
+            if (!r || (r.min == null && r.max == null)) return null;
+            const lo = r.min != null ? toTempVal(r.min) : '—';
+            const hi = r.max != null ? toTempVal(r.max) : '—';
+            return { text: `${lo} to ${hi}` };
+          },
+        },
+      ],
+    },
+    {
+      title: 'Physical',
+      rows: [
+        {
+          label: 'Density',
+          unit: () => densUnit(),
+          get: mat => {
+            const w = mat.physical?.density?.value ?? null;
+            if (w == null) return null;
+            return { text: fmt(toDensity(w), null, unitSystem === 'imperial' ? 4 : 2) };
+          },
+        },
+        {
+          label: 'Melting Point',
+          unit: () => unitSystem === 'imperial' ? '°F' : '°C',
+          get: mat => {
+            const w = mat.physical?.melting_point_tm?.value ?? null;
+            return w != null ? { text: String(toTempVal(w)) } : null;
+          },
+        },
+        {
+          label: 'Elec. Conductivity',
+          unit: () => '% IACS',
+          get: mat => {
+            const w = mat.physical?.electrical_conductivity?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'CTE',
+          unit: () => cteUnit(),
+          get: mat => {
+            const w = mat.physical?.thermal_expansion?.value ?? null;
+            return w != null ? { text: fmt(toCTE(w), null, 2) } : null;
+          },
+        },
+        {
+          label: 'Thermal Conductivity',
+          unit: () => condUnit(),
+          get: mat => {
+            const w = mat.physical?.thermal_conductivity?.value ?? null;
+            return w != null ? { text: fmt(toCond(w), null, 1) } : null;
+          },
+        },
+        {
+          label: 'Specific Heat',
+          unit: () => 'J/kg·K',
+          get: mat => {
+            const w = mat.physical?.specific_heat?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'Thermal Diffusivity',
+          unit: () => 'cm²/s',
+          get: mat => {
+            const w = mat.physical?.thermal_diffusivity?.value ?? null;
+            return w != null ? { text: String(w) } : null;
+          },
+        },
+        {
+          label: 'Magnetic Class.',
+          unit: () => '',
+          get: mat => {
+            const m = mat.physical?.magnetic_classification?.value ?? null;
+            if (!m) return null;
+            const cls = m === 'Ferromagnetic' ? 'ferro' : m === 'Paramagnetic' ? 'para' : 'dia';
+            return { html: `<span class="badge badge-${cls}">${escHtml(m)}</span>` };
+          },
+        },
+      ],
+    },
+  ];
+
+  const matHeaders = materials.map((mat, i) => {
+    const color = PALETTE[i % PALETTE.length];
+    return `<th class="props-mat-header" style="border-top:3px solid ${color}">${escHtml(shortName(mat))}</th>`;
+  }).join('');
+
+  let tbody = '';
+  for (const section of SECTIONS) {
+    tbody += `<tr class="props-section-row">
+      <td colspan="${materials.length + 2}" class="props-section-label">${escHtml(section.title)}</td>
+    </tr>`;
+    for (const row of section.rows) {
+      const cells = materials.map(mat => row.get(mat));
+      if (cells.every(c => c == null)) continue;
+      const unitStr = row.unit();
+      const cellsHtml = cells.map(cell => {
+        if (cell == null) return `<td class="props-val props-missing">—</td>`;
+        if (cell.html)    return `<td class="props-val">${cell.html}</td>`;
+        return `<td class="props-val props-num">${escHtml(cell.text)}</td>`;
+      }).join('');
+      tbody += `<tr>
+        <td class="props-label">${escHtml(row.label)}</td>
+        <td class="props-unit">${escHtml(unitStr)}</td>
+        ${cellsHtml}
+      </tr>`;
+    }
+  }
+
+  container.innerHTML = `
+    <table class="props-table">
+      <thead>
+        <tr>
+          <th class="props-prop-header">Property</th>
+          <th class="props-unit-header">Unit</th>
+          ${matHeaders}
+        </tr>
+      </thead>
+      <tbody>${tbody}</tbody>
+    </table>`;
+}
+
 // ── All charts re-render on unit change ────────────────────────────────────
 
 function renderAllCharts() {
+  renderPropertiesTable();
   renderStiffnessChart();
   renderStrengthChart();
   renderFractureChart();
@@ -634,6 +906,11 @@ function renderPage() {
     ${renderToolbarHTML()}
 
     <div class="compare-body">
+
+      <section class="compare-section">
+        <h2 class="compare-section-title">Properties Summary</h2>
+        <div class="props-table-wrap" id="props-table-container"></div>
+      </section>
 
       <section class="compare-section">
         <h2 class="compare-section-title">Property Charts</h2>

@@ -228,6 +228,119 @@
   flex-shrink: 0;
 }
 
+/* ── Properties summary table ────────────────────────────────────────────── */
+
+.props-table-wrap {
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.props-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.props-table thead tr {
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.props-prop-header {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  min-width: 160px;
+}
+
+.props-unit-header {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+.props-mat-header {
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  min-width: 130px;
+  white-space: nowrap;
+}
+
+.props-section-row td {
+  padding: 0.3rem 0.75rem;
+  background: var(--color-bg);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.props-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.1s;
+}
+.props-table tbody tr:last-child { border-bottom: none; }
+.props-table tbody tr:not(.props-section-row):hover { background: var(--color-bg); }
+
+.props-label {
+  padding: 0.4rem 0.75rem;
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--color-text);
+  font-size: 0.82rem;
+}
+
+.props-unit {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+/* Badge variants for identification tags */
+.badge-form {
+  background: #dbeafe;
+  color: #1e40af;
+}
+.badge-process {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.props-val {
+  padding: 0.4rem 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.props-num {
+  font-family: var(--font-mono);
+  font-size: 0.81rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.props-missing {
+  color: var(--color-text-faint);
+  font-style: italic;
+}
+
 /* ── Merit index table ───────────────────────────────────────────────────── */
 
 .merit-legend {
