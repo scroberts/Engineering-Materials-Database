@@ -71,6 +71,18 @@
     "bibtex": null,
     "url": "https://www.azom.com/article.aspx?ArticleID=6636"
   },
+  "azom-stainless-304": {
+    "short_label": "AZoM: Grade 304 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=965"
+  },
+  "theworldmaterial-304": {
+    "short_label": "TheWorldMaterial: AISI 304 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/aisi-304-stainless-steel/"
+  },
   "azom-stainless-303": {
     "short_label": "AZoM: Grade 303 Stainless Steel",
     "doi": null,

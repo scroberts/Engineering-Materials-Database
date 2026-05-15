@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T21:23:37Z",
+  "generated": "2026-05-15T23:16:18Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -259,6 +259,29 @@
       "yield_strength": 0.19,
       "tensile_strength": 0.62,
       "density": 7.9
+    },
+    {
+      "slug": "stainless-304",
+      "path": "materials/metals/stainless-304.json",
+      "name": "Stainless Steel 304 (Annealed)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Casting",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Angles and Structural Profiles"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 193,
+      "yield_strength": 0.205,
+      "tensile_strength": 0.515,
+      "density": 8.0
     },
     {
       "slug": "stainless-316",
