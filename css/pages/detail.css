@@ -69,14 +69,29 @@
   padding-bottom: 1rem;
 }
 
+.detail-header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
 .detail-back {
-  display: inline-block;
   font-size: 0.85rem;
   color: var(--color-muted);
   text-decoration: none;
-  margin-bottom: 0.5rem;
 }
 .detail-back:hover { color: var(--color-text); }
+
+.detail-edit-link {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+}
+.detail-edit-link:hover { color: var(--color-text); border-color: var(--color-muted); }
 
 .detail-title {
   font-size: 1.8rem;

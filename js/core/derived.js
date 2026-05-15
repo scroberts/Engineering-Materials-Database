@@ -66,29 +66,37 @@ export const MERIT_INDICES = [
   // Stiffness-limited design
   {
     id: 'M1', group: 'Stiffness',
+    shortName: 'Specific stiffness',
+    ref: 'ashby-materials-selection',
     label: 'E / ρ',
-    description: 'Specific stiffness — constant cross-section rod or beam',
+    description: 'Specific stiffness — compares how stiff a material is relative to its weight for a rod or beam of fixed geometry. Higher is better: a material with high E/ρ gives you the same stiffness for less mass.',
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? E / rho : null; },
   },
   {
     id: 'M2', group: 'Stiffness',
+    shortName: 'Min-mass beam stiffness',
+    ref: 'ashby-materials-selection',
     label: '(E / ρ)^½',
-    description: 'Beam deflection at minimum mass',
+    description: 'Beam deflection at minimum mass — if you redesign a beam in each material to have the same deflection (stiffness), which material gives the lightest result? Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E / rho, 0.5) : null; },
   },
   {
     id: 'M3', group: 'Stiffness',
+    shortName: 'Min-mass panel stiffness',
+    ref: 'ashby-materials-selection',
     label: '(E / ρ)^⅓',
-    description: 'Plate deflection at minimum mass',
+    description: 'Plate deflection at minimum mass — same concept as M2 but for a flat plate loaded in bending. The exponent changes because plates carry load differently than beams. Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E / rho, 1/3) : null; },
   },
   {
     id: 'M4', group: 'Stiffness',
+    shortName: 'Resonant frequency',
+    ref: '10.1117/12.279804',
     label: 'E^½ / ρ',
-    description: 'Resonant frequency at minimum mass (Paquin 1997)',
+    description: 'Resonant frequency at minimum mass — compares materials by the natural frequency they produce in a structure of a given mass. Higher is better: a material with high E½/ρ will vibrate at a higher frequency, making it harder for external disturbances to excite resonance.',
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 0.5) / rho : null; },
   },
@@ -96,22 +104,28 @@ export const MERIT_INDICES = [
   // Strength-limited design
   {
     id: 'M5', group: 'Strength',
+    shortName: 'Specific strength',
+    ref: 'ashby-materials-selection',
     label: 'σ_y / ρ',
-    description: 'Specific strength — constant cross-section rod',
+    description: 'Specific strength — compares how strong a material is relative to its weight for a rod or beam of fixed geometry. Higher is better: a high σ_y/ρ material supports more load per unit mass.',
     higherIsBetter: true,
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? sig_y / rho : null; },
   },
   {
     id: 'M6', group: 'Strength',
+    shortName: 'Beam strength',
+    ref: 'ashby-materials-selection',
     label: 'σ_y^⅔ / ρ',
-    description: 'Beam strength at minimum mass',
+    description: 'Beam strength at minimum mass — if you redesign a beam in each material to carry the same load before yielding, which material gives the lightest result? Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 2/3) / rho : null; },
   },
   {
     id: 'M7', group: 'Strength',
+    shortName: 'Panel strength',
+    ref: 'ashby-materials-selection',
     label: 'σ_y^½ / ρ',
-    description: 'Plate strength at minimum mass',
+    description: 'Plate strength at minimum mass — same concept as M6 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 0.5) / rho : null; },
   },
@@ -119,8 +133,10 @@ export const MERIT_INDICES = [
   // Fracture and damage tolerance
   {
     id: 'M8', group: 'Fracture',
+    shortName: 'Ductility index',
+    ref: 'anderson-fracture-mechanics',
     label: 'K_IC / σ_y',
-    description: 'Plastic zone size — ductility index',
+    description: 'Plastic zone size / ductility index — a measure of how much a crack tip can yield before fracture. Higher K_IC/σ_y means a larger plastic zone, indicating a tougher, more forgiving material that gives warning before fracture. Higher is better.',
     higherIsBetter: true,
     fn: mat => {
       const { K_IC, sig_y } = get(mat);
@@ -130,8 +146,10 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M9', group: 'Fracture',
+    shortName: 'Fracture zone size',
+    ref: 'anderson-fracture-mechanics',
     label: 'K_IC² / σ_y²',
-    description: 'Fracture process zone size',
+    description: 'Fracture process zone size — similar to M8 but proportional to (K_IC/σ_y)². Larger values indicate more energy is absorbed during crack growth. Particularly important for brittle materials like ceramics and glasses where this zone is very small. Higher is better.',
     higherIsBetter: true,
     fn: mat => {
       const { K_IC, sig_y } = get(mat);
@@ -140,8 +158,10 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M10', group: 'Fracture',
+    shortName: 'Specific toughness',
+    ref: 'ashby-materials-selection',
     label: 'K_IC / ρ',
-    description: 'Toughness per unit mass',
+    description: 'Toughness per unit mass — compares fracture toughness relative to material weight. Higher is better: useful when damage tolerance and low mass are both required, such as in aerospace structures.',
     higherIsBetter: true,
     fn: mat => {
       const { K_IC, rho } = get(mat);
@@ -152,8 +172,10 @@ export const MERIT_INDICES = [
   // Thermal design
   {
     id: 'M11', group: 'Thermal',
+    shortName: 'Thermal distortion (steady)',
+    ref: '10.1117/12.279804',
     label: 'α / k',
-    description: 'Steady-state thermal distortion (Paquin Table 4) — lower is better',
+    description: 'Steady-state thermal distortion — how much a component distorts under a sustained heat load. α/k compares thermal expansion (tendency to grow) against thermal conductivity (ability to even out temperature). Lower is better: materials like SiC and ULE excel here because they either expand very little or conduct heat away quickly.',
     higherIsBetter: false,
     fn: mat => {
       const { alpha, k } = get(mat);
@@ -162,8 +184,10 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M12', group: 'Thermal',
+    shortName: 'Thermal distortion (transient)',
+    ref: '10.1117/12.279804',
     label: 'α / D',
-    description: 'Transient thermal distortion — lower is better',
+    description: 'Transient thermal distortion — how much a component distorts during a sudden change in temperature, before steady-state is reached. α/D compares thermal expansion against thermal diffusivity (how quickly temperature equalizes through the material). Lower is better.',
     higherIsBetter: false,
     fn: mat => {
       const { alpha, D } = get(mat);
@@ -180,8 +204,10 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M13', group: 'Thermal',
+    shortName: 'Thermal diffusivity',
+    ref: 'incropera-heat-transfer',
     label: 'k / (ρ·C_p)',
-    description: 'Thermal diffusivity — speed of transient response',
+    description: 'Thermal diffusivity — how quickly a material equilibrates temperature through its volume following a thermal disturbance. Higher is better: a high diffusivity material reaches a uniform temperature faster, reducing transient thermal gradients and distortion.',
     higherIsBetter: true,
     fn: mat => {
       const { D, k, rho, Cp } = get(mat);

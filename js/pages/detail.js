@@ -622,7 +622,10 @@ function renderHeader(mat) {
 
   return `
     <div class="detail-header">
-      <a href="index.html" class="detail-back">← All Materials</a>
+      <div class="detail-header-nav">
+        <a href="index.html" class="detail-back">← All Materials</a>
+        <a href="submit.html?slug=${encodeURIComponent(id.slug ?? '')}" class="detail-edit-link">Edit</a>
+      </div>
       <h1 class="detail-title">${escHtml(id.name ?? 'Unknown Material')}</h1>
       <div class="detail-badges">
         <span class="badge badge-${catClass}">${escHtml(id.category ?? '')}</span>

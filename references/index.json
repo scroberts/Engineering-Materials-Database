@@ -108,5 +108,23 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=Invar%2036"
+  },
+  "ashby-materials-selection": {
+    "short_label": "Ashby 2011",
+    "doi": null,
+    "bibtex": "@book{ashby-materials-selection,\n  author    = {Ashby, Michael F.},\n  title     = {{Materials Selection in Mechanical Design}},\n  edition   = {4},\n  publisher = {Butterworth-Heinemann},\n  year      = {2011},\n  isbn      = {978-1-85617-663-7}\n}",
+    "url": "https://www.worldcat.org/isbn/9781856176637"
+  },
+  "anderson-fracture-mechanics": {
+    "short_label": "Anderson 2017",
+    "doi": null,
+    "bibtex": "@book{anderson-fracture-mechanics,\n  author    = {Anderson, T. L.},\n  title     = {{Fracture Mechanics: Fundamentals and Applications}},\n  edition   = {4},\n  publisher = {CRC Press},\n  year      = {2017},\n  isbn      = {978-1-4987-2813-3}\n}",
+    "url": "https://www.worldcat.org/isbn/9781498728133"
+  },
+  "incropera-heat-transfer": {
+    "short_label": "Incropera 2006",
+    "doi": null,
+    "bibtex": "@book{incropera-heat-transfer,\n  author    = {Incropera, Frank P. and DeWitt, David P.},\n  title     = {{Fundamentals of Heat and Mass Transfer}},\n  edition   = {6},\n  publisher = {Wiley},\n  year      = {2006},\n  isbn      = {978-0-471-45728-2}\n}",
+    "url": "https://www.worldcat.org/isbn/9780471457282"
   }
 }

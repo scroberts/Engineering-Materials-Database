@@ -6,7 +6,7 @@
  * temperature overlay, and a merit-index table (M1–M13).
  */
 
-import { loadMaterialBatch } from '../core/loader.js';
+import { loadMaterialBatch, loadReferences } from '../core/loader.js';
 import { migrateToLatest } from '../core/schema.js';
 import { shearModulus, shearStrengthVonMises, MERIT_INDICES } from '../core/derived.js';
 import { convertPressure, convertCompStrength, convertFracture, fmt } from '../core/units.js';
@@ -21,6 +21,7 @@ const PALETTE = [
 // ── State ──────────────────────────────────────────────────────────────────
 
 let materials  = [];
+let refs       = {};
 let unitSystem = 'metric';      // 'metric' | 'imperial'
 const charts   = new Map();     // canvasId → Chart instance
 
@@ -455,6 +456,14 @@ function renderMeritTable() {
     return { idx, vals };
   });
 
+  // Build numbered footnote map (unique ref keys, in order of first appearance)
+  const refNums = new Map();
+  for (const idx of MERIT_INDICES) {
+    if (idx.ref && !refNums.has(idx.ref)) {
+      refNums.set(idx.ref, refNums.size + 1);
+    }
+  }
+
   // Build header row
   const matHeaders = materials.map((mat, i) => {
     const color = PALETTE[i % PALETTE.length];
@@ -473,7 +482,7 @@ function renderMeritTable() {
       ? maxVal - minVal : null;
 
     const cells = vals.map((val, i) => {
-      if (val == null) return `<td class="merit-cell"><span class="merit-missing">—</span></td>`;
+      if (val == null) return `<td class="merit-cell"><span class="merit-missing" title="Insufficient data to compute this index">—</span></td>`;
 
       const isBest = idx.higherIsBetter
         ? val === maxVal
@@ -502,9 +511,14 @@ function renderMeritTable() {
       ? '<span class="merit-dir merit-up" title="Higher is better">↑</span>'
       : '<span class="merit-dir merit-down" title="Lower is better">↓</span>';
 
+    const refNum = idx.ref && refNums.has(idx.ref) ? refNums.get(idx.ref) : null;
+    const refSup = refNum
+      ? `<sup><a class="merit-ref-sup" href="#merit-ref-${refNum}">[${refNum}]</a></sup>`
+      : '';
+
     return `<tr>
-      <td class="merit-id">${idx.id}</td>
-      <td class="merit-label" title="${escHtml(idx.description)}">
+      <td class="merit-id" title="${escHtml(idx.description)}">${escHtml(idx.shortName ?? idx.id)}${refSup}</td>
+      <td class="merit-label">
         ${fmtFormula(idx.label)} ${arrow}
       </td>
       <td class="merit-group">${escHtml(idx.group)}</td>
@@ -512,18 +526,33 @@ function renderMeritTable() {
     </tr>`;
   }).join('');
 
+  // Build footnote list
+  const footnotesHtml = [...refNums.entries()].map(([key, n]) => {
+    const entry = refs[key];
+    if (!entry) return '';
+    const href = entry.doi
+      ? `https://doi.org/${entry.doi}`
+      : (entry.url ?? null);
+    const label = escHtml(entry.short_label);
+    const link = href
+      ? `<a href="${escHtml(href)}" target="_blank" rel="noopener">${label}</a>`
+      : label;
+    return `<li id="merit-ref-${n}">${link}</li>`;
+  }).join('');
+
   container.innerHTML = `
     <table class="merit-table">
       <thead>
         <tr>
-          <th class="merit-id">Index</th>
+          <th class="merit-id">Property</th>
           <th class="merit-label">Formula</th>
           <th class="merit-group">Group</th>
           ${matHeaders}
         </tr>
       </thead>
       <tbody>${dataRows}</tbody>
-    </table>`;
+    </table>
+    <ol class="merit-footnotes">${footnotesHtml}</ol>`;
 }
 
 // ── All charts re-render on unit change ────────────────────────────────────
@@ -682,6 +711,7 @@ async function init() {
   try {
     const raw = await loadMaterialBatch(slugs);
     materials  = raw.map(migrateToLatest);
+    refs       = await loadReferences();
   } catch (err) {
     layout.innerHTML = `<div class="compare-error">
       <strong>Could not load materials.</strong><br>${escHtml(err.message)}<br><br>

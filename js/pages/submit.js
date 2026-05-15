@@ -10,13 +10,18 @@
  *   6. Allow adding new BibTeX references inline
  */
 
-import { loadReferences } from '../core/loader.js';
+import { loadReferences, loadMaterial } from '../core/loader.js';
 import { migrateToLatest } from '../core/schema.js';
 import {
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS, TEMPERATURE_UNITS,
   DENSITY_UNITS, ELECTRICAL_UNITS, CTE_UNITS, THERMAL_COND_UNITS,
   SPECIFIC_HEAT_UNITS, THERMAL_DIFF_UNITS,
 } from '../core/units.js';
+
+// ── Mode ────────────────────────────────────────────────────────────────────
+
+const _editSlug = new URLSearchParams(location.search).get('slug');
+const _editMode = Boolean(_editSlug);
 
 // ── State ───────────────────────────────────────────────────────────────────
 
@@ -33,6 +38,11 @@ let _canonicalKeys = new Set();
 // ── Boot ────────────────────────────────────────────────────────────────────
 
 async function init() {
+  if (_editMode) {
+    document.querySelector('.submit-title').textContent = 'Edit Material';
+    document.querySelector('.submit-subtitle').textContent = 'Loading…';
+  }
+
   try {
     _refs = await loadReferences();
     _canonicalKeys = new Set(Object.keys(_refs));
@@ -45,9 +55,43 @@ async function init() {
   renderRefPanel();
   buildForm();
   wireForm();
+
+  if (_editMode) await loadEditMaterial();
 }
 
 init();
+
+// ── Edit mode ────────────────────────────────────────────────────────────────
+
+async function loadEditMaterial() {
+  try {
+    const raw = await loadMaterial(_editSlug);
+    const mat = migrateToLatest(raw);
+    prefillForm(mat);
+    applyEditModeUI(mat);
+  } catch (e) {
+    document.querySelector('.submit-title').textContent = 'Edit Material — Error';
+    document.querySelector('.submit-subtitle').textContent =
+      `Could not load "${_editSlug}": ${e.message}`;
+  }
+}
+
+function applyEditModeUI(mat) {
+  const name = mat.identification?.name ?? _editSlug;
+  document.title = `Edit: ${name} — UVIC Engineering Materials Database`;
+  document.querySelector('.submit-title').textContent    = `Edit Material: ${name}`;
+  document.querySelector('.submit-subtitle').textContent =
+    'Update the values below. Download the corrected JSON and open a Pull Request to replace the existing file.';
+  document.querySelector('.submit-prefill-row').hidden   = true;
+  document.getElementById('btn-download').textContent    = 'Download Updated JSON';
+
+  // Slug must not change — filename is the slug
+  const slugIn = document.getElementById('field-slug');
+  if (slugIn) {
+    slugIn.readOnly = true;
+    slugIn.dataset.userEdited = '1';
+  }
+}
 
 // ── Reference panel ──────────────────────────────────────────────────────────
 
@@ -1188,7 +1232,11 @@ function downloadJSON() {
   // Show post-download instructions
   const panel = document.getElementById('post-download');
   panel.hidden = false;
-  document.getElementById('pr-filename-hint').textContent = `${slug}.json`;
+  if (_editMode) {
+    showEditPostDownload(panel, slug, mat.identification.name || slug);
+  } else {
+    document.getElementById('pr-filename-hint').textContent = `${slug}.json`;
+  }
   panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -1479,6 +1527,40 @@ function collectUsedRefs(...sections) {
   }
   for (const s of sections) walk(s);
   return [...keys];
+}
+
+// ── Edit post-download ────────────────────────────────────────────────────────
+
+function showEditPostDownload(panel, slug, name) {
+  const category = getSelectField('category');
+  const folder   = inferCategory(category);
+  panel.innerHTML = `
+    <h3>Next steps — submit correction via GitHub Pull Request</h3>
+    <ol class="pr-steps">
+      <li>
+        <strong>Fork</strong> the repository at
+        <a href="https://github.com/uvic-design-eng/materials-database" target="_blank" rel="noopener">
+          uvic-design-eng/materials-database
+        </a>
+      </li>
+      <li>
+        Replace the existing file at<br>
+        <code>materials/${esc(folder)}/${esc(slug)}.json</code>
+      </li>
+      <li>
+        Open a Pull Request with the title format:<br>
+        <code>Fix material: ${esc(name)}</code>
+      </li>
+      <li>
+        The GitHub Actions CI will validate your JSON automatically.
+        An admin will review and merge once everything checks out.
+      </li>
+    </ol>`;
+}
+
+function inferCategory(category) {
+  const map = { Metal: 'metals', Plastic: 'plastics', Ceramic: 'ceramics', Composite: 'composites' };
+  return map[category] ?? 'materials';
 }
 
 // ── Utilities ─────────────────────────────────────────────────────────────────
