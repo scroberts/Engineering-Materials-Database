@@ -28,7 +28,9 @@ const charts   = new Map();     // canvasId → Chart instance
 
 const pressureUnit        = () => unitSystem === 'metric' ? 'GPa'        : 'ksi';
 const strengthUnit        = () => unitSystem === 'metric' ? 'MPa'        : 'ksi';
-const fractureUnit        = () => unitSystem === 'metric' ? 'MPa√m'     : 'ksi√in';
+// tooltip string (½ fine for HTML/text); axis uses array to control the line break
+const fractureTooltipUnit = () => unitSystem === 'metric' ? 'MPa·m½'       : 'ksi·in½';
+const fractureAxisTitle   = () => unitSystem === 'metric' ? ['MPa', '√m']  : ['ksi', '√in'];
 
 function toPressure(gpa) {
   if (gpa == null) return null;
@@ -135,7 +137,7 @@ function makeDataset(mat, i, data) {
  * @param {string} yLabel   — Y-axis unit string
  * @param {number} decimals — tooltip decimal places
  */
-function makeBarChart(id, title, labels, values, yLabel, decimals = 2) {
+function makeBarChart(id, title, labels, values, yLabel, decimals = 2, yAxisTitle) {
   destroyChart(id);
   const canvas = document.getElementById(id);
   if (!canvas) return;
@@ -181,7 +183,7 @@ function makeBarChart(id, title, labels, values, yLabel, decimals = 2) {
         x: { ticks: { font: { size: 11 } } },
         y: {
           beginAtZero: true,
-          title: { display: true, text: yLabel, color: '#64748b', font: { size: 11 } },
+          title: { display: true, text: yAxisTitle ?? yLabel, color: '#64748b', font: { size: 11 } },
           ticks: { font: { size: 11 } },
         },
       },
@@ -219,7 +221,7 @@ function renderStrengthChart() {
 function renderFractureChart() {
   const labels = ['Fracture Toughness (K_IC)'];
   const values = materials.map(mat => [toFracture(getProps(mat).kic)]);
-  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureUnit(), 2);
+  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureTooltipUnit(), 2, fractureAxisTitle());
 }
 
 function renderDensityChart() {
