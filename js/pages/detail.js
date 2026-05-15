@@ -12,10 +12,12 @@ import { migrateToLatest } from '../core/schema.js';
 import {
   convertPressure, convertCompStrength, convertFracture,
   convertTemperature, convertElectrical,
+  convertCTE, convertThermalCond, convertSpecificHeat, convertThermalDiff,
   hvToHb, hbToHv, densityKgM3,
   fmt, fmtCycles,
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS,
   TEMPERATURE_UNITS, ELECTRICAL_UNITS, UNIT_DECIMALS,
+  CTE_UNITS, THERMAL_COND_UNITS, SPECIFIC_HEAT_UNITS, THERMAL_DIFF_UNITS,
 } from '../core/units.js';
 import { shearModulus, specificStiffness, shearStrengthVonMises } from '../core/derived.js';
 import { TOOLTIPS } from '../core/tooltips.js';
@@ -40,6 +42,10 @@ function convertFromCanonical(canonical, canonicalUnit, toUnit) {
   if (canonicalUnit === 'MPa·m^0.5') return convertFracture(canonical, toUnit);
   if (canonicalUnit === '°C')        return convertTemperature(canonical, toUnit);
   if (canonicalUnit === '% IACS')    return convertElectrical(canonical, toUnit);
+  if (canonicalUnit === 'µm/m·K')   return convertCTE(canonical, toUnit);
+  if (canonicalUnit === 'W/m·K')    return convertThermalCond(canonical, toUnit);
+  if (canonicalUnit === 'J/(kg·K)') return convertSpecificHeat(canonical, toUnit);
+  if (canonicalUnit === 'cm²/s')    return convertThermalDiff(canonical, toUnit);
   return canonical;
 }
 
@@ -176,11 +182,9 @@ function wireUnitSelector(selectEl) {
     const toUnit       = selectEl.value;
     const canonicalUnit = selectEl.dataset.canonicalUnit;
 
-    // Temperature and electrical conductivity update document-wide;
-    // pressure/fracture selectors are scoped to their section.
-    const scope = (canonicalUnit === '°C' || canonicalUnit === '% IACS')
-      ? document
-      : (selectEl.closest('.detail-section') ?? document);
+    // All unit selectors update document-wide so calculated properties
+    // (which have no section-level selector) also get converted.
+    const scope = document;
 
     scope.querySelectorAll(`[data-canonical-unit="${canonicalUnit}"]`).forEach(td => {
       const raw = parseFloat(td.dataset.canonical);
@@ -195,6 +199,9 @@ function wireUnitSelector(selectEl) {
       } else if (canonicalUnit === '% IACS') {
         const d = toUnit === '% IACS' ? 1 : toUnit === 'MS/m' ? 3 : 0;
         displayText = `${Number(converted.toFixed(d))} ${toUnit}`;
+      } else if (canonicalUnit === 'µm/m·K' || canonicalUnit === 'W/m·K' ||
+                 canonicalUnit === 'J/(kg·K)' || canonicalUnit === 'cm²/s') {
+        displayText = `${fmt(converted, toUnit)} ${toUnit}`;
       } else {
         displayText = `${fmt(converted, toUnit)} ${displayUnitHtml(toUnit)}`;
       }
@@ -249,10 +256,12 @@ function renderToolbar() {
 const METRIC_PRESET = {
   'GPa': 'GPa', 'MPa': 'MPa', 'MPa·m^0.5': 'MPa·m^0.5',
   '°C': 'K', '% IACS': '% IACS',
+  'µm/m·K': 'µm/m·K', 'W/m·K': 'W/m·K', 'J/(kg·K)': 'J/(kg·K)', 'cm²/s': 'cm²/s',
 };
 const IMPERIAL_PRESET = {
   'GPa': 'ksi', 'MPa': 'ksi', 'MPa·m^0.5': 'ksi·in^0.5',
   '°C': '°F', '% IACS': '% IACS',
+  'µm/m·K': 'µin/in·°F', 'W/m·K': 'BTU/(hr·ft·°F)', 'J/(kg·K)': 'BTU/(lb·°F)', 'cm²/s': 'ft²/hr',
 };
 
 function wireToolbar(layout) {
@@ -431,26 +440,24 @@ function renderMechanicalOther(mat) {
   const shearVal    = shearDirect ?? shearCalc;
   const shearNote   = shearDirect == null && shearCalc != null
     ? `<span class="prop-note">(von Mises estimate)</span>` : '';
-  const shearDisplay = shearVal != null
-    ? `${fmt(shearVal * 1000, 'MPa', 1)} MPa ${shearNote}` : '—';
-
-  // ── Microyield / creep ───────────────────────────────────────────────────
-  const myDisplay = v(mo.microyield_strength) != null
-    ? `${fmt(v(mo.microyield_strength) * 1000, 'MPa', 2)} MPa ${refBadge(mo.microyield_strength?.ref)}`
-    : '—';
-  const creepDisplay = v(mo.creep_strength) != null
-    ? `${fmt(v(mo.creep_strength) * 1000, 'MPa', 2)} MPa ${refBadge(mo.creep_strength?.ref)}`
-    : '—';
 
   const body = `
     ${ktBody}
     <table class="prop-table">
       ${propRow(tipLabel('Hardness', 'hardness_vickers'), hardnessHtml)}
       ${propRow(tipLabel('Ductility (elongation)', 'ductility'), ducDisplay, ducRefKey)}
-      ${propRow(tipLabel('Shear Strength', 'shear_strength'), shearDisplay,
+      ${unitPropRow(
+        tipLabel('Shear Strength', 'shear_strength') + (shearNote ? ' ' + shearNote : ''),
+        shearVal, 'GPa', 'GPa', 'shear_strength',
         shearDirect != null ? mo.shear_strength?.ref : null)}
-      ${propRow(tipLabel('Microyield Strength', 'microyield_strength'), myDisplay)}
-      ${propRow(tipLabel('Creep Strength', 'creep_strength'), creepDisplay)}
+      ${unitPropRow(
+        tipLabel('Microyield Strength', 'microyield_strength'),
+        v(mo.microyield_strength), 'GPa', 'GPa', 'microyield_strength',
+        mo.microyield_strength?.ref)}
+      ${unitPropRow(
+        tipLabel('Creep Strength', 'creep_strength'),
+        v(mo.creep_strength), 'GPa', 'GPa', 'creep_strength',
+        mo.creep_strength?.ref)}
     </table>`;
 
   // ── S-N curve table ──────────────────────────────────────────────────────
@@ -460,7 +467,7 @@ function renderMechanicalOther(mat) {
     const snRef  = refBadge(mo.fatigue_sn_curve?.ref);
     const snRows = snPoints.map(pt =>
       `<tr>
-        <td>${fmt(pt.stress * 1000, 'MPa', 1)} MPa</td>
+        <td data-canonical="${pt.stress}" data-canonical-unit="GPa">${fmt(pt.stress * 1000, 'MPa', 1)} MPa</td>
         <td>${fmtCycles(pt.cycles)}</td>
       </tr>`
     ).join('');
@@ -495,7 +502,6 @@ function renderPhysical(mat) {
   const cteObj   = ph.thermal_expansion ?? {};
   const cteVal   = cteObj.value;
   const cteTable = cteObj.table ?? [];
-  const cteDisplay = cteVal != null ? `${fmt(cteVal, null, 2)} µm/m·K` : '—';
 
   // ── Thermal diffusivity: prefer direct value, else compute k/(ρCp) ───────
   const kVal      = v(ph.thermal_conductivity);
@@ -503,11 +509,8 @@ function renderPhysical(mat) {
   const DVal      = v(ph.thermal_diffusivity);
   const DComputed = (kVal != null && rho != null && CpVal != null)
     ? (kVal / (rho * 1000 * CpVal)) * 1e4 : null;
-  const DDisplay  = DVal != null
-    ? `${fmt(DVal, null, 5)} cm²/s ${refBadge(ph.thermal_diffusivity?.ref)}`
-    : (DComputed != null
-        ? `${fmt(DComputed, null, 5)} cm²/s <span class="prop-note">(k/ρCp)</span>`
-        : '—');
+  // Effective diffusivity canonical value (cm²/s) for data attribute
+  const DEffective = DVal ?? DComputed;
 
   const Tm = v(ph.melting_point_tm);
   const Tg = v(ph.glass_transition_tg);
@@ -538,19 +541,41 @@ function renderPhysical(mat) {
         v(ph.vapour_pressure) != null
           ? `${v(ph.vapour_pressure)} Pa ${refBadge(ph.vapour_pressure?.ref)}` : '—')}
     </table>
+    ${unitSelectorRow('CTE unit', CTE_UNITS, 'µm/m·K', 'µm/m·K')}
     <table class="prop-table">
-      ${propRow(
+      ${unitPropRow(
         tipLabel('Thermal Expansion (α)', 'thermal_expansion'),
-        `${cteDisplay}${refBadge(cteObj.ref)}`)}
-      ${propRow(
+        cteVal, 'µm/m·K', 'µm/m·K', 'thermal_expansion', cteObj.ref)}
+    </table>
+    ${unitSelectorRow('Thermal conductivity unit', THERMAL_COND_UNITS, 'W/m·K', 'W/m·K')}
+    ${unitSelectorRow('Specific heat unit', SPECIFIC_HEAT_UNITS, 'J/(kg·K)', 'J/(kg·K)')}
+    ${unitSelectorRow('Thermal diffusivity unit', THERMAL_DIFF_UNITS, 'cm²/s', 'cm²/s')}
+    <table class="prop-table">
+      ${unitPropRow(
         tipLabel('Thermal Conductivity (k)', 'thermal_conductivity'),
-        kVal != null ? `${fmt(kVal, null, 1)} W/m·K ${refBadge(ph.thermal_conductivity?.ref)}` : '—')}
-      ${propRow(
+        kVal, 'W/m·K', 'W/m·K', 'thermal_conductivity', ph.thermal_conductivity?.ref)}
+      ${unitPropRow(
         tipLabel('Specific Heat (C<sub>p</sub>)', 'specific_heat'),
-        CpVal != null ? `${fmt(CpVal, null, 0)} J/kg·K ${refBadge(ph.specific_heat?.ref)}` : '—')}
-      ${propRow(
-        tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity'),
-        DDisplay)}
+        CpVal, 'J/(kg·K)', 'J/(kg·K)', 'specific_heat', ph.specific_heat?.ref)}
+      ${(() => {
+        if (DEffective == null) {
+          return `<tr>
+            <th>${tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity')}</th>
+            <td class="prop-value missing" data-prop="thermal_diffusivity"
+                data-canonical="" data-canonical-unit="cm²/s">—</td>
+          </tr>`;
+        }
+        const diffNote = DVal == null && DComputed != null
+          ? `<span class="prop-note">(k/ρCp)</span>` : '';
+        const diffRef  = DVal != null ? refBadge(ph.thermal_diffusivity?.ref) : '';
+        return `<tr>
+          <th>${tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity')}</th>
+          <td class="prop-value" data-prop="thermal_diffusivity"
+              data-canonical="${DEffective}" data-canonical-unit="cm²/s">
+            ${fmt(DEffective, 'cm²/s')} cm²/s ${diffNote}${diffRef}
+          </td>
+        </tr>`;
+      })()}
       ${tempPropRow(tipLabel('Melting Point (T<sub>m</sub>)', 'melting_point_tm'),
         Tm, 'melting_point_tm', ph.melting_point_tm?.ref)}
       ${tempPropRow(tipLabel('Glass Transition (T<sub>g</sub>)', 'glass_transition_tg'),
@@ -594,10 +619,14 @@ function renderComputed(mat) {
     return direct == null ? shearStrengthVonMises(mat) : null;
   })();
 
-  function computedItem(label, tooltipKey, value, unit) {
+  function computedItem(label, tooltipKey, value, displayUnit, canonicalVal, canonicalUnit) {
     const tip = escHtml(TOOLTIPS[tooltipKey] ?? '');
+    let dataAttrs = '';
+    if (canonicalVal != null && canonicalUnit) {
+      dataAttrs = ` data-canonical="${canonicalVal}" data-canonical-unit="${canonicalUnit}"`;
+    }
     const valueHtml = value != null
-      ? `<span class="computed-value">${fmt(value, null, 3)}<span class="computed-unit">${unit}</span></span>`
+      ? `<span class="computed-value"${dataAttrs}>${fmt(value, null, 3)}${displayUnit}</span>`
       : `<span class="computed-value missing">—</span>`;
     return `<div class="computed-item">
       <div class="computed-label" title="${tip}">${label}</div>
@@ -606,9 +635,9 @@ function renderComputed(mat) {
   }
 
   const body = `<div class="computed-grid">
-    ${computedItem('Shear Modulus (G)', 'shear_modulus', G, ' GPa')}
-    ${computedItem('Specific Stiffness (E/ρ)', 'specific_stiffness', ss, ' GPa·cm³/g')}
-    ${tau != null ? computedItem('Shear Strength (est.)', 'shear_strength_calc', tau * 1000, ' MPa') : ''}
+    ${computedItem('Shear Modulus (G)', 'shear_modulus', G, ' GPa', G, 'GPa')}
+    ${computedItem('Specific Stiffness (E/ρ)', 'specific_stiffness', ss, ' GPa·cm³/g', null, null)}
+    ${tau != null ? computedItem('Shear Strength (est.)', 'shear_strength_calc', tau * 1000, ' MPa', tau, 'GPa') : ''}
   </div>`;
   return sectionCard('Calculated Properties', body);
 }

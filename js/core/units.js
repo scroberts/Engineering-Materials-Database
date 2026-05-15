@@ -17,6 +17,10 @@ export const COMP_STRENGTH_UNITS  = ['MPa', 'psi', 'ksi'];    // stored in MPa
 export const FRACTURE_UNITS       = ['MPa·m^0.5', 'ksi·in^0.5'];
 export const TEMPERATURE_UNITS    = ['K', '°C', '°F'];        // stored in °C
 export const ELECTRICAL_UNITS     = ['% IACS', 'MS/m', 'S/m']; // stored in % IACS
+export const CTE_UNITS            = ['µm/m·K', 'µin/in·°F'];  // 1 µm/m·K = 0.5556 µin/in·°F
+export const THERMAL_COND_UNITS   = ['W/m·K', 'BTU/(hr·ft·°F)']; // 1 W/m·K = 0.5779 BTU/(hr·ft·°F)
+export const SPECIFIC_HEAT_UNITS  = ['J/(kg·K)', 'BTU/(lb·°F)']; // 1 J/(kg·K) = 2.389e-4 BTU/(lb·°F)
+export const THERMAL_DIFF_UNITS   = ['cm²/s', 'ft²/hr'];      // 1 cm²/s = 3.875 ft²/hr
 
 // ── Conversion factors (multiply canonical value to get target unit) ────────
 
@@ -36,6 +40,10 @@ export const UNIT_DECIMALS = {
   ksi: 2,
   'MPa·m^0.5': 1,
   'ksi·in^0.5': 3,
+  'µm/m·K': 2, 'µin/in·°F': 2,
+  'W/m·K': 2, 'BTU/(hr·ft·°F)': 3,
+  'J/(kg·K)': 0, 'BTU/(lb·°F)': 4,
+  'cm²/s': 5, 'ft²/hr': 3,
 };
 
 // ── Converters ─────────────────────────────────────────────────────────────
@@ -107,6 +115,48 @@ export function convertElectrical(valueIACS, toUnit) {
   if (toUnit === 'MS/m')   return valueIACS * 0.58;
   if (toUnit === 'S/m')    return valueIACS * 5.8e5;
   return valueIACS;
+}
+
+// ── Thermal property converters ───────────────────────────────────────────
+
+/**
+ * Convert CTE from canonical µm/m·K.
+ * 1 µm/m·K = 5/9 µin/in·°F
+ */
+export function convertCTE(val, toUnit) {
+  if (val == null) return null;
+  if (toUnit === 'µin/in·°F') return val * (5 / 9);
+  return val;
+}
+
+/**
+ * Convert thermal conductivity from canonical W/m·K.
+ * 1 W/m·K = 0.5779 BTU/(hr·ft·°F)
+ */
+export function convertThermalCond(val, toUnit) {
+  if (val == null) return null;
+  if (toUnit === 'BTU/(hr·ft·°F)') return val * 0.5779;
+  return val;
+}
+
+/**
+ * Convert specific heat from canonical J/(kg·K).
+ * 1 J/(kg·K) = 2.3885e-4 BTU/(lb·°F)
+ */
+export function convertSpecificHeat(val, toUnit) {
+  if (val == null) return null;
+  if (toUnit === 'BTU/(lb·°F)') return val * 2.3885e-4;
+  return val;
+}
+
+/**
+ * Convert thermal diffusivity from canonical cm²/s.
+ * 1 cm²/s = 3.875 ft²/hr
+ */
+export function convertThermalDiff(val, toUnit) {
+  if (val == null) return null;
+  if (toUnit === 'ft²/hr') return val * 3.875;
+  return val;
 }
 
 // ── Hardness conversions (approximate) ────────────────────────────────────
