@@ -478,14 +478,14 @@ function renderMaterialStrip() {
     const color    = PALETTE[i % PALETTE.length];
     return `
       <div class="mat-chip" style="border-top: 3px solid ${color}">
-        <div class="mat-chip-name">${escHtml(id.name ?? mat.slug)}</div>
+        <div class="mat-chip-name">${escHtml(id.name ?? id.slug)}</div>
         <div class="mat-chip-meta">
           <span class="badge badge-${catClass}">${escHtml(id.category ?? '')}</span>
           ${!id.commonly_available
             ? '<span class="badge badge-uncommon">Uncommon</span>'
             : ''}
         </div>
-        <a class="mat-chip-link" href="material.html?slug=${encodeURIComponent(mat.slug)}">
+        <a class="mat-chip-link" href="material.html?slug=${encodeURIComponent(id.slug ?? '')}">
           View detail →
         </a>
       </div>`;
@@ -584,7 +584,14 @@ function renderPage() {
 async function init() {
   const layout = document.getElementById('compare-layout');
   const params = new URLSearchParams(location.search);
-  const slugs  = (params.get('slugs') ?? '').split(',').map(s => s.trim()).filter(Boolean);
+  let slugs = (params.get('slugs') ?? '').split(',').map(s => s.trim()).filter(Boolean);
+
+  // Fall back to the selection persisted by the browse page (nav link click)
+  if (slugs.length < 2) {
+    const stored = (sessionStorage.getItem('compareSet') ?? '')
+      .split(',').map(s => s.trim()).filter(Boolean);
+    if (stored.length >= 2) slugs = stored;
+  }
 
   if (slugs.length < 2) {
     layout.innerHTML = `

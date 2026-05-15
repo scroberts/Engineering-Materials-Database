@@ -173,6 +173,8 @@ function updateCompareBar() {
   const count = document.getElementById('compare-count');
   const btn   = document.getElementById('btn-compare');
 
+  sessionStorage.setItem('compareSet', [...compareSet].join(','));
+
   if (compareSet.size === 0) {
     bar.hidden = true;
     return;
