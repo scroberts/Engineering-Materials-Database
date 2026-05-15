@@ -28,7 +28,7 @@ const charts   = new Map();     // canvasId → Chart instance
 
 const pressureUnit        = () => unitSystem === 'metric' ? 'GPa'        : 'ksi';
 const strengthUnit        = () => unitSystem === 'metric' ? 'MPa'        : 'ksi';
-const fractureUnit        = () => unitSystem === 'metric' ? 'MPa·m^0.5' : 'ksi·in^0.5';
+const fractureUnit        = () => unitSystem === 'metric' ? 'MPa√m'     : 'ksi√in';
 
 function toPressure(gpa) {
   if (gpa == null) return null;
