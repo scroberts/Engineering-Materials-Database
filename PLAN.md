@@ -371,6 +371,9 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 12. `submit.html` · `js/pages/submit.js`
 - [ ] 13. `tools/migrate.py` · `tools/import_bibtex.py`
 - [ ] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
+- [ ] 15. `edit.html` · `js/pages/edit.js` — admin edit-existing-material workflow
+- [ ] 16. Additional seed materials — carbon fibre/epoxy composite, steel 4340, PEEK
+- [ ] 17. `404.html`
 
 ---
 
