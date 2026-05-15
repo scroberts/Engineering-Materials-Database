@@ -179,6 +179,55 @@
 }
 .chart-empty-msg p { font-size: 0.78rem; }
 
+/* ── CTE scalar fallback table ───────────────────────────────────────────── */
+
+.cte-scalar-wrap {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.cte-scalar-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.cte-scalar-table th {
+  background: var(--color-bg);
+  padding: 0.5rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.cte-scalar-table td {
+  padding: 0.55rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cte-scalar-table tbody tr:last-child td { border-bottom: none; }
+
+.cte-scalar-table tbody tr:hover { background: var(--color-bg); }
+
+.cte-scalar-val {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.cte-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
 /* ── Merit index table ───────────────────────────────────────────────────── */
 
 .merit-legend {

@@ -26,9 +26,10 @@ const charts   = new Map();     // canvasId → Chart instance
 
 // ── Unit helpers ───────────────────────────────────────────────────────────
 
-const pressureUnit = () => unitSystem === 'metric' ? 'GPa'        : 'ksi';
-const strengthUnit = () => unitSystem === 'metric' ? 'MPa'        : 'ksi';
-const fractureUnit = () => unitSystem === 'metric' ? 'MPa·m^0.5' : 'ksi·in^0.5';
+const pressureUnit        = () => unitSystem === 'metric' ? 'GPa'        : 'ksi';
+const strengthUnit        = () => unitSystem === 'metric' ? 'MPa'        : 'ksi';
+const fractureUnit        = () => unitSystem === 'metric' ? 'MPa·m^0.5' : 'ksi·in^0.5';
+const fractureUnitDisplay = () => unitSystem === 'metric' ? 'MPa·m½'    : 'ksi·in½';
 
 function toPressure(gpa) {
   if (gpa == null) return null;
@@ -211,7 +212,7 @@ function renderStrengthChart() {
 function renderFractureChart() {
   const labels = ['Fracture Toughness (K_IC)'];
   const values = materials.map(mat => [toFracture(getProps(mat).kic)]);
-  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureUnit(), 2);
+  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureUnitDisplay(), 2);
 }
 
 function renderDensityChart() {
@@ -249,13 +250,19 @@ function renderSNChart() {
   const canvas = document.getElementById('chart-sn');
   if (!canvas) return;
 
+  const sUnit    = strengthUnit();
+  const toStress = (gpa) => {
+    const mpa = gpa * 1000;
+    return unitSystem === 'imperial' ? mpa * 0.145038 : mpa;
+  };
+
   const datasets = matsWithSN.map(mat => {
     const i      = materials.indexOf(mat);
     const color  = PALETTE[i % PALETTE.length];
     const points = mat.mechanical_other.fatigue_sn_curve.points;
     return {
       label: shortName(mat),
-      data: points.map(pt => ({ x: pt.cycles, y: pt.stress * 1000 })),  // GPa → MPa
+      data: points.map(pt => ({ x: pt.cycles, y: toStress(pt.stress) })),
       borderColor: color,
       backgroundColor: color + '33',
       pointRadius: 4,
@@ -282,7 +289,7 @@ function renderSNChart() {
         tooltip: {
           callbacks: {
             label: ctx =>
-              `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} MPa` +
+              `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} ${sUnit}` +
               ` at ${ctx.parsed.x.toExponential(1)} cycles`,
           },
         },
@@ -294,7 +301,7 @@ function renderSNChart() {
           ticks: { font: { size: 11 } },
         },
         y: {
-          title: { display: true, text: 'Stress Amplitude (MPa)', color: '#64748b', font: { size: 11 } },
+          title: { display: true, text: `Stress Amplitude (${sUnit})`, color: '#64748b', font: { size: 11 } },
           ticks: { font: { size: 11 } },
         },
       },
@@ -309,14 +316,66 @@ function renderCTETempChart() {
   const section = document.getElementById('cte-temp-section');
   if (!section) return;
 
+  // Temperature conversion helpers (data stored in °C)
+  const tempUnit = unitSystem === 'imperial' ? '°F' : 'K';
+  const toTempX  = unitSystem === 'imperial'
+    ? (c) => Number((c * 9 / 5 + 32).toFixed(1))
+    : (c) => Math.round(c + 273.15);
+
   const matsWithTable = materials.filter(
     m => (m.physical?.thermal_expansion?.table?.length ?? 0) > 1
   );
 
-  if (matsWithTable.length === 0) { section.hidden = true; return; }
-  section.hidden = false;
+  // ── Scalar table fallback ─────────────────────────────────────────────────
+  if (matsWithTable.length === 0) {
+    const matsWithCTE = materials.filter(
+      m => m.physical?.thermal_expansion?.value != null
+    );
+    if (matsWithCTE.length === 0) { section.hidden = true; return; }
 
+    section.hidden = false;
+    destroyChart('chart-cte-temp');
+
+    // Update section heading to reflect table mode
+    const heading = section.querySelector('.compare-section-title');
+    if (heading) heading.textContent = 'Thermal Expansion (CTE)';
+
+    // Replace chart area with a comparison table
+    const area = section.querySelector('.chart-card, .cte-scalar-wrap');
+    if (area) {
+      const rows = matsWithCTE.map(mat => {
+        const i     = materials.indexOf(mat);
+        const color = PALETTE[i % PALETTE.length];
+        const cte   = mat.physical.thermal_expansion.value;
+        return `<tr>
+          <td><span class="cte-dot" style="background:${color}"></span>${escHtml(shortName(mat))}</td>
+          <td class="cte-scalar-val">${fmt(cte, null, 2)} µm/m·°C</td>
+        </tr>`;
+      }).join('');
+      area.className = 'cte-scalar-wrap';
+      area.innerHTML = `
+        <table class="cte-scalar-table">
+          <thead><tr><th>Material</th><th>CTE (µm/m·°C)</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+    }
+    return;
+  }
+
+  // ── Line chart ────────────────────────────────────────────────────────────
+  section.hidden = false;
   destroyChart('chart-cte-temp');
+
+  // Restore chart heading and ensure canvas exists
+  const heading = section.querySelector('.compare-section-title');
+  if (heading) heading.textContent = 'CTE vs Temperature';
+
+  const area = section.querySelector('.chart-card, .cte-scalar-wrap');
+  if (area) {
+    area.className = 'chart-card chart-wide';
+    area.innerHTML = '<canvas id="chart-cte-temp"></canvas>';
+  }
+
   const canvas = document.getElementById('chart-cte-temp');
   if (!canvas) return;
 
@@ -326,7 +385,7 @@ function renderCTETempChart() {
     const table = mat.physical.thermal_expansion.table;
     return {
       label: shortName(mat),
-      data: table.map(pt => ({ x: Math.round(pt.temp + 273.15), y: pt.cte })),
+      data: table.map(pt => ({ x: toTempX(pt.temp), y: pt.cte })),
       borderColor: color,
       backgroundColor: color + '33',
       pointRadius: 4,
@@ -354,13 +413,14 @@ function renderCTETempChart() {
           callbacks: {
             label: ctx =>
               `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} µm/m·°C` +
-              ` at ${ctx.parsed.x} K`,
+              ` at ${ctx.parsed.x} ${tempUnit}`,
           },
         },
       },
       scales: {
         x: {
-          title: { display: true, text: 'Temperature (K)', color: '#64748b', font: { size: 11 } },
+          type: 'linear',
+          title: { display: true, text: `Temperature (${tempUnit})`, color: '#64748b', font: { size: 11 } },
           ticks: { font: { size: 11 } },
         },
         y: {
