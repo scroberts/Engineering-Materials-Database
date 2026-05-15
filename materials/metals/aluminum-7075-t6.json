@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely stocked as plate, sheet, and bar. Typically purchased in T6 or T651 temper (stress-relieved plate). Not recommended for welding in most applications.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (freely available); eFunda linked for cross-reference."
   },
 

@@ -550,8 +550,8 @@ function renderMaterialStrip() {
         <div class="mat-chip-name">${escHtml(id.name ?? id.slug)}</div>
         <div class="mat-chip-meta">
           <span class="badge badge-${catClass}">${escHtml(id.category ?? '')}</span>
-          ${!id.commonly_available
-            ? '<span class="badge badge-uncommon">Uncommon</span>'
+          ${(id.usage_frequency && id.usage_frequency !== 'Common')
+            ? `<span class="badge badge-${id.usage_frequency === 'Exotic' ? 'exotic' : 'specialty'}">${escHtml(id.usage_frequency)}</span>`
             : ''}
         </div>
         <a class="mat-chip-link" href="material.html?slug=${encodeURIComponent(id.slug ?? '')}">

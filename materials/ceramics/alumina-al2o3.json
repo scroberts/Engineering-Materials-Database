@@ -7,7 +7,7 @@
     "fabrication_processes": ["Casting", "Machining", "Polishable"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as custom-machined blanks or standard rod/plate stock from specialist ceramic suppliers. Post-sintering grinding/lapping required for tight tolerances. Casting here refers to slip casting and dry pressing followed by sintering.",
-    "commonly_available": true,
+    "usage_frequency": "Specialty",
     "notes": "Properties are for 99.5% purity sintered alumina, from AZoM article on alumina as a biomaterial (same composition, same crystal structure). Purity and porosity strongly affect mechanical properties — 96% purity alumina has lower E (~360 GPa) and toughness (~3.5 MPa·m½). Alumina is brittle — design must account for low fracture toughness. Tensile strength given is the flexural strength (modulus of rupture); yield strength is not applicable. Specific heat and melting point are well-established values not listed on the AZoM page."
   },
 

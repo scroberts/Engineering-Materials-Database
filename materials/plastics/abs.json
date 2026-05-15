@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)"],
     "common_forms": ["Sheet", "Filament"],
     "common_form_notes": "FDM filament available in 1.75 mm and 2.85 mm diameters. Sheet stock available in various thicknesses.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "Properties represent bulk injection-moulded ABS (medium impact grade per AZoM). FDM-printed parts have significantly lower strength (typically 50–80% of bulk) and are anisotropic — see the ABS (FDM) entry. Young's modulus (tensile) and glass transition temperature are not listed on the AZoM reference page; 2.1 GPa is a standard tensile E for ABS and Tg = 105 °C is a widely published value."
   },
 

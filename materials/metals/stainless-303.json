@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Polishable"],
     "common_forms": ["Round Bar"],
     "common_form_notes": "Primarily stocked as round bar for turned parts. Sheet and plate are uncommon for 303 — use 304 or 316 for those applications.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability and corrosion resistance. Not suitable for welding. Yield strength (190 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A582 specifies a minimum of 241 MPa (35 ksi). Typical as-produced material falls between these values."
   },
 

@@ -7,6 +7,16 @@
 
 import { loadManifest } from '../core/loader.js';
 
+// ── Helpers ────────────────────────────────────────────────────────────────
+
+const USAGE_FREQUENCIES = ['Common', 'Specialty', 'Exotic'];
+
+function frequencyBadge(freq) {
+  if (!freq || freq === 'Common') return '';
+  const cls = freq === 'Exotic' ? 'badge-exotic' : 'badge-specialty';
+  return `<span class="badge ${cls}">${freq}</span>`;
+}
+
 // ── Constants ──────────────────────────────────────────────────────────────
 
 const MAX_COMPARE = 10;
@@ -35,7 +45,7 @@ function readFiltersFromURL() {
     categories: new Set(p.getAll('cat')),
     fab:        new Set(p.getAll('fab')),
     forms:      new Set(p.getAll('form')),
-    commonOnly: p.has('common'),
+    frequency:  new Set(p.getAll('freq')),
   };
 }
 
@@ -45,7 +55,7 @@ function writeFiltersToURL(f) {
   for (const c of f.categories) p.append('cat', c);
   for (const c of f.fab)        p.append('fab', c);
   for (const c of f.forms)      p.append('form', c);
-  if (f.commonOnly) p.set('common', '1');
+  for (const fr of f.frequency) p.append('freq', fr);
   const qs = p.toString();
   history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
 }
@@ -67,7 +77,7 @@ function materialMatches(mat, f) {
     const set = new Set(mat.common_forms || []);
     if (![...f.forms].some(v => set.has(v))) return false;
   }
-  if (f.commonOnly && !mat.commonly_available) return false;
+  if (f.frequency.size > 0 && !f.frequency.has(mat.usage_frequency)) return false;
   return true;
 }
 
@@ -104,9 +114,7 @@ function renderCard(mat) {
         <h2 class="card-name">${mat.name}</h2>
         <div class="card-badges">
           <span class="badge badge-${catClass}">${mat.category}</span>
-          ${!mat.commonly_available
-            ? '<span class="badge badge-uncommon" title="Not commonly available">Uncommon</span>'
-            : ''}
+          ${frequencyBadge(mat.usage_frequency)}
         </div>
       </div>
       <dl class="card-props">
@@ -212,8 +220,9 @@ function buildSidebar(currentFilters) {
   const formGroup = document.getElementById('filter-forms');
   formGroup.innerHTML = COMMON_FORMS.map(f => checkboxHtml('form', f, currentFilters.forms)).join('');
 
-  // Common-only toggle
-  document.getElementById('filter-common-only').checked = currentFilters.commonOnly;
+  // Usage frequency checkboxes
+  const freqGroup = document.getElementById('filter-frequency');
+  freqGroup.innerHTML = USAGE_FREQUENCIES.map(fr => checkboxHtml('freq', fr, currentFilters.frequency)).join('');
 
   // Search input
   document.getElementById('search-input').value = currentFilters.search;
@@ -236,11 +245,12 @@ function collectFilters() {
     categories: new Set(),
     fab:        new Set(),
     forms:      new Set(),
-    commonOnly: document.getElementById('filter-common-only').checked,
+    frequency:  new Set(),
   };
   document.querySelectorAll('input[name="cat"]:checked').forEach(el => f.categories.add(el.value));
   document.querySelectorAll('input[name="fab"]:checked').forEach(el => f.fab.add(el.value));
   document.querySelectorAll('input[name="form"]:checked').forEach(el => f.forms.add(el.value));
+  document.querySelectorAll('input[name="freq"]:checked').forEach(el => f.frequency.add(el.value));
   return f;
 }
 
@@ -263,8 +273,8 @@ function wireSidebar() {
 
   document.getElementById('filter-reset').addEventListener('click', () => {
     history.replaceState(null, '', location.pathname);
-    buildSidebar({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), commonOnly: false });
-    renderGrid({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), commonOnly: false });
+    buildSidebar({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set() });
+    renderGrid({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set() });
     compareSet.clear();
     updateCompareBar();
   });

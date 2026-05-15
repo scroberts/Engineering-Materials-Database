@@ -67,7 +67,7 @@
 
     "identification": {
       "type": "object",
-      "required": ["name", "slug", "category", "commonly_available"],
+      "required": ["name", "slug", "category", "usage_frequency"],
       "additionalProperties": false,
       "properties": {
         "name": {
@@ -94,9 +94,10 @@
           "uniqueItems": true
         },
         "common_form_notes": { "type": ["string", "null"] },
-        "commonly_available": {
-          "type": "boolean",
-          "description": "False flags the material as uncommon or hard to source"
+        "usage_frequency": {
+          "type": "string",
+          "enum": ["Common", "Specialty", "Exotic"],
+          "description": "Common: used routinely across most projects. Specialty: selected for specific performance requirements, used in particular industries. Exotic: reserved for highly demanding niche applications."
         },
         "notes": { "type": ["string", "null"] }
       }

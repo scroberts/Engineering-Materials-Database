@@ -363,7 +363,8 @@ const FORM_SECTIONS = [
                   'Filament', 'Pellet', 'Powder', 'Prepreg'] },
       { id: 'common_form_notes', label: 'Form notes', type: 'text',
         hint: 'Optional notes on available forms' },
-      { id: 'commonly_available', label: 'Commonly available?', type: 'bool' },
+      { id: 'usage_frequency', label: 'Usage Frequency', type: 'select', required: true,
+        options: ['Common', 'Specialty', 'Exotic'] },
       { id: 'notes', label: 'Notes', type: 'textarea' },
     ],
   },
@@ -973,7 +974,7 @@ function prefillForm(mat) {
   setCheckboxGroup('fabrication_processes', id.fabrication_processes ?? []);
   setCheckboxGroup('common_forms', id.common_forms ?? []);
   setField('common_form_notes', id.common_form_notes);
-  setBoolField('commonly_available', id.commonly_available);
+  setSelectField('usage_frequency', id.usage_frequency);
   setField('notes', id.notes);
   setField('typical_usage', mat.typical_usage);
 
@@ -1163,7 +1164,7 @@ function buildMaterialJSON() {
     fabrication_processes: getCheckboxGroup('fabrication_processes'),
     common_forms:        getCheckboxGroup('common_forms'),
     common_form_notes:   getField('common_form_notes') || null,
-    commonly_available:  getBoolField('commonly_available'),
+    usage_frequency:     getField('usage_frequency'),
     notes:               getField('notes') || null,
   };
 

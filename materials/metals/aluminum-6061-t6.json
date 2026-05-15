@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Welding", "Forging", "Extrude", "Plateable"],
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference."
   },
 

@@ -36,7 +36,7 @@ def extract_entry(data, filepath):
         "category":             ident.get("category"),
         "fabrication_processes":ident.get("fabrication_processes", []),
         "common_forms":         ident.get("common_forms", []),
-        "commonly_available":   ident.get("commonly_available", True),
+        "usage_frequency":      ident.get("usage_frequency", "Common"),
         "youngs_modulus":       val(mech, "youngs_modulus"),
         "yield_strength":       val(mech, "yield_strength"),
         "tensile_strength":     val(mech, "tensile_strength"),
@@ -74,7 +74,7 @@ def main():
 
     print(f"Generated materials/index.json — {len(entries)} material(s):")
     for e in entries:
-        flag = "" if e["commonly_available"] else "  [uncommon]"
+        flag = "" if e["usage_frequency"] == "Common" else f"  [{e['usage_frequency'].lower()}]"
         print(f"  {e['slug']:40s} ({e['category']}){flag}")
 
     for err in errors:

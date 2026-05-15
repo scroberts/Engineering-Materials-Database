@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T06:09:37Z",
+  "generated": "2026-05-15T14:12:04Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -16,7 +16,7 @@
         "Plate",
         "Round Bar"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Specialty",
       "youngs_modulus": 375,
       "yield_strength": null,
       "tensile_strength": 0.262,
@@ -35,7 +35,7 @@
         "Sheet",
         "Plate"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 70,
       "yield_strength": 0.034,
       "tensile_strength": 0.09,
@@ -54,7 +54,7 @@
         "Sheet",
         "Plate"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 70.3,
       "yield_strength": 0.193,
       "tensile_strength": 0.228,
@@ -78,7 +78,7 @@
         "Round Bar",
         "Angles and Structural Profiles"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 68.9,
       "yield_strength": 0.276,
       "tensile_strength": 0.31,
@@ -97,7 +97,7 @@
         "Plate",
         "Round Bar"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 71.7,
       "yield_strength": 0.503,
       "tensile_strength": 0.572,
@@ -116,7 +116,7 @@
         "Plate",
         "Round Bar"
       ],
-      "commonly_available": false,
+      "usage_frequency": "Exotic",
       "youngs_modulus": 148,
       "yield_strength": 0.483,
       "tensile_strength": 0.621,
@@ -134,7 +134,7 @@
       "common_forms": [
         "Round Bar"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 193,
       "yield_strength": 0.19,
       "tensile_strength": 0.62,
@@ -156,7 +156,7 @@
         "Plate",
         "Round Bar"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 193,
       "yield_strength": 0.2,
       "tensile_strength": 0.517,
@@ -175,8 +175,8 @@
         "Round Bar",
         "Plate"
       ],
-      "commonly_available": true,
-      "youngs_modulus": 200,
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 203,
       "yield_strength": 1.586,
       "tensile_strength": 2.068,
       "density": 7.86
@@ -197,7 +197,7 @@
         "Round Bar",
         "Angles and Structural Profiles"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 200,
       "yield_strength": 0.25,
       "tensile_strength": 0.4,
@@ -214,7 +214,7 @@
       "common_forms": [
         "Filament"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 2.2,
       "yield_strength": null,
       "tensile_strength": 0.04,
@@ -234,7 +234,7 @@
         "Sheet",
         "Filament"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 2.1,
       "yield_strength": 0.04,
       "tensile_strength": 0.047,
@@ -251,7 +251,7 @@
       "common_forms": [
         "Filament"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 2.1,
       "yield_strength": null,
       "tensile_strength": 0.053,
@@ -268,7 +268,7 @@
       "common_forms": [
         "Filament"
       ],
-      "commonly_available": true,
+      "usage_frequency": "Common",
       "youngs_modulus": 3.5,
       "yield_strength": null,
       "tensile_strength": 0.065,

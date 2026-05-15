@@ -7,7 +7,7 @@
     "fabrication_processes": ["3D Print (FDM)"],
     "common_forms": ["Filament"],
     "common_form_notes": "1.75 mm and 2.85 mm diameter filament. Requires heated bed and enclosure to prevent warping.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "Acrylonitrile Butadiene Styrene printed via Fused Deposition Modelling (FDM). Properties are for printed parts and are anisotropic — inter-layer (Z-axis) strength is typically 40–60% of in-plane (XY) strength. Max service temperature per Simplify3D; above ~80 °C parts begin to soften noticeably. Requires enclosure to prevent warping on large prints. Emits styrene fumes during printing — ventilate or use enclosure with filtration. Impact resistant and heat resistant compared to PLA and PETG."
   },
 

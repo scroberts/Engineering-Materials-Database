@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Welding"],
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as cold drawn bar stock. Invar 36® is a registered trademark of Carpenter Technology Corporation.",
-    "commonly_available": false,
+    "usage_frequency": "Exotic",
     "notes": "36% nickel-iron alloy with a coefficient of thermal expansion approximately one-tenth that of carbon steel up to ~190°C (thermal inflection point where the low-CTE Invar effect begins to break down). Curie temperature 279°C — above this, ferromagnetic properties are lost. Also known as Nilo 36, FeNi36, and Invar M93. Equivalent designations: UNS K93600 (annealed), UNS K93601 (cold drawn); W. Nr. 1.3912; ASTM B753 Alloy T36. Machinability similar to AISI 304 stainless steel. Can be welded, brazed, and plated. Young's modulus varies with temper: MatWeb reports 148 GPa for cold drawn bar; SpaceMatDB reports 140 GPa (temper unspecified). Qualified for space applications; stress corrosion cracking resistance tested per ECSS-Q-ST-70-36C. Data primarily from Carpenter Technology Corporation (MatWeb) with supplemental data from SpaceMatDB."
   },
 

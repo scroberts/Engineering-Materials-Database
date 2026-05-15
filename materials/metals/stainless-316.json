@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Welding", "Polishable", "Plateable"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely stocked in sheet, plate, tube, and bar. 316L (low-carbon variant) preferred for welded assemblies to prevent sensitisation.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "Austenitic stainless steel with 2–3% Mo addition for superior chloride and pitting corrosion resistance compared to 304/303. Yield strength (200 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A276 specifies a minimum of 207 MPa (30 ksi). 316L (low carbon, ≤0.03% C) is preferred when welding. Electrical conductivity derived from AZoM resistivity of 0.74 µΩ·m."
   },
 

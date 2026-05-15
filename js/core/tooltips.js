@@ -61,6 +61,8 @@ export const TOOLTIPS = {
     "Melting Point (Tm): Temperature at which the material transitions from solid to liquid. For crystalline materials (metals, ceramics). Upper bound on service temperature.",
   glass_transition_tg:
     "Glass Transition Temperature (Tg): Temperature below which an amorphous polymer or glass is in a glassy (rigid) state and above which it becomes rubbery or viscous. Relevant for polymers and amorphous ceramics.",
+  usage_frequency:
+    "Usage Frequency — Common: materials used routinely in everyday engineering design; a practising engineer would encounter these in the majority of projects. Specialty: materials selected for specific performance requirements not met by common materials; used regularly in particular industries or applications but not in general practice. Exotic: materials reserved for highly demanding or niche applications where performance requirements cannot be met by any other means; rarely encountered outside specialist fields.",
   magnetic_classification:
     "Magnetic Classification: Ferromagnetic (including ferrimagnetic) — strongly magnetic, use with caution near field-sensitive instruments (e.g. iron, nickel, cobalt and their alloys). Paramagnetic — weakly magnetic, generally acceptable (e.g. aluminum, titanium, some stainless steels). Diamagnetic — magnetically benign, preferred for precision optical/astronomical instruments (e.g. copper, beryllium, silicon, most polymers and ceramics).",
 

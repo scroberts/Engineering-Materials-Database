@@ -7,7 +7,7 @@
     "fabrication_processes": ["Machining", "Welding"],
     "common_forms": ["Sheet", "Plate"],
     "common_form_notes": "Predominantly stocked as sheet and plate. Excellent formability in this temper.",
-    "commonly_available": true,
+    "usage_frequency": "Common",
     "notes": "H32 temper: strain-hardened then stabilized (quarter-hard). Non-heat-treatable Al-Mg alloy. Superior corrosion resistance (especially marine and salt-spray) compared to 6061, with excellent formability and weldability. Not as machinable as 6061. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference."
   },
 

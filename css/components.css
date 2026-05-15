@@ -16,8 +16,10 @@
 .badge-plastic   { background: var(--color-plastic-bg);   color: var(--color-plastic); }
 .badge-ceramic   { background: var(--color-ceramic-bg);   color: var(--color-ceramic); }
 .badge-composite { background: var(--color-composite-bg); color: var(--color-composite); }
-.badge-uncommon  { background: var(--color-uncommon-bg);  color: var(--color-uncommon);
-                   border: 1px solid var(--color-border-strong); }
+.badge-specialty { background: #fef3c7; color: #92400e;
+                   border: 1px solid #fcd34d; }
+.badge-exotic    { background: #ede9fe; color: #5b21b6;
+                   border: 1px solid #c4b5fd; }
 
 /* Magnetic classification badges */
 .badge-ferro  { background: #fde8e8; color: #9b1c1c; }
