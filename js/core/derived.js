@@ -180,7 +180,7 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M13', group: 'Thermal',
-    label: 'k / (ρ·Cp)',
+    label: 'k / (ρ·C_p)',
     description: 'Thermal diffusivity — speed of transient response',
     higherIsBetter: true,
     fn: mat => {

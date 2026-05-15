@@ -83,6 +83,16 @@ function escHtml(s) {
     .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+/**
+ * Convert a formula string using _subscript and ^superscript notation into HTML.
+ * e.g. 'σ_y^½ / ρ' → 'σ<sub>y</sub><sup>½</sup> / ρ'
+ */
+function fmtFormula(label) {
+  return escHtml(label)
+    .replace(/_([A-Za-z0-9]+)/g, '<sub>$1</sub>')
+    .replace(/\^([^\s/()^]+)/g, '<sup>$1</sup>');
+}
+
 // ── Chart utilities ────────────────────────────────────────────────────────
 
 function destroyChart(id) {
@@ -425,7 +435,7 @@ function renderMeritTable() {
     return `<tr>
       <td class="merit-id">${idx.id}</td>
       <td class="merit-label" title="${escHtml(idx.description)}">
-        ${escHtml(idx.label)} ${arrow}
+        ${fmtFormula(idx.label)} ${arrow}
       </td>
       <td class="merit-group">${escHtml(idx.group)}</td>
       ${cells}
