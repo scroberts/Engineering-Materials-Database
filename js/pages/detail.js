@@ -684,8 +684,8 @@ function renderHeader(mat) {
   const id = mat.identification ?? {};
   const catClass = (id.category ?? 'metal').toLowerCase().replace(/\s+/g, '-');
   const freq = id.usage_frequency;
-  const uncommonBadge = (freq && freq !== 'Common')
-    ? `<span class="badge badge-${freq === 'Exotic' ? 'exotic' : 'specialty'}">${escHtml(freq)}</span>` : '';
+  const freqCls = freq === 'Exotic' ? 'badge-exotic' : freq === 'Specialty' ? 'badge-specialty' : 'badge-common';
+  const uncommonBadge = freq ? `<span class="badge ${freqCls}">${escHtml(freq)}</span>` : '';
   const notesHtml  = id.notes      ? `<p class="detail-notes">${escHtml(id.notes)}</p>` : '';
   const usageHtml  = mat.typical_usage
     ? `<p class="detail-usage"><strong>Typical usage:</strong> ${escHtml(mat.typical_usage)}</p>` : '';

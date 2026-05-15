@@ -12,8 +12,8 @@ import { loadManifest } from '../core/loader.js';
 const USAGE_FREQUENCIES = ['Common', 'Specialty', 'Exotic'];
 
 function frequencyBadge(freq) {
-  if (!freq || freq === 'Common') return '';
-  const cls = freq === 'Exotic' ? 'badge-exotic' : 'badge-specialty';
+  if (!freq) return '';
+  const cls = freq === 'Exotic' ? 'badge-exotic' : freq === 'Specialty' ? 'badge-specialty' : 'badge-common';
   return `<span class="badge ${cls}">${freq}</span>`;
 }
 
