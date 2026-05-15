@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Silicon Carbide (Sintered)",
+    "slug": "silicon-carbide",
+    "category": "Ceramic",
+    "fabrication_processes": ["Machining", "Polishable"],
+    "common_forms": ["Sheet", "Plate"],
+    "common_form_notes": "Supplied as sintered near-net-shape billets, tiles, or finished components. Machining requires diamond or CBN tooling; conventional cutting destroys the tooling. Final grinding/lapping to tight tolerances is standard for precision optical and bearing applications.",
+    "usage_frequency": "Specialty",
+    "notes": "Pressureless-sintered silicon carbide (SSiC / SC-30 grade, >98% theoretical density). SiC does not have a conventional melting point — it decomposes by sublimation above approximately 2730 °C. Maximum service temperature in air is limited to ~1375 °C by oxidation; in inert or vacuum environments, service to ~1650 °C is possible. Tensile strength is highly flaw-limited and variable; apply appropriate Weibull statistics and safety factors (do not use mean strength for design without a Weibull modulus). CTE is approximately constant from 0–600 °C at ~4 µm/m·K. Electrical conductivity is effectively zero for structural sintered grades (impurity-doped SiC can be semiconducting but is not the structural form)."
+  },
+
+  "typical_usage": "Precision bearings, seals, and pump components in corrosive or high-temperature media; semiconductor process equipment (wafer carriers, susceptors); thermal management substrates; ballistic armor tiles; high-temperature heat exchangers; mirror substrates and precision optical structures where maximum specific stiffness and dimensional stability at temperature are required.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 410,   "ref": "azom-sic" },
+    "poissons_ratio":      { "value": 0.14,  "ref": "azom-sic" },
+    "yield_strength":      { "value": null,  "ref": null },
+    "tensile_strength":    { "value": 0.320, "ref": "azom-sic" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 2700,  "ref": "azom-sic" },
+    "usable_temp_range":   { "min": -200, "max": 1375, "ref": null }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": 4.5,  "ref": "azom-sic" },
+    "hardness_vickers":    { "value": 2500, "ref": "azom-sic" },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":      { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 3.10,  "ref": "azom-sic" },
+    "electrical_conductivity":{ "value": 0,     "ref": null },
+    "vapour_pressure":        { "value": null,   "ref": null },
+    "thermal_expansion": {
+      "value": 4.0,
+      "table": [],
+      "ref": "azom-sic"
+    },
+    "thermal_conductivity":   { "value": 110,   "ref": "azom-sic" },
+    "specific_heat":          { "value": 670,   "ref": "azom-sic" },
+    "thermal_diffusivity":    { "value": null,   "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["azom-sic", "makeitfrom-sic"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}

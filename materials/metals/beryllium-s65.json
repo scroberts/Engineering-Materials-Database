@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Beryllium (Structural Grade S-65)",
+    "slug": "beryllium-s65",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Forging"],
+    "common_forms": ["Round Bar", "Plate"],
+    "common_form_notes": "Produced by hot isostatic pressing (HIP) of beryllium powder; supplied as billets, plates, and near-net forgings by specialist suppliers (Materion Corp). CRITICAL: all machining must be performed under strict industrial hygiene controls — see Notes.",
+    "usage_frequency": "Exotic",
+    "notes": "HEALTH WARNING — CONFIRMED HUMAN CARCINOGEN. Inhalation of beryllium dust or fumes causes chronic beryllium disease (CBD), a severe and irreversible lung condition. All machining, grinding, or abrading must be performed under wet conditions with HEPA-filtered enclosures and supplied-air respiratory protection per OSHA 29 CFR 1910.1024. Beryllium sensitisation can occur at very low exposures (PEL: 0.2 µg/m³ TWA). Finished, non-abraded parts present minimal risk. Consult your institution's occupational health and safety office before handling any machined beryllium. S-65 grade designation by Materion Corp (formerly Brush Wellman). Beryllium's extremely low Poisson's ratio (ν ≈ 0.032) is unusual for a metal and arises from its hexagonal crystal structure and high elastic anisotropy. High specific modulus (E/ρ ≈ 155 GPa·cm³/g) and very high specific heat make it uniquely attractive for lightweight precision structures and thermal management. Maximum service temperature in air limited to ~600 °C by oxidation; higher in vacuum. Shear strength derived from von Mises criterion: UTS/√3 = 370/√3 ≈ 214 MPa."
+  },
+
+  "typical_usage": "Precision optical mirrors and telescope structures (e.g., James Webb Space Telescope secondary mirror); X-ray windows and monochromators; nuclear reactor moderators and reflectors; aerospace inertial guidance gyroscopes; satellite bus structures and camera mounts where maximum specific stiffness, dimensional stability, and thermal diffusivity are required at minimum mass.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 287,   "ref": "azom-beryllium" },
+    "poissons_ratio":      { "value": 0.032, "ref": "azom-beryllium" },
+    "yield_strength":      { "value": 0.240, "ref": "azom-beryllium" },
+    "tensile_strength":    { "value": 0.370, "ref": "azom-beryllium" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": null,  "ref": null },
+    "usable_temp_range":   { "min": -200, "max": 600, "ref": null }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null,  "ref": null },
+    "creep_strength":      { "value": null,  "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": null,  "ref": null },
+    "hardness_vickers":    { "value": 140,   "ref": "azom-beryllium" },
+    "hardness_brinell":    { "value": null,  "ref": null },
+    "hardness_rockwell":   { "value": null,  "scale": null, "ref": null },
+    "ductility":           { "min": 2, "max": 4, "typical": null, "ref": "azom-beryllium" },
+    "shear_strength":      { "value": 0.214, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.85,  "ref": "azom-beryllium" },
+    "electrical_conductivity":{ "value": 40,    "ref": "azom-beryllium" },
+    "vapour_pressure":        { "value": null,   "ref": null },
+    "thermal_expansion": {
+      "value": 11.5,
+      "table": [],
+      "ref": "azom-beryllium"
+    },
+    "thermal_conductivity":   { "value": 210,   "ref": "azom-beryllium" },
+    "specific_heat":          { "value": 1820,  "ref": "azom-beryllium" },
+    "thermal_diffusivity":    { "value": null,   "ref": null },
+    "melting_point_tm":       { "value": 1287,  "ref": "azom-beryllium" },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["azom-beryllium"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}

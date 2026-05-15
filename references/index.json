@@ -174,5 +174,53 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.makeitfrom.com/material-properties/NEMA-Grade-G-10-GEE-Glass-Epoxy-Laminate"
+  },
+  "azom-sic": {
+    "short_label": "AZoM: Silicon Carbide Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/properties.aspx?ArticleID=15"
+  },
+  "makeitfrom-sic": {
+    "short_label": "MakeItFrom: Silicon Carbide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Silicon-Carbide-SiC"
+  },
+  "azom-beryllium": {
+    "short_label": "AZoM: Beryllium Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/properties.aspx?ArticleID=591"
+  },
+  "asm-matweb-ti64": {
+    "short_label": "ASM MatWeb: Ti-6Al-4V (Grade 5)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://asm.matweb.com/search/SpecificMaterial.asp?bassnum=mtp641"
+  },
+  "makeitfrom-c11000": {
+    "short_label": "MakeItFrom: Annealed C11000 ETP Copper",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Annealed-OS050-C11000-Copper"
+  },
+  "azom-5160": {
+    "short_label": "AZoM: AISI 5160 Alloy Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6743"
+  },
+  "makeitfrom-5160": {
+    "short_label": "MakeItFrom: SAE-AISI 5160 Chromium Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-5160-G51600-Chromium-Steel"
+  },
+  "makeitfrom-pom": {
+    "short_label": "MakeItFrom: POM Acetal Homopolymer (Delrin)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Polyoxymethylene-POM-Acetal-Homopolymer"
   }
 }

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Acetal Homopolymer (Delrin / POM-H)",
+    "slug": "pom-delrin",
+    "category": "Plastic",
+    "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)", "Extrude"],
+    "common_forms": ["Sheet", "Plate", "Round Bar"],
+    "common_form_notes": "Widely available as extruded rod, sheet, and plate from plastics distributors (Delrin® is a DuPont/Dupont de Nemours trademark; equivalent grades: Hostaform C, Ultraform). Machines extremely well to tight tolerances and smooth finishes with standard cutting tools.",
+    "usage_frequency": "Common",
+    "notes": "Acetal homopolymer (POM-H), sold as Delrin® by DuPont de Nemours. Semi-crystalline thermoplastic with high crystallinity (~75–80%), giving a sharp melting point, excellent dimensional stability, and low coefficient of friction. Distinguished from acetal copolymer (POM-C, e.g. Celcon) by slightly higher strength, melting point, and stiffness. POM is self-lubricating (PTFE-like wear behaviour) — excellent for dry-running bearings, gears, and cams without additional lubrication. Limitations: not suitable for strong oxidising acids, hot water or steam above 60 °C (hydrolysis), or prolonged UV exposure without UV-stabilised grades. Does not bond well with standard adhesives — use mechanical fastening or solvent welding where assembly is required. Continuous service temperature 90 °C (peak to 120 °C short-term). Very low moisture absorption (<0.2% equilibrium) gives excellent dimensional stability in humid environments."
+  },
+
+  "typical_usage": "Precision gears, cams, bushings, bearings, and slides in dry-running or lightly lubricated mechanisms; pump impellers and valve bodies for water and fuel service; threaded fasteners and stand-offs in assemblies where galvanic isolation is required; snap-fit components; food-contact parts (FDA-compliant grades available); electrical insulators.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 3.1,   "ref": "makeitfrom-pom" },
+    "poissons_ratio":      { "value": 0.35,  "ref": null },
+    "yield_strength":      { "value": 0.069, "ref": "makeitfrom-pom" },
+    "tensile_strength":    { "value": 0.069, "ref": "makeitfrom-pom" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 127,   "ref": "makeitfrom-pom" },
+    "usable_temp_range":   { "min": -40, "max": 90, "ref": "makeitfrom-pom" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null,  "ref": null },
+    "creep_strength":      { "value": null,  "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": null,  "ref": null },
+    "hardness_vickers":    { "value": null,  "ref": null },
+    "hardness_brinell":    { "value": null,  "ref": null },
+    "hardness_rockwell":   { "value": 80, "scale": "M", "ref": "makeitfrom-pom" },
+    "ductility":           { "min": null, "max": null, "typical": 40, "ref": "makeitfrom-pom" },
+    "shear_strength":      { "value": null,  "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.41,  "ref": "makeitfrom-pom" },
+    "electrical_conductivity":{ "value": 0,     "ref": null },
+    "vapour_pressure":        { "value": null,   "ref": null },
+    "thermal_expansion": {
+      "value": 106,
+      "table": [],
+      "ref": "makeitfrom-pom"
+    },
+    "thermal_conductivity":   { "value": 0.31,  "ref": "makeitfrom-pom" },
+    "specific_heat":          { "value": 1460,  "ref": "makeitfrom-pom" },
+    "thermal_diffusivity":    { "value": null,   "ref": null },
+    "melting_point_tm":       { "value": 175,   "ref": "makeitfrom-pom" },
+    "glass_transition_tg":    { "value": -60,   "ref": "makeitfrom-pom" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["makeitfrom-pom"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}

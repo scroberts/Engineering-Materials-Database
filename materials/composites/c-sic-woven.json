@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "C/SiC (Woven Carbon Fibre / SiC Matrix, CMC)",
+    "slug": "c-sic-woven",
+    "category": "Composite",
+    "fabrication_processes": ["Composite Layup", "Machining"],
+    "common_forms": ["Sheet", "Plate"],
+    "common_form_notes": "Produced as near-net-shape panels by chemical vapour infiltration (CVI) or polymer infiltration and pyrolysis (PIP) of woven carbon preforms. Machining requires diamond tooling and produces hazardous dust; use wet cutting and respiratory protection.",
+    "usage_frequency": "Exotic",
+    "notes": "Two-dimensional woven carbon-fibre / SiC ceramic matrix composite (CMC), approximately 40 vol% carbon fibre infiltrated by chemical vapour infiltration (CVI). Properties are for the in-plane (warp/fill) directions of a balanced 2D weave; through-thickness properties are substantially lower. The SiC matrix provides significantly better oxidation resistance than C/C composites, but uncoated carbon fibres oxidise above ~450 °C in air — environmental barrier coatings (EBC) extend service temperature. In inert atmosphere or with EBC, service to ~1400 °C is possible. Fracture is pseudo-ductile: fibre pullout and crack deflection provide far higher toughness than monolithic SiC despite nominally brittle constituents. Properties vary greatly with fibre architecture, number of CVI infiltration cycles, and residual porosity; treat all values as order-of-magnitude references and consult manufacturer datasheets for specific grades. Carbon fibres provide electrical conductivity in-plane (not characterised here)."
+  },
+
+  "typical_usage": "Thermal protection systems and hot structures for hypersonic vehicles and re-entry bodies; high-performance aerospace brake discs (where C/C is limited by oxidation); rocket nozzle throat inserts and extensions; gas turbine combustor liners and heat shields; satellite structures requiring extreme specific stiffness at elevated temperature.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 90.0,  "ref": null },
+    "poissons_ratio":      { "value": 0.20,  "ref": null },
+    "yield_strength":      { "value": null,  "ref": null },
+    "tensile_strength":    { "value": 0.237, "ref": null },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": null,  "ref": null },
+    "usable_temp_range":   { "min": -150, "max": 1400, "ref": null }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":      { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 2.1,   "ref": null },
+    "electrical_conductivity":{ "value": null,  "ref": null },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 2.5,
+      "table": [],
+      "ref": null
+    },
+    "thermal_conductivity":   { "value": 10.0, "ref": null },
+    "specific_heat":          { "value": 900,  "ref": null },
+    "thermal_diffusivity":    { "value": null,  "ref": null },
+    "melting_point_tm":       { "value": null,  "ref": null },
+    "glass_transition_tg":    { "value": null,  "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": [],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}
