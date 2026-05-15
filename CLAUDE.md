@@ -107,7 +107,8 @@ Three values: `"Ferromagnetic"` (incl. ferrimagnetic — strongly magnetic, caut
 
 ## What's Next
 1. `compare.html` + `js/pages/compare.js` — bar charts (Chart.js), S-N curve overlay, CTE vs temperature, merit index table (M1–M13)
-2. Additional seed materials — composites (carbon fibre/epoxy), steel 4340, PEEK
-3. `tools/migrate.py`, `tools/import_bibtex.py`
-4. `.github/PULL_REQUEST_TEMPLATE.md` + `validate-schema.yml` CI workflow
-5. `404.html`
+2. `edit.html` + `js/pages/edit.js` — edit an existing material; loads live JSON by slug, pre-fills the submit form, downloads corrected JSON for replacement in repo (admin workflow)
+3. Additional seed materials — composites (carbon fibre/epoxy), steel 4340, PEEK
+4. `tools/migrate.py`, `tools/import_bibtex.py`
+5. `.github/PULL_REQUEST_TEMPLATE.md` + `validate-schema.yml` CI workflow
+6. `404.html`
