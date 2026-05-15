@@ -327,8 +327,8 @@ td.merit-group {
 
 /* Direction arrows inside table cells */
 .merit-table td .merit-dir {
-  font-size: 0.7rem;
-  margin-left: 0.2rem;
+  font-size: 1rem;
+  margin-left: 0.3rem;
 }
 
 td.merit-cell {
