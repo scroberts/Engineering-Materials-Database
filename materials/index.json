@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T05:03:35Z",
+  "generated": "2026-05-15T05:13:16Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -21,6 +21,25 @@
       "yield_strength": null,
       "tensile_strength": 0.3,
       "density": 3.9
+    },
+    {
+      "slug": "aluminum-1100-o",
+      "path": "materials/metals/aluminum-1100-o.json",
+      "name": "Aluminum 1100-O",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 68.9,
+      "yield_strength": 0.034,
+      "tensile_strength": 0.09,
+      "density": 2.71
     },
     {
       "slug": "aluminum-5052-h32",
@@ -66,6 +85,25 @@
       "density": 2.7
     },
     {
+      "slug": "aluminum-7075-t6",
+      "path": "materials/metals/aluminum-7075-t6.json",
+      "name": "Aluminum 7075-T6",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 71.7,
+      "yield_strength": 0.503,
+      "tensile_strength": 0.572,
+      "density": 2.81
+    },
+    {
       "slug": "invar-36-alloy",
       "path": "materials/metals/invar-36-alloy.json",
       "name": "Invar 36 Alloy (Cold Drawn)",
@@ -83,6 +121,87 @@
       "yield_strength": 0.483,
       "tensile_strength": 0.621,
       "density": 8.05
+    },
+    {
+      "slug": "stainless-303",
+      "path": "materials/metals/stainless-303.json",
+      "name": "Stainless Steel 303 (Annealed)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Round Bar"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 193,
+      "yield_strength": 0.241,
+      "tensile_strength": 0.62,
+      "density": 8.03
+    },
+    {
+      "slug": "stainless-316",
+      "path": "materials/metals/stainless-316.json",
+      "name": "Stainless Steel 316 (Annealed)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Polishable",
+        "Plateable"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 193,
+      "yield_strength": 0.207,
+      "tensile_strength": 0.517,
+      "density": 7.99
+    },
+    {
+      "slug": "steel-a2",
+      "path": "materials/metals/steel-a2.json",
+      "name": "A2 Tool Steel (Hardened)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 200,
+      "yield_strength": 1.586,
+      "tensile_strength": 2.068,
+      "density": 7.86
+    },
+    {
+      "slug": "steel-mild-a36",
+      "path": "materials/metals/steel-mild-a36.json",
+      "name": "Mild Steel (ASTM A36)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Forging"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Angles and Structural Profiles"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 200,
+      "yield_strength": 0.25,
+      "tensile_strength": 0.4,
+      "density": 7.85
     },
     {
       "slug": "abs",

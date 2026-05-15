@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Stainless Steel 316 (Annealed)",
+    "slug": "stainless-316",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Welding", "Polishable", "Plateable"],
+    "common_forms": ["Sheet", "Plate", "Round Bar"],
+    "common_form_notes": "Widely stocked in sheet, plate, tube, and bar. 316L (low-carbon variant) preferred for welded assemblies to prevent sensitisation.",
+    "commonly_available": true,
+    "notes": "Austenitic stainless steel with 2–3% Mo addition, giving superior chloride and pitting corrosion resistance compared to 304/303. The standard stainless for marine, chemical, pharmaceutical, and food-contact applications. 316L (L = low carbon, ≤0.03% C) is preferred when welding. Annealed condition; work-hardening behaviour similar to 304."
+  },
+
+  "typical_usage": "Marine hardware, boat fittings, and fasteners; pharmaceutical and food-processing equipment; chemical process piping and vessels; surgical implants; architectural cladding in coastal environments; cryogenic components.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 193,   "ref": "asm-handbook-v1-1990" },
+    "poissons_ratio":      { "value": 0.28,  "ref": "asm-handbook-v1-1990" },
+    "yield_strength":      { "value": 0.207, "ref": "asm-handbook-v1-1990" },
+    "tensile_strength":    { "value": 0.517, "ref": "asm-handbook-v1-1990" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 207,   "ref": "asm-handbook-v1-1990" },
+    "usable_temp_range":   { "min": -200, "max": 870, "ref": "asm-handbook-v1-1990" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": 155,  "ref": "asm-handbook-v1-1990" },
+    "hardness_brinell":    { "value": 149,  "ref": "asm-handbook-v1-1990" },
+    "hardness_rockwell":   { "value": 79, "scale": "B", "ref": "asm-handbook-v1-1990" },
+    "ductility":           { "min": 40, "max": null, "typical": null, "ref": "asm-handbook-v1-1990" },
+    "shear_strength":      { "value": 0.310, "ref": "asm-handbook-v1-1990" }
+  },
+
+  "physical": {
+    "density":                { "value": 7.99, "ref": "asm-handbook-v1-1990" },
+    "electrical_conductivity":{ "value": 2.4,  "ref": "asm-handbook-v1-1990" },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 15.9,
+      "table": [
+        { "temp": 100, "cte": 15.9 },
+        { "temp": 315, "cte": 16.5 },
+        { "temp": 538, "cte": 17.5 }
+      ],
+      "ref": "asm-handbook-v1-1990"
+    },
+    "thermal_conductivity":{ "value": 16.3, "ref": "asm-handbook-v1-1990" },
+    "specific_heat":       { "value": 500,  "ref": "asm-handbook-v1-1990" },
+    "thermal_diffusivity": { "value": null, "ref": null },
+    "melting_point_tm":    { "value": 1375, "ref": "asm-handbook-v1-1990" },
+    "glass_transition_tg": { "value": null, "ref": null },
+    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
+  },
+
+  "references": ["asm-handbook-v1-1990"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

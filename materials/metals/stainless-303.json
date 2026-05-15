@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Stainless Steel 303 (Annealed)",
+    "slug": "stainless-303",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Polishable"],
+    "common_forms": ["Round Bar"],
+    "common_form_notes": "Primarily stocked as round bar for turned parts. Sheet and plate are uncommon for 303 — use 304 or 316 for those applications.",
+    "commonly_available": true,
+    "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability, corrosion resistance, and transverse toughness. Not suitable for welding (sulfur causes hot cracking). Slightly lower corrosion resistance than 304 in chloride environments. Annealed condition."
+  },
+
+  "typical_usage": "CNC-turned shafts, fittings, fasteners, bushings, valve stems, and precision machined parts requiring good corrosion resistance combined with high-volume machinability. The default stainless for turned parts.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 193,   "ref": "asm-handbook-v1-1990" },
+    "poissons_ratio":      { "value": 0.28,  "ref": "asm-handbook-v1-1990" },
+    "yield_strength":      { "value": 0.241, "ref": "asm-handbook-v1-1990" },
+    "tensile_strength":    { "value": 0.620, "ref": "asm-handbook-v1-1990" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 241,   "ref": "asm-handbook-v1-1990" },
+    "usable_temp_range":   { "min": -200, "max": 870, "ref": "asm-handbook-v1-1990" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": 190,  "ref": "asm-handbook-v1-1990" },
+    "hardness_brinell":    { "value": 183,  "ref": "asm-handbook-v1-1990" },
+    "hardness_rockwell":   { "value": 88, "scale": "B", "ref": "asm-handbook-v1-1990" },
+    "ductility":           { "min": 35, "max": null, "typical": null, "ref": "asm-handbook-v1-1990" },
+    "shear_strength":      { "value": 0.370, "ref": "asm-handbook-v1-1990" }
+  },
+
+  "physical": {
+    "density":                { "value": 8.03, "ref": "asm-handbook-v1-1990" },
+    "electrical_conductivity":{ "value": 2.4,  "ref": "asm-handbook-v1-1990" },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 17.2,
+      "table": [
+        { "temp": 100, "cte": 17.2 },
+        { "temp": 315, "cte": 17.8 },
+        { "temp": 538, "cte": 18.0 }
+      ],
+      "ref": "asm-handbook-v1-1990"
+    },
+    "thermal_conductivity":{ "value": 16.2, "ref": "asm-handbook-v1-1990" },
+    "specific_heat":       { "value": 500,  "ref": "asm-handbook-v1-1990" },
+    "thermal_diffusivity": { "value": null, "ref": null },
+    "melting_point_tm":    { "value": 1400, "ref": "asm-handbook-v1-1990" },
+    "glass_transition_tg": { "value": null, "ref": null },
+    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
+  },
+
+  "references": ["asm-handbook-v1-1990"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

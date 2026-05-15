@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Aluminum 1100-O",
+    "slug": "aluminum-1100-o",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Welding"],
+    "common_forms": ["Sheet", "Plate"],
+    "common_form_notes": "Commonly available as sheet and foil. Very soft — easily formed, spun, and deep-drawn.",
+    "commonly_available": true,
+    "notes": "Commercially pure aluminum (99.0% min Al). O temper: fully annealed, softest and most ductile condition. Excellent formability, corrosion resistance, and electrical/thermal conductivity. Very low strength — not suitable for structural load-bearing. The '-O' designation means annealed; H14 half-hard version has roughly double the yield strength."
+  },
+
+  "typical_usage": "Electrical busbars and conductors, heat exchanger fins, reflective sheet, chemical process equipment, food and chemical containers, spinning and deep-drawing applications requiring maximum formability.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 68.9,  "ref": "asm-handbook-v2-1990" },
+    "poissons_ratio":      { "value": 0.33,  "ref": "asm-handbook-v2-1990" },
+    "yield_strength":      { "value": 0.034, "ref": "asm-handbook-v2-1990" },
+    "tensile_strength":    { "value": 0.090, "ref": "asm-handbook-v2-1990" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 34,    "ref": "asm-handbook-v2-1990" },
+    "usable_temp_range":   { "min": -196, "max": 150, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": 24,   "ref": "asm-handbook-v2-1990" },
+    "hardness_brinell":    { "value": 23,   "ref": "asm-handbook-v2-1990" },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "ductility":           { "min": 35, "max": null, "typical": null, "ref": "asm-handbook-v2-1990" },
+    "shear_strength":      { "value": 0.055, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "physical": {
+    "density":                { "value": 2.71,  "ref": "asm-handbook-v2-1990" },
+    "electrical_conductivity":{ "value": 59.0,  "ref": "asm-handbook-v2-1990" },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 23.6,
+      "table": [
+        { "temp": 20, "cte": 23.6 }
+      ],
+      "ref": "asm-handbook-v2-1990"
+    },
+    "thermal_conductivity":{ "value": 222,  "ref": "asm-handbook-v2-1990" },
+    "specific_heat":       { "value": 904,  "ref": "asm-handbook-v2-1990" },
+    "thermal_diffusivity": { "value": null, "ref": null },
+    "melting_point_tm":    { "value": 657,  "ref": "asm-handbook-v2-1990" },
+    "glass_transition_tg": { "value": null, "ref": null },
+    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
+  },
+
+  "references": ["asm-handbook-v2-1990"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}

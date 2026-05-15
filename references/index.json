@@ -1,4 +1,9 @@
 {
+  "asm-handbook-v1-1990": {
+    "short_label": "ASM Handbook V1 1990",
+    "doi": null,
+    "bibtex": "@book{asm-handbook-v1-1990,\n  title     = {{ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-377-4}\n}"
+  },
   "10.1117/12.279804": {
     "short_label": "Paquin 1997",
     "doi": "10.1117/12.279804",
