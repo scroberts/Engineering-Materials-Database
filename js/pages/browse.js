@@ -114,7 +114,6 @@ function renderCard(mat) {
         <h2 class="card-name">${mat.name}</h2>
         <div class="card-badges">
           <span class="badge badge-${catClass}">${mat.category}</span>
-          ${frequencyBadge(mat.usage_frequency)}
         </div>
       </div>
       <dl class="card-props">
