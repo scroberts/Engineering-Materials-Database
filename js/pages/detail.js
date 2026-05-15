@@ -442,8 +442,8 @@ function renderPhysical(mat) {
         canonical: v(ph.electrical_conductivity), canonicalUnit: '% IACS', displayUnit: '% IACS',
         dataKey: 'electrical_conductivity', refKey: ph.electrical_conductivity?.ref })}
       ${renderRow(tipLabel('Vapour Pressure', 'vapour_pressure'), {
-        html: v(ph.vapour_pressure) != null
-          ? `${v(ph.vapour_pressure)} Pa ${refBadge(ph.vapour_pressure?.ref)}` : '—' })}
+        canonical: v(ph.vapour_pressure), canonicalUnit: 'Pa', displayUnit: 'Pa',
+        dataKey: 'vapour_pressure', refKey: ph.vapour_pressure?.ref })}
     </table>
     <div class="unit-selector-group">
       ${unitSelectorRow('CTE', CTE_UNITS, 'µm/m·K', 'µm/m·K')}

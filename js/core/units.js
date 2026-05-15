@@ -44,6 +44,7 @@ export const UNIT_DECIMALS = {
   'K': 0, '°C': 0, '°F': 1,
   '% IACS': 1, 'MS/m': 3, 'S/m': 0,
   'g/cm³': 2, 'lb/in³': 4,
+  'Pa': 4,
   'µm/m·K': 2, 'µin/in·°F': 2,
   'W/m·K': 2, 'BTU/(hr·ft·°F)': 3,
   'J/(kg·K)': 0, 'BTU/(lb·°F)': 4,
