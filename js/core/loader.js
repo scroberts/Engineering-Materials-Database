@@ -17,7 +17,7 @@ const MANIFEST_URL = 'materials/index.json';
 export async function loadManifest() {
   if (store.has('manifest')) return store.get('manifest');
 
-  const res = await fetch(MANIFEST_URL);
+  const res = await fetch(MANIFEST_URL, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to fetch manifest (${res.status})`);
 
   const data = await res.json();

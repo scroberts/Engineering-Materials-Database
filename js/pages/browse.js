@@ -121,6 +121,11 @@ function renderCard(mat) {
         ${propRow('E',     "Young's Modulus — stiffness in the elastic region",            eStr)}
         ${propRow('σ<sub>y</sub>', 'Yield Strength — onset of permanent deformation',     sigStr)}
         ${propRow('ρ',    'Density',                                                       rhoStr)}
+        ${mat.usage_frequency ? `
+        <div class="prop-row prop-row--freq">
+          <dt title="Usage Frequency — Common: used routinely across most projects. Specialty: selected for specific performance needs. Exotic: reserved for highly demanding niche applications.">Usage</dt>
+          <dd>${frequencyBadge(mat.usage_frequency)}</dd>
+        </div>` : ''}
       </dl>
       <div class="card-footer">
         <label class="compare-label">
