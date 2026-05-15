@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T00:37:47Z",
+  "generated": "2026-05-15T05:03:35Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -21,6 +21,25 @@
       "yield_strength": null,
       "tensile_strength": 0.3,
       "density": 3.9
+    },
+    {
+      "slug": "aluminum-5052-h32",
+      "path": "materials/metals/aluminum-5052-h32.json",
+      "name": "Aluminum 5052-H32",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "commonly_available": true,
+      "youngs_modulus": 70.3,
+      "yield_strength": 0.193,
+      "tensile_strength": 0.228,
+      "density": 2.68
     },
     {
       "slug": "aluminum-6061-t6",

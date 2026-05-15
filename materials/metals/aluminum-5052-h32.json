@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Aluminum 5052-H32",
+    "slug": "aluminum-5052-h32",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Welding"],
+    "common_forms": ["Sheet", "Plate"],
+    "common_form_notes": "Predominantly stocked as sheet and plate. Excellent formability in this temper.",
+    "commonly_available": true,
+    "notes": "H32 temper: strain-hardened then stabilized (quarter-hard). Non-heat-treatable Al-Mg alloy. Superior corrosion resistance (especially marine and salt-spray) compared to 6061, with excellent formability and weldability. Not as machinable as 6061."
+  },
+
+  "typical_usage": "Marine hull plating, fuel and oil tanks, pressure vessels, flooring panels, refrigerator liners, storm shutters, fan blades, and sheet metal fabrication requiring high corrosion resistance with moderate strength.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 70.3,  "ref": "asm-handbook-v2-1990" },
+    "poissons_ratio":      { "value": 0.33,  "ref": "asm-handbook-v2-1990" },
+    "yield_strength":      { "value": 0.193, "ref": "asm-handbook-v2-1990" },
+    "tensile_strength":    { "value": 0.228, "ref": "asm-handbook-v2-1990" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 193,   "ref": "asm-handbook-v2-1990" },
+    "usable_temp_range":   { "min": -196, "max": 150, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [
+        { "stress": 0.172, "cycles": 100000 },
+        { "stress": 0.138, "cycles": 1000000 },
+        { "stress": 0.117, "cycles": 500000000 }
+      ],
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "fracture_toughness": { "value": null,  "ref": null },
+    "hardness_vickers":   { "value": null,  "ref": null },
+    "hardness_brinell":   { "value": 60,    "ref": "asm-handbook-v2-1990" },
+    "hardness_rockwell":  { "value": 55, "scale": "B", "ref": "asm-handbook-v2-1990" },
+    "ductility":          { "min": 12, "max": null, "typical": null, "ref": "asm-handbook-v2-1990" },
+    "shear_strength":     { "value": 0.138, "ref": "asm-handbook-v2-1990" }
+  },
+
+  "physical": {
+    "density":                { "value": 2.68,  "ref": "asm-handbook-v2-1990" },
+    "electrical_conductivity":{ "value": 35.0,  "ref": "asm-handbook-v2-1990" },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 23.8,
+      "table": [
+        { "temp": 20, "cte": 23.8 }
+      ],
+      "ref": "asm-handbook-v2-1990"
+    },
+    "thermal_conductivity":{ "value": 138,  "ref": "asm-handbook-v2-1990" },
+    "specific_heat":       { "value": 880,  "ref": "asm-handbook-v2-1990" },
+    "thermal_diffusivity": { "value": null, "ref": null },
+    "melting_point_tm":    { "value": 649,  "ref": "asm-handbook-v2-1990" },
+    "glass_transition_tg": { "value": null, "ref": null },
+    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
+  },
+
+  "references": ["asm-handbook-v2-1990", "mil-hdbk-5j-2003"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}
