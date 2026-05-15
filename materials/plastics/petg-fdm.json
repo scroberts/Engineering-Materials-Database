@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "PETG (FDM 3D Printed)",
+    "slug": "petg-fdm",
+    "category": "Plastic",
+    "fabrication_processes": ["3D Print (FDM)"],
+    "common_forms": ["Filament"],
+    "common_form_notes": "1.75 mm and 2.85 mm diameter filament. Requires heated bed. Tends to string — retraction tuning important.",
+    "commonly_available": true,
+    "notes": "Polyethylene Terephthalate Glycol (PETG) printed via FDM. Glycol modification prevents the brittleness of standard PET. Good balance of strength, toughness, chemical resistance, and printability — often considered the best all-around FDM material. Water and chemically resistant per Simplify3D. Fatigue resistant. Higher service temperature than PLA. Properties are anisotropic; use XY-oriented load paths for structural parts."
+  },
+
+  "typical_usage": "Mechanical parts, food-contact containers (uncoated filament, verify food safety of specific brand), water bottles and liquid tanks, chemical-resistant housings, outdoor-use brackets, and functional prototypes requiring better toughness than PLA.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 2.1,  "ref": "callister2020" },
+    "poissons_ratio":      { "value": 0.38, "ref": "callister2020" },
+    "yield_strength":      { "value": null, "ref": null },
+    "tensile_strength":    { "value": 0.053, "ref": "simplify3d-materials-guide" },
+    "compressive_modulus": { "value": null, "ref": null },
+    "compressive_strength":{ "value": null, "ref": null },
+    "usable_temp_range":   { "min": -40, "max": 73, "ref": "simplify3d-materials-guide" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "shear_strength":      { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.23, "ref": "simplify3d-materials-guide" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 60,
+      "table": [
+        { "temp": 20, "cte": 60 }
+      ],
+      "ref": "simplify3d-materials-guide"
+    },
+    "thermal_conductivity":{ "value": 0.20,  "ref": "callister2020" },
+    "specific_heat":       { "value": 1200,  "ref": "callister2020" },
+    "thermal_diffusivity": { "value": null,  "ref": null },
+    "melting_point_tm":    { "value": 245,   "ref": "callister2020" },
+    "glass_transition_tg": { "value": 80,    "ref": "callister2020" },
+    "magnetic_classification": { "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["simplify3d-materials-guide", "callister2020"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-14",
+    "approved_by": "admin",
+    "approved_date": "2026-05-14"
+  }
+}
