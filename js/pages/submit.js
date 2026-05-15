@@ -14,7 +14,8 @@ import { loadReferences } from '../core/loader.js';
 import { migrateToLatest } from '../core/schema.js';
 import {
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS, TEMPERATURE_UNITS,
-  convertPressure, convertCompStrength, convertFracture, convertTemperature,
+  DENSITY_UNITS, ELECTRICAL_UNITS, CTE_UNITS, THERMAL_COND_UNITS,
+  SPECIFIC_HEAT_UNITS, THERMAL_DIFF_UNITS,
 } from '../core/units.js';
 
 // ── State ───────────────────────────────────────────────────────────────────
@@ -431,19 +432,24 @@ const FORM_SECTIONS = [
     title: 'Physical Properties',
     fields: [
       { id: 'density',               label: 'Density (ρ)',             type: 'number',
-        hint: 'g/cm³' },
+        hint: 'Mass per unit volume',
+        canonicalUnit: 'g/cm³', displayUnits: DENSITY_UNITS },
       { id: 'electrical_conductivity', label: 'Electrical Conductivity', type: 'number',
-        hint: '% IACS (% of International Annealed Copper Standard)' },
+        hint: '% of International Annealed Copper Standard',
+        canonicalUnit: '% IACS', displayUnits: ELECTRICAL_UNITS },
       { id: 'vapour_pressure',       label: 'Vapour Pressure',         type: 'number',
         hint: 'Pa (at 20 °C)' },
       { id: 'thermal_expansion',     label: 'CTE (α)',                 type: 'cte',
-        hint: 'µm/m·°C — enter single value and/or temperature-dependent table. Temperature column uses the selected unit.' },
+        hint: 'Enter single value and/or temperature-dependent table' },
       { id: 'thermal_conductivity',  label: 'Thermal Conductivity (k)', type: 'number',
-        hint: 'W/m·K' },
+        hint: 'Heat conducted per unit temperature gradient',
+        canonicalUnit: 'W/m·K', displayUnits: THERMAL_COND_UNITS },
       { id: 'specific_heat',         label: 'Specific Heat (Cp)',      type: 'number',
-        hint: 'J/kg·K' },
+        hint: 'Energy to raise temperature per unit mass',
+        canonicalUnit: 'J/(kg·K)', displayUnits: SPECIFIC_HEAT_UNITS },
       { id: 'thermal_diffusivity',   label: 'Thermal Diffusivity (D)', type: 'number',
-        hint: 'cm²/s — leave blank to compute from k, ρ, Cp' },
+        hint: 'Leave blank to compute from k, ρ, Cp',
+        canonicalUnit: 'cm²/s', displayUnits: THERMAL_DIFF_UNITS },
       { id: 'melting_point_tm',    label: 'Melting Point (Tm)',    type: 'number',
         canonicalUnit: '°C', displayUnits: TEMPERATURE_UNITS },
       { id: 'glass_transition_tg', label: 'Glass Transition (Tg)', type: 'number',
@@ -760,6 +766,22 @@ function buildSN(f) {
   wrap.className = 'sn-editor';
   wrap.id = `field-${f.id}`;
 
+  // Stress unit selector
+  const unitRow = document.createElement('div');
+  unitRow.style.cssText = 'display:flex;align-items:center;gap:0.4rem;margin-bottom:0.4rem;font-size:0.8rem;color:var(--color-muted);';
+  const unitLbl = document.createElement('span');
+  unitLbl.textContent = 'Stress unit:';
+  const unitSel = document.createElement('select');
+  unitSel.className = 'form-unit-select';
+  unitSel.id = 'field-fatigue_sn_curve_stress_unit';
+  for (const u of PRESSURE_UNITS) {
+    const opt = document.createElement('option');
+    opt.value = u; opt.textContent = u;
+    unitSel.appendChild(opt);
+  }
+  unitRow.append(unitLbl, unitSel);
+  wrap.appendChild(unitRow);
+
   const rows = document.createElement('div');
   rows.className = 'sn-rows';
 
@@ -786,9 +808,9 @@ function addSNRow(container) {
   row.className = 'sn-row';
 
   const stressLbl = document.createElement('label');
-  stressLbl.textContent = 'Stress (GPa)';
+  stressLbl.textContent = 'Stress';
   const stressIn = document.createElement('input');
-  stressIn.type = 'number'; stressIn.step = 'any'; stressIn.placeholder = '0.100';
+  stressIn.type = 'number'; stressIn.step = 'any'; stressIn.placeholder = '—';
   stressIn.className = 'form-control sn-stress';
 
   const cyclesLbl = document.createElement('label');
@@ -810,11 +832,27 @@ function buildCTE(f) {
   wrap.className = 'cte-editor';
   wrap.id = `field-${f.id}`;
 
+  // CTE value unit selector (applies to single value and table CTE column)
+  const cteUnitRow = document.createElement('div');
+  cteUnitRow.style.cssText = 'display:flex;align-items:center;gap:0.4rem;margin-bottom:0.3rem;font-size:0.8rem;color:var(--color-muted);';
+  const cteUnitLbl = document.createElement('span');
+  cteUnitLbl.textContent = 'CTE unit:';
+  const cteUnitSel = document.createElement('select');
+  cteUnitSel.className = 'form-unit-select';
+  cteUnitSel.id = 'field-thermal_expansion_cte_unit';
+  for (const u of CTE_UNITS) {
+    const opt = document.createElement('option');
+    opt.value = u; opt.textContent = u;
+    cteUnitSel.appendChild(opt);
+  }
+  cteUnitRow.append(cteUnitLbl, cteUnitSel);
+  wrap.appendChild(cteUnitRow);
+
   // Single value row
   const singleRow = document.createElement('div');
   singleRow.className = 'form-input-group';
   const singleIn = document.createElement('input');
-  singleIn.type = 'number'; singleIn.step = 'any'; singleIn.placeholder = 'single value (µm/m·°C)';
+  singleIn.type = 'number'; singleIn.step = 'any'; singleIn.placeholder = 'single value';
   singleIn.id = 'field-thermal_expansion_value'; singleIn.className = 'form-control';
   const refSel = buildRefSelect(); refSel.dataset.fieldId = f.id;
   singleRow.append(singleIn, refSel);
@@ -865,7 +903,7 @@ function addCTERow(container) {
   const tempIn  = document.createElement('input');
   tempIn.type = 'number'; tempIn.step = 'any'; tempIn.className = 'form-control cte-temp';
 
-  const cteLbl  = document.createElement('label'); cteLbl.textContent = 'CTE (µm/m·°C)';
+  const cteLbl  = document.createElement('label'); cteLbl.textContent = 'CTE';
   const cteIn   = document.createElement('input');
   cteIn.type = 'number'; cteIn.step = 'any'; cteIn.className = 'form-control cte-val';
 
@@ -1034,6 +1072,9 @@ function prefillForm(mat) {
     setRefField('magnetic_classification', ph.magnetic_classification.ref);
   }
   if (ph.thermal_expansion) {
+    // Reset CTE unit to canonical before pre-filling
+    const cteUnitEl = document.getElementById('field-thermal_expansion_cte_unit');
+    if (cteUnitEl) cteUnitEl.value = 'µm/m·K';
     setField('field-thermal_expansion_value', ph.thermal_expansion.value, true);
     setRefField('thermal_expansion', ph.thermal_expansion.ref);
     if (ph.thermal_expansion.table?.length) {
@@ -1095,6 +1136,9 @@ function setRefField(id, refKey) {
 function prefillSN(snData) {
   const container = document.querySelector('#field-fatigue_sn_curve .sn-rows');
   if (!container) return;
+  // Reset stress unit to GPa (canonical) so pre-filled values display correctly
+  const stressUnitEl = document.getElementById('field-fatigue_sn_curve_stress_unit');
+  if (stressUnitEl) stressUnitEl.value = 'GPa';
   container.innerHTML = '';
   for (const pt of snData.points) {
     addSNRow(container);
@@ -1109,6 +1153,9 @@ function prefillSN(snData) {
 function prefillCTE(table) {
   const container = document.querySelector('#field-thermal_expansion .cte-rows');
   if (!container) return;
+  // Reset CTE unit to canonical before pre-filling
+  const cteUnitEl = document.getElementById('field-thermal_expansion_cte_unit');
+  if (cteUnitEl) cteUnitEl.value = 'µm/m·K';
   // Stored in °C; form temp unit defaults to K
   const cToK = v => v != null ? Math.round((v + 273.15) * 10) / 10 : v;
   for (const pt of table) {
@@ -1197,15 +1244,15 @@ function buildMaterialJSON() {
 
   // ── Physical ──
   const ph = {
-    density:               getValuedPropRaw('density'),
-    electrical_conductivity:getValuedPropRaw('electrical_conductivity'),
+    density:               getValuedProp('density',               'g/cm³'),
+    electrical_conductivity:getValuedProp('electrical_conductivity','% IACS'),
     vapour_pressure:       getValuedPropRaw('vapour_pressure'),
     thermal_expansion:     getCTE(),
-    thermal_conductivity:  getValuedPropRaw('thermal_conductivity'),
-    specific_heat:         getValuedPropRaw('specific_heat'),
-    thermal_diffusivity:   getValuedPropRaw('thermal_diffusivity'),
-    melting_point_tm:      getValuedPropRaw('melting_point_tm'),
-    glass_transition_tg:   getValuedPropRaw('glass_transition_tg'),
+    thermal_conductivity:  getValuedProp('thermal_conductivity',  'W/m·K'),
+    specific_heat:         getValuedProp('specific_heat',         'J/(kg·K)'),
+    thermal_diffusivity:   getValuedProp('thermal_diffusivity',   'cm²/s'),
+    melting_point_tm:      getValuedProp('melting_point_tm',      '°C'),
+    glass_transition_tg:   getValuedProp('glass_transition_tg',  '°C'),
     magnetic_classification: {
       value: getSelectField('magnetic_classification') || null,
       ref:   getRefKey('magnetic_classification'),
@@ -1316,7 +1363,47 @@ function toCanonical(value, fieldId, canonicalUnit, displayUnitOverride) {
     if (displayUnit === 'K')  return value - 273.15;
     if (displayUnit === '°F') return (value - 32) * 5 / 9;
   }
+  if (canonicalUnit === 'g/cm³') {
+    if (displayUnit === 'lb/in³') return value / 0.036127292;
+    return value;
+  }
+  if (canonicalUnit === '% IACS') {
+    if (displayUnit === 'MS/m') return value / 0.58;
+    if (displayUnit === 'S/m')  return value / 5.8e5;
+    return value;
+  }
+  if (canonicalUnit === 'W/m·K') {
+    if (displayUnit === 'BTU/(hr·ft·°F)') return value / 0.5779;
+    return value;
+  }
+  if (canonicalUnit === 'J/(kg·K)') {
+    if (displayUnit === 'BTU/(lb·°F)') return value / 2.3885e-4;
+    return value;
+  }
+  if (canonicalUnit === 'cm²/s') {
+    if (displayUnit === 'ft²/hr') return value / 3.875;
+    return value;
+  }
+  if (canonicalUnit === 'µm/m·K') {
+    if (displayUnit === 'µin/in·°F') return value * (9 / 5);
+    return value;
+  }
   return value;
+}
+
+function getTempRange() {
+  const minEl  = document.getElementById('field-usable_temp_range-min');
+  const maxEl  = document.getElementById('field-usable_temp_range-max');
+  const unitEl = document.getElementById('field-usable_temp_range-unit');
+  const tempUnit = unitEl?.value ?? 'K';
+  const toNum = el => { const v = parseFloat(el?.value); return isNaN(v) ? null : v; };
+  const minEntered = toNum(minEl);
+  const maxEntered = toNum(maxEl);
+  return {
+    min: minEntered != null ? toCanonical(minEntered, null, '°C', tempUnit) : null,
+    max: maxEntered != null ? toCanonical(maxEntered, null, '°C', tempUnit) : null,
+    ref: getRefKey('usable_temp_range'),
+  };
 }
 
 function getRockwell() {
@@ -1344,39 +1431,39 @@ function getDuctility() {
 }
 
 function getSNData() {
+  const stressUnit = document.getElementById('field-fatigue_sn_curve_stress_unit')?.value ?? 'GPa';
   const rows = document.querySelectorAll('#field-fatigue_sn_curve .sn-row');
   const points = [];
   for (const row of rows) {
     const stress = parseFloat(row.querySelector('.sn-stress')?.value);
     const cycles = parseFloat(row.querySelector('.sn-cycles')?.value);
     if (!isNaN(stress) && !isNaN(cycles)) {
-      points.push({ stress, cycles });
+      points.push({ stress: toCanonical(stress, null, 'GPa', stressUnit), cycles });
     }
   }
   return { points, ref: getRefKey('fatigue_sn_curve') };
 }
 
 function getCTE() {
-  const singleEl = document.getElementById('field-thermal_expansion_value');
+  const singleEl  = document.getElementById('field-thermal_expansion_value');
   const singleVal = singleEl ? parseFloat(singleEl.value) : NaN;
-
-  // Temperature unit for the table column — convert to °C for canonical storage
-  const unitEl   = document.getElementById('field-thermal_expansion_temp_unit');
-  const tempUnit = unitEl ? unitEl.value : 'K';
+  const cteUnit   = document.getElementById('field-thermal_expansion_cte_unit')?.value ?? 'µm/m·K';
+  const tempUnit  = document.getElementById('field-thermal_expansion_temp_unit')?.value ?? 'K';
 
   const tableRows = document.querySelectorAll('#field-thermal_expansion .cte-row');
   const table = [];
   for (const row of tableRows) {
     const tempEntered = parseFloat(row.querySelector('.cte-temp')?.value);
-    const cte = parseFloat(row.querySelector('.cte-val')?.value);
-    if (!isNaN(tempEntered) && !isNaN(cte)) {
-      const tempC = toCanonical(tempEntered, null, '°C', tempUnit);
-      table.push({ temp: Math.round(tempC * 10) / 10, cte });
+    const cteEntered  = parseFloat(row.querySelector('.cte-val')?.value);
+    if (!isNaN(tempEntered) && !isNaN(cteEntered)) {
+      const tempC        = toCanonical(tempEntered, null, '°C', tempUnit);
+      const cteCanonical = toCanonical(cteEntered,  null, 'µm/m·K', cteUnit);
+      table.push({ temp: Math.round(tempC * 10) / 10, cte: cteCanonical });
     }
   }
 
   return {
-    value: isNaN(singleVal) ? null : singleVal,
+    value: isNaN(singleVal) ? null : toCanonical(singleVal, null, 'µm/m·K', cteUnit),
     table: table.length ? table : [],
     ref:   getRefKey('thermal_expansion'),
   };
