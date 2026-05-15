@@ -93,9 +93,11 @@ function fmt(value, unit, decimals = 1) {
 function renderCard(mat) {
   const selected   = compareSet.has(mat.slug);
   const catClass   = mat.category.toLowerCase().replace(/\s+/g, '-');
-  const yieldMPa   = mat.yield_strength != null ? mat.yield_strength * 1000 : null;
+  const yieldMPa   = mat.yield_strength   != null ? mat.yield_strength   * 1000 : null;
+  const utsMPa     = mat.tensile_strength != null ? mat.tensile_strength * 1000 : null;
   const eStr       = fmt(mat.youngs_modulus, 'GPa');
   const sigStr     = fmt(yieldMPa, 'MPa', 0);
+  const utsStr     = fmt(utsMPa,   'MPa', 0);
   const rhoStr     = fmt(mat.density, 'g/cm³', 2);
 
   function propRow(label, title, value) {
@@ -114,17 +116,14 @@ function renderCard(mat) {
         <h2 class="card-name">${mat.name}</h2>
         <div class="card-badges">
           <span class="badge badge-${catClass}">${mat.category}</span>
+          ${frequencyBadge(mat.usage_frequency)}
         </div>
       </div>
       <dl class="card-props">
-        ${propRow('E',     "Young's Modulus — stiffness in the elastic region",            eStr)}
-        ${propRow('σ<sub>y</sub>', 'Yield Strength — onset of permanent deformation',     sigStr)}
-        ${propRow('ρ',    'Density',                                                       rhoStr)}
-        ${mat.usage_frequency ? `
-        <div class="prop-row prop-row--freq">
-          <dt title="Usage Frequency — Common: used routinely across most projects. Specialty: selected for specific performance needs. Exotic: reserved for highly demanding niche applications.">Usage</dt>
-          <dd>${frequencyBadge(mat.usage_frequency)}</dd>
-        </div>` : ''}
+        ${propRow('E',                        "Young's Modulus — stiffness in the elastic region",  eStr)}
+        ${propRow('σ<sub>y</sub>',            'Yield Strength — onset of permanent deformation',    sigStr)}
+        ${propRow('UTS',                      'Ultimate Tensile Strength — maximum stress before failure', utsStr)}
+        ${propRow('ρ',                        'Density',                                            rhoStr)}
       </dl>
       <div class="card-footer">
         <label class="compare-label">
