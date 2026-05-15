@@ -29,7 +29,6 @@ const charts   = new Map();     // canvasId → Chart instance
 const pressureUnit        = () => unitSystem === 'metric' ? 'GPa'        : 'ksi';
 const strengthUnit        = () => unitSystem === 'metric' ? 'MPa'        : 'ksi';
 const fractureUnit        = () => unitSystem === 'metric' ? 'MPa·m^0.5' : 'ksi·in^0.5';
-const fractureUnitDisplay = () => unitSystem === 'metric' ? 'MPa·m½'    : 'ksi·in½';
 
 function toPressure(gpa) {
   if (gpa == null) return null;
@@ -220,7 +219,7 @@ function renderStrengthChart() {
 function renderFractureChart() {
   const labels = ['Fracture Toughness (K_IC)'];
   const values = materials.map(mat => [toFracture(getProps(mat).kic)]);
-  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureUnitDisplay(), 2);
+  makeBarChart('chart-fracture', 'Fracture Toughness', labels, values, fractureUnit(), 2);
 }
 
 function renderDensityChart() {
