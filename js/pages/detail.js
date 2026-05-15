@@ -495,7 +495,7 @@ function renderPhysical(mat) {
   const cteObj   = ph.thermal_expansion ?? {};
   const cteVal   = cteObj.value;
   const cteTable = cteObj.table ?? [];
-  const cteDisplay = cteVal != null ? `${fmt(cteVal, null, 2)} µm/m·°C` : '—';
+  const cteDisplay = cteVal != null ? `${fmt(cteVal, null, 2)} µm/m·K` : '—';
 
   // ── Thermal diffusivity: prefer direct value, else compute k/(ρCp) ───────
   const kVal      = v(ph.thermal_conductivity);
@@ -576,7 +576,7 @@ function renderPhysical(mat) {
         <table class="cte-table">
           <thead><tr>
             <th class="cte-temp-header">Temperature (K)</th>
-            <th>CTE (µm/m·°C)</th>
+            <th>CTE (µm/m·K)</th>
           </tr></thead>
           <tbody>${cteRows}</tbody>
         </table>
