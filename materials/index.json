@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-14T21:10:28Z",
+  "generated": "2026-05-15T00:20:18Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -45,6 +45,25 @@
       "yield_strength": 0.276,
       "tensile_strength": 0.31,
       "density": 2.7
+    },
+    {
+      "slug": "invar-36-alloy",
+      "path": "materials/metals/invar-36-alloy.json",
+      "name": "Invar 36 Alloy (Cold Drawn)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "commonly_available": false,
+      "youngs_modulus": 148,
+      "yield_strength": 0.483,
+      "tensile_strength": 0.621,
+      "density": 8.05
     },
     {
       "slug": "abs",

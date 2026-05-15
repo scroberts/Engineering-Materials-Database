@@ -18,5 +18,11 @@
     "short_label": "MIL-HDBK-5J 2003",
     "doi": null,
     "bibtex": "@techreport{mil-hdbk-5j-2003,\n  title       = {{MIL-HDBK-5J: Metallic Materials and Elements for Aerospace Vehicle Structures}},\n  institution = {U.S. Department of Defense},\n  year        = {2003},\n  number      = {MIL-HDBK-5J}\n}"
+  },
+  "matweb_carpenter_invar36_coldrawn": {
+    "short_label": "MatWeb: Carpenter Invar 36 (Cold Drawn)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=bb0b4b860cbe4895898e7475a5b8cdb7"
   }
 }
