@@ -12,11 +12,11 @@ import { migrateToLatest } from '../core/schema.js';
 import {
   convertPressure, convertCompStrength, convertFracture,
   convertTemperature, convertElectrical,
-  convertCTE, convertThermalCond, convertSpecificHeat, convertThermalDiff,
-  hvToHb, hbToHv, densityKgM3,
+  convertDensity, convertCTE, convertThermalCond, convertSpecificHeat, convertThermalDiff,
+  hvToHb, hbToHv,
   fmt, fmtCycles,
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS,
-  TEMPERATURE_UNITS, ELECTRICAL_UNITS,
+  TEMPERATURE_UNITS, ELECTRICAL_UNITS, DENSITY_UNITS,
   CTE_UNITS, THERMAL_COND_UNITS, SPECIFIC_HEAT_UNITS, THERMAL_DIFF_UNITS,
 } from '../core/units.js';
 import { shearModulus, specificStiffness, shearStrengthVonMises } from '../core/derived.js';
@@ -40,6 +40,7 @@ function convertFromCanonical(canonical, canonicalUnit, toUnit) {
   if (canonicalUnit === 'MPa·m^0.5') return convertFracture(canonical, toUnit);
   if (canonicalUnit === '°C')         return convertTemperature(canonical, toUnit);
   if (canonicalUnit === '% IACS')     return convertElectrical(canonical, toUnit);
+  if (canonicalUnit === 'g/cm³')     return convertDensity(canonical, toUnit);
   if (canonicalUnit === 'µm/m·K')    return convertCTE(canonical, toUnit);
   if (canonicalUnit === 'W/m·K')     return convertThermalCond(canonical, toUnit);
   if (canonicalUnit === 'J/(kg·K)')  return convertSpecificHeat(canonical, toUnit);
@@ -178,12 +179,12 @@ function renderToolbar() {
 // Metric/Imperial preset maps: canonicalUnit → target display unit
 const METRIC_PRESET = {
   'GPa': 'GPa', 'MPa': 'MPa', 'MPa·m^0.5': 'MPa·m^0.5',
-  '°C': 'K', '% IACS': '% IACS',
+  '°C': 'K', '% IACS': '% IACS', 'g/cm³': 'g/cm³',
   'µm/m·K': 'µm/m·K', 'W/m·K': 'W/m·K', 'J/(kg·K)': 'J/(kg·K)', 'cm²/s': 'cm²/s',
 };
 const IMPERIAL_PRESET = {
   'GPa': 'ksi', 'MPa': 'ksi', 'MPa·m^0.5': 'ksi·in^0.5',
-  '°C': '°F', '% IACS': '% IACS',
+  '°C': '°F', '% IACS': '% IACS', 'g/cm³': 'lb/in³',
   'µm/m·K': 'µin/in·°F', 'W/m·K': 'BTU/(hr·ft·°F)', 'J/(kg·K)': 'BTU/(lb·°F)', 'cm²/s': 'ft²/hr',
 };
 
@@ -401,9 +402,6 @@ function renderPhysical(mat) {
 
   // ── Density ──────────────────────────────────────────────────────────────
   const rho = v(ph.density);
-  const rhoDisplay = rho != null
-    ? `${fmt(rho, null, 2)} g/cm³ <span class="density-secondary">(${fmt(densityKgM3(rho), null, 0)} kg/m³)</span>${refBadge(ph.density?.ref)}`
-    : '—';
 
   // ── CTE ──────────────────────────────────────────────────────────────────
   const cteObj   = ph.thermal_expansion ?? {};
@@ -432,8 +430,11 @@ function renderPhysical(mat) {
     : '—';
 
   const body = `
+    ${unitSelectorRow('Density unit', DENSITY_UNITS, 'g/cm³', 'g/cm³')}
     <table class="prop-table">
-      ${renderRow(tipLabel('Density (ρ)', 'density'), { html: rhoDisplay })}
+      ${renderRow(tipLabel('Density (ρ)', 'density'), {
+        canonical: rho, canonicalUnit: 'g/cm³', displayUnit: 'g/cm³',
+        dataKey: 'density', refKey: ph.density?.ref })}
     </table>
     ${unitSelectorRow('Electrical conductivity unit', ELECTRICAL_UNITS, '% IACS', '% IACS')}
     <table class="prop-table">

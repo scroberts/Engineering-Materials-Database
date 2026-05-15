@@ -17,6 +17,7 @@ export const COMP_STRENGTH_UNITS  = ['MPa', 'psi', 'ksi'];    // stored in MPa
 export const FRACTURE_UNITS       = ['MPa·m^0.5', 'ksi·in^0.5'];
 export const TEMPERATURE_UNITS    = ['K', '°C', '°F'];        // stored in °C
 export const ELECTRICAL_UNITS     = ['% IACS', 'MS/m', 'S/m']; // stored in % IACS
+export const DENSITY_UNITS         = ['g/cm³', 'lb/in³'];        // 1 g/cm³ = 0.036127 lb/in³
 export const CTE_UNITS            = ['µm/m·K', 'µin/in·°F'];  // 1 µm/m·K = 0.5556 µin/in·°F
 export const THERMAL_COND_UNITS   = ['W/m·K', 'BTU/(hr·ft·°F)']; // 1 W/m·K = 0.5779 BTU/(hr·ft·°F)
 export const SPECIFIC_HEAT_UNITS  = ['J/(kg·K)', 'BTU/(lb·°F)']; // 1 J/(kg·K) = 2.389e-4 BTU/(lb·°F)
@@ -42,6 +43,7 @@ export const UNIT_DECIMALS = {
   'ksi·in^0.5': 3,
   'K': 0, '°C': 0, '°F': 1,
   '% IACS': 1, 'MS/m': 3, 'S/m': 0,
+  'g/cm³': 2, 'lb/in³': 4,
   'µm/m·K': 2, 'µin/in·°F': 2,
   'W/m·K': 2, 'BTU/(hr·ft·°F)': 3,
   'J/(kg·K)': 0, 'BTU/(lb·°F)': 4,
@@ -117,6 +119,18 @@ export function convertElectrical(valueIACS, toUnit) {
   if (toUnit === 'MS/m')   return valueIACS * 0.58;
   if (toUnit === 'S/m')    return valueIACS * 5.8e5;
   return valueIACS;
+}
+
+// ── Density ────────────────────────────────────────────────────────────────
+
+/**
+ * Convert density from canonical g/cm³.
+ * 1 g/cm³ = 0.036127292 lb/in³
+ */
+export function convertDensity(val, toUnit) {
+  if (val == null) return null;
+  if (toUnit === 'lb/in³') return val * 0.036127292;
+  return val; // g/cm³
 }
 
 // ── Thermal property converters ───────────────────────────────────────────
