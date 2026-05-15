@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate"],
     "common_form_notes": "Commonly available as sheet and foil. Very soft — easily formed, spun, and deep-drawn.",
     "usage_frequency": "Common",
-    "notes": "Commercially pure aluminum (99.0% min Al). O temper: fully annealed, softest and most ductile condition. AZoM lists elastic modulus as 70–80 GPa for the 1100 alloy family; the value of 70 GPa used here corresponds to the lower bound and is consistent with the Aluminum Association standard value of 69 GPa. Thermal conductivity and O-temper strength values are not listed at the AZoM reference — they are well-established values from the Aluminum Association (k = 222 W/m·K for O temper; σ_y = 34 MPa, UTS = 90 MPa per ASTM B209)."
+    "notes": "Commercially pure aluminum (99.0% min Al). O temper: fully annealed, softest and most ductile condition. AZoM lists elastic modulus as 70–80 GPa for the 1100 alloy family; the value of 70 GPa used here corresponds to the lower bound and is consistent with the Aluminum Association standard value of 69 GPa. Thermal conductivity sourced from Aluminum Association data (k = 222 W/m·K for O temper)."
   },
 
   "typical_usage": "Electrical busbars and conductors, heat exchanger fins, reflective sheet, chemical process equipment, food and chemical containers, spinning and deep-drawing applications requiring maximum formability.",
@@ -16,8 +16,8 @@
   "mechanical_common": {
     "youngs_modulus":      { "value": 70,    "ref": "azom-aluminum-1100" },
     "poissons_ratio":      { "value": 0.33,  "ref": "azom-aluminum-1100" },
-    "yield_strength":      { "value": 0.034, "ref": null },
-    "tensile_strength":    { "value": 0.090, "ref": null },
+    "yield_strength":      { "value": 0.035, "ref": "asm-metals-handbook-desk-1984" },
+    "tensile_strength":    { "value": 0.090, "ref": "asm-metals-handbook-desk-1984" },
     "compressive_modulus": { "value": null,  "ref": null },
     "compressive_strength":{ "value": 34,    "ref": null },
     "usable_temp_range":   { "min": -196, "max": 150, "ref": null }
@@ -28,15 +28,16 @@
     "creep_strength":      { "value": null, "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
     "hardness_vickers":    { "value": 24,   "ref": null },
-    "hardness_brinell":    { "value": 23,   "ref": null },
+    "hardness_brinell":    { "value": 23,   "ref": "asm-metals-handbook-desk-1984" },
     "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
-    "ductility":           { "min": 35, "max": null, "typical": null, "ref": null },
-    "shear_strength":      { "value": 0.055, "ref": null }
+    "ductility":           { "min": 35, "max": null, "typical": null, "ref": "asm-metals-handbook-desk-1984" },
+    "shear_strength":      { "value": 0.060, "ref": "asm-metals-handbook-desk-1984" },
+    "fatigue_sn_curve":    { "points": [{ "stress": 0.035, "cycles": 500000000 }], "ref": "asm-metals-handbook-desk-1984" }
   },
 
   "physical": {
     "density":                { "value": 2.71,  "ref": "azom-aluminum-1100" },
-    "electrical_conductivity":{ "value": 59.0,  "ref": null },
+    "electrical_conductivity":{ "value": 62.0,  "ref": "asm-metals-handbook-desk-1984" },
     "vapour_pressure":        { "value": null,  "ref": null },
     "thermal_expansion": {
       "value": 23.6,
@@ -53,7 +54,7 @@
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-aluminum-1100"],
+  "references": ["azom-aluminum-1100", "asm-metals-handbook-desk-1984"],
 
   "metadata": {
     "submitted_by": "admin",

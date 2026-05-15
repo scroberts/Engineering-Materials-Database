@@ -126,5 +126,11 @@
     "doi": null,
     "bibtex": "@book{incropera-heat-transfer,\n  author    = {Incropera, Frank P. and DeWitt, David P.},\n  title     = {{Fundamentals of Heat and Mass Transfer}},\n  edition   = {6},\n  publisher = {Wiley},\n  year      = {2006},\n  isbn      = {978-0-471-45728-2}\n}",
     "url": "https://www.worldcat.org/isbn/9780471457282"
+  },
+  "asm-metals-handbook-desk-1984": {
+    "short_label": "ASM Desk Edition 1984",
+    "doi": null,
+    "bibtex": "@book{asm-metals-handbook-desk-1984,\n  title     = {{ASM Metals Handbook, Desk Edition}},\n  editor    = {Boyer, Howard E. and Gall, Timothy L.},\n  publisher = {American Society for Metals},\n  year      = {1984},\n  note      = {3rd printing, June 1986},\n  isbn      = {0-87170-188-X}\n}",
+    "url": "https://www.worldcat.org/isbn/087170188X"
   }
 }
