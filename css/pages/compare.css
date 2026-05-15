@@ -1,0 +1,371 @@
+/* compare.css — Compare page layout and components */
+
+/* ── Shared toolbar styles (mirrored from detail.css) ───────────────────── */
+
+.unit-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+
+.unit-toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.unit-toolbar-label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.unit-preset-btn {
+  font-size: 0.8rem;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  color: var(--color-text);
+  transition: background 0.1s, color 0.1s;
+}
+
+.unit-preset-btn:hover { background: var(--color-primary-light); }
+
+.unit-preset-btn.is-active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* ── Page layout ─────────────────────────────────────────────────────────── */
+
+.compare-layout {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+/* ── Compare header ──────────────────────────────────────────────────────── */
+
+.compare-header {
+  margin-bottom: 1.5rem;
+}
+
+.compare-back {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+.compare-back:hover { color: var(--color-text); }
+
+.compare-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* ── Material strip ──────────────────────────────────────────────────────── */
+
+.mat-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.mat-chip {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  min-width: 160px;
+  max-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.mat-chip-name {
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.mat-chip-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.mat-chip-link {
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: 0.1rem;
+}
+.mat-chip-link:hover { text-decoration: underline; }
+
+/* ── Compare body sections ───────────────────────────────────────────────── */
+
+.compare-body { display: flex; flex-direction: column; gap: 2rem; }
+
+.compare-section {}
+
+.compare-section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ── Chart grid ──────────────────────────────────────────────────────────── */
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.chart-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+  height: 280px;
+  position: relative;
+}
+
+.chart-wide {
+  height: 320px;
+  width: 100%;
+}
+
+/* Empty chart state */
+.chart-no-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-empty-msg {
+  text-align: center;
+  color: var(--color-muted);
+}
+.chart-empty-msg span {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+.chart-empty-msg p { font-size: 0.78rem; }
+
+/* ── Merit index table ───────────────────────────────────────────────────── */
+
+.merit-legend {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.merit-up   { color: var(--color-success); font-weight: 700; }
+.merit-down { color: var(--color-danger);  font-weight: 700; }
+
+.merit-best-swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: #fef9c3;
+  border: 1px solid #fde047;
+  border-radius: 2px;
+}
+
+.merit-table-wrap {
+  overflow-x: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.merit-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.merit-table thead tr {
+  background: var(--color-bg);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.merit-table th {
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  text-align: left;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.merit-table th .merit-mat-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.3rem;
+  vertical-align: middle;
+}
+
+.merit-table tbody tr {
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.1s;
+}
+.merit-table tbody tr:last-child { border-bottom: none; }
+.merit-table tbody tr:hover { background: var(--color-bg); }
+
+.merit-table td {
+  padding: 0.45rem 0.75rem;
+  vertical-align: middle;
+}
+
+td.merit-id {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+  width: 3rem;
+}
+
+td.merit-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  max-width: 180px;
+}
+
+td.merit-group {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+/* Direction arrows inside table cells */
+.merit-table td .merit-dir {
+  font-size: 0.7rem;
+  margin-left: 0.2rem;
+}
+
+td.merit-cell {
+  text-align: right;
+  min-width: 90px;
+}
+
+td.merit-best {
+  background: #fef9c3;
+}
+
+.merit-val {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  display: block;
+  text-align: right;
+}
+
+.merit-missing {
+  color: var(--color-text-faint);
+  font-style: italic;
+  display: block;
+  text-align: center;
+}
+
+.merit-bar-wrap {
+  height: 4px;
+  background: var(--color-border);
+  border-radius: 2px;
+  margin-top: 3px;
+  overflow: hidden;
+}
+
+.merit-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* ── Error / empty / loading states ─────────────────────────────────────── */
+
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.compare-loading {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.skeleton-chip {
+  width: 180px;
+  height: 90px;
+  border-radius: var(--radius);
+  background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.compare-empty,
+.compare-error {
+  max-width: 520px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.compare-empty strong,
+.compare-error strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.compare-error {
+  background: #fff5f5;
+  border-color: #fed7d7;
+  color: #c53030;
+}
