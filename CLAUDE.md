@@ -46,7 +46,7 @@ materials/
                     stainless-316.json, steel-a2.json, steel-mild-a36.json
   plastics/         abs.json, abs-fdm.json, pla-fdm.json, petg-fdm.json
   ceramics/         alumina-al2o3.json
-  composites/       ← EMPTY
+  composites/       cfrp-ud.json
 
 references/index.json   Shared reference database (BibTeX cite keys)
 schema/v1.json          JSON Schema Draft-07

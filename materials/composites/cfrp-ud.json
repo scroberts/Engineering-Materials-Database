@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Carbon Fibre / Epoxy (Unidirectional, ~60 vol%)",
+    "slug": "cfrp-ud",
+    "category": "Composite",
+    "fabrication_processes": ["Composite Layup", "Vacuum Infusion", "Machining"],
+    "common_forms": ["Sheet", "Plate"],
+    "common_form_notes": "Supplied as prepreg (pre-impregnated, frozen) or dry fabric for wet lay-up / vacuum infusion. Post-cure machining requires diamond or solid carbide tooling due to abrasive fibres.",
+    "usage_frequency": "Common",
+    "notes": "Properties are for a unidirectional (0°) lamina: standard-modulus carbon fibre (e.g. T300 or AS4, Ef ≈ 230 GPa) in a structural epoxy matrix at approximately 60 vol% fibre. The material is strongly anisotropic — E and strength values given are in the fibre direction (0°). Transverse modulus (90°) is approximately 8–10 GPa and transverse tensile strength approximately 40–60 MPa. For a quasi-isotropic lay-up [0/±45/90]s expect in-plane E ≈ 55–70 GPa and in-plane tensile strength ≈ 400–600 MPa. Thermoset matrix: no melting point; maximum service temperature is set by matrix Tg. Yield strength is not applicable — CFRP is linearly elastic to catastrophic fibre failure."
+  },
+
+  "typical_usage": "Aerospace primary structures (fuselage panels, wing skins, control surfaces), high-performance automotive chassis and body panels, robotic arm links, satellite bus structures, bicycle frames, sporting goods (tennis rackets, golf shafts, hockey sticks), and precision optical mounts where near-zero CTE and maximum specific stiffness are required.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 135.0, "ref": "callister2020" },
+    "poissons_ratio":      { "value": 0.28,  "ref": "callister2020" },
+    "yield_strength":      { "value": null,  "ref": null },
+    "tensile_strength":    { "value": 1.500, "ref": "callister2020" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": 1200,  "ref": "callister2020" },
+    "usable_temp_range":   { "min": -50, "max": 120, "ref": "callister2020" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null, "ref": null },
+    "creep_strength":      { "value": null, "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": null, "ref": null },
+    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_brinell":    { "value": null, "ref": null },
+    "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":      { "value": 0.075, "ref": "callister2020" }
+  },
+
+  "physical": {
+    "density":                { "value": 1.58,  "ref": "callister2020" },
+    "electrical_conductivity":{ "value": null,  "ref": null },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 0.5,
+      "table": [],
+      "ref": "callister2020"
+    },
+    "thermal_conductivity":   { "value": 7.0,   "ref": "callister2020" },
+    "specific_heat":          { "value": 900,   "ref": "callister2020" },
+    "thermal_diffusivity":    { "value": null,  "ref": null },
+    "melting_point_tm":       { "value": null,  "ref": null },
+    "glass_transition_tg":    { "value": 120,   "ref": "callister2020" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["callister2020"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}

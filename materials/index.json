@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T14:12:04Z",
+  "generated": "2026-05-15T16:00:21Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -21,6 +21,26 @@
       "yield_strength": null,
       "tensile_strength": 0.262,
       "density": 3.89
+    },
+    {
+      "slug": "cfrp-ud",
+      "path": "materials/composites/cfrp-ud.json",
+      "name": "Carbon Fibre / Epoxy (Unidirectional, ~60 vol%)",
+      "category": "Composite",
+      "fabrication_processes": [
+        "Composite Layup",
+        "Vacuum Infusion",
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 135.0,
+      "yield_strength": null,
+      "tensile_strength": 1.5,
+      "density": 1.58
     },
     {
       "slug": "aluminum-1100-o",
