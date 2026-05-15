@@ -8,19 +8,19 @@
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as cold drawn bar stock. Invar 36® is a registered trademark of Carpenter Technology Corporation.",
     "commonly_available": false,
-    "notes": "36% nickel-iron alloy with a coefficient of thermal expansion approximately one-tenth that of carbon steel up to 200°C. Curie temperature 279°C — above this, ferromagnetic properties and the low-CTE Invar effect are lost. UNS K93601; ASTM B753 Alloy T36. Data from Carpenter Technology Corporation."
+    "notes": "36% nickel-iron alloy with a coefficient of thermal expansion approximately one-tenth that of carbon steel up to ~190°C (thermal inflection point where the low-CTE Invar effect begins to break down). Curie temperature 279°C — above this, ferromagnetic properties are lost. Also known as Nilo 36, FeNi36, and Invar M93. Equivalent designations: UNS K93600 (annealed), UNS K93601 (cold drawn); W. Nr. 1.3912; ASTM B753 Alloy T36. Machinability similar to AISI 304 stainless steel. Can be welded, brazed, and plated. Young's modulus varies with temper: MatWeb reports 148 GPa for cold drawn bar; SpaceMatDB reports 140 GPa (temper unspecified). Qualified for space applications; stress corrosion cracking resistance tested per ECSS-Q-ST-70-36C. Data primarily from Carpenter Technology Corporation (MatWeb) with supplemental data from SpaceMatDB."
   },
 
-  "typical_usage": "Applications requiring minimal dimensional change with temperature: precision optical and laser systems, aircraft controls, radio and electronic devices, bimetallic thermostats, rod-and-tube temperature regulators. The extremely low CTE near room temperature is its primary design advantage.",
+  "typical_usage": "Applications requiring minimal dimensional change with temperature: precision optical and laser systems, aircraft controls, radio and electronic devices, bimetallic thermostats, rod-and-tube temperature regulators, space structures and instrument frames. The extremely low CTE near room temperature is its primary design advantage.",
 
   "mechanical_common": {
     "youngs_modulus":      { "value": 148,   "ref": "matweb_carpenter_invar36_coldrawn" },
-    "poissons_ratio":      { "value": null,  "ref": null },
+    "poissons_ratio":      { "value": 0.25,  "ref": "spacematdb_invar36" },
     "yield_strength":      { "value": 0.483, "ref": "matweb_carpenter_invar36_coldrawn" },
     "tensile_strength":    { "value": 0.621, "ref": "matweb_carpenter_invar36_coldrawn" },
     "compressive_modulus": { "value": null,  "ref": null },
     "compressive_strength":{ "value": null,  "ref": null },
-    "usable_temp_range":   { "min": null, "max": 200, "ref": null }
+    "usable_temp_range":   { "min": null, "max": 190, "ref": "spacematdb_invar36" }
   },
 
   "mechanical_other": {
@@ -56,7 +56,7 @@
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
 
-  "references": ["matweb_carpenter_invar36_coldrawn"],
+  "references": ["matweb_carpenter_invar36_coldrawn", "spacematdb_invar36"],
 
   "metadata": {
     "submitted_by": "admin",
