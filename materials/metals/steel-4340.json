@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "AISI 4340 Steel (Q&T, 315 °C)",
+    "slug": "steel-4340",
+    "category": "Metal",
+    "fabrication_processes": ["Machining", "Forging"],
+    "common_forms": ["Round Bar", "Plate"],
+    "common_form_notes": "Available as hot-rolled or annealed bar stock; heat treatment (austenitise, quench, temper) required to achieve listed properties. Do not weld in the hardened condition without pre-heat and post-weld temper.",
+    "usage_frequency": "Common",
+    "notes": "AISI 4340 Ni-Cr-Mo ultra-high-strength steel, quenched and tempered at 315 °C (600 °F). CAUTION: the 250–370 °C (480–700 °F) tempering range is the Tempered Martensite Embrittlement (TME) zone — avoid this range when selecting a tempering temperature; 315 °C is shown here as a common aerospace/motorsport condition but toughness is reduced relative to tempering above 400 °C. Shear strength derived from von Mises criterion: UTS/√3 = 1760/√3 ≈ 1016 MPa."
+  },
+
+  "typical_usage": "High-performance shafts, crankshafts, connecting rods, gears, aircraft landing gear, bolts, and other components requiring very high strength at moderate weight. Common in motorsport drivetrains and aerospace structural forgings. Must be heat-treated to achieve full properties.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 200,   "ref": "makeitfrom-4340" },
+    "poissons_ratio":      { "value": 0.29,  "ref": "makeitfrom-4340" },
+    "yield_strength":      { "value": 1.620, "ref": "makeitfrom-4340" },
+    "tensile_strength":    { "value": 1.760, "ref": "makeitfrom-4340" },
+    "compressive_modulus": { "value": null,  "ref": null },
+    "compressive_strength":{ "value": null,  "ref": null },
+    "usable_temp_range":   { "min": -40, "max": 430, "ref": null }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null,  "ref": null },
+    "creep_strength":      { "value": null,  "ref": null },
+    "fracture_toughness":  { "value": null,  "ref": null },
+    "hardness_vickers":    { "value": null,  "ref": null },
+    "hardness_brinell":    { "value": 490,   "ref": "makeitfrom-4340" },
+    "hardness_rockwell":   { "value": 50,  "scale": "C", "ref": "makeitfrom-4340" },
+    "ductility":           { "min": 10, "max": 14, "typical": 12, "ref": "makeitfrom-4340" },
+    "shear_strength":      { "value": 1.016, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 7.85, "ref": "makeitfrom-4340" },
+    "electrical_conductivity":{ "value": 7.5,  "ref": "makeitfrom-4340" },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 12.3,
+      "table": [],
+      "ref": "azom-4340"
+    },
+    "thermal_conductivity":   { "value": 44.5, "ref": "azom-4340" },
+    "specific_heat":          { "value": 470,  "ref": "makeitfrom-4340" },
+    "thermal_diffusivity":    { "value": null,  "ref": null },
+    "melting_point_tm":       { "value": 1420, "ref": "makeitfrom-4340" },
+    "glass_transition_tg":    { "value": null,  "ref": null },
+    "magnetic_classification":{ "value": "Ferromagnetic", "ref": null }
+  },
+
+  "references": ["makeitfrom-4340", "azom-4340"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-05-15",
+    "approved_by": "admin",
+    "approved_date": "2026-05-15"
+  }
+}

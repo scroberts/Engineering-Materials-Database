@@ -156,5 +156,23 @@
     "doi": null,
     "bibtex": "@book{asm-metals-handbook-desk-1984,\n  title     = {{ASM Metals Handbook, Desk Edition}},\n  editor    = {Boyer, Howard E. and Gall, Timothy L.},\n  publisher = {American Society for Metals},\n  year      = {1984},\n  note      = {3rd printing, June 1986},\n  isbn      = {0-87170-188-X}\n}",
     "url": "https://www.worldcat.org/isbn/087170188X"
+  },
+  "makeitfrom-4340": {
+    "short_label": "MakeItFrom: SAE-AISI 4340 Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-4340-SNCM439-G43400-Ni-Cr-Mo-Steel"
+  },
+  "azom-4340": {
+    "short_label": "AZoM: AISI 4340 Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6772"
+  },
+  "makeitfrom-g10": {
+    "short_label": "MakeItFrom: NEMA Grade G-10 Glass/Epoxy Laminate",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/NEMA-Grade-G-10-GEE-Glass-Epoxy-Laminate"
   }
 }
