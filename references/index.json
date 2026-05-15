@@ -29,6 +29,18 @@
     "bibtex": null,
     "url": "https://metalzenith.com/blogs/steel-properties/a36-steel-properties-and-key-applications-explained"
   },
+  "theworldmaterial-303": {
+    "short_label": "TheWorldMaterial: AISI 303 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/aisi-303-stainless-steel-uns-s30300/"
+  },
+  "theworldmaterial-316": {
+    "short_label": "TheWorldMaterial: AISI 316 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/316-stainless-steel/"
+  },
   "azom-abs": {
     "short_label": "AZoM: ABS Medium Impact",
     "doi": null,
