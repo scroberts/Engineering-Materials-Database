@@ -16,46 +16,35 @@ import {
   hvToHb, hbToHv, densityKgM3,
   fmt, fmtCycles,
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS,
-  TEMPERATURE_UNITS, ELECTRICAL_UNITS, UNIT_DECIMALS,
+  TEMPERATURE_UNITS, ELECTRICAL_UNITS,
   CTE_UNITS, THERMAL_COND_UNITS, SPECIFIC_HEAT_UNITS, THERMAL_DIFF_UNITS,
 } from '../core/units.js';
 import { shearModulus, specificStiffness, shearStrengthVonMises } from '../core/derived.js';
 import { TOOLTIPS } from '../core/tooltips.js';
 
 // ── Unit display names ────────────────────────────────────────────────────────
-// Fracture toughness units use <sup>½</sup> in HTML display but plain ^0.5 in
-// <option> text (HTML is not rendered inside <select> elements).
+// Fracture toughness units use <sup>½</sup> in HTML but plain text in <option>.
 
 const UNIT_HTML = {
   'MPa·m^0.5': 'MPa·m<sup>½</sup>',
   'ksi·in^0.5': 'ksi·in<sup>½</sup>',
 };
 
-/** HTML string for display inside a table cell. */
 function displayUnitHtml(unit) { return UNIT_HTML[unit] ?? unit; }
 
-// ── Canonical conversion ──────────────────────────────────────────────────────
+// ── Canonical → display conversion ───────────────────────────────────────────
 
 function convertFromCanonical(canonical, canonicalUnit, toUnit) {
-  if (canonicalUnit === 'GPa')       return convertPressure(canonical, toUnit);
-  if (canonicalUnit === 'MPa')       return convertCompStrength(canonical, toUnit);
+  if (canonicalUnit === 'GPa')        return convertPressure(canonical, toUnit);
+  if (canonicalUnit === 'MPa')        return convertCompStrength(canonical, toUnit);
   if (canonicalUnit === 'MPa·m^0.5') return convertFracture(canonical, toUnit);
-  if (canonicalUnit === '°C')        return convertTemperature(canonical, toUnit);
-  if (canonicalUnit === '% IACS')    return convertElectrical(canonical, toUnit);
-  if (canonicalUnit === 'µm/m·K')   return convertCTE(canonical, toUnit);
-  if (canonicalUnit === 'W/m·K')    return convertThermalCond(canonical, toUnit);
-  if (canonicalUnit === 'J/(kg·K)') return convertSpecificHeat(canonical, toUnit);
-  if (canonicalUnit === 'cm²/s')    return convertThermalDiff(canonical, toUnit);
+  if (canonicalUnit === '°C')         return convertTemperature(canonical, toUnit);
+  if (canonicalUnit === '% IACS')     return convertElectrical(canonical, toUnit);
+  if (canonicalUnit === 'µm/m·K')    return convertCTE(canonical, toUnit);
+  if (canonicalUnit === 'W/m·K')     return convertThermalCond(canonical, toUnit);
+  if (canonicalUnit === 'J/(kg·K)')  return convertSpecificHeat(canonical, toUnit);
+  if (canonicalUnit === 'cm²/s')     return convertThermalDiff(canonical, toUnit);
   return canonical;
-}
-
-// ── Temperature formatting ────────────────────────────────────────────────────
-
-function fmtTemp(celsius, toUnit = 'K') {
-  if (celsius == null) return null;
-  const val = convertTemperature(celsius, toUnit);
-  const d   = toUnit === '°F' ? 1 : 0;   // e.g. 212.0 °F, but 273 K / 20 °C
-  return `${Number(val.toFixed(d))} ${toUnit}`;
 }
 
 // ── Reference numbering (set by render() before any section renderer runs) ───
@@ -82,89 +71,39 @@ function refBadge(key) {
   return `<a href="#ref-${num}" class="prop-ref">[${num}]</a>`;
 }
 
-/** Standard two-column property row. Pass refKey=null to suppress badge. */
-function propRow(labelHtml, valueHtml, refKey) {
-  return `<tr>
-    <th>${labelHtml}</th>
-    <td class="prop-value">${valueHtml}${refKey ? refBadge(refKey) : ''}</td>
-  </tr>`;
-}
-
 /**
- * Property row whose value participates in unit-conversion.
- * The canonical value is stored in data-canonical / data-canonical-unit
- * so wireUnitSelector can recalculate it when the user changes the unit.
+ * Universal property row renderer.
+ *
+ * Pre-rendered values (hardness, density, magnetic class, …):
+ *   renderRow(label, { html: '…' })
+ *
+ * Unit-convertible values:
+ *   renderRow(label, { canonical, canonicalUnit, displayUnit, refKey, note, dataKey })
+ *   canonical=null emits a "—" placeholder that still carries data attributes
+ *   so wireUnitSelector can target it when the unit later changes.
  */
-function unitPropRow(labelHtml, canonical, canonicalUnit, currentUnit, dataKey, refKey) {
+function renderRow(labelHtml, { html, canonical, canonicalUnit, displayUnit, refKey, note, dataKey } = {}) {
+  if (html !== undefined) {
+    return `<tr><th>${labelHtml}</th><td class="prop-value">${html}</td></tr>`;
+  }
+
+  const unit = displayUnit ?? canonicalUnit;
+  const dataAttrs = [
+    dataKey       ? `data-prop="${dataKey}"` : '',
+    canonicalUnit ? `data-canonical-unit="${canonicalUnit}"` : '',
+    `data-canonical="${canonical ?? ''}"`,
+  ].filter(Boolean).join(' ');
+
   if (canonical == null) {
-    return `<tr>
-      <th>${labelHtml}</th>
-      <td class="prop-value missing"
-          data-prop="${dataKey}"
-          data-canonical=""
-          data-canonical-unit="${canonicalUnit}">—</td>
-    </tr>`;
+    return `<tr><th>${labelHtml}</th><td class="prop-value missing" ${dataAttrs}>—</td></tr>`;
   }
-  const converted = convertFromCanonical(canonical, canonicalUnit, currentUnit);
-  const display   = fmt(converted, currentUnit);
-  return `<tr>
-    <th>${labelHtml}</th>
-    <td class="prop-value"
-        data-prop="${dataKey}"
-        data-canonical="${canonical}"
-        data-canonical-unit="${canonicalUnit}">
-      ${display} ${displayUnitHtml(currentUnit)}${refKey ? refBadge(refKey) : ''}
-    </td>
-  </tr>`;
-}
 
-/**
- * Temperature property row.  Canonical unit is °C; default display is K.
- * data-canonical-unit="°C" makes wireUnitSelector find these cells.
- */
-function tempPropRow(labelHtml, celsius, dataKey, refKey) {
-  if (celsius == null) {
-    return `<tr>
-      <th>${labelHtml}</th>
-      <td class="prop-value missing"
-          data-prop="${dataKey}"
-          data-canonical=""
-          data-canonical-unit="°C">—</td>
-    </tr>`;
-  }
-  return `<tr>
-    <th>${labelHtml}</th>
-    <td class="prop-value"
-        data-prop="${dataKey}"
-        data-canonical="${celsius}"
-        data-canonical-unit="°C">
-      ${fmtTemp(celsius, 'K')}${refKey ? refBadge(refKey) : ''}
-    </td>
-  </tr>`;
-}
+  const converted  = convertFromCanonical(canonical, canonicalUnit, unit);
+  const valueText  = `${fmt(converted, unit)} ${displayUnitHtml(unit)}`;
+  const refHtml    = refKey ? refBadge(refKey) : '';
+  const noteHtml   = note   ? ` ${note}` : '';
 
-/**
- * Electrical conductivity row (canonical % IACS), unit-selectable.
- */
-function electricalPropRow(labelHtml, valueIACS, dataKey, refKey) {
-  if (valueIACS == null) {
-    return `<tr>
-      <th>${labelHtml}</th>
-      <td class="prop-value missing"
-          data-prop="${dataKey}"
-          data-canonical=""
-          data-canonical-unit="% IACS">—</td>
-    </tr>`;
-  }
-  return `<tr>
-    <th>${labelHtml}</th>
-    <td class="prop-value"
-        data-prop="${dataKey}"
-        data-canonical="${valueIACS}"
-        data-canonical-unit="% IACS">
-      ${fmt(valueIACS, null, 1)} % IACS${refKey ? refBadge(refKey) : ''}
-    </td>
-  </tr>`;
+  return `<tr><th>${labelHtml}</th><td class="prop-value" ${dataAttrs}>${valueText}${refHtml}${noteHtml}</td></tr>`;
 }
 
 // ── Section collapse ──────────────────────────────────────────────────────────
@@ -182,48 +121,32 @@ function wireUnitSelector(selectEl) {
     const toUnit       = selectEl.value;
     const canonicalUnit = selectEl.dataset.canonicalUnit;
 
-    // All unit selectors update document-wide so calculated properties
-    // (which have no section-level selector) also get converted.
-    const scope = document;
-
-    scope.querySelectorAll(`[data-canonical-unit="${canonicalUnit}"]`).forEach(td => {
+    document.querySelectorAll(`[data-canonical-unit="${canonicalUnit}"]`).forEach(td => {
       const raw = parseFloat(td.dataset.canonical);
       if (isNaN(raw)) return;
 
-      const converted = convertFromCanonical(raw, canonicalUnit, toUnit);
-      let displayText;
+      const converted   = convertFromCanonical(raw, canonicalUnit, toUnit);
+      const displayText = `${fmt(converted, toUnit)} ${displayUnitHtml(toUnit)}`;
 
-      if (canonicalUnit === '°C') {
-        const d = toUnit === '°F' ? 1 : 0;
-        displayText = `${Number(converted.toFixed(d))} ${toUnit}`;
-      } else if (canonicalUnit === '% IACS') {
-        const d = toUnit === '% IACS' ? 1 : toUnit === 'MS/m' ? 3 : 0;
-        displayText = `${Number(converted.toFixed(d))} ${toUnit}`;
-      } else if (canonicalUnit === 'µm/m·K' || canonicalUnit === 'W/m·K' ||
-                 canonicalUnit === 'J/(kg·K)' || canonicalUnit === 'cm²/s') {
-        displayText = `${fmt(converted, toUnit)} ${toUnit}`;
-      } else {
-        displayText = `${fmt(converted, toUnit)} ${displayUnitHtml(toUnit)}`;
-      }
-
+      // Preserve child nodes that should survive the innerHTML reset
       const badge = td.querySelector('.prop-ref');
+      const note  = td.querySelector('.prop-note');
       td.innerHTML = displayText;
+      if (note)  td.appendChild(note);
       if (badge) td.appendChild(badge);
     });
 
-    // Update CTE table temperature column header when temp unit changes
+    // Temperature-specific side effects
     if (canonicalUnit === '°C') {
       document.querySelectorAll('.cte-temp-header').forEach(th => {
         th.textContent = `Temperature (${toUnit})`;
       });
-      // Update usable temp range label in mechanical section
       document.querySelectorAll('.temp-range-display').forEach(span => {
         const minC = parseFloat(span.dataset.minC);
         const maxC = parseFloat(span.dataset.maxC);
         if (!isNaN(minC) && !isNaN(maxC)) {
-          const d = toUnit === '°F' ? 1 : 0;
-          const minVal = Number(convertTemperature(minC, toUnit).toFixed(d));
-          const maxVal = Number(convertTemperature(maxC, toUnit).toFixed(d));
+          const minVal = fmt(convertTemperature(minC, toUnit), toUnit);
+          const maxVal = fmt(convertTemperature(maxC, toUnit), toUnit);
           span.textContent = `${minVal} ${toUnit} to ${maxVal} ${toUnit}`;
         }
       });
@@ -314,7 +237,6 @@ function tipLabel(text, tooltipKey) {
 function renderMechanicalCommon(mat) {
   const mc = mat.mechanical_common ?? {};
 
-  // Usable temperature range — stored as a range object, not valued_property
   const tempRange = mc.usable_temp_range;
   let tempRangeHtml = '—';
   if (tempRange?.min != null && tempRange?.max != null) {
@@ -330,34 +252,31 @@ function renderMechanicalCommon(mat) {
   const body = `
     ${unitSelectorRow('Pressure unit', PRESSURE_UNITS, 'GPa', 'GPa')}
     <table class="prop-table">
-      ${unitPropRow(
-        tipLabel("Young's Modulus (E)", 'youngs_modulus'),
-        v(mc.youngs_modulus), 'GPa', 'GPa', 'youngs_modulus', mc.youngs_modulus?.ref)}
-      ${propRow(
-        tipLabel("Poisson's Ratio (ν)", 'poissons_ratio'),
-        v(mc.poissons_ratio) != null
-          ? `${v(mc.poissons_ratio)}${refBadge(mc.poissons_ratio?.ref)}` : '—')}
-      ${unitPropRow(
-        tipLabel('Yield Strength (σ<sub>y</sub>)', 'yield_strength'),
-        v(mc.yield_strength), 'GPa', 'GPa', 'yield_strength', mc.yield_strength?.ref)}
-      ${unitPropRow(
-        tipLabel('Tensile Strength (UTS)', 'tensile_strength'),
-        v(mc.tensile_strength), 'GPa', 'GPa', 'tensile_strength', mc.tensile_strength?.ref)}
-      ${unitPropRow(
-        tipLabel('Compressive Modulus', 'compressive_modulus'),
-        v(mc.compressive_modulus), 'GPa', 'GPa', 'compressive_modulus', mc.compressive_modulus?.ref)}
+      ${renderRow(tipLabel("Young's Modulus (E)", 'youngs_modulus'), {
+        canonical: v(mc.youngs_modulus), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'youngs_modulus', refKey: mc.youngs_modulus?.ref })}
+      ${renderRow(tipLabel("Poisson's Ratio (ν)", 'poissons_ratio'), {
+        html: v(mc.poissons_ratio) != null
+          ? `${v(mc.poissons_ratio)}${refBadge(mc.poissons_ratio?.ref)}` : '—' })}
+      ${renderRow(tipLabel('Yield Strength (σ<sub>y</sub>)', 'yield_strength'), {
+        canonical: v(mc.yield_strength), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'yield_strength', refKey: mc.yield_strength?.ref })}
+      ${renderRow(tipLabel('Tensile Strength (UTS)', 'tensile_strength'), {
+        canonical: v(mc.tensile_strength), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'tensile_strength', refKey: mc.tensile_strength?.ref })}
+      ${renderRow(tipLabel('Compressive Modulus', 'compressive_modulus'), {
+        canonical: v(mc.compressive_modulus), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'compressive_modulus', refKey: mc.compressive_modulus?.ref })}
     </table>
     ${unitSelectorRow('Compressive strength unit', COMP_STRENGTH_UNITS, 'MPa', 'MPa')}
     <table class="prop-table">
-      ${unitPropRow(
-        tipLabel('Compressive Strength', 'compressive_strength'),
-        v(mc.compressive_strength), 'MPa', 'MPa', 'compressive_strength', mc.compressive_strength?.ref)}
+      ${renderRow(tipLabel('Compressive Strength', 'compressive_strength'), {
+        canonical: v(mc.compressive_strength), canonicalUnit: 'MPa', displayUnit: 'MPa',
+        dataKey: 'compressive_strength', refKey: mc.compressive_strength?.ref })}
     </table>
     <table class="prop-table">
-      ${propRow(
-        tipLabel('Usable Temp Range', 'usable_temp_range'),
-        `${tempRangeHtml}${tempRange?.ref ? refBadge(tempRange.ref) : ''}`,
-        null)}
+      ${renderRow(tipLabel('Usable Temp Range', 'usable_temp_range'), {
+        html: `${tempRangeHtml}${tempRange?.ref ? refBadge(tempRange.ref) : ''}` })}
     </table>`;
 
   return sectionCard('Mechanical — Common', body);
@@ -370,33 +289,28 @@ function renderMechanicalOther(mat) {
   const ktBody = `
     ${unitSelectorRow('Unit', FRACTURE_UNITS, 'MPa·m^0.5', 'MPa·m^0.5')}
     <table class="prop-table">
-      ${unitPropRow(
-        tipLabel('Fracture Toughness (K<sub>IC</sub>)', 'fracture_toughness'),
-        v(mo.fracture_toughness), 'MPa·m^0.5', 'MPa·m^0.5', 'fracture_toughness',
-        mo.fracture_toughness?.ref)}
+      ${renderRow(tipLabel('Fracture Toughness (K<sub>IC</sub>)', 'fracture_toughness'), {
+        canonical: v(mo.fracture_toughness), canonicalUnit: 'MPa·m^0.5', displayUnit: 'MPa·m^0.5',
+        dataKey: 'fracture_toughness', refKey: mo.fracture_toughness?.ref })}
     </table>`;
 
   // ── Hardness ────────────────────────────────────────────────────────────
   const hv = v(mo.hardness_vickers);
   const hb = v(mo.hardness_brinell);
-  const hvFromHb = hb != null ? hbToHv(hb) : null;
-  const hbFromHv = hv != null ? hvToHb(hv) : null;
-
   const hvDisplay = hv != null
     ? `<span class="hardness-val">${hv}</span>${refBadge(mo.hardness_vickers?.ref)}`
-    : (hvFromHb != null
-      ? `<span class="hardness-val derived">${hvFromHb} <span class="prop-note">(from HB)</span></span>`
+    : (hb != null
+      ? `<span class="hardness-val derived">${hbToHv(hb)} <span class="prop-note">(from HB)</span></span>`
       : '—');
   const hbDisplay = hb != null
     ? `<span class="hardness-val">${hb}</span>${refBadge(mo.hardness_brinell?.ref)}`
-    : (hbFromHv != null
-      ? `<span class="hardness-val derived">${hbFromHv} <span class="prop-note">(from HV)</span></span>`
+    : (hv != null
+      ? `<span class="hardness-val derived">${hvToHb(hv)} <span class="prop-note">(from HV)</span></span>`
       : '—');
   const hw = mo.hardness_rockwell;
   const hrDisplay = (hw?.value != null && hw?.scale)
     ? `<span class="hardness-val">HR${hw.scale} ${hw.value}</span>${refBadge(hw?.ref)}`
     : '—';
-
   const hardnessHtml = `
     <div class="hardness-row">
       <div class="hardness-entry">
@@ -419,19 +333,15 @@ function renderMechanicalOther(mat) {
   const ducRange = (ducObj.min != null && ducObj.max != null)
     ? `<span class="ductility-range">(${ducObj.min} – ${ducObj.max} %)</span>` : '';
 
-  let ducDisplay, ducRefKey;
+  let ducHtml;
   if (ducTypical != null) {
-    ducDisplay = `${ducTypical.toFixed(1)} % ${ducCalcNote} ${ducRange}`;
-    ducRefKey  = ducObj.ref;
+    ducHtml = `${ducTypical.toFixed(1)} % ${ducCalcNote} ${ducRange}${refBadge(ducObj.ref)}`;
   } else if (ducObj.min != null) {
-    ducDisplay = `≥ ${ducObj.min} %`;
-    ducRefKey  = ducObj.ref;
+    ducHtml = `≥ ${ducObj.min} %${refBadge(ducObj.ref)}`;
   } else if (ducObj.max != null) {
-    ducDisplay = `≤ ${ducObj.max} %`;
-    ducRefKey  = ducObj.ref;
+    ducHtml = `≤ ${ducObj.max} %${refBadge(ducObj.ref)}`;
   } else {
-    ducDisplay = '—';
-    ducRefKey  = null;   // no value → no reference badge
+    ducHtml = '—';
   }
 
   // ── Shear strength ───────────────────────────────────────────────────────
@@ -444,20 +354,18 @@ function renderMechanicalOther(mat) {
   const body = `
     ${ktBody}
     <table class="prop-table">
-      ${propRow(tipLabel('Hardness', 'hardness_vickers'), hardnessHtml)}
-      ${propRow(tipLabel('Ductility (elongation)', 'ductility'), ducDisplay, ducRefKey)}
-      ${unitPropRow(
-        tipLabel('Shear Strength', 'shear_strength') + (shearNote ? ' ' + shearNote : ''),
-        shearVal, 'GPa', 'GPa', 'shear_strength',
-        shearDirect != null ? mo.shear_strength?.ref : null)}
-      ${unitPropRow(
-        tipLabel('Microyield Strength', 'microyield_strength'),
-        v(mo.microyield_strength), 'GPa', 'GPa', 'microyield_strength',
-        mo.microyield_strength?.ref)}
-      ${unitPropRow(
-        tipLabel('Creep Strength', 'creep_strength'),
-        v(mo.creep_strength), 'GPa', 'GPa', 'creep_strength',
-        mo.creep_strength?.ref)}
+      ${renderRow(tipLabel('Hardness', 'hardness_vickers'), { html: hardnessHtml })}
+      ${renderRow(tipLabel('Ductility (elongation)', 'ductility'), { html: ducHtml })}
+      ${renderRow(tipLabel('Shear Strength', 'shear_strength'), {
+        canonical: shearVal, canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'shear_strength', note: shearNote,
+        refKey: shearDirect != null ? mo.shear_strength?.ref : null })}
+      ${renderRow(tipLabel('Microyield Strength', 'microyield_strength'), {
+        canonical: v(mo.microyield_strength), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'microyield_strength', refKey: mo.microyield_strength?.ref })}
+      ${renderRow(tipLabel('Creep Strength', 'creep_strength'), {
+        canonical: v(mo.creep_strength), canonicalUnit: 'GPa', displayUnit: 'GPa',
+        dataKey: 'creep_strength', refKey: mo.creep_strength?.ref })}
     </table>`;
 
   // ── S-N curve table ──────────────────────────────────────────────────────
@@ -467,7 +375,9 @@ function renderMechanicalOther(mat) {
     const snRef  = refBadge(mo.fatigue_sn_curve?.ref);
     const snRows = snPoints.map(pt =>
       `<tr>
-        <td data-canonical="${pt.stress}" data-canonical-unit="GPa">${fmt(pt.stress * 1000, 'MPa', 1)} MPa</td>
+        <td data-canonical="${pt.stress}" data-canonical-unit="GPa">
+          ${fmt(pt.stress, 'GPa')} GPa
+        </td>
         <td>${fmtCycles(pt.cycles)}</td>
       </tr>`
     ).join('');
@@ -495,25 +405,20 @@ function renderPhysical(mat) {
     ? `${fmt(rho, null, 2)} g/cm³ <span class="density-secondary">(${fmt(densityKgM3(rho), null, 0)} kg/m³)</span>${refBadge(ph.density?.ref)}`
     : '—';
 
-  // ── Electrical conductivity ───────────────────────────────────────────────
-  const elecUnit = unitSelectorRow('Electrical conductivity unit', ELECTRICAL_UNITS, '% IACS', '% IACS');
-
   // ── CTE ──────────────────────────────────────────────────────────────────
   const cteObj   = ph.thermal_expansion ?? {};
   const cteVal   = cteObj.value;
   const cteTable = cteObj.table ?? [];
 
   // ── Thermal diffusivity: prefer direct value, else compute k/(ρCp) ───────
-  const kVal      = v(ph.thermal_conductivity);
-  const CpVal     = v(ph.specific_heat);
-  const DVal      = v(ph.thermal_diffusivity);
-  const DComputed = (kVal != null && rho != null && CpVal != null)
+  const kVal       = v(ph.thermal_conductivity);
+  const CpVal      = v(ph.specific_heat);
+  const DVal       = v(ph.thermal_diffusivity);
+  const DComputed  = (kVal != null && rho != null && CpVal != null)
     ? (kVal / (rho * 1000 * CpVal)) * 1e4 : null;
-  // Effective diffusivity canonical value (cm²/s) for data attribute
   const DEffective = DVal ?? DComputed;
-
-  const Tm = v(ph.melting_point_tm);
-  const Tg = v(ph.glass_transition_tg);
+  const diffNote   = DVal == null && DComputed != null
+    ? `<span class="prop-note">(k/ρCp)</span>` : '';
 
   // ── Magnetic classification ───────────────────────────────────────────────
   const magClass = ph.magnetic_classification?.value ?? null;
@@ -528,59 +433,44 @@ function renderPhysical(mat) {
 
   const body = `
     <table class="prop-table">
-      ${propRow(tipLabel('Density (ρ)', 'density'), rhoDisplay)}
+      ${renderRow(tipLabel('Density (ρ)', 'density'), { html: rhoDisplay })}
     </table>
-    ${elecUnit}
+    ${unitSelectorRow('Electrical conductivity unit', ELECTRICAL_UNITS, '% IACS', '% IACS')}
     <table class="prop-table">
-      ${electricalPropRow(
-        tipLabel('Electrical Conductivity', 'electrical_conductivity'),
-        v(ph.electrical_conductivity), 'electrical_conductivity',
-        ph.electrical_conductivity?.ref)}
-      ${propRow(
-        tipLabel('Vapour Pressure', 'vapour_pressure'),
-        v(ph.vapour_pressure) != null
-          ? `${v(ph.vapour_pressure)} Pa ${refBadge(ph.vapour_pressure?.ref)}` : '—')}
+      ${renderRow(tipLabel('Electrical Conductivity', 'electrical_conductivity'), {
+        canonical: v(ph.electrical_conductivity), canonicalUnit: '% IACS', displayUnit: '% IACS',
+        dataKey: 'electrical_conductivity', refKey: ph.electrical_conductivity?.ref })}
+      ${renderRow(tipLabel('Vapour Pressure', 'vapour_pressure'), {
+        html: v(ph.vapour_pressure) != null
+          ? `${v(ph.vapour_pressure)} Pa ${refBadge(ph.vapour_pressure?.ref)}` : '—' })}
     </table>
-    ${unitSelectorRow('CTE unit', CTE_UNITS, 'µm/m·K', 'µm/m·K')}
+    <div class="unit-selector-group">
+      ${unitSelectorRow('CTE', CTE_UNITS, 'µm/m·K', 'µm/m·K')}
+      ${unitSelectorRow('Thermal conductivity', THERMAL_COND_UNITS, 'W/m·K', 'W/m·K')}
+      ${unitSelectorRow('Specific heat', SPECIFIC_HEAT_UNITS, 'J/(kg·K)', 'J/(kg·K)')}
+      ${unitSelectorRow('Thermal diffusivity', THERMAL_DIFF_UNITS, 'cm²/s', 'cm²/s')}
+    </div>
     <table class="prop-table">
-      ${unitPropRow(
-        tipLabel('Thermal Expansion (α)', 'thermal_expansion'),
-        cteVal, 'µm/m·K', 'µm/m·K', 'thermal_expansion', cteObj.ref)}
-    </table>
-    ${unitSelectorRow('Thermal conductivity unit', THERMAL_COND_UNITS, 'W/m·K', 'W/m·K')}
-    ${unitSelectorRow('Specific heat unit', SPECIFIC_HEAT_UNITS, 'J/(kg·K)', 'J/(kg·K)')}
-    ${unitSelectorRow('Thermal diffusivity unit', THERMAL_DIFF_UNITS, 'cm²/s', 'cm²/s')}
-    <table class="prop-table">
-      ${unitPropRow(
-        tipLabel('Thermal Conductivity (k)', 'thermal_conductivity'),
-        kVal, 'W/m·K', 'W/m·K', 'thermal_conductivity', ph.thermal_conductivity?.ref)}
-      ${unitPropRow(
-        tipLabel('Specific Heat (C<sub>p</sub>)', 'specific_heat'),
-        CpVal, 'J/(kg·K)', 'J/(kg·K)', 'specific_heat', ph.specific_heat?.ref)}
-      ${(() => {
-        if (DEffective == null) {
-          return `<tr>
-            <th>${tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity')}</th>
-            <td class="prop-value missing" data-prop="thermal_diffusivity"
-                data-canonical="" data-canonical-unit="cm²/s">—</td>
-          </tr>`;
-        }
-        const diffNote = DVal == null && DComputed != null
-          ? `<span class="prop-note">(k/ρCp)</span>` : '';
-        const diffRef  = DVal != null ? refBadge(ph.thermal_diffusivity?.ref) : '';
-        return `<tr>
-          <th>${tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity')}</th>
-          <td class="prop-value" data-prop="thermal_diffusivity"
-              data-canonical="${DEffective}" data-canonical-unit="cm²/s">
-            ${fmt(DEffective, 'cm²/s')} cm²/s ${diffNote}${diffRef}
-          </td>
-        </tr>`;
-      })()}
-      ${tempPropRow(tipLabel('Melting Point (T<sub>m</sub>)', 'melting_point_tm'),
-        Tm, 'melting_point_tm', ph.melting_point_tm?.ref)}
-      ${tempPropRow(tipLabel('Glass Transition (T<sub>g</sub>)', 'glass_transition_tg'),
-        Tg, 'glass_transition_tg', ph.glass_transition_tg?.ref)}
-      ${propRow(tipLabel('Magnetic Classification', 'magnetic_classification'), magDisplay)}
+      ${renderRow(tipLabel('Thermal Expansion (α)', 'thermal_expansion'), {
+        canonical: cteVal, canonicalUnit: 'µm/m·K', displayUnit: 'µm/m·K',
+        dataKey: 'thermal_expansion', refKey: cteObj.ref })}
+      ${renderRow(tipLabel('Thermal Conductivity (k)', 'thermal_conductivity'), {
+        canonical: kVal, canonicalUnit: 'W/m·K', displayUnit: 'W/m·K',
+        dataKey: 'thermal_conductivity', refKey: ph.thermal_conductivity?.ref })}
+      ${renderRow(tipLabel('Specific Heat (C<sub>p</sub>)', 'specific_heat'), {
+        canonical: CpVal, canonicalUnit: 'J/(kg·K)', displayUnit: 'J/(kg·K)',
+        dataKey: 'specific_heat', refKey: ph.specific_heat?.ref })}
+      ${renderRow(tipLabel('Thermal Diffusivity (D)', 'thermal_diffusivity'), {
+        canonical: DEffective, canonicalUnit: 'cm²/s', displayUnit: 'cm²/s',
+        dataKey: 'thermal_diffusivity', note: diffNote,
+        refKey: DVal != null ? ph.thermal_diffusivity?.ref : null })}
+      ${renderRow(tipLabel('Melting Point (T<sub>m</sub>)', 'melting_point_tm'), {
+        canonical: v(ph.melting_point_tm), canonicalUnit: '°C', displayUnit: 'K',
+        dataKey: 'melting_point_tm', refKey: ph.melting_point_tm?.ref })}
+      ${renderRow(tipLabel('Glass Transition (T<sub>g</sub>)', 'glass_transition_tg'), {
+        canonical: v(ph.glass_transition_tg), canonicalUnit: '°C', displayUnit: 'K',
+        dataKey: 'glass_transition_tg', refKey: ph.glass_transition_tg?.ref })}
+      ${renderRow(tipLabel('Magnetic Classification', 'magnetic_classification'), { html: magDisplay })}
     </table>`;
 
   // ── CTE vs Temperature table ──────────────────────────────────────────────
@@ -619,34 +509,44 @@ function renderComputed(mat) {
     return direct == null ? shearStrengthVonMises(mat) : null;
   })();
 
-  function computedItem(label, tooltipKey, value, displayUnit, canonicalVal, canonicalUnit) {
+  function computedItem(label, tooltipKey, canonical, canonicalUnit, unitSuffix) {
     const tip = escHtml(TOOLTIPS[tooltipKey] ?? '');
-    let dataAttrs = '';
-    if (canonicalVal != null && canonicalUnit) {
-      dataAttrs = ` data-canonical="${canonicalVal}" data-canonical-unit="${canonicalUnit}"`;
+    if (canonical == null) {
+      return `<div class="computed-item">
+        <div class="computed-label" title="${tip}">${label}</div>
+        <span class="computed-value missing">—</span>
+      </div>`;
     }
-    const valueHtml = value != null
-      ? `<span class="computed-value"${dataAttrs}>${fmt(value, null, 3)}${displayUnit}</span>`
-      : `<span class="computed-value missing">—</span>`;
+    if (canonicalUnit == null) {
+      // Non-unit-convertible computed value
+      return `<div class="computed-item">
+        <div class="computed-label" title="${tip}">${label}</div>
+        <span class="computed-value">${fmt(canonical, null, 3)}${unitSuffix ?? ''}</span>
+      </div>`;
+    }
     return `<div class="computed-item">
       <div class="computed-label" title="${tip}">${label}</div>
-      ${valueHtml}
+      <span class="computed-value"
+            data-canonical="${canonical}"
+            data-canonical-unit="${canonicalUnit}">
+        ${fmt(canonical, canonicalUnit)} ${displayUnitHtml(canonicalUnit)}
+      </span>
     </div>`;
   }
 
   const body = `<div class="computed-grid">
-    ${computedItem('Shear Modulus (G)', 'shear_modulus', G, ' GPa', G, 'GPa')}
-    ${computedItem('Specific Stiffness (E/ρ)', 'specific_stiffness', ss, ' GPa·cm³/g', null, null)}
-    ${tau != null ? computedItem('Shear Strength (est.)', 'shear_strength_calc', tau * 1000, ' MPa', tau, 'GPa') : ''}
+    ${computedItem('Shear Modulus (G)', 'shear_modulus', G, 'GPa')}
+    ${computedItem('Specific Stiffness (E/ρ)', 'specific_stiffness', ss, null, ' GPa·cm³/g')}
+    ${tau != null ? computedItem('Shear Strength (est.)', 'shear_strength_calc', tau, 'GPa') : ''}
   </div>`;
   return sectionCard('Calculated Properties', body);
 }
 
 function renderFabricationForms(mat) {
-  const id   = mat.identification ?? {};
-  const fab  = (id.fabrication_processes ?? []).map(p => `<span class="chip">${escHtml(p)}</span>`).join('');
+  const id    = mat.identification ?? {};
+  const fab   = (id.fabrication_processes ?? []).map(p => `<span class="chip">${escHtml(p)}</span>`).join('');
   const forms = (id.common_forms ?? []).map(f => `<span class="chip">${escHtml(f)}</span>`).join('');
-  const none = `<span style="padding:0.6rem 1rem;color:var(--color-muted);font-size:0.85rem">None listed</span>`;
+  const none  = `<span style="padding:0.6rem 1rem;color:var(--color-muted);font-size:0.85rem">None listed</span>`;
 
   const body = `
     <div class="chip-group-label">Fabrication Processes</div>
@@ -679,8 +579,8 @@ function renderReferences(mat, refs) {
     // Extract title — handle both single { } and double {{ }} BibTeX wrapping
     const title = entry.bibtex?.match(/title\s*=\s*\{+([^{}]+)\}+/)?.[1] ?? key;
 
-    // Build the best available link: DOI → entry.url → bibtex URL → ISBN WorldCat → nothing
-    const doiVal = entry.doi;
+    // Best available link: DOI → entry.url → bibtex URL → ISBN WorldCat → nothing
+    const doiVal     = entry.doi;
     const urlFromBib = entry.bibtex?.match(/\burl\s*=\s*\{([^}]+)\}/)?.[1];
     const isbnRaw    = entry.bibtex?.match(/\bisbn\s*=\s*\{([^}]+)\}/)?.[1];
     const isbn       = isbnRaw?.replace(/[-\s]/g, '');
@@ -710,13 +610,13 @@ function renderReferences(mat, refs) {
 // ── Page header ───────────────────────────────────────────────────────────────
 
 function renderHeader(mat) {
-  const id = mat.identification ?? {};
+  const id      = mat.identification ?? {};
   const catClass = (id.category ?? 'metal').toLowerCase().replace(/\s+/g, '-');
-  const freq = id.usage_frequency;
+  const freq    = id.usage_frequency;
   const freqCls = freq === 'Exotic' ? 'badge-exotic' : freq === 'Specialty' ? 'badge-specialty' : 'badge-common';
-  const uncommonBadge = freq ? `<span class="badge ${freqCls}">${escHtml(freq)}</span>` : '';
-  const notesHtml  = id.notes      ? `<p class="detail-notes">${escHtml(id.notes)}</p>` : '';
-  const usageHtml  = mat.typical_usage
+  const freqBadge = freq ? `<span class="badge ${freqCls}">${escHtml(freq)}</span>` : '';
+  const notesHtml = id.notes      ? `<p class="detail-notes">${escHtml(id.notes)}</p>` : '';
+  const usageHtml = mat.typical_usage
     ? `<p class="detail-usage"><strong>Typical usage:</strong> ${escHtml(mat.typical_usage)}</p>` : '';
 
   return `
@@ -725,7 +625,7 @@ function renderHeader(mat) {
       <h1 class="detail-title">${escHtml(id.name ?? 'Unknown Material')}</h1>
       <div class="detail-badges">
         <span class="badge badge-${catClass}">${escHtml(id.category ?? '')}</span>
-        ${uncommonBadge}
+        ${freqBadge}
       </div>
       ${notesHtml}
       ${usageHtml}
@@ -735,7 +635,6 @@ function renderHeader(mat) {
 // ── Main render ───────────────────────────────────────────────────────────────
 
 function render(mat, refs) {
-  // Build reference number map (order matches mat.references array)
   const refKeys = mat.references ?? [];
   _refNums = new Map(refKeys.map((k, i) => [k, i + 1]));
 
@@ -751,13 +650,8 @@ function render(mat, refs) {
     renderFabricationForms(mat) +
     renderReferences(mat, refs);
 
-  // Wire collapsible sections
   layout.querySelectorAll('.detail-section').forEach(wireSectionToggle);
-
-  // Wire unit-conversion selects
   layout.querySelectorAll('.unit-select').forEach(wireUnitSelector);
-
-  // Wire the global metric/imperial buttons
   wireToolbar(layout);
 }
 
@@ -776,7 +670,6 @@ async function init() {
     return;
   }
 
-  // Skeleton while loading
   layout.innerHTML = `
     <div class="detail-loading">
       <div class="skeleton-line short"></div>

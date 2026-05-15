@@ -40,6 +40,8 @@ export const UNIT_DECIMALS = {
   ksi: 2,
   'MPa·m^0.5': 1,
   'ksi·in^0.5': 3,
+  'K': 0, '°C': 0, '°F': 1,
+  '% IACS': 1, 'MS/m': 3, 'S/m': 0,
   'µm/m·K': 2, 'µin/in·°F': 2,
   'W/m·K': 2, 'BTU/(hr·ft·°F)': 3,
   'J/(kg·K)': 0, 'BTU/(lb·°F)': 4,

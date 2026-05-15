@@ -158,6 +158,22 @@
 
 /* ── Unit selector row (appears once per section that has unit-switchable fields) */
 
+/* Group multiple selectors in a single horizontal strip */
+.unit-selector-group {
+  display: flex;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--color-border);
+}
+.unit-selector-group .unit-selector-row {
+  border-bottom: none;
+  border-right: 1px solid var(--color-border);
+  flex: 1;
+  min-width: 140px;
+}
+.unit-selector-group .unit-selector-row:last-child {
+  border-right: none;
+}
+
 .unit-selector-row {
   display: flex;
   align-items: center;
