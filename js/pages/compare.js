@@ -46,6 +46,14 @@ function toFracture(val) {
   return unitSystem === 'imperial' ? convertFracture(val, 'ksi·in^0.5') : val;
 }
 
+// CTE: µm/m·°C and µm/m·K are identical (same degree size); Imperial = µin/in·°F = CTE / 1.8
+const cteUnit   = () => unitSystem === 'imperial' ? 'µin/in·°F'     : 'µm/m·K';
+const densUnit  = () => unitSystem === 'imperial' ? 'lb/in³'         : 'g/cm³';
+const condUnit  = () => unitSystem === 'imperial' ? 'BTU/(hr·ft·°F)' : 'W/m·K';
+const toCTE     = (v) => v != null ? (unitSystem === 'imperial' ? v / 1.8      : v) : null;
+const toDensity = (v) => v != null ? (unitSystem === 'imperial' ? v * 0.036127 : v) : null;
+const toCond    = (v) => v != null ? (unitSystem === 'imperial' ? v * 0.57779  : v) : null;
+
 // ── Material accessors ─────────────────────────────────────────────────────
 
 function v(section, key) { return section?.[key]?.value ?? null; }
@@ -216,21 +224,22 @@ function renderFractureChart() {
 }
 
 function renderDensityChart() {
-  const labels = ['Density (ρ)'];
-  const values = materials.map(mat => [getProps(mat).rho]);
-  makeBarChart('chart-density', 'Density', labels, values, 'g/cm³', 2);
+  const labels  = ['Density (ρ)'];
+  const values  = materials.map(mat => [toDensity(getProps(mat).rho)]);
+  const decimals = unitSystem === 'imperial' ? 4 : 2;
+  makeBarChart('chart-density', 'Density', labels, values, densUnit(), decimals);
 }
 
 function renderCTEChart() {
   const labels = ['Thermal Expansion (α)'];
-  const values = materials.map(mat => [getProps(mat).cte]);
-  makeBarChart('chart-cte', 'Thermal Expansion (CTE)', labels, values, 'µm/m·°C', 2);
+  const values = materials.map(mat => [toCTE(getProps(mat).cte)]);
+  makeBarChart('chart-cte', 'Thermal Expansion (CTE)', labels, values, cteUnit(), 2);
 }
 
 function renderConductivityChart() {
   const labels = ['Thermal Conductivity (k)'];
-  const values = materials.map(mat => [getProps(mat).k]);
-  makeBarChart('chart-conductivity', 'Thermal Conductivity', labels, values, 'W/m·K', 1);
+  const values = materials.map(mat => [toCond(getProps(mat).k)]);
+  makeBarChart('chart-conductivity', 'Thermal Conductivity', labels, values, condUnit(), 1);
 }
 
 // ── S-N curve chart ────────────────────────────────────────────────────────
@@ -349,13 +358,13 @@ function renderCTETempChart() {
         const cte   = mat.physical.thermal_expansion.value;
         return `<tr>
           <td><span class="cte-dot" style="background:${color}"></span>${escHtml(shortName(mat))}</td>
-          <td class="cte-scalar-val">${fmt(cte, null, 2)} µm/m·°C</td>
+          <td class="cte-scalar-val">${fmt(toCTE(cte), null, 2)} ${cteUnit()}</td>
         </tr>`;
       }).join('');
       area.className = 'cte-scalar-wrap';
       area.innerHTML = `
         <table class="cte-scalar-table">
-          <thead><tr><th>Material</th><th>CTE (µm/m·°C)</th></tr></thead>
+          <thead><tr><th>Material</th><th>CTE (${cteUnit()})</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>`;
     }
@@ -385,7 +394,7 @@ function renderCTETempChart() {
     const table = mat.physical.thermal_expansion.table;
     return {
       label: shortName(mat),
-      data: table.map(pt => ({ x: toTempX(pt.temp), y: pt.cte })),
+      data: table.map(pt => ({ x: toTempX(pt.temp), y: toCTE(pt.cte) })),
       borderColor: color,
       backgroundColor: color + '33',
       pointRadius: 4,
@@ -412,7 +421,7 @@ function renderCTETempChart() {
         tooltip: {
           callbacks: {
             label: ctx =>
-              `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} µm/m·°C` +
+              `${ctx.dataset.label}: ${ctx.parsed.y.toFixed(2)} ${cteUnit()}` +
               ` at ${ctx.parsed.x} ${tempUnit}`,
           },
         },
@@ -424,7 +433,7 @@ function renderCTETempChart() {
           ticks: { font: { size: 11 } },
         },
         y: {
-          title: { display: true, text: 'CTE (µm/m·°C)', color: '#64748b', font: { size: 11 } },
+          title: { display: true, text: `CTE (${cteUnit()})`, color: '#64748b', font: { size: 11 } },
           ticks: { font: { size: 11 } },
         },
       },
