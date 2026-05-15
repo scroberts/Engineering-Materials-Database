@@ -19,17 +19,26 @@ import {
 
 // ── State ───────────────────────────────────────────────────────────────────
 
-/** Live reference database (key → {short_label, doi, bibtex}) */
+/** Live reference database (key → {short_label, doi, bibtex, url}) */
 let _refs = {};
+
+/**
+ * Keys that were present in references/index.json at page load.
+ * Anything not in this set is "new" and must be embedded in the
+ * downloaded JSON under `new_references` so it survives a round-trip.
+ */
+let _canonicalKeys = new Set();
 
 // ── Boot ────────────────────────────────────────────────────────────────────
 
 async function init() {
   try {
     _refs = await loadReferences();
+    _canonicalKeys = new Set(Object.keys(_refs));
   } catch (e) {
     console.warn('Could not load references:', e);
     _refs = {};
+    _canonicalKeys = new Set();
   }
 
   renderRefPanel();
@@ -880,6 +889,25 @@ function wireForm() {
 // ── Pre-fill ─────────────────────────────────────────────────────────────────
 
 function prefillForm(mat) {
+  // Merge references FIRST so dropdowns are populated before setRefField calls.
+  // 1. Use full metadata from new_references if present (proper round-trip).
+  // 2. Fall back to stubs for any remaining unknown keys.
+  let stubsAdded = 0;
+  const newRefsInFile = mat.new_references ?? {};
+  for (const key of (mat.references ?? [])) {
+    if (!_refs[key]) {
+      if (newRefsInFile[key]) {
+        // Full metadata embedded in the file — restore it completely
+        _refs[key] = newRefsInFile[key];
+      } else {
+        // No metadata available — add a stub the user can edit
+        _refs[key] = { short_label: key, doi: null, bibtex: null, url: null };
+        stubsAdded++;
+      }
+    }
+  }
+  if (Object.keys(newRefsInFile).length || stubsAdded) renderRefPanel();
+
   const id = mat.identification ?? {};
   setField('name', id.name);
   setField('slug', id.slug);
@@ -948,9 +976,14 @@ function prefillForm(mat) {
     }
   }
 
-  // Merge any refs from the file
-  if (mat.references?.length) {
-    // refs are just keys; we already have them in the panel if they were in references/index.json
+  // Surface a notice about reference handling
+  const restoredCount = Object.keys(newRefsInFile).length;
+  if (restoredCount || stubsAdded) {
+    const status = document.getElementById('prefill-status');
+    const parts = [];
+    if (restoredCount) parts.push(`${restoredCount} reference${restoredCount > 1 ? 's' : ''} restored`);
+    if (stubsAdded)    parts.push(`${stubsAdded} unknown reference${stubsAdded > 1 ? 's' : ''} added as stubs (click Edit in the References panel to fill in details)`);
+    status.textContent += ' — ' + parts.join(', ');
   }
 }
 
@@ -1115,6 +1148,17 @@ function buildMaterialJSON() {
   // Collect all referenced keys that were actually used
   const usedRefs = collectUsedRefs(mc, mo, ph);
 
+  // Embed full metadata for any reference not in references/index.json.
+  // This allows a complete round-trip: re-uploading this JSON restores
+  // all reference details instead of falling back to stubs.
+  // The admin must also add these entries to references/index.json when merging the PR.
+  const newRefs = {};
+  for (const key of usedRefs) {
+    if (!_canonicalKeys.has(key) && _refs[key]) {
+      newRefs[key] = _refs[key];
+    }
+  }
+
   return {
     schema_version: 1,
     identification,
@@ -1123,6 +1167,7 @@ function buildMaterialJSON() {
     mechanical_other:  mo,
     physical:          ph,
     references:        usedRefs,
+    ...(Object.keys(newRefs).length ? { new_references: newRefs } : {}),
     metadata: {
       submitted_by:   null,
       submitted_date: new Date().toISOString().slice(0, 10),

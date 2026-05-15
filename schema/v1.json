@@ -243,7 +243,23 @@
       "type": "array",
       "items": { "type": "string", "minLength": 1 },
       "uniqueItems": true,
-      "description": "BibTeX citation keys used in this entry. All keys must exist in references/index.json."
+      "description": "BibTeX citation keys used in this entry. All keys must exist in references/index.json once merged."
+    },
+
+    "new_references": {
+      "type": "object",
+      "description": "Full metadata for references not yet in references/index.json. Populated by the submit form to enable round-trip fidelity. Admin must add these to references/index.json when merging the PR.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["short_label"],
+        "additionalProperties": true,
+        "properties": {
+          "short_label": { "type": "string", "minLength": 1 },
+          "doi":     { "type": ["string", "null"] },
+          "bibtex":  { "type": ["string", "null"] },
+          "url":     { "type": ["string", "null"] }
+        }
+      }
     },
 
     "metadata": {
