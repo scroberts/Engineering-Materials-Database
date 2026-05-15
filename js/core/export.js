@@ -218,6 +218,45 @@ export function buildRows(materials, unitSystem) {
     toDiff(v(m.physical, 'thermal_diffusivity'), us)
   ));
 
+  // ── CTE VS TEMPERATURE ──────────────────────────────────────────────────
+
+  const cteTblMats = materials.filter(m => (m.physical?.thermal_expansion?.table?.length ?? 0) > 1);
+  if (cteTblMats.length > 0) {
+    // Union of all temperature points across materials, sorted ascending
+    const allTemps = [...new Set(
+      cteTblMats.flatMap(m => m.physical.thermal_expansion.table.map(pt => pt.temp))
+    )].sort((a, b) => a - b);
+
+    pushSection('CTE VS TEMPERATURE');
+    for (const tempC of allTemps) {
+      const dispTemp = Math.round(toTemp(tempC, us) * 10) / 10;
+      pushRow(`CTE at ${dispTemp} ${tu}`, cteu, materials.map(m => {
+        const tbl = m.physical?.thermal_expansion?.table ?? [];
+        const pt  = tbl.find(p => p.temp === tempC);
+        return pt != null ? toCTE(pt.cte, us) : null;
+      }));
+    }
+  }
+
+  // ── FATIGUE S-N CURVE ───────────────────────────────────────────────────
+
+  const snMats = materials.filter(m => (m.mechanical_other?.fatigue_sn_curve?.points?.length ?? 0) > 0);
+  if (snMats.length > 0) {
+    // Union of all cycle counts, sorted ascending
+    const allCycles = [...new Set(
+      snMats.flatMap(m => m.mechanical_other.fatigue_sn_curve.points.map(pt => pt.cycles))
+    )].sort((a, b) => a - b);
+
+    pushSection('FATIGUE S-N CURVE');
+    for (const cycles of allCycles) {
+      pushRow(`Stress at ${fmtCyclesExport(cycles)} cycles`, su, materials.map(m => {
+        const pts = m.mechanical_other?.fatigue_sn_curve?.points ?? [];
+        const pt  = pts.find(p => p.cycles === cycles);
+        return pt != null ? toStrength(pt.stress, us) : null;
+      }));
+    }
+  }
+
   // ── MERIT INDICES ───────────────────────────────────────────────────────
 
   pushSection('MERIT INDICES');
@@ -227,6 +266,13 @@ export function buildRows(materials, unitSystem) {
   }
 
   return result;
+}
+
+function fmtCyclesExport(n) {
+  if (n >= 1e9) return `${(n / 1e9).toFixed(n % 1e9 === 0 ? 0 : 1)}e9`;
+  if (n >= 1e6) return `${(n / 1e6).toFixed(n % 1e6 === 0 ? 0 : 1)}e6`;
+  if (n >= 1e3) return `${(n / 1e3).toFixed(n % 1e3 === 0 ? 0 : 1)}e3`;
+  return String(n);
 }
 
 // ── Formatting ──────────────────────────────────────────────────────────────
