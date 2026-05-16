@@ -30,6 +30,7 @@
     "hardness_vickers":    { "value": 155,  "ref": "theworldmaterial-316" },
     "hardness_brinell":    { "value": 149,  "ref": "theworldmaterial-316" },
     "hardness_rockwell":   { "value": 79, "scale": "B", "ref": "theworldmaterial-316" },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 40, "max": null, "typical": null, "ref": "azom-stainless-316" },
     "shear_strength":      { "value": 0.299, "ref": null }
   },

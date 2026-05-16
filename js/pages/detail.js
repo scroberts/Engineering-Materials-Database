@@ -352,6 +352,10 @@ function renderMechanicalOther(mat) {
   const hrDisplay = (hw?.value != null && hw?.scale)
     ? `<span class="hardness-val">HR${hw.scale} ${hw.value}</span>${refBadge(hw?.ref)}`
     : '—';
+  const hs = mo.hardness_shore;
+  const hsDisplay = (hs?.value != null && hs?.scale)
+    ? `<span class="hardness-val">Shore ${hs.scale} ${hs.value}</span>${refBadge(hs?.ref)}`
+    : '—';
   const hardnessHtml = `
     <div class="hardness-row">
       <div class="hardness-entry">
@@ -362,6 +366,9 @@ function renderMechanicalOther(mat) {
       </div>
       <div class="hardness-entry">
         <span class="hardness-scale">Rockwell</span>${hrDisplay}
+      </div>
+      <div class="hardness-entry">
+        <span class="hardness-scale">Shore</span>${hsDisplay}
       </div>
     </div>`;
 

@@ -39,6 +39,7 @@
     "hardness_vickers":    { "value": 175,  "ref": "mil-hdbk-5j-2003" },
     "hardness_brinell":    { "value": 150,  "ref": "mil-hdbk-5j-2003" },
     "hardness_rockwell":   { "value": 87, "scale": "B", "ref": "mil-hdbk-5j-2003" },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 11, "max": null, "typical": null, "ref": "mil-hdbk-5j-2003" },
     "shear_strength":      { "value": 0.331, "ref": "mil-hdbk-5j-2003" }
   },

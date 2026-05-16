@@ -12,10 +12,13 @@
   line-height: 1.6;
 }
 
-.badge-metal     { background: var(--color-metal-bg);     color: var(--color-metal); }
-.badge-plastic   { background: var(--color-plastic-bg);   color: var(--color-plastic); }
-.badge-ceramic   { background: var(--color-ceramic-bg);   color: var(--color-ceramic); }
-.badge-composite { background: var(--color-composite-bg); color: var(--color-composite); }
+.badge-metal            { background: var(--color-metal-bg);            color: var(--color-metal); }
+.badge-plastic          { background: var(--color-plastic-bg);          color: var(--color-plastic); }
+.badge-ceramic          { background: var(--color-ceramic-bg);          color: var(--color-ceramic); }
+.badge-composite        { background: var(--color-composite-bg);        color: var(--color-composite); }
+.badge-glass            { background: var(--color-glass-bg);            color: var(--color-glass); }
+.badge-natural-material { background: var(--color-natural-material-bg); color: var(--color-natural-material); }
+.badge-elastomer        { background: var(--color-elastomer-bg);        color: var(--color-elastomer); }
 .badge-common    { background: #f0fdf4; color: #166534;
                    border: 1px solid #86efac; }
 .badge-specialty { background: #fef3c7; color: #92400e;

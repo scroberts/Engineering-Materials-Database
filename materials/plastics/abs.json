@@ -34,6 +34,7 @@
     "hardness_vickers":    { "value": null, "ref": null },
     "hardness_brinell":    { "value": null, "ref": null },
     "hardness_rockwell":   { "value": 105,  "scale": "R", "ref": null },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 8, "max": null, "typical": null, "ref": "azom-abs" },
     "shear_strength":      { "value": null, "ref": null }
   },

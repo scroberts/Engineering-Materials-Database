@@ -31,6 +31,7 @@
     "hardness_vickers":    { "value": null, "ref": null },
     "hardness_brinell":    { "value": null, "ref": null },
     "hardness_rockwell":   { "value": 90, "scale": "B", "ref": "matweb_carpenter_invar36_coldrawn" },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 20, "max": null, "typical": null, "ref": "matweb_carpenter_invar36_coldrawn" },
     "shear_strength":      { "value": null, "ref": null }
   },

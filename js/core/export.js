@@ -168,6 +168,10 @@ export function buildRows(materials, unitSystem) {
     const h = m.mechanical_other?.hardness_rockwell;
     return (h?.value != null && h?.scale) ? `${h.value} HR${h.scale}` : null;
   }));
+  pushRow('Hardness (Shore)', 'Shore A/D', materials.map(m => {
+    const h = m.mechanical_other?.hardness_shore;
+    return (h?.value != null && h?.scale) ? `Shore ${h.scale} ${h.value}` : null;
+  }));
   pushRow('Ductility', '%', materials.map(m => {
     const d = m.mechanical_other?.ductility;
     if (!d) return null;

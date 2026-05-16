@@ -31,6 +31,7 @@
     "hardness_vickers":    { "value": 140,   "ref": "azom-beryllium" },
     "hardness_brinell":    { "value": null,  "ref": null },
     "hardness_rockwell":   { "value": null,  "scale": null, "ref": null },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 2, "max": 4, "typical": null, "ref": "azom-beryllium" },
     "shear_strength":      { "value": 0.214, "ref": null }
   },

@@ -399,7 +399,7 @@ const FORM_SECTIONS = [
       { id: 'slug',       label: 'Slug (URL key)',        type: 'text',     required: true,
         hint: 'e.g. aluminum-6061-t6  (lowercase, hyphens only)' },
       { id: 'category',   label: 'Category',              type: 'select',   required: true,
-        options: ['Metal', 'Plastic', 'Ceramic', 'Composite'] },
+        options: ['Metal', 'Plastic', 'Ceramic', 'Composite', 'Glass', 'Natural Material', 'Elastomer'] },
       { id: 'fabrication_processes', label: 'Fabrication processes', type: 'checkbox',
         options: ['Machining', 'Casting', 'Forging', 'Extrusion', 'Rolling', 'Welding',
                   '3D Printing', 'Injection Moulding', 'Lay-up', 'Pultrusion', 'Sintering'] },
@@ -802,6 +802,24 @@ function buildHardness(f) {
   row.append(lbl, inp, scaleSel, refSel);
   wrap.appendChild(row);
 
+  // Shore
+  const shoreRow = document.createElement('div');
+  shoreRow.className = 'hardness-form-row';
+  const shoreLbl = document.createElement('label');
+  shoreLbl.textContent = 'Shore';
+  const shoreInp = document.createElement('input');
+  shoreInp.type = 'number'; shoreInp.step = 'any'; shoreInp.id = 'field-hardness_shore';
+  shoreInp.className = 'form-control'; shoreInp.placeholder = '—';
+  const shoreScaleSel = document.createElement('select');
+  shoreScaleSel.className = 'form-unit-select'; shoreScaleSel.id = 'field-hardness_shore_scale';
+  for (const s of ['', 'A', 'D']) {
+    shoreScaleSel.innerHTML += `<option value="${s}">${s || '— scale —'}</option>`;
+  }
+  const shoreRefSel = buildRefSelect();
+  shoreRefSel.dataset.fieldId = 'hardness_shore';
+  shoreRow.append(shoreLbl, shoreInp, shoreScaleSel, shoreRefSel);
+  wrap.appendChild(shoreRow);
+
   return wrap;
 }
 
@@ -1086,6 +1104,11 @@ function prefillForm(mat) {
     setSelectField('hardness_rockwell_scale', mo.hardness_rockwell.scale);
     setRefField('hardness_rockwell', mo.hardness_rockwell.ref);
   }
+  if (mo.hardness_shore) {
+    setField('field-hardness_shore', mo.hardness_shore.value, true);
+    setSelectField('hardness_shore_scale', mo.hardness_shore.scale);
+    setRefField('hardness_shore', mo.hardness_shore.ref);
+  }
   if (mo.ductility) {
     setField('field-ductility-min',     mo.ductility.min,     true);
     setField('field-ductility-max',     mo.ductility.max,     true);
@@ -1286,6 +1309,7 @@ function buildMaterialJSON() {
     hardness_vickers:    getValuedPropRaw('hardness_vickers'),
     hardness_brinell:    getValuedPropRaw('hardness_brinell'),
     hardness_rockwell:   getRockwell(),
+    hardness_shore:      getShore(),
     ductility:           getDuctility(),
     shear_strength:      getValuedProp('shear_strength',      'GPa'),
   };
@@ -1465,6 +1489,17 @@ function getRockwell() {
   };
 }
 
+function getShore() {
+  const inp   = document.getElementById('field-hardness_shore');
+  const scale = document.getElementById('field-hardness_shore_scale');
+  const raw   = inp ? parseFloat(inp.value) : NaN;
+  return {
+    value: isNaN(raw) ? null : raw,
+    scale: scale ? (scale.value || null) : null,
+    ref:   getRefKey('hardness_shore'),
+  };
+}
+
 function getDuctility() {
   const minEl = document.getElementById('field-ductility-min');
   const maxEl = document.getElementById('field-ductility-max');
@@ -1559,7 +1594,10 @@ function showEditPostDownload(panel, slug, name) {
 }
 
 function inferCategory(category) {
-  const map = { Metal: 'metals', Plastic: 'plastics', Ceramic: 'ceramics', Composite: 'composites' };
+  const map = {
+    Metal: 'metals', Plastic: 'plastics', Ceramic: 'ceramics', Composite: 'composites',
+    Glass: 'glass', 'Natural Material': 'natural', Elastomer: 'elastomers',
+  };
   return map[category] ?? 'materials';
 }
 

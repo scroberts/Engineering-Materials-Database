@@ -31,6 +31,7 @@
     "hardness_vickers":    { "value": 45,    "ref": "makeitfrom-c11000" },
     "hardness_brinell":    { "value": null,  "ref": null },
     "hardness_rockwell":   { "value": null,  "scale": null, "ref": null },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 40, "max": null, "typical": 45, "ref": "makeitfrom-c11000" },
     "shear_strength":      { "value": 0.127, "ref": null }
   },

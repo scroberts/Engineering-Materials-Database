@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-15T23:16:18Z",
+  "generated": "2026-05-16T14:56:52Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -99,6 +99,25 @@
       "yield_strength": null,
       "tensile_strength": 0.27,
       "density": 1.8
+    },
+    {
+      "slug": "zerodur-grade-0",
+      "path": "materials/glass/zerodur-grade-0.json",
+      "name": "ZERODUR\u00ae Glass-Ceramic (Grade 0)",
+      "category": "Glass",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": 90.3,
+      "yield_strength": null,
+      "tensile_strength": null,
+      "density": 2.53
     },
     {
       "slug": "aluminum-1100-o",

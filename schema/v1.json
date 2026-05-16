@@ -127,7 +127,7 @@
         },
         "category": {
           "type": "string",
-          "enum": ["Metal", "Plastic", "Ceramic", "Composite"]
+          "enum": ["Metal", "Plastic", "Ceramic", "Composite", "Glass", "Natural Material", "Elastomer"]
         },
         "fabrication_processes": {
           "type": "array",
@@ -215,6 +215,16 @@
           "properties": {
             "value": { "$ref": "#/definitions/nullable_number" },
             "scale": { "type": ["string", "null"], "description": "Rockwell scale letter: A, B, C, etc." },
+            "ref":   { "$ref": "#/definitions/ref_key" }
+          }
+        },
+        "hardness_shore": {
+          "type": "object",
+          "required": ["value", "scale", "ref"],
+          "additionalProperties": false,
+          "properties": {
+            "value": { "$ref": "#/definitions/nullable_number" },
+            "scale": { "type": ["string", "null"], "description": "Shore scale: A or D" },
             "ref":   { "$ref": "#/definitions/ref_key" }
           }
         },

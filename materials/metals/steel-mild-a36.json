@@ -30,6 +30,7 @@
     "hardness_vickers":    { "value": 155,  "ref": "steel-grades-com-a36" },
     "hardness_brinell":    { "value": 149,  "ref": "steel-grades-com-a36" },
     "hardness_rockwell":   { "value": 77, "scale": "B", "ref": "steel-grades-com-a36" },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 20, "max": null, "typical": 21, "ref": "azom-a36" },
     "shear_strength":      { "value": 0.231, "ref": null }
   },

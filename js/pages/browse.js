@@ -202,7 +202,7 @@ function updateCompareBar() {
 function buildSidebar(currentFilters) {
   // Category checkboxes
   const catGroup = document.getElementById('filter-category');
-  catGroup.innerHTML = ['Metal', 'Plastic', 'Ceramic', 'Composite'].map(cat => `
+  catGroup.innerHTML = ['Metal', 'Plastic', 'Ceramic', 'Composite', 'Glass', 'Natural Material', 'Elastomer'].map(cat => `
     <label class="filter-check">
       <input type="checkbox" name="cat" value="${cat}"
              ${currentFilters.categories.has(cat) ? 'checked' : ''}>

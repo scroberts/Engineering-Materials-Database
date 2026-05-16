@@ -37,6 +37,8 @@ export const TOOLTIPS = {
     "Brinell Hardness (HB): Indentation hardness using a 10 mm hardened steel or tungsten carbide ball. Good for softer metals; becomes inaccurate above ~650 HB.",
   hardness_rockwell:
     "Rockwell Hardness (HR): Differential-depth indentation hardness. Scale must be specified (e.g. HRC for hard steel, HRB for softer metals, HRR for plastics).",
+  hardness_shore:
+    "Shore Hardness: Indentation hardness measured with a durometer. Shore A for soft elastomers and rubbers; Shore D for harder elastomers and semi-rigid plastics.",
   ductility:
     "Ductility (elongation at break, %): Plastic strain at fracture in a tensile test. A rough indicator of a material's ability to deform before breaking.",
   shear_strength:

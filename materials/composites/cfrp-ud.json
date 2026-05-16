@@ -31,6 +31,7 @@
     "hardness_vickers":    { "value": null, "ref": null },
     "hardness_brinell":    { "value": null, "ref": null },
     "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": null, "max": null, "typical": null, "ref": null },
     "shear_strength":      { "value": 0.075, "ref": "callister2020" }
   },

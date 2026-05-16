@@ -31,6 +31,7 @@
     "hardness_vickers":    { "value": 340,   "ref": "asm-matweb-ti64" },
     "hardness_brinell":    { "value": null,  "ref": null },
     "hardness_rockwell":   { "value": null,  "scale": null, "ref": null },
+    "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 10, "max": 17, "typical": 14, "ref": "asm-matweb-ti64" },
     "shear_strength":      { "value": 0.549, "ref": null }
   },
