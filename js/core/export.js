@@ -238,6 +238,44 @@ export function buildRows(materials, unitSystem) {
     }
   }
 
+  // ── K VS TEMPERATURE ────────────────────────────────────────────────────
+
+  const kTblMats = materials.filter(m => (m.physical?.thermal_conductivity?.table?.length ?? 0) > 1);
+  if (kTblMats.length > 0) {
+    const allKTemps = [...new Set(
+      kTblMats.flatMap(m => m.physical.thermal_conductivity.table.map(pt => pt.temp))
+    )].sort((a, b) => a - b);
+
+    pushSection('K VS TEMPERATURE');
+    for (const tempC of allKTemps) {
+      const dispTemp = Math.round(toTemp(tempC, us) * 10) / 10;
+      pushRow(`k at ${dispTemp} ${tu}`, `${ku}`, materials.map(m => {
+        const tbl = m.physical?.thermal_conductivity?.table ?? [];
+        const pt  = tbl.find(p => p.temp === tempC);
+        return pt != null ? toCond(pt.k, us) : null;
+      }));
+    }
+  }
+
+  // ── CP VS TEMPERATURE ────────────────────────────────────────────────────
+
+  const cpTblMats = materials.filter(m => (m.physical?.specific_heat?.table?.length ?? 0) > 1);
+  if (cpTblMats.length > 0) {
+    const allCpTemps = [...new Set(
+      cpTblMats.flatMap(m => m.physical.specific_heat.table.map(pt => pt.temp))
+    )].sort((a, b) => a - b);
+
+    pushSection('CP VS TEMPERATURE');
+    for (const tempC of allCpTemps) {
+      const dispTemp = Math.round(toTemp(tempC, us) * 10) / 10;
+      pushRow(`Cp at ${dispTemp} ${tu}`, `${hu}`, materials.map(m => {
+        const tbl = m.physical?.specific_heat?.table ?? [];
+        const pt  = tbl.find(p => p.temp === tempC);
+        return pt != null ? toHeat(pt.cp, us) : null;
+      }));
+    }
+  }
+
   // ── FATIGUE S-N CURVE ───────────────────────────────────────────────────
 
   const snMats = materials.filter(m => (m.mechanical_other?.fatigue_sn_curve?.points?.length ?? 0) > 0);

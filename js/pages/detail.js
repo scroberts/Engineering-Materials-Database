@@ -52,6 +52,8 @@ function convertFromCanonical(canonical, canonicalUnit, toUnit) {
 
 let _refNums    = new Map();  // refKey → 1-based display number
 let _currentMat = null;       // current material (for export)
+let _cteChart   = null;       // Chart.js instance for CTE vs Temperature
+let _snChart    = null;       // Chart.js instance for S–N curve
 
 // ── HTML helpers ──────────────────────────────────────────────────────────────
 
@@ -429,6 +431,9 @@ function renderMechanicalOther(mat) {
           <thead><tr><th>Stress Amplitude</th><th>Cycles to Failure</th></tr></thead>
           <tbody>${snRows}</tbody>
         </table>
+      </div>
+      <div class="detail-chart-wrap">
+        <canvas id="detail-chart-sn"></canvas>
       </div>`;
   }
 
@@ -534,6 +539,9 @@ function renderPhysical(mat) {
           </tr></thead>
           <tbody>${cteRows}</tbody>
         </table>
+      </div>
+      <div class="detail-chart-wrap">
+        <canvas id="detail-chart-cte"></canvas>
       </div>`;
   }
 
@@ -726,6 +734,112 @@ function renderHeader(mat) {
     </div>`;
 }
 
+// ── Detail charts (CTE vs T, S–N) ────────────────────────────────────────────
+
+function destroyDetailCharts() {
+  if (_cteChart) { _cteChart.destroy(); _cteChart = null; }
+  if (_snChart)  { _snChart.destroy();  _snChart  = null; }
+}
+
+const CHART_BLUE = '#2563eb';
+
+function renderDetailCharts(mat) {
+  if (typeof window.Chart === 'undefined') return;
+
+  // ── CTE vs Temperature ──────────────────────────────────────────────────
+  const cteCanvas = document.getElementById('detail-chart-cte');
+  if (cteCanvas) {
+    const table = mat.physical?.thermal_expansion?.table ?? [];
+    if (table.length > 1) {
+      _cteChart = new window.Chart(cteCanvas, {
+        type: 'line',
+        data: {
+          datasets: [{
+            data: table.map(pt => ({ x: Math.round(pt.temp + 273.15), y: pt.cte })),
+            borderColor: CHART_BLUE,
+            backgroundColor: CHART_BLUE + '33',
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            tension: 0.3,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => `CTE: ${ctx.parsed.y.toFixed(2)} µm/m·K`,
+                title: ctx => `${ctx[0].parsed.x} K`,
+              },
+            },
+          },
+          scales: {
+            x: {
+              type: 'linear',
+              title: { display: true, text: 'Temperature (K)', color: '#64748b', font: { size: 11 } },
+              ticks: { font: { size: 11 } },
+            },
+            y: {
+              beginAtZero: false,
+              title: { display: true, text: 'CTE (µm/m·K)', color: '#64748b', font: { size: 11 } },
+              ticks: { font: { size: 11 } },
+            },
+          },
+        },
+      });
+    }
+  }
+
+  // ── S–N curve ───────────────────────────────────────────────────────────
+  const snCanvas = document.getElementById('detail-chart-sn');
+  if (snCanvas) {
+    const points = mat.mechanical_other?.fatigue_sn_curve?.points ?? [];
+    if (points.length > 0) {
+      _snChart = new window.Chart(snCanvas, {
+        type: 'line',
+        data: {
+          datasets: [{
+            data: points.map(pt => ({ x: pt.cycles, y: pt.stress * 1000 })),
+            borderColor: CHART_BLUE,
+            backgroundColor: CHART_BLUE + '33',
+            pointRadius: 4,
+            pointHoverRadius: 6,
+            tension: 0.2,
+            fill: false,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx =>
+                  `${ctx.parsed.y.toFixed(1)} MPa at ${ctx.parsed.x.toExponential(1)} cycles`,
+              },
+            },
+          },
+          scales: {
+            x: {
+              type: 'logarithmic',
+              title: { display: true, text: 'Cycles to Failure', color: '#64748b', font: { size: 11 } },
+              ticks: { font: { size: 11 } },
+            },
+            y: {
+              title: { display: true, text: 'Stress Amplitude (MPa)', color: '#64748b', font: { size: 11 } },
+              ticks: { font: { size: 11 } },
+            },
+          },
+        },
+      });
+    }
+  }
+}
+
 // ── Main render ───────────────────────────────────────────────────────────────
 
 function render(mat, refs) {
@@ -748,6 +862,8 @@ function render(mat, refs) {
   layout.querySelectorAll('.detail-section').forEach(wireSectionToggle);
   layout.querySelectorAll('.unit-select').forEach(wireUnitSelector);
   wireToolbar(layout);
+  destroyDetailCharts();
+  renderDetailCharts(mat);
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
