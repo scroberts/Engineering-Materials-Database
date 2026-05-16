@@ -478,8 +478,6 @@ function renderMeritTable() {
     const validVals = vals.filter(v => v != null);
     const minVal    = validVals.length ? Math.min(...validVals) : null;
     const maxVal    = validVals.length ? Math.max(...validVals) : null;
-    const range     = (maxVal != null && minVal != null && maxVal !== minVal)
-      ? maxVal - minVal : null;
 
     const cells = vals.map((val, i) => {
       if (val == null) return `<td class="merit-cell"><span class="merit-missing" title="Insufficient data to compute this index">—</span></td>`;
@@ -488,13 +486,10 @@ function renderMeritTable() {
         ? val === maxVal
         : val === minVal;
 
-      // Normalised bar width: full bar for best, proportional for others
-      let pct = 100;
-      if (range != null && range > 0) {
-        pct = idx.higherIsBetter
-          ? ((val - minVal) / range) * 100
-          : ((maxVal - val) / range) * 100;
-      }
+      // Bar width: ratio to best (best = 100%, others show fraction of winner's score)
+      const pct = idx.higherIsBetter
+        ? (maxVal > 0 ? (val / maxVal) * 100 : 100)
+        : (val  > 0 ? (minVal / val)  * 100 : 100);
 
       const color  = PALETTE[i % PALETTE.length];
       const digits = Math.abs(val) >= 100 ? 1 : Math.abs(val) >= 1 ? 3 : 5;
