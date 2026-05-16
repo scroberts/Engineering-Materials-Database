@@ -30,7 +30,7 @@
       "points": [],
       "ref": null
     },
-    "fracture_toughness":  { "value": null, "ref": null },
+    "fracture_toughness":  { "value": 2.0,  "ref": "callister2020" },
     "hardness_vickers":    { "value": null, "ref": null },
     "hardness_brinell":    { "value": null, "ref": null },
     "hardness_rockwell":   { "value": 105,  "scale": "R", "ref": null },
@@ -57,7 +57,7 @@
     "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["azom-abs"],
+  "references": ["azom-abs", "callister2020"],
 
   "metadata": {
     "submitted_by": "admin",

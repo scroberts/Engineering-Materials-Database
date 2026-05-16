@@ -30,7 +30,7 @@
       "points": [],
       "ref": null
     },
-    "fracture_toughness":  { "value": 14,  "ref": null },
+    "fracture_toughness":  { "value": 14,  "ref": "azom-a2-tool-steel" },
     "hardness_vickers":    { "value": 697, "ref": null },
     "hardness_brinell":    { "value": 661, "ref": "onlinemetals-a2" },
     "hardness_rockwell":   { "value": 60, "scale": "C", "ref": "onlinemetals-a2" },
