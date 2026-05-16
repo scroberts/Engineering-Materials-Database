@@ -8,7 +8,7 @@
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as cold drawn bar stock. Invar 36® is a registered trademark of Carpenter Technology Corporation.",
     "usage_frequency": "Exotic",
-    "notes": "36% nickel-iron alloy with a coefficient of thermal expansion approximately one-tenth that of carbon steel up to ~190°C (thermal inflection point where the low-CTE Invar effect begins to break down). Curie temperature 279°C — above this, ferromagnetic properties are lost. Also known as Nilo 36, FeNi36, and Invar M93. Equivalent designations: UNS K93600 (annealed), UNS K93601 (cold drawn); W. Nr. 1.3912; ASTM B753 Alloy T36. Machinability similar to AISI 304 stainless steel. Can be welded, brazed, and plated. Young's modulus varies with temper: MatWeb reports 148 GPa for cold drawn bar; SpaceMatDB reports 140 GPa (temper unspecified). Qualified for space applications; stress corrosion cracking resistance tested per ECSS-Q-ST-70-36C. Data primarily from Carpenter Technology Corporation (MatWeb) with supplemental data from SpaceMatDB."
+    "notes": "36% nickel-iron alloy with a coefficient of thermal expansion approximately one-tenth that of carbon steel up to ~190°C (thermal inflection point where the low-CTE Invar effect begins to break down). Curie temperature 279°C — above this, ferromagnetic properties are lost. Also known as Nilo 36, FeNi36, and Invar M93. Equivalent designations: UNS K93600 (annealed), UNS K93601 (cold drawn); W. Nr. 1.3912; ASTM B753 Alloy T36. Machinability similar to AISI 304 stainless steel. Can be welded, brazed, and plated. Young's modulus varies with temper: MatWeb reports 148 GPa for cold drawn bar; SpaceMatDB reports 140 GPa (temper unspecified). Qualified for space applications; stress corrosion cracking resistance tested per ECSS-Q-ST-70-36C. Data primarily from Carpenter Technology Corporation (MatWeb) with supplemental data from SpaceMatDB. Cryogenic CTE table entries (−200 and −100 °C) are mean coefficients from T to +20 °C, per Sandmeyer Steel SSC Invar 36 product datasheet (sandmeyer-invar36); above-RT CTE table entries from MatWeb Carpenter Invar 36."
   },
 
   "typical_usage": "Applications requiring minimal dimensional change with temperature: precision optical and laser systems, aircraft controls, radio and electronic devices, bimetallic thermostats, rod-and-tube temperature regulators, space structures and instrument frames. The extremely low CTE near room temperature is its primary design advantage.",
@@ -42,9 +42,11 @@
     "thermal_expansion": {
       "value": 1.30,
       "table": [
-        { "temp": 93,  "cte": 1.30 },
-        { "temp": 260, "cte": 4.18 },
-        { "temp": 371, "cte": 7.60 }
+        { "temp": -200, "cte": 1.5 },
+        { "temp": -100, "cte": 1.3 },
+        { "temp": 93,   "cte": 1.30 },
+        { "temp": 260,  "cte": 4.18 },
+        { "temp": 371,  "cte": 7.60 }
       ],
       "ref": "matweb_carpenter_invar36_coldrawn"
     },
@@ -56,7 +58,7 @@
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
 
-  "references": ["matweb_carpenter_invar36_coldrawn", "spacematdb_invar36"],
+  "references": ["matweb_carpenter_invar36_coldrawn", "spacematdb_invar36", "sandmeyer-invar36"],
 
   "metadata": {
     "submitted_by": "admin",

@@ -240,5 +240,17 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.makeitfrom.com/material-properties/Acrylonitrile-Butadiene-Styrene-ABS"
+  },
+  "nist-cryo-al": {
+    "short_label": "NIST Cryogenic Materials Database: Aluminium",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/6061%20Aluminum/6061_T6Aluminum_rev.htm"
+  },
+  "sandmeyer-invar36": {
+    "short_label": "Sandmeyer Steel: SSC Invar 36 Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.sandmeyersteel.com/ssc-invar-36/"
   }
 }

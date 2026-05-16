@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate"],
     "common_form_notes": "Predominantly stocked as sheet and plate. Excellent formability in this temper.",
     "usage_frequency": "Common",
-    "notes": "H32 temper: strain-hardened then stabilized (quarter-hard). Non-heat-treatable Al-Mg alloy. Superior corrosion resistance (especially marine and salt-spray) compared to 6061, with excellent formability and weldability. Not as machinable as 6061. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference."
+    "notes": "H32 temper: strain-hardened then stabilized (quarter-hard). Non-heat-treatable Al-Mg alloy. Superior corrosion resistance (especially marine and salt-spray) compared to 6061, with excellent formability and weldability. Not as machinable as 6061. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for wrought aluminium alloys (5083-O polynomial used as the nearest 5xxx-series proxy; all wrought Al alloys agree within ±4%). Room-temperature CTE from MIL-HDBK-5J."
   },
 
   "typical_usage": "Marine hull plating, fuel and oil tanks, pressure vessels, flooring panels, refrigerator liners, storm shutters, fan blades, and sheet metal fabrication requiring high corrosion resistance with moderate strength.",
@@ -49,9 +49,12 @@
     "thermal_expansion": {
       "value": 23.8,
       "table": [
-        { "temp": 20, "cte": 23.8 }
+        { "temp": -196, "cte": 8.7 },
+        { "temp": -150, "cte": 14.0 },
+        { "temp": -100, "cte": 18.3 },
+        { "temp": 20,   "cte": 23.8 }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "nist-cryo-al"
     },
     "thermal_conductivity":{ "value": 138,  "ref": "mil-hdbk-5j-2003" },
     "specific_heat":       { "value": 880,  "ref": "mil-hdbk-5j-2003" },
@@ -61,7 +64,7 @@
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-aluminum-5052", "mil-hdbk-5j-2003"],
+  "references": ["azom-aluminum-5052", "mil-hdbk-5j-2003", "nist-cryo-al"],
 
   "metadata": {
     "submitted_by": "admin",

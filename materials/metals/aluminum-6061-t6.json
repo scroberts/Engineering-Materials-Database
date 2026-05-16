@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
     "usage_frequency": "Common",
-    "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference."
+    "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for 6061-T6 (underlying data: Mann, NBS, 1977; ±4% accuracy). Above-RT CTE entries from MIL-HDBK-5J."
   },
 
   "typical_usage": "Structural frames and enclosures, aircraft components and skin panels, marine fittings, bicycle frames, electronic chassis and heat sinks, machined precision parts. Chosen for its excellent balance of strength, machinability, weldability, and corrosion resistance.",
@@ -50,11 +50,14 @@
     "thermal_expansion": {
       "value": 23.6,
       "table": [
-        { "temp": 20,  "cte": 23.6 },
-        { "temp": 100, "cte": 24.3 },
-        { "temp": 200, "cte": 25.2 }
+        { "temp": -196, "cte": 8.7 },
+        { "temp": -150, "cte": 14.0 },
+        { "temp": -100, "cte": 18.3 },
+        { "temp": 20,   "cte": 23.6 },
+        { "temp": 100,  "cte": 24.3 },
+        { "temp": 200,  "cte": 25.2 }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "nist-cryo-al"
     },
     "thermal_conductivity":{ "value": 167,   "ref": "mil-hdbk-5j-2003" },
     "specific_heat":       { "value": 896,   "ref": "mil-hdbk-5j-2003" },
@@ -64,7 +67,7 @@
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-aluminum-6061", "mil-hdbk-5j-2003"],
+  "references": ["azom-aluminum-6061", "mil-hdbk-5j-2003", "nist-cryo-al"],
 
   "metadata": {
     "submitted_by": "admin",
