@@ -43,8 +43,8 @@
       "table": [],
       "ref": "azom-4340"
     },
-    "thermal_conductivity":   { "value": 44.5, "ref": "azom-4340" },
-    "specific_heat":          { "value": 470,  "ref": "makeitfrom-4340" },
+    "thermal_conductivity":   { "value": 44.5, "table": [], "ref": "azom-4340" },
+    "specific_heat":          { "value": 470, "table": [],  "ref": "makeitfrom-4340" },
     "thermal_diffusivity":    { "value": null,  "ref": null },
     "melting_point_tm":       { "value": 1420, "ref": "makeitfrom-4340" },
     "glass_transition_tg":    { "value": null,  "ref": null },

@@ -55,6 +55,52 @@
         "Angles and Structural Profiles",
         "Filament"
       ]
+    },
+    "thermal_cond_prop": {
+      "type": "object",
+      "required": ["value", "table", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "$ref": "#/definitions/nullable_number", "description": "W/m·K — representative (room-temperature) value" },
+        "table": {
+          "type": "array",
+          "maxItems": 12,
+          "description": "k vs temperature data points",
+          "items": {
+            "type": "object",
+            "required": ["temp", "k"],
+            "additionalProperties": false,
+            "properties": {
+              "temp": { "type": "number", "description": "°C" },
+              "k":    { "type": "number", "description": "W/m·K" }
+            }
+          }
+        },
+        "ref": { "$ref": "#/definitions/ref_key" }
+      }
+    },
+    "specific_heat_prop": {
+      "type": "object",
+      "required": ["value", "table", "ref"],
+      "additionalProperties": false,
+      "properties": {
+        "value": { "$ref": "#/definitions/nullable_number", "description": "J/kg·K — representative (room-temperature) value" },
+        "table": {
+          "type": "array",
+          "maxItems": 12,
+          "description": "Cp vs temperature data points",
+          "items": {
+            "type": "object",
+            "required": ["temp", "cp"],
+            "additionalProperties": false,
+            "properties": {
+              "temp": { "type": "number", "description": "°C" },
+              "cp":   { "type": "number", "description": "J/kg·K" }
+            }
+          }
+        },
+        "ref": { "$ref": "#/definitions/ref_key" }
+      }
     }
   },
 
@@ -218,8 +264,8 @@
             "ref": { "$ref": "#/definitions/ref_key" }
           }
         },
-        "thermal_conductivity":{ "$ref": "#/definitions/valued_property", "description": "W/m·K" },
-        "specific_heat":       { "$ref": "#/definitions/valued_property", "description": "J/kg·K" },
+        "thermal_conductivity":{ "$ref": "#/definitions/thermal_cond_prop", "description": "W/m·K" },
+        "specific_heat":       { "$ref": "#/definitions/specific_heat_prop", "description": "J/kg·K" },
         "thermal_diffusivity": { "$ref": "#/definitions/valued_property", "description": "cm²/s" },
         "melting_point_tm":    { "$ref": "#/definitions/valued_property", "description": "°C — for crystalline materials. Leave null for amorphous materials." },
         "glass_transition_tg": { "$ref": "#/definitions/valued_property", "description": "°C — for amorphous materials. Leave null for crystalline materials." },

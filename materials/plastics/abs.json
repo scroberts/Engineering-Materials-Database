@@ -49,8 +49,8 @@
       ],
       "ref": "azom-abs"
     },
-    "thermal_conductivity":{ "value": 0.17,   "ref": null },
-    "specific_heat":       { "value": 1400,   "ref": null },
+    "thermal_conductivity":{ "value": 0.17, "table": [],   "ref": null },
+    "specific_heat":       { "value": 1400, "table": [],   "ref": null },
     "thermal_diffusivity": { "value": 0.00116,"ref": null },
     "melting_point_tm":    { "value": null,   "ref": null },
     "glass_transition_tg": { "value": 105,    "ref": null },

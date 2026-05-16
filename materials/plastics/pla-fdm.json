@@ -44,8 +44,8 @@
       ],
       "ref": "simplify3d-materials-guide"
     },
-    "thermal_conductivity":{ "value": 0.13,  "ref": "callister2020" },
-    "specific_heat":       { "value": 1800,  "ref": "callister2020" },
+    "thermal_conductivity":{ "value": 0.13, "table": [],  "ref": "callister2020" },
+    "specific_heat":       { "value": 1800, "table": [],  "ref": "callister2020" },
     "thermal_diffusivity": { "value": null,  "ref": null },
     "melting_point_tm":    { "value": 155,   "ref": "callister2020" },
     "glass_transition_tg": { "value": 55,    "ref": "callister2020" },

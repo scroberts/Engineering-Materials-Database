@@ -59,8 +59,8 @@
       ],
       "ref": "nist-cryo-al"
     },
-    "thermal_conductivity":{ "value": 167,   "ref": "mil-hdbk-5j-2003" },
-    "specific_heat":       { "value": 896,   "ref": "mil-hdbk-5j-2003" },
+    "thermal_conductivity":{ "value": 167, "table": [],   "ref": "mil-hdbk-5j-2003" },
+    "specific_heat":       { "value": 896, "table": [],   "ref": "mil-hdbk-5j-2003" },
     "thermal_diffusivity": { "value": 0.689, "ref": null },
     "melting_point_tm":    { "value": 652,   "ref": "mil-hdbk-5j-2003" },
     "glass_transition_tg": { "value": null,  "ref": null },

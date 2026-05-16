@@ -44,8 +44,8 @@
       "table": [],
       "ref": null
     },
-    "thermal_conductivity":   { "value": 10.0, "ref": null },
-    "specific_heat":          { "value": 900,  "ref": null },
+    "thermal_conductivity":   { "value": 10.0, "table": [], "ref": null },
+    "specific_heat":          { "value": 900, "table": [],  "ref": null },
     "thermal_diffusivity":    { "value": null,  "ref": null },
     "melting_point_tm":       { "value": null,  "ref": null },
     "glass_transition_tg":    { "value": null,  "ref": null },

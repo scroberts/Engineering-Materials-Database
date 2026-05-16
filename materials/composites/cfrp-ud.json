@@ -44,8 +44,8 @@
       "table": [],
       "ref": "callister2020"
     },
-    "thermal_conductivity":   { "value": 7.0,   "ref": "callister2020" },
-    "specific_heat":          { "value": 900,   "ref": "callister2020" },
+    "thermal_conductivity":   { "value": 7.0, "table": [],   "ref": "callister2020" },
+    "specific_heat":          { "value": 900, "table": [],   "ref": "callister2020" },
     "thermal_diffusivity":    { "value": null,  "ref": null },
     "melting_point_tm":       { "value": null,  "ref": null },
     "glass_transition_tg":    { "value": 120,   "ref": "callister2020" },

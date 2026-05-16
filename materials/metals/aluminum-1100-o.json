@@ -49,8 +49,8 @@
       ],
       "ref": "nist-cryo-al"
     },
-    "thermal_conductivity":{ "value": 222,  "ref": null },
-    "specific_heat":       { "value": 904,  "ref": null },
+    "thermal_conductivity":{ "value": 222, "table": [],  "ref": null },
+    "specific_heat":       { "value": 904, "table": [],  "ref": null },
     "thermal_diffusivity": { "value": null, "ref": null },
     "melting_point_tm":    { "value": 657,  "ref": null },
     "glass_transition_tg": { "value": null, "ref": null },

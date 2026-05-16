@@ -252,5 +252,35 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.sandmeyersteel.com/ssc-invar-36/"
+  },
+  "nist-cryo-ss304": {
+    "short_label": "NIST Cryo DB: 304 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/304Stainless/304Stainless_rev.htm"
+  },
+  "nist-cryo-copper": {
+    "short_label": "NIST Cryo DB: OFHC Copper",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm"
+  },
+  "nist-cryo-ti64": {
+    "short_label": "NIST Cryo DB: Ti-6Al-4V",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Ti6Al4V/Ti6Al4V_rev.htm"
+  },
+  "nist-cryo-be": {
+    "short_label": "NIST Cryo DB: Beryllium",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Beryllium/Beryllium_rev.htm"
+  },
+  "nist-cryo-invar": {
+    "short_label": "NIST Cryo DB: Invar (Fe-36Ni)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Invar(Fe-36Ni)/Invar_rev.htm"
   }
 }

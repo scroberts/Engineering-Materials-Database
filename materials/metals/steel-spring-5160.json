@@ -44,8 +44,8 @@
       "table": [],
       "ref": "azom-5160"
     },
-    "thermal_conductivity":   { "value": 44.5,  "ref": "azom-5160" },
-    "specific_heat":          { "value": 475,   "ref": "azom-5160" },
+    "thermal_conductivity":   { "value": 44.5, "table": [],  "ref": "azom-5160" },
+    "specific_heat":          { "value": 475, "table": [],   "ref": "azom-5160" },
     "thermal_diffusivity":    { "value": null,   "ref": null },
     "melting_point_tm":       { "value": 1430,  "ref": null },
     "glass_transition_tg":    { "value": null,   "ref": null },

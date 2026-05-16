@@ -44,8 +44,8 @@
       "table": [],
       "ref": "makeitfrom-pom"
     },
-    "thermal_conductivity":   { "value": 0.31,  "ref": "makeitfrom-pom" },
-    "specific_heat":          { "value": 1460,  "ref": "makeitfrom-pom" },
+    "thermal_conductivity":   { "value": 0.31, "table": [],  "ref": "makeitfrom-pom" },
+    "specific_heat":          { "value": 1460, "table": [],  "ref": "makeitfrom-pom" },
     "thermal_diffusivity":    { "value": null,   "ref": null },
     "melting_point_tm":       { "value": 175,   "ref": "makeitfrom-pom" },
     "glass_transition_tg":    { "value": -60,   "ref": "makeitfrom-pom" },

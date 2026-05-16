@@ -49,8 +49,8 @@
       ],
       "ref": "azom-a2-tool-steel"
     },
-    "thermal_conductivity":{ "value": 38,   "ref": "onlinemetals-a2" },
-    "specific_heat":       { "value": 460,  "ref": "onlinemetals-a2" },
+    "thermal_conductivity":{ "value": 38, "table": [],   "ref": "onlinemetals-a2" },
+    "specific_heat":       { "value": 460, "table": [],  "ref": "onlinemetals-a2" },
     "thermal_diffusivity": { "value": null, "ref": null },
     "melting_point_tm":    { "value": 1432, "ref": "onlinemetals-a2" },
     "glass_transition_tg": { "value": null, "ref": null },

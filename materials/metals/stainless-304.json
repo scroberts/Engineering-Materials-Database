@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "The most widely stocked stainless steel in virtually all product forms. Available as sheet, plate, bar, tube, angle, channel, and structural sections from general metal suppliers worldwide.",
     "usage_frequency": "Common",
-    "notes": "AISI 304 (UNS S30400) austenitic 18-8 stainless steel in the annealed condition. The most widely used stainless steel globally. Corrosion resistance is significantly better than 303 (no sulfur addition) and better than mild steel in most environments. Weldable using all standard processes, but susceptible to intergranular corrosion (sensitisation) if the weld heat-affected zone is held in the 425–860 °C range for extended periods — use 304L (low-carbon, 0.03% C max) or 321 (Ti-stabilised) for welded fabrications exposed to corrosive environments without post-weld solution annealing. Non-magnetic in the annealed condition; cold working can induce martensitic transformation, producing slight ferromagnetism. Yield and tensile strengths are ASTM A240 minimums for sheet/plate; typical as-produced material exceeds these. Shear strength derived from von Mises criterion: UTS/√3 = 515/√3 ≈ 297 MPa."
+    "notes": "AISI 304 (UNS S30400) austenitic 18-8 stainless steel in the annealed condition. The most widely used stainless steel globally. Corrosion resistance is significantly better than 303 (no sulfur addition) and better than mild steel in most environments. Weldable using all standard processes, but susceptible to intergranular corrosion (sensitisation) if the weld heat-affected zone is held in the 425–860 °C range for extended periods — use 304L (low-carbon, 0.03% C max) or 321 (Ti-stabilised) for welded fabrications exposed to corrosive environments without post-weld solution annealing. Non-magnetic in the annealed condition; cold working can induce martensitic transformation, producing slight ferromagnetism. Yield and tensile strengths are ASTM A240 minimums for sheet/plate; typical as-produced material exceeds these. Shear strength derived from von Mises criterion: UTS/√3 = 515/√3 ≈ 297 MPa. Cryogenic CTE (−196 to 0 °C), k(T), and Cp(T) table values from NIST Cryogenic Materials Database (nist-cryo-ss304); above-RT CTE table entries (100–538 °C) from theworldmaterial-304."
   },
 
   "typical_usage": "The default general-purpose stainless steel. Kitchen and food-processing equipment; pharmaceutical and chemical process vessels and piping; architectural cladding and handrails; medical and laboratory equipment; fasteners; heat exchangers; and any sheet-metal fabrication requiring good corrosion resistance, weldability, and a clean aesthetic.",
@@ -42,21 +42,37 @@
     "thermal_expansion": {
       "value": 17.2,
       "table": [
-        { "temp": 100, "cte": 17.2 },
-        { "temp": 315, "cte": 17.8 },
-        { "temp": 538, "cte": 18.4 }
+        { "temp": -196, "cte": 7.0 },
+        { "temp": -123, "cte": 12.5 },
+        { "temp": -73,  "cte": 14.3 },
+        { "temp": 0,    "cte": 15.3 },
+        { "temp": 100,  "cte": 17.2 },
+        { "temp": 315,  "cte": 17.8 },
+        { "temp": 538,  "cte": 18.4 }
       ],
-      "ref": "theworldmaterial-304"
+      "ref": "nist-cryo-ss304"
     },
-    "thermal_conductivity":{ "value": 16.2, "ref": "azom-stainless-304" },
-    "specific_heat":       { "value": 500,  "ref": "azom-stainless-304" },
+    "thermal_conductivity":{ "value": 16.2, "table": [
+      { "temp": -196, "k": 7.9 },
+      { "temp": -123, "k": 11.2 },
+      { "temp": -73,  "k": 12.6 },
+      { "temp": 0,    "k": 14.6 },
+      { "temp": 27,   "k": 15.3 }
+    ], "ref": "nist-cryo-ss304" },
+    "specific_heat":       { "value": 500, "table": [
+      { "temp": -196, "cp": 205 },
+      { "temp": -123, "cp": 362 },
+      { "temp": -73,  "cp": 416 },
+      { "temp": 0,    "cp": 468 },
+      { "temp": 27,   "cp": 470 }
+    ], "ref": "nist-cryo-ss304" },
     "thermal_diffusivity": { "value": null, "ref": null },
     "melting_point_tm":    { "value": 1450, "ref": "azom-stainless-304" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-stainless-304", "theworldmaterial-304"],
+  "references": ["azom-stainless-304", "theworldmaterial-304", "nist-cryo-ss304"],
 
   "metadata": {
     "submitted_by": "admin",

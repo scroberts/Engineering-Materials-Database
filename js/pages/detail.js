@@ -537,7 +537,59 @@ function renderPhysical(mat) {
       </div>`;
   }
 
-  return sectionCard('Physical', body + cteTableHtml);
+  // ── k vs Temperature table ────────────────────────────────────────────────
+  const kTable = ph.thermal_conductivity?.table ?? [];
+  let kTableHtml = '';
+  if (kTable.length > 1) {
+    const kRows = kTable.map(pt =>
+      `<tr>
+        <td data-canonical="${pt.temp}" data-canonical-unit="°C"
+            class="cte-temp-cell">${Math.round(pt.temp + 273.15)} K</td>
+        <td>${fmt(pt.k, null, 1)}</td>
+      </tr>`
+    ).join('');
+    kTableHtml = `
+      <div class="detail-section-header" style="cursor:default;">
+        <h3 class="detail-section-title">Thermal Conductivity vs Temperature</h3>
+      </div>
+      <div class="cte-table-wrap">
+        <table class="cte-table">
+          <thead><tr>
+            <th class="cte-temp-header">Temperature (K)</th>
+            <th>k (W/m·K)</th>
+          </tr></thead>
+          <tbody>${kRows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  // ── Cp vs Temperature table ───────────────────────────────────────────────
+  const CpTable = ph.specific_heat?.table ?? [];
+  let CpTableHtml = '';
+  if (CpTable.length > 1) {
+    const CpRows = CpTable.map(pt =>
+      `<tr>
+        <td data-canonical="${pt.temp}" data-canonical-unit="°C"
+            class="cte-temp-cell">${Math.round(pt.temp + 273.15)} K</td>
+        <td>${fmt(pt.cp, null, 0)}</td>
+      </tr>`
+    ).join('');
+    CpTableHtml = `
+      <div class="detail-section-header" style="cursor:default;">
+        <h3 class="detail-section-title">Specific Heat vs Temperature</h3>
+      </div>
+      <div class="cte-table-wrap">
+        <table class="cte-table">
+          <thead><tr>
+            <th class="cte-temp-header">Temperature (K)</th>
+            <th>C<sub>p</sub> (J/kg·K)</th>
+          </tr></thead>
+          <tbody>${CpRows}</tbody>
+        </table>
+      </div>`;
+  }
+
+  return sectionCard('Physical', body + cteTableHtml + kTableHtml + CpTableHtml);
 }
 
 function renderComputed(mat) {

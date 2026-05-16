@@ -47,8 +47,8 @@
       ],
       "ref": "azom-stainless-316"
     },
-    "thermal_conductivity":{ "value": 16.3, "ref": "azom-stainless-316" },
-    "specific_heat":       { "value": 502,  "ref": "theworldmaterial-316" },
+    "thermal_conductivity":{ "value": 16.3, "table": [], "ref": "azom-stainless-316" },
+    "specific_heat":       { "value": 502, "table": [],  "ref": "theworldmaterial-316" },
     "thermal_diffusivity": { "value": 0.0405, "ref": "theworldmaterial-316" },
     "melting_point_tm":    { "value": 1399, "ref": "theworldmaterial-316" },
     "glass_transition_tg": { "value": null, "ref": null },

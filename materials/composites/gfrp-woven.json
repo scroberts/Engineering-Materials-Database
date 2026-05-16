@@ -43,8 +43,8 @@
       "table": [],
       "ref": "makeitfrom-g10"
     },
-    "thermal_conductivity":   { "value": 0.35, "ref": null },
-    "specific_heat":          { "value": 1000, "ref": null },
+    "thermal_conductivity":   { "value": 0.35, "table": [], "ref": null },
+    "specific_heat":          { "value": 1000, "table": [], "ref": null },
     "thermal_diffusivity":    { "value": null,  "ref": null },
     "melting_point_tm":       { "value": null,  "ref": null },
     "glass_transition_tg":    { "value": 130,  "ref": "makeitfrom-g10" },

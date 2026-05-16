@@ -47,8 +47,8 @@
       ],
       "ref": "theworldmaterial-303"
     },
-    "thermal_conductivity":{ "value": 16.3, "ref": "azom-stainless-303" },
-    "specific_heat":       { "value": 500,  "ref": "theworldmaterial-303" },
+    "thermal_conductivity":{ "value": 16.3, "table": [], "ref": "azom-stainless-303" },
+    "specific_heat":       { "value": 500, "table": [],  "ref": "theworldmaterial-303" },
     "thermal_diffusivity": { "value": null, "ref": null },
     "melting_point_tm":    { "value": 1455, "ref": "azom-stainless-303" },
     "glass_transition_tg": { "value": null, "ref": null },

@@ -44,8 +44,8 @@
       "table": [],
       "ref": "azom-sic"
     },
-    "thermal_conductivity":   { "value": 110,   "ref": "azom-sic" },
-    "specific_heat":          { "value": 670,   "ref": "azom-sic" },
+    "thermal_conductivity":   { "value": 110, "table": [],   "ref": "azom-sic" },
+    "specific_heat":          { "value": 670, "table": [],   "ref": "azom-sic" },
     "thermal_diffusivity":    { "value": null,   "ref": null },
     "melting_point_tm":       { "value": null,   "ref": null },
     "glass_transition_tg":    { "value": null,   "ref": null },

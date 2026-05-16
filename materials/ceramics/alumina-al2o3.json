@@ -51,8 +51,8 @@
       ],
       "ref": "azom-alumina"
     },
-    "thermal_conductivity":{ "value": 30.0,   "ref": "azom-alumina" },
-    "specific_heat":       { "value": 880,    "ref": null },
+    "thermal_conductivity":{ "value": 30.0, "table": [],   "ref": "azom-alumina" },
+    "specific_heat":       { "value": 880, "table": [],    "ref": null },
     "thermal_diffusivity": { "value": 0.0874, "ref": null },
     "melting_point_tm":    { "value": 2072,   "ref": null },
     "glass_transition_tg": { "value": null,   "ref": null },

@@ -47,8 +47,8 @@
       ],
       "ref": "metalzenith-a36"
     },
-    "thermal_conductivity":{ "value": 50.2, "ref": "metalzenith-a36" },
-    "specific_heat":       { "value": 486,  "ref": "metalzenith-a36" },
+    "thermal_conductivity":{ "value": 50.2, "table": [], "ref": "metalzenith-a36" },
+    "specific_heat":       { "value": 486, "table": [],  "ref": "metalzenith-a36" },
     "thermal_diffusivity": { "value": null, "ref": null },
     "melting_point_tm":    { "value": 1510, "ref": "metalzenith-a36" },
     "glass_transition_tg": { "value": null, "ref": null },

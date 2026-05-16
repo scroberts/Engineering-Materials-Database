@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "C11000 (electrolytic tough pitch) is the most common copper alloy, available in virtually all product forms from commodity suppliers. The OS050 (fully annealed) temper offers maximum ductility; H tempers are available for higher strength at the expense of ductility.",
     "usage_frequency": "Common",
-    "notes": "C11000 electrolytic tough pitch (ETP) copper in the OS050 fully-annealed temper. Electrical conductivity is defined as 100% IACS at this composition and temperature — this is the international reference standard for electrical conductivity. The 'tough pitch' designation refers to the controlled oxygen content (~0.04% O₂) which improves electrical conductivity vs. lower-purity grades. Not suitable for hydrogen-atmosphere service (risk of hydrogen embrittlement via internal steam formation); use C10200 (oxygen-free) where required. Yield strength is very low — the material is extremely soft and formable; for structural applications use copper alloys (brass, bronze, beryllium copper). Cold-working significantly increases strength and hardness. Annealing recovery begins ~200 °C and recrystallisation occurs at ~250 °C, so cold-worked tempers lose their work-hardening above this range. Shear strength derived from von Mises criterion: UTS/√3 = 220/√3 ≈ 127 MPa."
+    "notes": "C11000 electrolytic tough pitch (ETP) copper in the OS050 fully-annealed temper. Electrical conductivity is defined as 100% IACS at this composition and temperature — this is the international reference standard for electrical conductivity. The 'tough pitch' designation refers to the controlled oxygen content (~0.04% O₂) which improves electrical conductivity vs. lower-purity grades. Not suitable for hydrogen-atmosphere service (risk of hydrogen embrittlement via internal steam formation); use C10200 (oxygen-free) where required. Yield strength is very low — the material is extremely soft and formable; for structural applications use copper alloys (brass, bronze, beryllium copper). Cold-working significantly increases strength and hardness. Annealing recovery begins ~200 °C and recrystallisation occurs at ~250 °C, so cold-worked tempers lose their work-hardening above this range. Shear strength derived from von Mises criterion: UTS/√3 = 220/√3 ≈ 127 MPa. Cryogenic k(T), Cp(T), and CTE(T) table data from NIST Cryogenic Materials Database for OFHC copper (nist-cryo-copper); note thermal conductivity rises sharply at cryogenic temperatures (547 W/m·K at −196 °C vs ~396 W/m·K at room temperature) due to reduced phonon scattering."
   },
 
   "typical_usage": "Electrical conductors, bus bars, transformer windings, motor windings, heat exchangers, heat sinks, plumbing tube and fittings, electrical terminals and connectors, radiators, and any application requiring maximum electrical or thermal conductivity. Also used for RF shielding and microwave components.",
@@ -41,18 +41,36 @@
     "vapour_pressure":        { "value": null,   "ref": null },
     "thermal_expansion": {
       "value": 17.0,
-      "table": [],
-      "ref": "makeitfrom-c11000"
+      "table": [
+        { "temp": -196, "cte": 7.95 },
+        { "temp": -123, "cte": 13.58 },
+        { "temp": -73,  "cte": 15.21 },
+        { "temp": 0,    "cte": 16.46 },
+        { "temp": 27,   "cte": 16.58 }
+      ],
+      "ref": "nist-cryo-copper"
     },
-    "thermal_conductivity":   { "value": 390,   "ref": "makeitfrom-c11000" },
-    "specific_heat":          { "value": 385,   "ref": "makeitfrom-c11000" },
+    "thermal_conductivity":   { "value": 390, "table": [
+      { "temp": -196, "k": 547 },
+      { "temp": -123, "k": 418 },
+      { "temp": -73,  "k": 407 },
+      { "temp": 0,    "k": 399 },
+      { "temp": 27,   "k": 396 }
+    ], "ref": "nist-cryo-copper" },
+    "specific_heat":          { "value": 385, "table": [
+      { "temp": -196, "cp": 196 },
+      { "temp": -123, "cp": 324 },
+      { "temp": -73,  "cp": 359 },
+      { "temp": 0,    "cp": 387 },
+      { "temp": 27,   "cp": 389 }
+    ], "ref": "nist-cryo-copper" },
     "thermal_diffusivity":    { "value": null,   "ref": null },
     "melting_point_tm":       { "value": 1083,  "ref": "makeitfrom-c11000" },
     "glass_transition_tg":    { "value": null,   "ref": null },
     "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["makeitfrom-c11000"],
+  "references": ["makeitfrom-c11000", "nist-cryo-copper"],
 
   "metadata": {
     "submitted_by": "admin",
