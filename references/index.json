@@ -234,5 +234,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.makeitfrom.com/material-properties/Polyoxymethylene-POM-Acetal-Homopolymer"
+  },
+  "makeitfrom-abs": {
+    "short_label": "MakeItFrom: ABS",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Acrylonitrile-Butadiene-Styrene-ABS"
   }
 }

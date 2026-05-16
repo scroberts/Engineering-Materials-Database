@@ -19,7 +19,7 @@
     "yield_strength":      { "value": 0.880, "ref": "asm-matweb-ti64" },
     "tensile_strength":    { "value": 0.950, "ref": "asm-matweb-ti64" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": null,  "ref": null },
+    "compressive_strength":{ "value": 970,   "ref": "asm-matweb-ti64" },
     "usable_temp_range":   { "min": -196, "max": 315, "ref": null }
   },
 

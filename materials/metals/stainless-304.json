@@ -15,7 +15,7 @@
 
   "mechanical_common": {
     "youngs_modulus":      { "value": 193,   "ref": "azom-stainless-304" },
-    "poissons_ratio":      { "value": 0.29,  "ref": null },
+    "poissons_ratio":      { "value": 0.29,  "ref": "azom-stainless-304" },
     "yield_strength":      { "value": 0.205, "ref": "azom-stainless-304" },
     "tensile_strength":    { "value": 0.515, "ref": "azom-stainless-304" },
     "compressive_modulus": { "value": null,  "ref": null },
@@ -28,9 +28,9 @@
     "creep_strength":      { "value": null, "ref": null },
     "fatigue_sn_curve":    { "points": [], "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
-    "hardness_vickers":    { "value": 200,  "ref": null },
+    "hardness_vickers":    { "value": 200,  "ref": "azom-stainless-304" },
     "hardness_brinell":    { "value": 187,  "ref": "azom-stainless-304" },
-    "hardness_rockwell":   { "value": 88, "scale": "B", "ref": null },
+    "hardness_rockwell":   { "value": 88, "scale": "B", "ref": "azom-stainless-304" },
     "ductility":           { "min": 40, "max": null, "typical": null, "ref": "azom-stainless-304" },
     "shear_strength":      { "value": 0.297, "ref": null }
   },

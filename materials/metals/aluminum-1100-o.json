@@ -27,7 +27,7 @@
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
-    "hardness_vickers":    { "value": 24,   "ref": null },
+    "hardness_vickers":    { "value": 24,   "ref": "asm-metals-handbook-desk-1984" },
     "hardness_brinell":    { "value": 23,   "ref": "asm-metals-handbook-desk-1984" },
     "hardness_rockwell":   { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 35, "max": null, "typical": null, "ref": "asm-metals-handbook-desk-1984" },

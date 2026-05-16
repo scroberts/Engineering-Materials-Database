@@ -19,7 +19,7 @@
     "yield_strength":      { "value": 0.250, "ref": "azom-a36" },
     "tensile_strength":    { "value": 0.400, "ref": "azom-a36" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 250,   "ref": null },
+    "compressive_strength":{ "value": 250,   "ref": "azom-a36" },
     "usable_temp_range":   { "min": -30, "max": 425, "ref": null }
   },
 
@@ -27,7 +27,7 @@
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength":      { "value": null, "ref": null },
     "fracture_toughness":  { "value": null, "ref": null },
-    "hardness_vickers":    { "value": 155,  "ref": null },
+    "hardness_vickers":    { "value": 155,  "ref": "steel-grades-com-a36" },
     "hardness_brinell":    { "value": 149,  "ref": "steel-grades-com-a36" },
     "hardness_rockwell":   { "value": 77, "scale": "B", "ref": "steel-grades-com-a36" },
     "ductility":           { "min": 20, "max": null, "typical": 21, "ref": "azom-a36" },

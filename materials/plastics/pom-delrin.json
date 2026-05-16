@@ -15,7 +15,7 @@
 
   "mechanical_common": {
     "youngs_modulus":      { "value": 3.1,   "ref": "makeitfrom-pom" },
-    "poissons_ratio":      { "value": 0.35,  "ref": null },
+    "poissons_ratio":      { "value": 0.35,  "ref": "makeitfrom-pom" },
     "yield_strength":      { "value": 0.069, "ref": "makeitfrom-pom" },
     "tensile_strength":    { "value": 0.069, "ref": "makeitfrom-pom" },
     "compressive_modulus": { "value": null,  "ref": null },

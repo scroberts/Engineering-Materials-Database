@@ -15,7 +15,7 @@
 
   "mechanical_common": {
     "youngs_modulus":      { "value": 375,   "ref": "azom-alumina" },
-    "poissons_ratio":      { "value": 0.22,  "ref": null },
+    "poissons_ratio":      { "value": 0.22,  "ref": "azom-alumina" },
     "yield_strength":      { "value": null,  "ref": null },
     "tensile_strength":    { "value": 0.262, "ref": "azom-alumina" },
     "compressive_modulus": { "value": null,  "ref": null },

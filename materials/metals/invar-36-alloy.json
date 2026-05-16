@@ -19,8 +19,8 @@
     "yield_strength":      { "value": 0.483, "ref": "matweb_carpenter_invar36_coldrawn" },
     "tensile_strength":    { "value": 0.621, "ref": "matweb_carpenter_invar36_coldrawn" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": null,  "ref": null },
-    "usable_temp_range":   { "min": null, "max": 190, "ref": "spacematdb_invar36" }
+    "compressive_strength":{ "value": 483,   "ref": "matweb_carpenter_invar36_coldrawn" },
+    "usable_temp_range":   { "min": -200, "max": 190, "ref": "spacematdb_invar36" }
   },
 
   "mechanical_other": {

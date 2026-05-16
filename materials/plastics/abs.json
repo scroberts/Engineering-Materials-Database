@@ -14,12 +14,12 @@
   "typical_usage": "Consumer product housings, automotive interior trim, electronic enclosures, pipe fittings. Chosen for its ease of processing, reasonable impact resistance, and dimensional stability.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 2.1,   "ref": null },
-    "poissons_ratio":      { "value": 0.38,  "ref": null },
-    "yield_strength":      { "value": 0.040, "ref": null },
+    "youngs_modulus":      { "value": 2.1,   "ref": "makeitfrom-abs" },
+    "poissons_ratio":      { "value": 0.38,  "ref": "makeitfrom-abs" },
+    "yield_strength":      { "value": 0.040, "ref": "makeitfrom-abs" },
     "tensile_strength":    { "value": 0.047, "ref": "azom-abs" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 65,    "ref": null },
+    "compressive_strength":{ "value": 65,    "ref": "azom-abs" },
     "usable_temp_range":   { "min": -20, "max": 70, "ref": "azom-abs" }
   },
 
@@ -57,7 +57,7 @@
     "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["azom-abs", "callister2020"],
+  "references": ["azom-abs", "callister2020", "makeitfrom-abs"],
 
   "metadata": {
     "submitted_by": "admin",
