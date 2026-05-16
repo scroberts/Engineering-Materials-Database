@@ -749,27 +749,50 @@ function renderDetailCharts(mat) {
   // ── CTE vs Temperature ──────────────────────────────────────────────────
   const cteCanvas = document.getElementById('detail-chart-cte');
   if (cteCanvas) {
-    const table = mat.physical?.thermal_expansion?.table ?? [];
+    const table     = mat.physical?.thermal_expansion?.table ?? [];
+    const cteScalar = mat.physical?.thermal_expansion?.value ?? null;
     if (table.length > 1) {
+      const tableData = table.map(pt => ({ x: Math.round(pt.temp + 273.15), y: pt.cte }));
+      const xMin = Math.min(...tableData.map(d => d.x));
+      const xMax = Math.max(...tableData.map(d => d.x));
+
+      const datasets = [{
+        label: 'CTE vs T',
+        data: tableData,
+        borderColor: CHART_BLUE,
+        backgroundColor: CHART_BLUE + '33',
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.3,
+        fill: false,
+      }];
+
+      if (cteScalar != null) {
+        datasets.push({
+          label: 'Nominal',
+          data: [{ x: xMin, y: cteScalar }, { x: xMax, y: cteScalar }],
+          borderColor: '#94a3b8',
+          borderDash: [5, 4],
+          borderWidth: 1.5,
+          pointRadius: 0,
+          fill: false,
+        });
+      }
+
       _cteChart = new window.Chart(cteCanvas, {
         type: 'line',
-        data: {
-          datasets: [{
-            data: table.map(pt => ({ x: Math.round(pt.temp + 273.15), y: pt.cte })),
-            borderColor: CHART_BLUE,
-            backgroundColor: CHART_BLUE + '33',
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            tension: 0.3,
-            fill: false,
-          }],
-        },
+        data: { datasets },
         options: {
           responsive: true,
           maintainAspectRatio: false,
           plugins: {
-            legend: { display: false },
+            legend: {
+              display: cteScalar != null,
+              position: 'bottom',
+              labels: { boxWidth: 12, font: { size: 11 }, padding: 8 },
+            },
             tooltip: {
+              filter: item => item.datasetIndex === 0,
               callbacks: {
                 label: ctx => `CTE: ${ctx.parsed.y.toFixed(2)} µm/m·K`,
                 title: ctx => `${ctx[0].parsed.x} K`,
