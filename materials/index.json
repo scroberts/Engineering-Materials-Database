@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-16T14:56:52Z",
+  "generated": "2026-05-16T16:04:55Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -99,6 +99,123 @@
       "yield_strength": null,
       "tensile_strength": 0.27,
       "density": 1.8
+    },
+    {
+      "slug": "epdm",
+      "path": "materials/elastomers/epdm.json",
+      "name": "EPDM Rubber",
+      "category": "Elastomer",
+      "fabrication_processes": [],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 0.014,
+      "density": 1.27
+    },
+    {
+      "slug": "fluorocarbon-viton",
+      "path": "materials/elastomers/fluorocarbon-viton.json",
+      "name": "Fluorocarbon Rubber (FKM / Viton\u00ae)",
+      "category": "Elastomer",
+      "fabrication_processes": [],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 0.008,
+      "density": 1.9
+    },
+    {
+      "slug": "nitrile-nbr",
+      "path": "materials/elastomers/nitrile-nbr.json",
+      "name": "Nitrile Rubber (NBR / Buna-N)",
+      "category": "Elastomer",
+      "fabrication_processes": [],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 0.014,
+      "density": 1.27
+    },
+    {
+      "slug": "silicone-vmq",
+      "path": "materials/elastomers/silicone-vmq.json",
+      "name": "Silicone Rubber (VMQ)",
+      "category": "Elastomer",
+      "fabrication_processes": [],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 0.0065,
+      "density": 1.25
+    },
+    {
+      "slug": "bk7-optical-glass",
+      "path": "materials/glass/bk7-optical-glass.json",
+      "name": "N-BK7 Optical Glass",
+      "category": "Glass",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 82,
+      "yield_strength": null,
+      "tensile_strength": null,
+      "density": 2.51
+    },
+    {
+      "slug": "borosilicate-glass",
+      "path": "materials/glass/borosilicate-glass.json",
+      "name": "Borosilicate Glass (Pyrex\u00ae / BOROFLOAT\u00ae 33)",
+      "category": "Glass",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 64,
+      "yield_strength": null,
+      "tensile_strength": 0.025,
+      "density": 2.23
+    },
+    {
+      "slug": "ule-glass",
+      "path": "materials/glass/ule-glass.json",
+      "name": "Corning ULE\u00ae 7972 Glass",
+      "category": "Glass",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": 67.6,
+      "yield_strength": null,
+      "tensile_strength": 0.05,
+      "density": 2.21
     },
     {
       "slug": "zerodur-grade-0",
@@ -425,6 +542,40 @@
       "density": 4.43
     },
     {
+      "slug": "balsa-wood",
+      "path": "materials/natural/balsa-wood.json",
+      "name": "Balsa Wood",
+      "category": "Natural Material",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 3.5,
+      "yield_strength": null,
+      "tensile_strength": 0.012,
+      "density": 0.15
+    },
+    {
+      "slug": "birch-plywood",
+      "path": "materials/natural/birch-plywood.json",
+      "name": "Baltic Birch Plywood",
+      "category": "Natural Material",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 10.0,
+      "yield_strength": null,
+      "tensile_strength": 0.045,
+      "density": 0.68
+    },
+    {
       "slug": "abs-fdm",
       "path": "materials/plastics/abs-fdm.json",
       "name": "ABS (FDM 3D Printed)",
@@ -460,6 +611,25 @@
       "yield_strength": 0.04,
       "tensile_strength": 0.047,
       "density": 1.05
+    },
+    {
+      "slug": "acrylic-pmma",
+      "path": "materials/plastics/acrylic-pmma.json",
+      "name": "Cast Acrylic (PMMA)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Polishable"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 3.2,
+      "yield_strength": null,
+      "tensile_strength": 0.07,
+      "density": 1.18
     },
     {
       "slug": "petg-fdm",

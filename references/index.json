@@ -1,4 +1,40 @@
 {
+  "pgo-online-nbk7": {
+    "short_label": "PGO: SCHOTT N-BK7 Optical Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/BK7.html"
+  },
+  "pgo-online-ule": {
+    "short_label": "PGO: Corning ULE 7972 Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/ule.html"
+  },
+  "pgo-online-borofloat": {
+    "short_label": "PGO: SCHOTT BOROFLOAT 33 Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/borofloat.html"
+  },
+  "usda-wood-handbook": {
+    "short_label": "USDA Forest Products Laboratory Wood Handbook (FPL-GTR-282)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr282.pdf"
+  },
+  "makeitfrom-acrylic": {
+    "short_label": "MakeItFrom: Cast PMMA (Acrylic) Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Polymethylmethacrylate-PMMA-Acrylic"
+  },
+  "parker-oring-materials": {
+    "short_label": "Parker O-Ring Material Selection Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.parker.com/us/en/divisions/o-ring-and-engineered-seals-division/resources/oring-ehandbook/oring-elastomers/material-selection-guide.html"
+  },
   "schott-zerodur": {
     "short_label": "Schott: ZERODUR Technical Details",
     "doi": null,

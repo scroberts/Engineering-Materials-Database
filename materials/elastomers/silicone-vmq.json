@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Silicone Rubber (VMQ)",
+    "slug":       "silicone-vmq",
+    "category":   "Elastomer",
+    "fabrication_processes": [],
+    "common_forms": ["Sheet"],
+    "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer",
+    "usage_frequency": "Specialty",
+    "notes": "Standard 70 Shore A VMQ (dimethyl silicone) compound. Lowest tensile and tear strength of the four common O-ring materials; not recommended for dynamic sealing or high-pressure applications. Highest CTE and widest temperature range of common elastomers. FDA-compliant grades available for food and medical contact. Poor resistance to mineral oils and aromatic solvents. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "O-rings and seals where wide temperature range is critical: cryogenic systems, high-temperature ovens, food and medical equipment, vacuum systems, and static seals requiring low compression set over extended service life.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": null,   "ref": null },
+    "poissons_ratio":       { "value": null,   "ref": null },
+    "yield_strength":       { "value": null,   "ref": null },
+    "tensile_strength":     { "value": 0.0065, "ref": "parker-oring-materials" },
+    "compressive_modulus":  { "value": null,   "ref": null },
+    "compressive_strength": { "value": null,   "ref": null },
+    "usable_temp_range":    { "min": -60, "max": 200, "ref": "parker-oring-materials" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": 70, "scale": "A", "ref": "parker-oring-materials" },
+    "ductility":            { "min": null, "max": null, "typical": 200, "ref": "parker-oring-materials" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.25, "ref": "parker-oring-materials" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 350,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_conductivity": {
+      "value": 0.14,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "specific_heat": {
+      "value": 1250,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_diffusivity":    { "value": 0.0009, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": -120,   "ref": "parker-oring-materials" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["parker-oring-materials"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "N-BK7 Optical Glass",
+    "slug":       "bk7-optical-glass",
+    "category":   "Glass",
+    "fabrication_processes": ["Machining", "Polishable"],
+    "common_forms": ["Plate", "Round Bar"],
+    "common_form_notes": "Lenses, prisms, windows, beamsplitters, optical fibre components",
+    "usage_frequency": "Specialty",
+    "notes": "N-BK7 is the current Schott designation (lead-free); older designation BK7 refers to the same glass type. Most widely specified optical glass due to its broad visible transmittance and ease of fabrication. Hardness converted from Knoop 610 HK (ISO 9385) using HV ≈ HK/1.05. Schott does not publish a tensile or compressive strength for optical-grade glass; strength is surface-quality dependent."
+  },
+
+  "typical_usage": "Optical lenses, prisms, windows, and beamsplitters across the visible spectrum. The default optical glass for non-critical applications where cost, availability, and machinability matter more than thermal stability.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 82,   "ref": "pgo-online-nbk7" },
+    "poissons_ratio":       { "value": 0.206, "ref": "pgo-online-nbk7" },
+    "yield_strength":       { "value": null, "ref": null },
+    "tensile_strength":     { "value": null, "ref": null },
+    "compressive_modulus":  { "value": null, "ref": null },
+    "compressive_strength": { "value": null, "ref": null },
+    "usable_temp_range":    { "min": null, "max": 350, "ref": "pgo-online-nbk7" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": 581,  "ref": "pgo-online-nbk7" },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 2.51,  "ref": "pgo-online-nbk7" },
+    "electrical_conductivity":{ "value": null,  "ref": null },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 7.1,
+      "table": [],
+      "ref": "pgo-online-nbk7"
+    },
+    "thermal_conductivity": {
+      "value": 1.114,
+      "table": [],
+      "ref": "pgo-online-nbk7"
+    },
+    "specific_heat": {
+      "value": 858,
+      "table": [],
+      "ref": "pgo-online-nbk7"
+    },
+    "thermal_diffusivity":    { "value": 0.0052, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": 557,    "ref": "pgo-online-nbk7" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": "pgo-online-nbk7" }
+  },
+
+  "references": ["pgo-online-nbk7"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

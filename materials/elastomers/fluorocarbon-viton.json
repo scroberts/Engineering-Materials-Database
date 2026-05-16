@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Fluorocarbon Rubber (FKM / Viton®)",
+    "slug":       "fluorocarbon-viton",
+    "category":   "Elastomer",
+    "fabrication_processes": [],
+    "common_forms": ["Sheet"],
+    "common_form_notes": "O-rings, seals, sheet stock; standard 70 Shore A durometer",
+    "usage_frequency": "Specialty",
+    "notes": "Standard 70 Shore A FKM compound. Viton® is a registered trademark of Chemours; generic term is fluorocarbon rubber (FKM). Properties vary with fluorine content (66–70%) and specific formulation. Higher density than other elastomers due to fluorine content. Temperature range -20 to +200°C continuous; brief excursions to +240°C. Limited resistance to polar solvents, amines, and MEK. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "O-rings and seals in high-temperature and chemically aggressive environments: aerospace fuel systems, automotive engines, chemical processing equipment, and vacuum chambers requiring low outgassing.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": null,  "ref": null },
+    "poissons_ratio":       { "value": null,  "ref": null },
+    "yield_strength":       { "value": null,  "ref": null },
+    "tensile_strength":     { "value": 0.008, "ref": "parker-oring-materials" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": -20, "max": 200, "ref": "parker-oring-materials" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": 70, "scale": "A", "ref": "parker-oring-materials" },
+    "ductility":            { "min": null, "max": null, "typical": 200, "ref": "parker-oring-materials" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.90, "ref": "parker-oring-materials" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 180,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_conductivity": {
+      "value": 0.25,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "specific_heat": {
+      "value": 1300,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_diffusivity":    { "value": 0.0010, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": -20,    "ref": "parker-oring-materials" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["parker-oring-materials"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

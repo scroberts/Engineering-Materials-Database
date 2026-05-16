@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "EPDM Rubber",
+    "slug":       "epdm",
+    "category":   "Elastomer",
+    "fabrication_processes": [],
+    "common_forms": ["Sheet"],
+    "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer, peroxide-cured",
+    "usage_frequency": "Common",
+    "notes": "Standard 70 Shore A peroxide-cured EPDM compound. Peroxide cure provides higher temperature resistance (to +150°C) compared to sulfur cure (to +125°C). EPDM is incompatible with petroleum oils and greases — do not use in contact with mineral oils, gasoline, or diesel. Excellent ozone, UV, and weathering resistance. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "O-rings and seals for steam, hot water, brake fluid (glycol-based), phosphate ester hydraulic fluid (Skydrol®), and outdoor weather-exposed applications. Common in HVAC, automotive cooling systems, and water treatment equipment.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": null,  "ref": null },
+    "poissons_ratio":       { "value": null,  "ref": null },
+    "yield_strength":       { "value": null,  "ref": null },
+    "tensile_strength":     { "value": 0.014, "ref": "parker-oring-materials" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": -45, "max": 150, "ref": "parker-oring-materials" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": 70, "scale": "A", "ref": "parker-oring-materials" },
+    "ductility":            { "min": null, "max": null, "typical": 250, "ref": "parker-oring-materials" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.27, "ref": "parker-oring-materials" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 250,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_conductivity": {
+      "value": 0.25,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "specific_heat": {
+      "value": 1400,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_diffusivity":    { "value": 0.0014, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": -50,    "ref": "parker-oring-materials" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["parker-oring-materials"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

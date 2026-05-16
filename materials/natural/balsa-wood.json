@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Balsa Wood",
+    "slug":       "balsa-wood",
+    "category":   "Natural Material",
+    "fabrication_processes": ["Machining"],
+    "common_forms": ["Sheet"],
+    "common_form_notes": "Sheets, strips, and blocks in standard hobby/model sizes",
+    "usage_frequency": "Specialty",
+    "notes": "Balsa properties are highly density-dependent; published values vary 2–3× between grades (E from 2–9 GPa, UTS from 7–46 MPa). Values here represent mid-density model/structural grade (ρ ≈ 0.15 g/cm³). Young's modulus, tensile, and compressive strength are along-grain values; transverse values are 10–20× lower. CTE is the radial (along-grain) value. Standard hardness scales (HV, HB, Rockwell) are not applicable. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "RC aircraft structures, sandwich core material for composite laminates, wind tunnel models, and prototyping of lightweight structural concepts where the highest specific stiffness per cost is needed.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 3.5,   "ref": "usda-wood-handbook" },
+    "poissons_ratio":       { "value": null,  "ref": null },
+    "yield_strength":       { "value": null,  "ref": null },
+    "tensile_strength":     { "value": 0.012, "ref": "usda-wood-handbook" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": 7,     "ref": "usda-wood-handbook" },
+    "usable_temp_range":    { "min": -10, "max": 80, "ref": null }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 0.15, "ref": "usda-wood-handbook" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 6.5,
+      "table": [],
+      "ref": "usda-wood-handbook"
+    },
+    "thermal_conductivity": {
+      "value": 0.055,
+      "table": [],
+      "ref": "usda-wood-handbook"
+    },
+    "specific_heat": {
+      "value": 1700,
+      "table": [],
+      "ref": "usda-wood-handbook"
+    },
+    "thermal_diffusivity":    { "value": 0.0022, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["usda-wood-handbook"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

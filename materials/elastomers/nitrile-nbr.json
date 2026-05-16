@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Nitrile Rubber (NBR / Buna-N)",
+    "slug":       "nitrile-nbr",
+    "category":   "Elastomer",
+    "fabrication_processes": [],
+    "common_forms": ["Sheet"],
+    "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer",
+    "usage_frequency": "Common",
+    "notes": "Standard 70 Shore A compound. Properties vary with specific formulation and carbon black loading. Young's modulus is not defined for elastomers in the conventional sense (material is hyperelastic, not linearly elastic). No conventional yield point. Temperature range -30 to +100°C continuous; brief excursions to +120°C. Incompatible with ozone, UV, aromatic solvents, and ketones. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "General-purpose O-rings, seals, and gaskets in petroleum-based fluid systems, hydraulic circuits, pneumatics, and fuel handling. The most widely used O-ring material due to its combination of oil resistance and low cost.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": null,  "ref": null },
+    "poissons_ratio":       { "value": null,  "ref": null },
+    "yield_strength":       { "value": null,  "ref": null },
+    "tensile_strength":     { "value": 0.014, "ref": "parker-oring-materials" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": -30, "max": 100, "ref": "parker-oring-materials" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": 70, "scale": "A", "ref": "parker-oring-materials" },
+    "ductility":            { "min": null, "max": null, "typical": 250, "ref": "parker-oring-materials" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.27, "ref": "parker-oring-materials" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 190,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_conductivity": {
+      "value": 0.24,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "specific_heat": {
+      "value": 1300,
+      "table": [],
+      "ref": "parker-oring-materials"
+    },
+    "thermal_diffusivity":    { "value": 0.0015, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": -30,    "ref": "parker-oring-materials" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["parker-oring-materials"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

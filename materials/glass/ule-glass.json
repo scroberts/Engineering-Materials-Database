@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Corning ULE® 7972 Glass",
+    "slug":       "ule-glass",
+    "category":   "Glass",
+    "fabrication_processes": ["Machining", "Polishable"],
+    "common_forms": ["Plate", "Round Bar"],
+    "common_form_notes": "Large telescope mirror blanks, lithography stages, precision reference surfaces",
+    "usage_frequency": "Exotic",
+    "notes": "ULE 7972 is Corning's titania-silicate ultra-low expansion glass. CTE tolerance is 0 ± 0.030 µm/m·K measured 5–35°C — tighter than ZERODUR® Grade 0 (±0.100). Hardness converted from Knoop 460 HK (200 g load) using HV ≈ HK/1.05. Tensile strength 49.8 MPa from Corning datasheet. Glass transition temperature is approximate annealing point. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "Primary and secondary mirrors for large ground-based and space telescopes, EUV lithography stages, laser cavity reference surfaces, and any precision optical structure where near-zero thermal deformation is critical.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 67.6,  "ref": "pgo-online-ule" },
+    "poissons_ratio":       { "value": 0.17,  "ref": "pgo-online-ule" },
+    "yield_strength":       { "value": null,  "ref": null },
+    "tensile_strength":     { "value": 0.050, "ref": "pgo-online-ule" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": null, "max": 600, "ref": "pgo-online-ule" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": 438,  "ref": "pgo-online-ule" },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 2.21,  "ref": "pgo-online-ule" },
+    "electrical_conductivity":{ "value": null,  "ref": null },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 0,
+      "table": [],
+      "ref": "pgo-online-ule"
+    },
+    "thermal_conductivity": {
+      "value": 1.31,
+      "table": [],
+      "ref": "pgo-online-ule"
+    },
+    "specific_heat": {
+      "value": 767,
+      "table": [],
+      "ref": "pgo-online-ule"
+    },
+    "thermal_diffusivity":    { "value": 0.0077, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": 890,    "ref": "pgo-online-ule" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": "pgo-online-ule" }
+  },
+
+  "references": ["pgo-online-ule"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}
