@@ -1539,8 +1539,8 @@ function showEditPostDownload(panel, slug, name) {
     <ol class="pr-steps">
       <li>
         <strong>Fork</strong> the repository at
-        <a href="https://github.com/uvic-design-eng/materials-database" target="_blank" rel="noopener">
-          uvic-design-eng/materials-database
+        <a href="https://github.com/scroberts/materials-database" target="_blank" rel="noopener">
+          scroberts/materials-database
         </a>
       </li>
       <li>
