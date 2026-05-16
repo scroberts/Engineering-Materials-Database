@@ -19,7 +19,7 @@
     "yield_strength":      { "value": 0.069, "ref": "makeitfrom-c11000" },
     "tensile_strength":    { "value": 0.220, "ref": "makeitfrom-c11000" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": null,  "ref": null },
+    "compressive_strength":{ "value": 69,    "ref": "makeitfrom-c11000" },
     "usable_temp_range":   { "min": -200, "max": 200, "ref": null }
   },
 

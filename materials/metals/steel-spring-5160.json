@@ -19,7 +19,7 @@
     "yield_strength":      { "value": 1.380, "ref": "makeitfrom-5160" },
     "tensile_strength":    { "value": 1.570, "ref": "makeitfrom-5160" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": null,  "ref": null },
+    "compressive_strength":{ "value": 1380,  "ref": "makeitfrom-5160" },
     "usable_temp_range":   { "min": -50, "max": 200, "ref": null }
   },
 
@@ -29,7 +29,7 @@
     "fatigue_sn_curve":    { "points": [], "ref": null },
     "fracture_toughness":  { "value": null,  "ref": null },
     "hardness_vickers":    { "value": 470,   "ref": "makeitfrom-5160" },
-    "hardness_brinell":    { "value": null,  "ref": null },
+    "hardness_brinell":    { "value": 443,   "ref": "makeitfrom-5160" },
     "hardness_rockwell":   { "value": 47, "scale": "C", "ref": "makeitfrom-5160" },
     "ductility":           { "min": 8, "max": 15, "typical": 12, "ref": "makeitfrom-5160" },
     "shear_strength":      { "value": 0.906, "ref": null }

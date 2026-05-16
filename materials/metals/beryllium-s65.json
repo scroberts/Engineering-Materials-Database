@@ -19,7 +19,7 @@
     "yield_strength":      { "value": 0.240, "ref": "azom-beryllium" },
     "tensile_strength":    { "value": 0.370, "ref": "azom-beryllium" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": null,  "ref": null },
+    "compressive_strength":{ "value": 240,   "ref": "azom-beryllium" },
     "usable_temp_range":   { "min": -200, "max": 600, "ref": null }
   },
 

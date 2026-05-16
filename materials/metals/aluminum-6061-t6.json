@@ -36,7 +36,7 @@
       "ref": "mil-hdbk-5j-2003"
     },
     "fracture_toughness":  { "value": 29.0, "ref": "mil-hdbk-5j-2003" },
-    "hardness_vickers":    { "value": null, "ref": null },
+    "hardness_vickers":    { "value": 107,  "ref": "azom-aluminum-6061" },
     "hardness_brinell":    { "value": 107,  "ref": "mil-hdbk-5j-2003" },
     "hardness_rockwell":   { "value": 60,   "scale": "B", "ref": "mil-hdbk-5j-2003" },
     "ductility":           { "min": 8, "max": null, "typical": null, "ref": "mil-hdbk-5j-2003" },
