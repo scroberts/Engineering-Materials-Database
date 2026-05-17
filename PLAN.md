@@ -372,10 +372,25 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 13. `tools/migrate.py` · `tools/import_bibtex.py`
 - [x] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
 - [x] 15. Edit mode — implemented as dual-mode `submit.html` (`?slug=` pre-fills form, locks slug, "Download Updated JSON")
-- [ ] 16. Additional seed materials — steel 4340, PEEK, CFRP (composites/cfrp-ud.json started)
+- [x] 16. Additional seed materials — steel 4340, PEEK, CFRP (composites/cfrp-ud.json); also added Inconel 625, Inconel 718, H13 Tool Steel, AlSi10Mg, GFRP, C-SiC, and others
 - [x] 17. `404.html`
 - [x] 18. Merit index table improvements — shortName, augmented descriptions, reference footnotes in `derived.js` + `compare.js`
-- [ ] 19. `js/core/export.js` · Download dropdown in detail.js + compare.js · SheetJS CDN in compare.html + material.html
+- [x] 19. `js/core/export.js` · Download dropdown in detail.js + compare.js · SheetJS CDN in compare.html + material.html
+
+### Phase 2 — Advanced Material Selection
+
+- [ ] 20. `magnetic_classification` added to manifest — extend `tools/update_manifest.py` to extract `physical.magnetic_classification.value`; regenerate `materials/index.json`
+- [ ] 21. Browse: Magnetic Classification filter — add `<fieldset id="filter-magnetic">` to `index.html` sidebar; extend `materialMatches()` in `browse.js` to filter on `?magnetic=` URL param
+- [ ] 22. Browse: "Compare All Filtered" button — shows in compare-bar when 2–10 filtered materials visible; disabled (tooltip) when >10; navigates to `compare.html?slugs=...`
+- [ ] 23. Browse: "Advanced Selection →" button — below Reset in sidebar; builds `select.html?cat=...&fab=...&form=...&freq=...&magnetic=...` from current filter state and navigates
+- [ ] 24. Nav "Select" link — add to all 5 pages (`index.html`, `material.html`, `compare.html`, `submit.html`, `select.html`) between Compare and Submit
+- [ ] 25. `select.html` — page shell: site header, nav, h1, pre-selection panel, max-results/units/temp controls, property filter rows, merit index selector, Find Materials button, results section
+- [ ] 26. `css/pages/select.css` — page-specific styles for filter rows, property selector layout, results table
+- [ ] 27. `js/pages/select.js` — pre-selection panel (read URL params, display read-only, "Edit" link); Add/Remove filter rows; unit label auto-update; Find Materials button wiring
+- [ ] 28. `js/pages/select.js` — two-phase filtering algorithm: manifest pre-filter → `loadMaterialBatch()` → property range filters → merit index ranking → top-N results
+- [ ] 29. `js/pages/select.js` — results rendering: table with checkboxes, "Select All" link, "Compare Selected (N)" button → `compare.html?slugs=...`
+- [ ] 30. `js/core/disclaimer.js` — add `select.html` to pages that load the disclaimer banner
+- [ ] 31. End-to-end verification — full checklist from SPEC.md §12.12
 
 ---
 

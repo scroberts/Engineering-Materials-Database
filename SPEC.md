@@ -410,7 +410,296 @@ This ensures old entries are never broken by format changes.
 
 > Items in this section are incomplete or pending decisions. Remove entries once resolved.
 
-- **Additional seed materials** — steel 4340, PEEK, carbon fibre/epoxy composite
+- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) and ABS (HRC, k, Cp, diffusivity, Tg refs) have values without citations.
+- **Advanced Material Selection** — Phase 2 feature; see Section 12 for full spec.
+
+---
+
+---
+
+## 12. Advanced Material Selection (Phase 2)
+
+### 12.1 Overview
+
+The Advanced Material Selection page (`select.html`) provides a structured, three-tier filter for finding materials that satisfy engineering design constraints:
+
+1. **Categorical pre-filters** — narrow the candidate set by category, fabrication process, common forms, usage frequency, and magnetic classification (inherited from the Browse page via URL params)
+2. **Property range filters** — up to 5 numeric constraints (e.g. yield strength ≥ 500 MPa, density ≤ 5 g/cm³)
+3. **Merit index ranking** — rank remaining candidates by any of M1–M13 and return the top N
+
+Results display as a selectable table that feeds directly into the Compare page.
+
+Additionally, the Browse page gains two related upgrades:
+- **Magnetic Classification filter** (Ferromagnetic / Paramagnetic / Diamagnetic checkboxes in the sidebar)
+- **"Compare All Filtered" button** — sends all visible Browse results to the Compare page in one click
+
+### 12.2 Navigation
+
+A **"Select"** link is added between Compare and Submit on every page:
+
+```html
+<a href="index.html"   class="nav-link">Browse</a>
+<a href="compare.html" class="nav-link">Compare</a>
+<a href="select.html"  class="nav-link">Select</a>
+<a href="submit.html"  class="nav-link">Submit</a>
+<button class="nav-link" data-action="show-disclaimer">Disclaimer</button>
+```
+
+### 12.3 Browse Page Upgrades
+
+#### Magnetic Classification Filter
+
+A new fieldset in the Browse sidebar, after Usage Frequency:
+
+```html
+<fieldset>
+  <legend>Magnetic Class</legend>
+  <div id="filter-magnetic">
+    <!-- checkboxes: Ferromagnetic, Paramagnetic, Diamagnetic -->
+  </div>
+</fieldset>
+```
+
+URL param: `?magnetic=Paramagnetic` (append-style, same convention as all other params). Filter logic in `materialMatches()`:
+
+```js
+if (f.magnetic.size > 0 && !f.magnetic.has(mat.magnetic_classification)) return false;
+```
+
+Materials where `magnetic_classification` is `null` in the manifest are excluded when any magnetic filter is active.
+
+The manifest (`materials/index.json`) must be extended to include `magnetic_classification` per entry. `update_manifest.py` extracts `physical.magnetic_classification.value` from each material JSON.
+
+#### "Compare All Filtered" Button
+
+Appears in the compare-bar area alongside the existing "Compare N" button:
+
+| Filtered count | State |
+|---|---|
+| < 2 | Hidden |
+| 2–10 | Enabled: "Compare All Filtered (N)" |
+| > 10 | Disabled, tooltip: "Narrow filters to ≤ 10 to compare all" |
+
+Clicking: populates `compareSet` with all currently-visible slugs, navigates to `compare.html?slugs=<csv>`.
+
+#### "Advanced Selection →" Button
+
+Added in the filter sidebar, below the Reset button. Constructs `select.html?` + current Browse filter URL params (same params `writeFiltersToURL` would write) and navigates.
+
+### 12.4 select.html — Page Layout
+
+```
+[site header + nav — Browse | Compare | Select | Submit | Disclaimer]
+
+h1: Advanced Material Selection
+
+┌─ Pre-selection (from Browse) ──────────────────────── [Edit on Browse] ─┐
+│  Category: Metal                                                         │
+│  Fabrication: Machining, Welding                                         │
+│  19 materials in starting set                                            │
+│  (or "All 41 materials — no pre-filters applied")                        │
+└──────────────────────────────────────────────────────────────────────────┘
+
+Max results: [10]    Units: [Metric ▼]    Temperature: [°C ▼]
+
+── Property Filters ──────────────────────────────────────────────────────
+
+  [Property ▼] [≥ ▼] [___________] MPa                           [×]
+  [Property ▼] [between ▼] [_______] and [_______] g/cm³         [×]
+
+  [+ Add Filter]  (max 5 rows)
+
+── Merit Index Ranking ───────────────────────────────────────────────────
+
+  Rank by: [None ▼]
+  (top N results by selected index; applied after property filters)
+
+                                             [ Find Materials ]
+
+── Results ───────────────────────────────────────────────────────────────
+
+  8 materials match · showing top 8  [☐ Select All]  [Compare Selected (3)]
+
+  ☐  Titanium Ti-6Al-4V (Annealed)       Metal   114 GPa   880 MPa   4.43 g/cm³
+  ☑  Inconel 718 (Precipitation H.)      Metal   200 GPa  1035 MPa   8.19 g/cm³
+  ...
+```
+
+### 12.5 Pre-selection Panel
+
+**Source:** URL params passed by "Advanced Selection →" on Browse, or typed manually.
+
+**Params read:** `?cat=`, `?fab=`, `?form=`, `?freq=`, `?magnetic=` — same names and multi-value append format as Browse.
+
+**Display:** For each active dimension, show selected values comma-separated. Count how many manifest entries survive all pre-filters; show as "N materials in starting set". If no params: "All N materials — no pre-filters applied".
+
+**"Edit on Browse" link:** constructs `index.html?` + same URL params, returning to Browse with filters pre-applied.
+
+### 12.6 Property Filters
+
+Up to 5 rows, dynamically added. Each row:
+
+| Control | Type | Detail |
+|---|---|---|
+| Property | `<select>` (grouped) | 18 options — see §12.7 |
+| Operator | `<select>` | `≥`, `≤`, `between`, `=` |
+| Value A | `<input type="number">` | Always visible |
+| "and" label | text | Only when operator = `between` |
+| Value B | `<input type="number">` | Only when operator = `between` |
+| Unit label | `<span>` | Auto-set from property + unit system |
+| Remove | `<button>` [×] | Removes row |
+
+Entered values are converted from display unit to canonical unit before comparison using existing `units.js` functions. The global unit system (Metric / Imperial) and temperature selector on the Select page are independent of other pages; unit labels update when the system changes but entered values are not re-scaled.
+
+**Null exclusion:** materials where the filtered property is `null` are excluded from results.
+
+**Ductility extraction:** use `ductility.typical` if non-null; else average of `min`/`max` if both present; else whichever bound is available; else `null` → excluded.
+
+### 12.7 Filterable Properties
+
+**Mechanical — Common**
+
+| Label | JSON path | Canonical | Metric label | Imperial label |
+|---|---|---|---|---|
+| Young's Modulus | `mechanical_common.youngs_modulus` | GPa | GPa | ksi |
+| Yield Strength | `mechanical_common.yield_strength` | GPa | MPa | ksi |
+| Tensile Strength | `mechanical_common.tensile_strength` | GPa | MPa | ksi |
+| Compressive Strength | `mechanical_common.compressive_strength` | MPa | MPa | ksi |
+| Max Service Temp | `mechanical_common.usable_temp_range.max` | °C | °C / K / °F | °F |
+| Min Service Temp | `mechanical_common.usable_temp_range.min` | °C | °C / K / °F | °F |
+
+**Mechanical — Other**
+
+| Label | JSON path | Canonical | Metric label | Imperial label |
+|---|---|---|---|---|
+| Shear Strength | `mechanical_other.shear_strength` | GPa | MPa | ksi |
+| Fracture Toughness | `mechanical_other.fracture_toughness` | MPa·m½ | MPa·m½ | ksi·in½ |
+| Hardness (HV) | `mechanical_other.hardness_vickers` | HV | HV | HV |
+| Ductility | `mechanical_other.ductility.typical` | % | % | % |
+
+**Physical**
+
+| Label | JSON path | Canonical | Metric label | Imperial label |
+|---|---|---|---|---|
+| Density | `physical.density` | g/cm³ | g/cm³ | lb/in³ |
+| Electrical Conductivity | `physical.electrical_conductivity` | % IACS | % IACS | % IACS |
+| CTE | `physical.thermal_expansion.value` | µm/m·K | µm/m·K | µin/in·°F |
+| Thermal Conductivity | `physical.thermal_conductivity.value` | W/m·K | W/m·K | BTU/hr·ft·°F |
+| Specific Heat | `physical.specific_heat.value` | J/kg·K | J/kg·K | BTU/lb·°F |
+| Thermal Diffusivity | `physical.thermal_diffusivity` | cm²/s | cm²/s | in²/s |
+| Melting Point | `physical.melting_point_tm` | °C | °C / K / °F | °F |
+| Glass Transition Tg | `physical.glass_transition_tg` | °C | °C / K / °F | °F |
+
+### 12.8 Merit Index Ranking
+
+A single `<select>` with "None" and all 13 indices (grouped by Stiffness / Strength / Fracture / Thermal). The direction (↑ higher / ↓ lower) is auto-set from `MERIT_INDICES[i].higherIsBetter` in `derived.js` and shown as helper text below the selector.
+
+**Ranking logic** (applied after all property filters):
+
+1. Compute `MERIT_INDICES[i].fn(material)` for each remaining candidate
+2. Exclude materials returning `null` (missing required inputs)
+3. Sort descending (higherIsBetter) or ascending (M11, M12)
+4. Truncate to `maxResults`
+
+When a merit index is active, a column is added to the results table showing each material's index value (3 significant figures).
+
+### 12.9 Results Section
+
+Table columns: checkbox · name (link) · category badge · E · σ_y · ρ · merit index value (if active).
+
+**"Select All / Deselect All"** — toggle link; checks all / unchecks all.
+
+**"Compare Selected (K)"** — disabled when <2 checked; navigates to `compare.html?slugs=...`; enforces max 10 (button shows "Max 10" and is disabled if >10 checked).
+
+**Empty states:**
+
+| Condition | Message |
+|---|---|
+| Pre-filters yield 0 | "No materials match the Browse pre-filters. [Edit on Browse]" |
+| Property filters yield 0 | "No materials satisfy all property filters." |
+| Merit index yields 0 | "No materials have the data needed for this merit index." |
+| Find not yet clicked | Results section hidden |
+
+### 12.10 Filtering Algorithm
+
+```
+async function findMaterials():
+  manifest = await loadManifest()
+
+  // Phase 1 — manifest-level (no extra fetches)
+  candidates = manifest.materials.filter(m =>
+    matchesPreFilters(m, {categories, fabrication, forms, frequency, magnetic})
+  )
+  if candidates.length === 0: renderEmpty('pre-filter'); return
+
+  // Phase 2 — load full JSONs for candidates only
+  fullMaterials = await loadMaterialBatch(candidates.map(m => m.slug))
+  // loader.js caches each by slug; worst case 41 parallel fetches
+
+  // Phase 3 — property range filters (up to 5)
+  for each activeFilter:
+    fullMaterials = fullMaterials.filter(m =>
+      passesPropertyFilter(m, filter, unitSystem, tempUnit)
+    )
+    // null value → excluded
+  if fullMaterials.length === 0: renderEmpty('property-filter'); return
+
+  // Phase 4 — merit index ranking (optional)
+  if meritIndexSelected:
+    scored = fullMaterials
+      .map(m => ({ m, score: MERIT_INDICES[idx].fn(m) }))
+      .filter(x => x.score !== null)
+    if scored.length === 0: renderEmpty('merit-index'); return
+    scored.sort((a, b) => higherIsBetter ? b.score - a.score : a.score - b.score)
+    results = scored.slice(0, maxResults).map(x => x.m)
+  else:
+    results = fullMaterials
+      .sort((a, b) => a.identification.name.localeCompare(b.identification.name))
+      .slice(0, maxResults)
+
+  renderResults(results)
+```
+
+### 12.11 Implementation Build Order
+
+| # | Item | Files |
+|---|---|---|
+| 20 | Add `magnetic_classification` to manifest; regenerate | `tools/update_manifest.py`, `materials/index.json` |
+| 21 | Browse: Magnetic Classification filter | `js/pages/browse.js`, `index.html` |
+| 22 | Browse: "Compare All Filtered" button | `js/pages/browse.js`, `index.html` |
+| 23 | Browse: "Advanced Selection →" button | `js/pages/browse.js`, `index.html` |
+| 24 | Nav: add "Select" link on all existing pages | `index.html`, `material.html`, `compare.html`, `submit.html` |
+| 25 | `select.html` shell + `css/pages/select.css` | new files |
+| 26 | `select.js` — pre-selection panel (URL param read, count display) | `js/pages/select.js` |
+| 27 | `select.js` — property filter rows (add/remove, operator, unit labels) | `js/pages/select.js` |
+| 28 | `select.js` — merit index selector and ranking | `js/pages/select.js` |
+| 29 | `select.js` — `findMaterials()` and result table rendering | `js/pages/select.js` |
+| 30 | `select.js` — "Compare Selected" wiring | `js/pages/select.js` |
+| 31 | `disclaimer.js` — load on `select.html` | `js/core/disclaimer.js`, `select.html` |
+
+### 12.12 Verification Checklist
+
+| Test | Expected |
+|---|---|
+| `python tools/validate.py` | 41/41 valid |
+| `python tools/update_manifest.py` | Each manifest entry includes `magnetic_classification` |
+| Browse: check "Paramagnetic" | Only paramagnetic materials shown; `?magnetic=Paramagnetic` in URL |
+| Browse: "Compare All Filtered (N)" with 2–10 visible | Navigates to compare.html with N slugs |
+| Browse: "Compare All Filtered" with >10 visible | Button disabled |
+| Browse: "Advanced Selection →" with Metal filter active | Navigates to `select.html?cat=Metal` |
+| Select: open with `?cat=Metal` | Pre-selection shows "Category: Metal · 19 materials in starting set" |
+| Select: open with no params | Shows "All 41 materials — no pre-filters applied" |
+| Select: yield ≥ 500 MPa (Metric) | Only materials with σ_y ≥ 0.5 GPa canonical |
+| Select: yield ≥ 72.5 ksi (Imperial) | Same result as above (72.5 ksi ≈ 500 MPa) |
+| Select: `between` operator | Two value inputs appear |
+| Select: property with null value for a material | That material excluded |
+| Select: merit index M1 | Results sorted by E/ρ descending |
+| Select: merit index M11 | Results sorted by α/k ascending (lower is better) |
+| Select: "Select All" | All result checkboxes checked |
+| Select: "Compare Selected (3)" | Navigates to `compare.html?slugs=slug1,slug2,slug3` |
+| Select: >10 boxes checked | Compare button disabled, shows "Max 10" |
+| Units: Metric → Imperial | Filter unit labels update; result column headers update |
+| Temperature: °C → °F | Service temp filter label updates; 600 °C entered as 1112 °F matches same materials |
 
 ---
 
