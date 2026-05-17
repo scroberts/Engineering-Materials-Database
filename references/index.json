@@ -336,5 +336,71 @@
     "doi": "10.3390/ma10010076",
     "bibtex": "@article{Trevisan2017,\n  author = {Trevisan, F. and Calignano, F. and Lorusso, M. and Pakkanen, J. and Aversa, A. and Ambrosio, E. P. and Lombardi, M. and Fino, P. and Manfredi, D.},\n  title = {On the Selective Laser Melting ({SLM}) of the {AlSi10Mg} Alloy: Process, Microstructure, and Mechanical Properties},\n  journal = {Materials},\n  volume = {10},\n  number = {1},\n  pages = {76},\n  year = {2017},\n  doi = {10.3390/ma10010076}\n}",
     "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5344617/"
+  },
+  "azom-inconel-718": {
+    "short_label": "AZoM: Nickel Alloy Inconel 718",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=4459"
+  },
+  "espi-inconel-718": {
+    "short_label": "ESPI Metals: Inconel 718 Technical Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.espimetals.com/index.php/technical-data/91-inconel-718"
+  },
+  "engineersedge-inconel-718": {
+    "short_label": "Engineers Edge: Inconel 718 Modulus of Elasticity",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.engineersedge.com/materials/inconel_718_modulus_of_elasticity_table_13562.htm"
+  },
+  "hightempmetals-inconel-718": {
+    "short_label": "High Temp Metals: Inconel 718 Technical Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.hightempmetals.com/techdata/hitempInconel718data.php"
+  },
+  "espi-inconel-625": {
+    "short_label": "ESPI Metals: Inconel 625 Technical Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.espimetals.com/index.php/technical-data/89-inconel-625"
+  },
+  "hightempmetals-inconel-625": {
+    "short_label": "High Temp Metals: Inconel 625 Technical Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.hightempmetals.com/techdata/hitempInconel625data.php"
+  },
+  "californiametal-inconel-625": {
+    "short_label": "California Metal: Inconel 625 Technical Data (Special Metals)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.californiametal.com/Inconel_625_Sheet_Plate_Pipe_Tube_Rod_Bar_Tech_Data.htm"
+  },
+  "sandmeyer-inconel-625": {
+    "short_label": "Sandmeyer Steel: Inconel Alloy 625 Plate",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.sandmeyersteel.com/inconel-alloy-625/"
+  },
+  "azom-h13-tool-steel": {
+    "short_label": "AZoM: H13 Hot Work Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=9107"
+  },
+  "uddeholm-orvar-h13": {
+    "short_label": "Uddeholm ORVAR Supreme (AISI H13) via MatWeb",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.lookpolymers.com/polymer_Bohler-Uddeholm-UDDEHOLM-ORVAR-SUPREME-Premium-AISI-H13-Hot-Work-Tool-Steel.php"
+  },
+  "makeitfrom-h13": {
+    "short_label": "MakeItFrom: SAE-AISI H13 Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-H13-T20813-Chromium-Hot-Work-Steel"
   }
 }

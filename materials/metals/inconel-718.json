@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Inconel 718 (Precipitation Hardened)",
+    "slug":       "inconel-718",
+    "category":   "Metal",
+    "fabrication_processes": ["Machining", "Welding", "3D Print (DMLS/SLM)", "3D Print (Binder Jet)", "Sintering"],
+    "common_forms": ["Sheet", "Plate", "Round Bar", "Powder"],
+    "common_form_notes": "Widely available as wrought bar, billet, plate, sheet, strip, and ring from aerospace suppliers. Also supplied as gas-atomised spherical powder for metal AM (DMLS/SLM and Binder Jet). AMS 5662 (bar/billet, solution annealed), AMS 5663 (bar, precipitation hardened), AMS 5664 (sheet/strip). UNS N07718, Werkstoff Nr. 2.4668.",
+    "usage_frequency": "Specialty",
+    "notes": "Inconel 718 is a precipitation-hardenable nickel–chromium superalloy. Properties given are for the standard engineering condition: solution annealed (982°C/1 h, air cool) then double-aged (718°C/8 h, furnace cool at 55°C/h to 621°C, hold 8 h, air cool). This treatment precipitates the primary strengthening phase γ″ (Ni₃Nb, body-centred tetragonal) plus secondary γ′ (Ni₃(Al,Ti), FCC), raising yield strength from ~550 MPa (annealed) to >1,000 MPa while retaining useful ductility. Solution-annealed material is preferred when weldability or cold-forming is required; the aged condition is used for structural hardware. Max continuous service temperature is ~650°C; above 700°C the γ″ phase reverts to the stable δ phase (Ni₃Nb, orthorhombic), causing overaging and strength loss. Short-term peak temperature ~980°C. Inconel 718 is the most widely printed superalloy in metal AM (DMLS/SLM/LPBF); as-built parts contain high residual stresses and are typically stress-relieved, then solution annealed, optionally HIPed, then double-aged to recover mechanical properties approaching wrought. Curie temperature is −112°C; above this the alloy is paramagnetic (magnetically inert at room temperature). Shear strength derived from von Mises criterion: UTS/√3 = 1240/√3 ≈ 716 MPa. Electrical conductivity derived from resistivity ~1.25 µΩ·m: (ρ_Cu/ρ_IN718) × 100 = (0.01724/1.25) × 100 ≈ 1.4% IACS. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "Aerospace turbine discs, blades, combustor liners, fasteners, and casings; rocket engine components; cryogenic tankage hardware; nuclear reactor core components; oil/gas downhole tooling; high-performance racing engine parts. The dominant superalloy for metal AM in aerospace and defence.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 200,   "ref": "engineersedge-inconel-718" },
+    "poissons_ratio":       { "value": 0.294, "ref": "engineersedge-inconel-718" },
+    "yield_strength":       { "value": 1.035, "ref": "azom-inconel-718" },
+    "tensile_strength":     { "value": 1.240, "ref": "azom-inconel-718" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": null, "max": 650, "ref": "hightempmetals-inconel-718" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": 354,  "ref": "espi-inconel-718" },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": 36, "scale": "C", "ref": "espi-inconel-718" },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": 12, "max": null, "typical": 20, "ref": "azom-inconel-718" },
+    "shear_strength":       { "value": 0.716, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 8.19, "ref": "espi-inconel-718" },
+    "electrical_conductivity":{ "value": 1.4,  "ref": "espi-inconel-718" },
+    "vapour_pressure":        { "value": null,  "ref": null },
+    "thermal_expansion": {
+      "value": 13.0,
+      "table": [
+        { "temp": 93,  "cte": 12.8 },
+        { "temp": 204, "cte": 13.5 },
+        { "temp": 316, "cte": 13.9 },
+        { "temp": 427, "cte": 14.2 },
+        { "temp": 538, "cte": 14.4 },
+        { "temp": 649, "cte": 15.1 },
+        { "temp": 760, "cte": 16.0 }
+      ],
+      "ref": "hightempmetals-inconel-718"
+    },
+    "thermal_conductivity": {
+      "value": 11.4,
+      "table": [],
+      "ref": "espi-inconel-718"
+    },
+    "specific_heat": {
+      "value": 435,
+      "table": [],
+      "ref": "espi-inconel-718"
+    },
+    "thermal_diffusivity":    { "value": 0.032, "ref": null },
+    "melting_point_tm":       { "value": 1260,  "ref": "espi-inconel-718" },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Paramagnetic", "ref": null }
+  },
+
+  "references": ["azom-inconel-718", "espi-inconel-718", "engineersedge-inconel-718", "hightempmetals-inconel-718"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-17",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-17"
+  }
+}

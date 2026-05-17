@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T05:50:46Z",
+  "generated": "2026-05-17T15:14:37Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -376,6 +376,55 @@
       "density": 8.94
     },
     {
+      "slug": "inconel-625",
+      "path": "materials/metals/inconel-625.json",
+      "name": "Inconel 625 (Annealed)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Casting",
+        "3D Print (DMLS/SLM)",
+        "3D Print (Binder Jet)",
+        "Sintering"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 207,
+      "yield_strength": 0.517,
+      "tensile_strength": 0.93,
+      "density": 8.44
+    },
+    {
+      "slug": "inconel-718",
+      "path": "materials/metals/inconel-718.json",
+      "name": "Inconel 718 (Precipitation Hardened)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "3D Print (DMLS/SLM)",
+        "3D Print (Binder Jet)",
+        "Sintering"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 200,
+      "yield_strength": 1.035,
+      "tensile_strength": 1.24,
+      "density": 8.19
+    },
+    {
       "slug": "invar-36-alloy",
       "path": "materials/metals/invar-36-alloy.json",
       "name": "Invar 36 Alloy (Cold Drawn)",
@@ -496,6 +545,27 @@
       "yield_strength": 1.586,
       "tensile_strength": 2.068,
       "density": 7.86
+    },
+    {
+      "slug": "steel-h13",
+      "path": "materials/metals/steel-h13.json",
+      "name": "H13 Tool Steel (Hardened + Tempered)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "3D Print (DMLS/SLM)"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate",
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 210,
+      "yield_strength": 1.28,
+      "tensile_strength": 1.42,
+      "density": 7.8
     },
     {
       "slug": "steel-mild-a36",

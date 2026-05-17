@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "H13 Tool Steel (Hardened + Tempered)",
+    "slug":       "steel-h13",
+    "category":   "Metal",
+    "fabrication_processes": ["Machining", "Welding", "3D Print (DMLS/SLM)"],
+    "common_forms": ["Round Bar", "Plate", "Powder"],
+    "common_form_notes": "Supplied in the soft-annealed condition (max 207–241 HB) as round bar, flat bar, and plate from tool steel stockholders. The tool maker performs the hardening heat treatment. Premium ESR (electroslag-remelted) grades — Uddeholm ORVAR Supreme, Bohler W302 Superior — offer improved cleanliness and isotropic toughness. Also available as gas-atomised powder for DMLS/SLM conformal-cooled tooling.",
+    "usage_frequency": "Specialty",
+    "notes": "H13 is a hot-work chromium tool steel (AISI H13, UNS T20813, DIN 1.2344, EN X40CrMoV5-1). Properties are for the standard die casting die working condition: austenitised at 1010°C (1850°F) for 15–40 min, high-pressure gas or oil quenched, then double-tempered 2 × 2 h at ~580°C to achieve ~44–46 HRC. Data shown (yield 1280 MPa, UTS 1420 MPa, HRC 45) are for Uddeholm ORVAR Supreme premium ESR-grade H13; standard H13 achieves comparable values. Strength and hardness are strongly tempering-temperature-dependent: 540°C temper → ~50 HRC (maximum strength), 620°C → ~42 HRC (optimised thermal fatigue resistance). H13 exhibits a secondary hardening peak at ~500–510°C due to Mo/V carbide precipitation — this range is avoided as it produces peak hardness with poor toughness; NADCA recommended tempering range for die casting dies is 540–620°C. Hot hardness is H13's defining advantage over cold-work tool steels: useful hardness is retained to ~600°C, where D2 (cold-work) would be completely overtempered. In metal AM (DMLS/SLM/LPBF), H13 is well established: preheating the substrate to ≥200°C eliminates thermal cracking and achieves >99.9% relative density; as-built hardness is ~50 HRC; conformal cooling channel tooling is the primary industrial driver, yielding significant cycle time and part quality improvements over conventionally drilled cooling circuits. Welding requires pre-heat (250–350°C) and post-weld temper; generally used for repair only. HV 446 is converted from HRC 45 via ASTM E140. Shear strength derived from von Mises criterion: UTS/√3 = 1420/√3 ≈ 820 MPa. Thermal diffusivity derived from k, ρ, Cp for the hardened condition."
+  },
+
+  "typical_usage": "Die casting dies for aluminium, magnesium, and zinc; hot extrusion dies, liners, and mandrels; hot forging dies; injection mould cavities for engineering polymers; hot shear blades and trimmer dies; AM-built conformal-cooled die inserts and mould cores.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 210,   "ref": "uddeholm-orvar-h13" },
+    "poissons_ratio":       { "value": 0.29,  "ref": "makeitfrom-h13" },
+    "yield_strength":       { "value": 1.280, "ref": "uddeholm-orvar-h13" },
+    "tensile_strength":     { "value": 1.420, "ref": "uddeholm-orvar-h13" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": null, "max": 600, "ref": "azom-h13-tool-steel" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": 446,  "ref": "uddeholm-orvar-h13" },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": 45, "scale": "C", "ref": "uddeholm-orvar-h13" },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": null, "ref": null },
+    "shear_strength":       { "value": 0.820, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 7.80, "ref": "azom-h13-tool-steel" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 10.4,
+      "table": [
+        { "temp": 399, "cte": 12.6 },
+        { "temp": 599, "cte": 13.1 }
+      ],
+      "ref": "azom-h13-tool-steel"
+    },
+    "thermal_conductivity": {
+      "value": 25.0,
+      "table": [
+        { "temp": 20,  "k": 25.0 },
+        { "temp": 399, "k": 29.0 },
+        { "temp": 599, "k": 30.0 }
+      ],
+      "ref": "uddeholm-orvar-h13"
+    },
+    "specific_heat": {
+      "value": 470,
+      "table": [],
+      "ref": "makeitfrom-h13"
+    },
+    "thermal_diffusivity":    { "value": 0.068, "ref": null },
+    "melting_point_tm":       { "value": 1420,  "ref": "makeitfrom-h13" },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Ferromagnetic", "ref": null }
+  },
+
+  "references": ["azom-h13-tool-steel", "uddeholm-orvar-h13", "makeitfrom-h13"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-17",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-17"
+  }
+}
