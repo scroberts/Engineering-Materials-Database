@@ -297,9 +297,26 @@ function collectFilters() {
   return f;
 }
 
+function buildAdvancedSelectURL(f) {
+  const p = new URLSearchParams();
+  for (const c of f.categories) p.append('cat', c);
+  for (const c of f.fab)        p.append('fab', c);
+  for (const c of f.forms)      p.append('form', c);
+  for (const fr of f.frequency) p.append('freq', fr);
+  for (const m of f.magnetic)   p.append('magnetic', m);
+  const qs = p.toString();
+  return `select.html${qs ? '?' + qs : ''}`;
+}
+
+function updateAdvancedNavLink(f) {
+  const navLink = document.querySelector('a[href^="select.html"]');
+  if (navLink) navLink.href = buildAdvancedSelectURL(f);
+}
+
 function onFilterChange() {
   const f = collectFilters();
   writeFiltersToURL(f);
+  updateAdvancedNavLink(f);
   renderGrid(f);
 }
 
@@ -319,6 +336,7 @@ function wireSidebar() {
     const empty = { search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set(), magnetic: new Set() };
     buildSidebar(empty);
     renderGrid(empty);
+    updateAdvancedNavLink(empty);
     compareSet.clear();
     updateCompareBar();
   });
@@ -326,15 +344,7 @@ function wireSidebar() {
   const btnAdvanced = document.getElementById('btn-advanced-select');
   if (btnAdvanced) {
     btnAdvanced.addEventListener('click', () => {
-      const f = collectFilters();
-      const p = new URLSearchParams();
-      for (const c of f.categories) p.append('cat', c);
-      for (const c of f.fab)        p.append('fab', c);
-      for (const c of f.forms)      p.append('form', c);
-      for (const fr of f.frequency) p.append('freq', fr);
-      for (const m of f.magnetic)   p.append('magnetic', m);
-      const qs = p.toString();
-      location.href = `select.html${qs ? '?' + qs : ''}`;
+      location.href = buildAdvancedSelectURL(collectFilters());
     });
   }
 }
@@ -383,6 +393,7 @@ async function init() {
   buildSidebar(filters);
   wireSidebar();
   wireCompareBar();
+  updateAdvancedNavLink(filters);
   renderGrid(filters);
 }
 
