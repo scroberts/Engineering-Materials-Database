@@ -6,17 +6,6 @@
   padding: 1.5rem 1rem 4rem;
 }
 
-.submit-disclaimer {
-  background: #fffbeb;
-  border: 1px solid #fcd34d;
-  border-radius: var(--radius);
-  padding: 0.75rem 1rem;
-  font-size: 0.85rem;
-  color: #78350f;
-  margin-bottom: 1.5rem;
-  line-height: 1.5;
-}
-
 .submit-columns {
   display: flex;
   gap: 1.5rem;
