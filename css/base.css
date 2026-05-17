@@ -137,6 +137,15 @@ h3 { font-size: 0.875rem; font-weight: 600; }
   text-decoration: none;
 }
 
+button.nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  opacity: 0.7;
+}
+button.nav-link:hover { opacity: 1; }
+
 /* ── Utility ──────────────────────────────────────────────────────────── */
 
 .visually-hidden {

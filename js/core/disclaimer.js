@@ -1,7 +1,7 @@
 const KEY = 'disclaimerAcknowledged';
 
-function show() {
-  if (localStorage.getItem(KEY)) return;
+function createModal() {
+  if (document.getElementById('disclaimer-overlay')) return;
 
   const overlay = document.createElement('div');
   overlay.id = 'disclaimer-overlay';
@@ -24,4 +24,13 @@ function show() {
   });
 }
 
-show();
+// Show on first visit
+if (!localStorage.getItem(KEY)) createModal();
+
+// Re-show when the disclaimer nav link is clicked
+document.addEventListener('click', e => {
+  if (e.target.closest('[data-action="show-disclaimer"]')) {
+    e.preventDefault();
+    createModal();
+  }
+});
