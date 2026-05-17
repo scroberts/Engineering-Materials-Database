@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
     "usage_frequency": "Common",
-    "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for 6061-T6 (underlying data: Mann, NBS, 1977; ±4% accuracy). Above-RT CTE entries from MIL-HDBK-5J."
+    "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for 6061-T6 (underlying data: Mann, NBS, 1977; ±4% accuracy). Above-RT CTE entries from MIL-HDBK-5J. Ductility (min 8%) is the MIL-HDBK-5J minimum specification for thicker product forms; AA typical values are 12% (round bar ≥12.7 mm) to 17% (sheet ≤1.59 mm) per MatWeb."
   },
 
   "typical_usage": "Structural frames and enclosures, aircraft components and skin panels, marine fittings, bicycle frames, electronic chassis and heat sinks, machined precision parts. Chosen for its excellent balance of strength, machinability, weldability, and corrosion resistance.",
@@ -37,7 +37,7 @@
     },
     "fracture_toughness":  { "value": 29.0, "ref": "mil-hdbk-5j-2003" },
     "hardness_vickers":    { "value": 107,  "ref": "azom-aluminum-6061" },
-    "hardness_brinell":    { "value": 107,  "ref": "mil-hdbk-5j-2003" },
+    "hardness_brinell":    { "value": 95,   "ref": "matweb-al6061-t6" },
     "hardness_rockwell":   { "value": 60,   "scale": "B", "ref": "mil-hdbk-5j-2003" },
     "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 8, "max": null, "typical": null, "ref": "mil-hdbk-5j-2003" },
@@ -68,7 +68,7 @@
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-aluminum-6061", "mil-hdbk-5j-2003", "nist-cryo-al"],
+  "references": ["azom-aluminum-6061", "matweb-al6061-t6", "mil-hdbk-5j-2003", "nist-cryo-al"],
 
   "metadata": {
     "submitted_by": "admin",
