@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "PEEK (Polyether Ether Ketone)",
+    "slug":       "peek",
+    "category":   "Plastic",
+    "fabrication_processes": ["Machining", "Injection Moulding"],
+    "common_forms": ["Round Bar", "Sheet", "Plate"],
+    "common_form_notes": "Stock shapes in round bar and plate are the most common for machined components",
+    "usage_frequency": "Specialty",
+    "notes": "Unfilled (natural) grade, equivalent to Victrex PEEK 450G. PEEK is semi-crystalline and has both a glass transition (Tg = 143°C, onset of amorphous softening) and a melting point (Tm = 343°C). Maximum continuous service temperature 250°C in air. Outstanding chemical resistance to most solvents, fuels, and acids. Filled grades (glass-fibre, carbon-fibre, PTFE) improve stiffness, creep resistance, and/or tribology at the cost of ductility. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "High-performance structural components where metals are too heavy and standard plastics lack temperature or chemical resistance: aerospace brackets, medical implants and instruments, semiconductor processing fixtures, pump and valve internals, and bearing cages.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 3.6,   "ref": "victrex-peek-450g" },
+    "poissons_ratio":       { "value": 0.40,  "ref": "victrex-peek-450g" },
+    "yield_strength":       { "value": 0.091, "ref": "victrex-peek-450g" },
+    "tensile_strength":     { "value": 0.100, "ref": "victrex-peek-450g" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": 118,   "ref": "victrex-peek-450g" },
+    "usable_temp_range":    { "min": -60, "max": 250, "ref": "victrex-peek-450g" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": 99, "scale": "M", "ref": "victrex-peek-450g" },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": 30, "max": 50, "typical": 40, "ref": "victrex-peek-450g" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.32, "ref": "victrex-peek-450g" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 47,
+      "table": [],
+      "ref": "victrex-peek-450g"
+    },
+    "thermal_conductivity": {
+      "value": 0.25,
+      "table": [],
+      "ref": "victrex-peek-450g"
+    },
+    "specific_heat": {
+      "value": 1340,
+      "table": [],
+      "ref": "victrex-peek-450g"
+    },
+    "thermal_diffusivity":    { "value": 0.0014, "ref": null },
+    "melting_point_tm":       { "value": 343,    "ref": "victrex-peek-450g" },
+    "glass_transition_tg":    { "value": 143,    "ref": "victrex-peek-450g" },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["victrex-peek-450g"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

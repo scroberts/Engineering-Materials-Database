@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-16T16:04:55Z",
+  "generated": "2026-05-17T03:30:54Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -630,6 +630,26 @@
       "yield_strength": null,
       "tensile_strength": 0.07,
       "density": 1.18
+    },
+    {
+      "slug": "peek",
+      "path": "materials/plastics/peek.json",
+      "name": "PEEK (Polyether Ether Ketone)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Injection Moulding"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 3.6,
+      "yield_strength": 0.091,
+      "tensile_strength": 0.1,
+      "density": 1.32
     },
     {
       "slug": "petg-fdm",
