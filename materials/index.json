@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T05:09:01Z",
+  "generated": "2026-05-17T05:27:47Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -344,7 +344,8 @@
         "Welding",
         "Casting",
         "Extrusion",
-        "Polishing"
+        "Polishing",
+        "3D Print (DMLS/SLM)"
       ],
       "common_forms": [
         "Sheet",
@@ -426,7 +427,10 @@
         "Machining",
         "Welding",
         "Polishing",
-        "Plating"
+        "Plating",
+        "3D Print (DMLS/SLM)",
+        "3D Print (Binder Jet)",
+        "Sintering"
       ],
       "common_forms": [
         "Sheet",
@@ -522,7 +526,8 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding"
+        "Welding",
+        "3D Print (DMLS/SLM)"
       ],
       "common_forms": [
         "Sheet",
