@@ -5,7 +5,7 @@
     "name":       "Borosilicate Glass (Pyrex® / BOROFLOAT® 33)",
     "slug":       "borosilicate-glass",
     "category":   "Glass",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Laboratory glass, sight glasses, optical windows, mirror substrates",
     "usage_frequency": "Specialty",

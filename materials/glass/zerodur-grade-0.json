@@ -5,7 +5,7 @@
     "name":       "ZERODUR® Glass-Ceramic (Grade 0)",
     "slug":       "zerodur-grade-0",
     "category":   "Glass",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Mirror blanks, optical substrates, telescope primaries",
     "usage_frequency": "Exotic",

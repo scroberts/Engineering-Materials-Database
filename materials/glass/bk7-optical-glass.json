@@ -5,7 +5,7 @@
     "name":       "N-BK7 Optical Glass",
     "slug":       "bk7-optical-glass",
     "category":   "Glass",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Lenses, prisms, windows, beamsplitters, optical fibre components",
     "usage_frequency": "Specialty",

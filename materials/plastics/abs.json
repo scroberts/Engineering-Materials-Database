@@ -4,7 +4,7 @@
     "name": "ABS (Acrylonitrile Butadiene Styrene)",
     "slug": "abs",
     "category": "Plastic",
-    "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)"],
+    "fabrication_processes": ["Machining", "Moulding", "3D Print (FDM)"],
     "common_forms": ["Sheet", "Filament"],
     "common_form_notes": "FDM filament available in 1.75 mm and 2.85 mm diameters. Sheet stock available in various thicknesses.",
     "usage_frequency": "Common",

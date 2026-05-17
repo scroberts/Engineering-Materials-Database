@@ -23,8 +23,8 @@ const MAX_COMPARE = 10;
 
 const FABRICATION_PROCESSES = [
   'Machining', 'Welding', 'Forging', 'Casting', 'Extrusion',
-  'Injection Moulding', '3D Print (FDM)', '3D Print (SLA)', '3D Print (SLS)',
-  'Vacuum Infusion', 'Composite Layup', 'Plateable', 'Polishable',
+  'Moulding', '3D Print (FDM)', '3D Print (SLA)', '3D Print (SLS)',
+  'Vacuum Infusion', 'Composite Layup', 'Plating', 'Polishing',
 ];
 
 const COMMON_FORMS = [

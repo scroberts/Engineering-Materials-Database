@@ -4,7 +4,7 @@
     "name": "Stainless Steel 316 (Annealed)",
     "slug": "stainless-316",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding", "Polishable", "Plateable"],
+    "fabrication_processes": ["Machining", "Welding", "Polishing", "Plating"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely stocked in sheet, plate, tube, and bar. 316L (low-carbon variant) preferred for welded assemblies to prevent sensitisation.",
     "usage_frequency": "Common",

@@ -5,7 +5,7 @@
     "name":       "PEEK (Polyether Ether Ketone)",
     "slug":       "peek",
     "category":   "Plastic",
-    "fabrication_processes": ["Machining", "Injection Moulding"],
+    "fabrication_processes": ["Machining", "Moulding"],
     "common_forms": ["Round Bar", "Sheet", "Plate"],
     "common_form_notes": "Stock shapes in round bar and plate are the most common for machined components",
     "usage_frequency": "Specialty",

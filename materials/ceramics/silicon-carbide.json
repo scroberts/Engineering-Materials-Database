@@ -4,7 +4,7 @@
     "name": "Silicon Carbide (Sintered)",
     "slug": "silicon-carbide",
     "category": "Ceramic",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Sheet", "Plate"],
     "common_form_notes": "Supplied as sintered near-net-shape billets, tiles, or finished components. Machining requires diamond or CBN tooling; conventional cutting destroys the tooling. Final grinding/lapping to tight tolerances is standard for precision optical and bearing applications.",
     "usage_frequency": "Specialty",

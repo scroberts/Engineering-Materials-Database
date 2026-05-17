@@ -36,14 +36,14 @@
         "Forging",
         "Casting",
         "Extrusion",
-        "Injection Moulding",
+        "Moulding",
         "3D Print (FDM)",
         "3D Print (SLA)",
         "3D Print (SLS)",
         "Vacuum Infusion",
         "Composite Layup",
-        "Plateable",
-        "Polishable"
+        "Plating",
+        "Polishing"
       ]
     },
     "common_form": {

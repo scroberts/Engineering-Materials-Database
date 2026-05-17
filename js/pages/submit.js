@@ -402,7 +402,7 @@ const FORM_SECTIONS = [
         options: ['Metal', 'Plastic', 'Ceramic', 'Composite', 'Glass', 'Natural Material', 'Elastomer'] },
       { id: 'fabrication_processes', label: 'Fabrication processes', type: 'checkbox',
         options: ['Machining', 'Casting', 'Forging', 'Extrusion', 'Rolling', 'Welding',
-                  '3D Printing', 'Injection Moulding', 'Lay-up', 'Pultrusion', 'Sintering'] },
+                  '3D Printing', 'Moulding', 'Lay-up', 'Pultrusion', 'Sintering'] },
       { id: 'common_forms', label: 'Common forms', type: 'checkbox',
         options: ['Sheet', 'Plate', 'Round Bar', 'Tube', 'Angle', 'I-Beam',
                   'Filament', 'Pellet', 'Powder', 'Prepreg'] },

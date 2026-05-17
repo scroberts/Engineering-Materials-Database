@@ -5,7 +5,7 @@
     "name":       "Corning ULE® 7972 Glass",
     "slug":       "ule-glass",
     "category":   "Glass",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Large telescope mirror blanks, lithography stages, precision reference surfaces",
     "usage_frequency": "Exotic",

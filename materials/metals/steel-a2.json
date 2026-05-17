@@ -4,7 +4,7 @@
     "name": "A2 Tool Steel (Hardened)",
     "slug": "steel-a2",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Supplied in annealed condition for machining; hardened and tempered in-shop after roughing.",
     "usage_frequency": "Specialty",

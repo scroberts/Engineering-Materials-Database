@@ -5,7 +5,7 @@
     "name":       "Cast Acrylic (PMMA)",
     "slug":       "acrylic-pmma",
     "category":   "Plastic",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Sheet", "Plate"],
     "common_form_notes": "Sheet (1.5–6 mm) and plate (6–50 mm); both laser-cuttable and CNC machinable",
     "usage_frequency": "Common",

@@ -9,7 +9,7 @@
       "fabrication_processes": [
         "Casting",
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -29,7 +29,7 @@
       "category": "Ceramic",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -167,7 +167,7 @@
       "category": "Glass",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Plate",
@@ -186,7 +186,7 @@
       "category": "Glass",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Plate",
@@ -205,7 +205,7 @@
       "category": "Glass",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Plate",
@@ -224,7 +224,7 @@
       "category": "Glass",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Plate",
@@ -284,7 +284,7 @@
         "Welding",
         "Forging",
         "Extrusion",
-        "Plateable"
+        "Plating"
       ],
       "common_forms": [
         "Sheet",
@@ -346,7 +346,7 @@
         "Welding",
         "Casting",
         "Extrusion",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -385,7 +385,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Round Bar"
@@ -405,7 +405,7 @@
         "Machining",
         "Welding",
         "Casting",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -427,8 +427,8 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
-        "Polishable",
-        "Plateable"
+        "Polishing",
+        "Plating"
       ],
       "common_forms": [
         "Sheet",
@@ -467,7 +467,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Round Bar",
@@ -599,7 +599,7 @@
       "category": "Plastic",
       "fabrication_processes": [
         "Machining",
-        "Injection Moulding",
+        "Moulding",
         "3D Print (FDM)"
       ],
       "common_forms": [
@@ -619,7 +619,7 @@
       "category": "Plastic",
       "fabrication_processes": [
         "Machining",
-        "Polishable"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -638,7 +638,7 @@
       "category": "Plastic",
       "fabrication_processes": [
         "Machining",
-        "Injection Moulding"
+        "Moulding"
       ],
       "common_forms": [
         "Round Bar",
@@ -692,7 +692,7 @@
       "category": "Plastic",
       "fabrication_processes": [
         "Machining",
-        "Injection Moulding",
+        "Moulding",
         "3D Print (FDM)",
         "Extrusion"
       ],

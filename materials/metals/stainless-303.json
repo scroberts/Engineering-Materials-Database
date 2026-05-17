@@ -4,7 +4,7 @@
     "name": "Stainless Steel 303 (Annealed)",
     "slug": "stainless-303",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Polishable"],
+    "fabrication_processes": ["Machining", "Polishing"],
     "common_forms": ["Round Bar"],
     "common_form_notes": "Primarily stocked as round bar for turned parts. Sheet and plate are uncommon for 303 — use 304 or 316 for those applications.",
     "usage_frequency": "Common",

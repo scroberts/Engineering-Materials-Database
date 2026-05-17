@@ -4,7 +4,7 @@
     "name": "Stainless Steel 304 (Annealed)",
     "slug": "stainless-304",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding", "Casting", "Polishable"],
+    "fabrication_processes": ["Machining", "Welding", "Casting", "Polishing"],
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "The most widely stocked stainless steel in virtually all product forms. Available as sheet, plate, bar, tube, angle, channel, and structural sections from general metal suppliers worldwide.",
     "usage_frequency": "Common",
