@@ -4,7 +4,7 @@
     "name": "Mild Steel (ASTM A36)",
     "slug": "steel-mild-a36",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding", "Forging"],
+    "fabrication_processes": ["Machining", "Welding"],
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "Extremely widely stocked in plate, bar, angle, channel, and I-beam sections. Most common structural steel in North America.",
     "usage_frequency": "Common",

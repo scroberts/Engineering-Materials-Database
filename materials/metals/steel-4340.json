@@ -4,7 +4,7 @@
     "name": "AISI 4340 Steel (Q&T, 315 °C)",
     "slug": "steel-4340",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Forging"],
+    "fabrication_processes": ["Machining"],
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Available as hot-rolled or annealed bar stock; heat treatment (austenitise, quench, temper) required to achieve listed properties. Do not weld in the hardened condition without pre-heat and post-weld temper.",
     "usage_frequency": "Common",

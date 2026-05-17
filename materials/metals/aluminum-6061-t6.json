@@ -4,7 +4,7 @@
     "name": "Aluminum 6061-T6",
     "slug": "aluminum-6061-t6",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding", "Forging", "Extrusion", "Plating"],
+    "fabrication_processes": ["Machining", "Welding", "Extrusion", "Plating"],
     "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
     "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
     "usage_frequency": "Common",

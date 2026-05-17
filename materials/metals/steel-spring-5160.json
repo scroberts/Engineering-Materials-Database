@@ -4,7 +4,7 @@
     "name": "Spring Steel SAE 5160 (Q&T, 47 HRC)",
     "slug": "steel-spring-5160",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Forging"],
+    "fabrication_processes": ["Machining"],
     "common_forms": ["Round Bar", "Sheet"],
     "common_form_notes": "Available as hot-rolled bar and flat strip from steel service centres in the annealed condition for forming, then heat-treated by the end user. Pre-hardened round bar is also available in smaller diameters from specialist suppliers.",
     "usage_frequency": "Common",

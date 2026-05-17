@@ -4,7 +4,7 @@
     "name": "Titanium Ti-6Al-4V (Annealed)",
     "slug": "titanium-6al-4v",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding", "Forging"],
+    "fabrication_processes": ["Machining", "Welding"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely available from aerospace metal distributors as AMS 4928 bar, AMS 4911 sheet/plate, and AMS 4928 billet. Machining requires sharp carbide tooling, low cutting speeds, and flood coolant to manage low thermal conductivity and work-hardening tendency.",
     "usage_frequency": "Common",

@@ -4,7 +4,7 @@
     "name": "Beryllium (Structural Grade S-65)",
     "slug": "beryllium-s65",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Forging"],
+    "fabrication_processes": ["Machining"],
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Produced by hot isostatic pressing (HIP) of beryllium powder; supplied as billets, plates, and near-net forgings by specialist suppliers (Materion Corp). CRITICAL: all machining must be performed under strict industrial hygiene controls — see Notes.",
     "usage_frequency": "Exotic",

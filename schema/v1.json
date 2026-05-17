@@ -33,15 +33,17 @@
       "enum": [
         "Machining",
         "Welding",
-        "Forging",
         "Casting",
         "Extrusion",
         "Moulding",
         "3D Print (FDM)",
         "3D Print (SLA)",
         "3D Print (SLS)",
-        "Vacuum Infusion",
+        "3D Print (DMLS/SLM)",
+        "3D Print (Binder Jet)",
+        "Sintering",
         "Composite Layup",
+        "Vacuum Infusion",
         "Plating",
         "Polishing"
       ]
@@ -52,8 +54,12 @@
         "Sheet",
         "Plate",
         "Round Bar",
+        "Tube",
         "Angles and Structural Profiles",
-        "Filament"
+        "Filament",
+        "Pellet",
+        "Powder",
+        "Prepreg"
       ]
     },
     "thermal_cond_prop": {

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T03:30:54Z",
+  "generated": "2026-05-17T05:09:01Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -282,7 +282,6 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
-        "Forging",
         "Extrusion",
         "Plating"
       ],
@@ -323,8 +322,7 @@
       "name": "Beryllium (Structural Grade S-65)",
       "category": "Metal",
       "fabrication_processes": [
-        "Machining",
-        "Forging"
+        "Machining"
       ],
       "common_forms": [
         "Round Bar",
@@ -447,8 +445,7 @@
       "name": "AISI 4340 Steel (Q&T, 315 \u00b0C)",
       "category": "Metal",
       "fabrication_processes": [
-        "Machining",
-        "Forging"
+        "Machining"
       ],
       "common_forms": [
         "Round Bar",
@@ -486,8 +483,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding",
-        "Forging"
+        "Welding"
       ],
       "common_forms": [
         "Sheet",
@@ -507,8 +503,7 @@
       "name": "Spring Steel SAE 5160 (Q&T, 47 HRC)",
       "category": "Metal",
       "fabrication_processes": [
-        "Machining",
-        "Forging"
+        "Machining"
       ],
       "common_forms": [
         "Round Bar",
@@ -527,8 +522,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding",
-        "Forging"
+        "Welding"
       ],
       "common_forms": [
         "Sheet",
@@ -646,10 +640,10 @@
         "Plate"
       ],
       "usage_frequency": "Specialty",
-      "youngs_modulus": 3.6,
-      "yield_strength": 0.091,
-      "tensile_strength": 0.1,
-      "density": 1.32
+      "youngs_modulus": 4.0,
+      "yield_strength": 0.098,
+      "tensile_strength": 0.098,
+      "density": 1.3
     },
     {
       "slug": "petg-fdm",
