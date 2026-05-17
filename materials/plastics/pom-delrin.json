@@ -4,7 +4,7 @@
     "name": "Acetal Homopolymer (Delrin / POM-H)",
     "slug": "pom-delrin",
     "category": "Plastic",
-    "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)", "Extrude"],
+    "fabrication_processes": ["Machining", "Injection Moulding", "3D Print (FDM)", "Extrusion"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely available as extruded rod, sheet, and plate from plastics distributors (Delrin® is a DuPont/Dupont de Nemours trademark; equivalent grades: Hostaform C, Ultraform). Machines extremely well to tight tolerances and smooth finishes with standard cutting tools.",
     "usage_frequency": "Common",

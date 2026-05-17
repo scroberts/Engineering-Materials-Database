@@ -283,7 +283,7 @@
         "Machining",
         "Welding",
         "Forging",
-        "Extrude",
+        "Extrusion",
         "Plateable"
       ],
       "common_forms": [
@@ -345,7 +345,7 @@
         "Machining",
         "Welding",
         "Casting",
-        "Extrude",
+        "Extrusion",
         "Polishable"
       ],
       "common_forms": [
@@ -694,7 +694,7 @@
         "Machining",
         "Injection Moulding",
         "3D Print (FDM)",
-        "Extrude"
+        "Extrusion"
       ],
       "common_forms": [
         "Sheet",
