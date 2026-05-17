@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Aluminum AlSi10Mg (LPBF, As-Built)",
+    "slug":       "alsi10mg",
+    "category":   "Metal",
+    "fabrication_processes": ["3D Print (DMLS/SLM)"],
+    "common_forms": ["Powder"],
+    "common_form_notes": "Supplied as gas-atomised spherical powder for laser powder bed fusion (L-PBF / DMLS / SLM). Not available as conventional wrought stock; this alloy is specifically formulated for AM.",
+    "usage_frequency": "Specialty",
+    "notes": "AlSi10Mg is the standard aluminium alloy for laser powder bed fusion (L-PBF). The high silicon content (~10%) suppresses hot cracking during rapid solidification — the primary reason conventional alloys such as 6061 and 7075 are nearly unprintable by DMLS. Properties given are as-built (no post-processing). Stress relief (2 h at 300–350 °C) significantly reduces UTS (~280 MPa) and yield (~160 MPa) but roughly doubles elongation and partially restores thermal conductivity (~170 W/m·K). EOS AM-optimised T6 (530 °C/30 min water quench + 165 °C/6 h) recovers yield strength to 250–300 MPa with improved ductility. As-built parts are anisotropic: Young's modulus 70–75 GPa, yield 240–270 MPa, elongation 6–9% depending on build orientation (XY vs Z); anisotropy is largely eliminated by heat treatment. Thermal conductivity as-built (~103 W/m·K, XY) is ~40% lower than cast AlSi10Mg due to the as-solidified microstructure; heat treatment restores it significantly. Strength degrades above ~150 °C for long-term service and falls sharply above 250 °C. Shear strength derived from von Mises criterion: UTS/√3 = 460/√3 ≈ 266 MPa. Thermal diffusivity derived from k, ρ, Cp."
+  },
+
+  "typical_usage": "Aerospace brackets and housings, automotive heat exchangers, complex internal-channel cooling structures, lightweight structural parts, and tooling inserts where the geometric freedom of metal AM is required with aluminium's density and thermal conductivity.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 70,    "ref": "trevisan-alsi10mg-2017" },
+    "poissons_ratio":       { "value": 0.33,  "ref": "trevisan-alsi10mg-2017" },
+    "yield_strength":       { "value": 0.270, "ref": "trevisan-alsi10mg-2017" },
+    "tensile_strength":     { "value": 0.460, "ref": "trevisan-alsi10mg-2017" },
+    "compressive_modulus":  { "value": null,  "ref": null },
+    "compressive_strength": { "value": null,  "ref": null },
+    "usable_temp_range":    { "min": null, "max": 300, "ref": "trevisan-alsi10mg-2017" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": 127,  "ref": "trevisan-alsi10mg-2017" },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": 6, "max": 9, "typical": 7, "ref": "trevisan-alsi10mg-2017" },
+    "shear_strength":       { "value": 0.266, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 2.67, "ref": "trevisan-alsi10mg-2017" },
+    "electrical_conductivity":{ "value": null, "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 23,
+      "table": [],
+      "ref": "trevisan-alsi10mg-2017"
+    },
+    "thermal_conductivity": {
+      "value": 103,
+      "table": [],
+      "ref": "trevisan-alsi10mg-2017"
+    },
+    "specific_heat": {
+      "value": 920,
+      "table": [],
+      "ref": "trevisan-alsi10mg-2017"
+    },
+    "thermal_diffusivity":    { "value": 0.42, "ref": null },
+    "melting_point_tm":       { "value": 610,  "ref": "trevisan-alsi10mg-2017" },
+    "glass_transition_tg":    { "value": null, "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["trevisan-alsi10mg-2017"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-05-16",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-05-16"
+  }
+}

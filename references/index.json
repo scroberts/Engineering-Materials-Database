@@ -330,5 +330,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://trc.nist.gov/cryogenics/materials/Invar(Fe-36Ni)/Invar_rev.htm"
+  },
+  "trevisan-alsi10mg-2017": {
+    "short_label": "Trevisan et al. 2017: AlSi10Mg by SLM (Materials, MDPI)",
+    "doi": "10.3390/ma10010076",
+    "bibtex": "@article{Trevisan2017,\n  author = {Trevisan, F. and Calignano, F. and Lorusso, M. and Pakkanen, J. and Aversa, A. and Ambrosio, E. P. and Lombardi, M. and Fino, P. and Manfredi, D.},\n  title = {On the Selective Laser Melting ({SLM}) of the {AlSi10Mg} Alloy: Process, Microstructure, and Mechanical Properties},\n  journal = {Materials},\n  volume = {10},\n  number = {1},\n  pages = {76},\n  year = {2017},\n  doi = {10.3390/ma10010076}\n}",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5344617/"
   }
 }

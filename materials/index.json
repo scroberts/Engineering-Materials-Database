@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T05:27:47Z",
+  "generated": "2026-05-17T05:50:46Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -235,6 +235,23 @@
       "yield_strength": null,
       "tensile_strength": null,
       "density": 2.53
+    },
+    {
+      "slug": "alsi10mg",
+      "path": "materials/metals/alsi10mg.json",
+      "name": "Aluminum AlSi10Mg (LPBF, As-Built)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 70,
+      "yield_strength": 0.27,
+      "tensile_strength": 0.46,
+      "density": 2.67
     },
     {
       "slug": "aluminum-1100-o",
