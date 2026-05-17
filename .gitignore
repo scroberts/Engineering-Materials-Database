@@ -14,3 +14,6 @@ tools/backup/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Large reference PDFs — store locally, do not commit (GitHub 50 MB file limit)
+references/*.pdf

@@ -1,4 +1,10 @@
 {
+  "mmpds01_2003": {
+    "short_label": "MMPDS-01 2003",
+    "doi": null,
+    "bibtex": "@techreport{mmpds01_2003,\n  title       = {Metallic Materials Properties Development and Standardization (MMPDS)},\n  number      = {MMPDS-01},\n  institution = {Federal Aviation Administration (FAA) and Battelle Memorial Institute},\n  year        = {2003},\n  month       = jan,\n  note        = {Supersedes MIL-HDBK-5J}\n}",
+    "url": null
+  },
   "matweb-al6061-t6": {
     "short_label": "MatWeb: Aluminum 6061-T6",
     "doi": null,
