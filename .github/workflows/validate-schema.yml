@@ -7,6 +7,14 @@ on:
       - 'schema/**'
       - 'references/index.json'
       - 'tools/validate.py'
+  push:
+    branches: [main]
+    paths:
+      - 'materials/**'
+      - 'schema/**'
+      - 'references/index.json'
+      - 'tools/validate.py'
+  workflow_dispatch:
 
 jobs:
   validate:

@@ -4,6 +4,8 @@ A static reference database of engineering material properties for Design Engine
 
 **Live site:** https://scroberts.github.io/Engineering-Materials-Database/
 
+[![Validate Material JSON](https://github.com/scroberts/Engineering-Materials-Database/actions/workflows/validate-schema.yml/badge.svg)](https://github.com/scroberts/Engineering-Materials-Database/actions/workflows/validate-schema.yml)  [![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 > **Educational use only.** Data has been compiled from published sources. Do not use as the sole basis for safety-critical design decisions — always verify against primary sources and manufacturer datasheets.
 
 ---
