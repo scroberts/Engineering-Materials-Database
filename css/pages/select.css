@@ -217,6 +217,8 @@
 
 .merit-select { min-width: 16rem; }
 
+#ctrl-direction-label[hidden] { display: none; }
+
 .merit-hint {
   font-size: 0.8rem;
   color: var(--color-text-muted);

@@ -121,23 +121,72 @@ async function init() {
   addFilterRow();
 }
 
-// ── Merit index selector ───────────────────────────────────────────────────
+// ── Rank selector (merit indices + raw properties) ────────────────────────
 
 function populateMeritSelect() {
-  const sel = document.getElementById('ctrl-merit');
+  const sel   = document.getElementById('ctrl-merit');
+  const dirSel = document.getElementById('ctrl-direction');
+  const dirLabel = document.getElementById('ctrl-direction-label');
+
+  // Merit index optgroup
+  const miGroup = document.createElement('optgroup');
+  miGroup.label = 'Merit Indices';
   for (const mi of MERIT_INDICES) {
     const opt = document.createElement('option');
-    opt.value       = mi.id;
+    opt.value       = `mi:${mi.id}`;
     opt.textContent = `${mi.id}: ${mi.label} — ${mi.shortName}`;
-    sel.appendChild(opt);
+    miGroup.appendChild(opt);
   }
-  sel.addEventListener('change', () => {
+  sel.appendChild(miGroup);
+
+  // Property optgroups
+  const propGroups = {};
+  for (const p of PROPERTIES) {
+    if (!propGroups[p.group]) propGroups[p.group] = [];
+    propGroups[p.group].push(p);
+  }
+  for (const [grp, props] of Object.entries(propGroups)) {
+    const og = document.createElement('optgroup');
+    og.label = `By Property — ${grp}`;
+    for (const p of props) {
+      const opt = document.createElement('option');
+      opt.value       = `prop:${p.id}`;
+      opt.textContent = p.label;
+      og.appendChild(opt);
+    }
+    sel.appendChild(og);
+  }
+
+  function onRankChange() {
     const hint = document.getElementById('merit-hint');
-    const mi = MERIT_INDICES.find(m => m.id === sel.value);
-    hint.textContent = mi
-      ? `${mi.higherIsBetter ? 'Higher' : 'Lower'} is better. ${mi.description}`
-      : '';
-  });
+    const val  = sel.value;
+
+    if (!val) {
+      hint.textContent = '';
+      dirLabel.hidden  = true;
+      return;
+    }
+
+    if (val.startsWith('mi:')) {
+      const miId = val.slice(3);
+      const mi   = MERIT_INDICES.find(m => m.id === miId);
+      if (mi) {
+        dirSel.value    = mi.higherIsBetter ? 'desc' : 'asc';
+        dirLabel.hidden = true;   // direction is fixed for merit indices
+        hint.textContent = `Direction fixed: ${mi.higherIsBetter ? 'higher' : 'lower'} is better. ${mi.description}`;
+      }
+    } else {
+      dirLabel.hidden  = false;   // user chooses direction for raw properties
+      const propId = val.slice(5);
+      const prop   = PROP_BY_ID[propId];
+      hint.textContent = prop
+        ? `Ranks by ${prop.label} (${prop.unit.metric}). Materials missing this value are excluded from ranking.`
+        : '';
+    }
+  }
+
+  sel.addEventListener('change', onRankChange);
+  dirLabel.hidden = true;   // hidden initially (None selected)
 }
 
 // ── Pre-filter panel ───────────────────────────────────────────────────────
@@ -457,26 +506,66 @@ async function runSearch() {
       return;
     }
 
-    // Phase 4 — merit index ranking or alphabetical sort
-    const meritId  = document.getElementById('ctrl-merit').value;
+    // Phase 4 — rank by merit index, raw property, or alphabetical sort
+    const rankVal  = document.getElementById('ctrl-merit').value;
+    const dirVal   = document.getElementById('ctrl-direction').value;
     const maxN     = Math.max(1, parseInt(document.getElementById('ctrl-max-results').value, 10) || 10);
-    const mi       = MERIT_INDICES.find(m => m.id === meritId);
     let ranked     = [];
-    let meritValues = null;
+    let rankInfo   = null;   // { label, values: {slug→score}, unit }
 
-    if (mi) {
-      const scored = results
-        .map(m => ({ mat: m, score: mi.fn(m) }))
-        .filter(x => x.score != null);
-      scored.sort((a, b) => mi.higherIsBetter ? b.score - a.score : a.score - b.score);
-      ranked = scored.slice(0, maxN).map(x => x.mat);
-      meritValues = Object.fromEntries(scored.map(x => [x.mat.identification.slug, x.score]));
-    } else {
+    if (rankVal.startsWith('mi:')) {
+      const miId = rankVal.slice(3);
+      const mi   = MERIT_INDICES.find(m => m.id === miId);
+      if (mi) {
+        const scored = results
+          .map(m => ({ mat: m, score: mi.fn(m) }))
+          .filter(x => x.score != null);
+        const desc = mi.higherIsBetter;
+        scored.sort((a, b) => desc ? b.score - a.score : a.score - b.score);
+        ranked   = scored.slice(0, maxN).map(x => x.mat);
+        rankInfo = {
+          label:  `${mi.id}: ${mi.label}`,
+          values: Object.fromEntries(scored.map(x => [x.mat.identification.slug, x.score])),
+          unit:   '',
+        };
+      }
+    } else if (rankVal.startsWith('prop:')) {
+      const propId = rankVal.slice(5);
+      const prop   = PROP_BY_ID[propId];
+      if (prop) {
+        const sys      = document.getElementById('ctrl-units').value;
+        const tempUnit = document.getElementById('ctrl-temp').value;
+        const scored   = results
+          .map(m => ({ mat: m, score: prop.get(m) }))
+          .filter(x => x.score != null);
+        const desc = dirVal === 'desc';
+        scored.sort((a, b) => desc ? b.score - a.score : a.score - b.score);
+        ranked = scored.slice(0, maxN).map(x => x.mat);
+        // Convert scores to display units for the rank column
+        const displayScores = Object.fromEntries(scored.map(x => {
+          const disp = prop.unit.tempDependent
+            ? convertTemperature(x.score, tempUnit)
+            : prop.convert(x.score, sys, tempUnit);
+          return [x.mat.identification.slug, disp];
+        }));
+        const unitLabel = prop.unit.tempDependent
+          ? tempUnit
+          : prop.unit[sys];
+        rankInfo = {
+          label:  `${prop.label} (${unitLabel})`,
+          values: displayScores,
+          unit:   unitLabel,
+        };
+      }
+    }
+
+    if (!rankInfo) {
+      // No ranking — alphabetical
       results.sort((a, b) => a.identification.name.localeCompare(b.identification.name));
       ranked = results.slice(0, maxN);
     }
 
-    renderResults(ranked, mi, meritValues);
+    renderResults(ranked, rankInfo);
   } finally {
     findBtn.disabled  = false;
     findBtn.textContent = 'Find Materials';
@@ -495,41 +584,43 @@ function showNoResults(msg) {
   section.hidden = false;
 }
 
-function renderResults(materials, mi, meritValues) {
+/**
+ * @param {Object[]} materials  - ordered list of full material objects
+ * @param {Object|null} rankInfo - { label, values: {slug→displayScore}, unit } or null
+ */
+function renderResults(materials, rankInfo) {
   const sys      = document.getElementById('ctrl-units').value;
-  const tempUnit = document.getElementById('ctrl-temp').value;
 
   resultSlugs.clear();
 
   const section  = document.getElementById('results-section');
   const heading  = document.getElementById('results-heading');
   const tbody    = document.getElementById('results-tbody');
-  const colMerit = document.getElementById('col-merit-header');
+  const colRank  = document.getElementById('col-merit-header');
 
   heading.textContent = `${materials.length} material${materials.length === 1 ? '' : 's'} found`;
 
-  // Merit column header
-  if (mi) {
-    colMerit.hidden = false;
-    colMerit.textContent = `${mi.id}: ${mi.label}`;
+  // Rank column header
+  if (rankInfo) {
+    colRank.hidden = false;
+    colRank.textContent = rankInfo.label;
   } else {
-    colMerit.hidden = true;
+    colRank.hidden = true;
   }
 
-  // Unit labels for summary columns
+  // Unit labels for fixed summary columns
   const eUnit  = sys === 'imperial' ? 'ksi' : 'GPa';
   const syUnit = sys === 'imperial' ? 'ksi' : 'MPa';
   const rhoUnit= sys === 'imperial' ? 'lb/in³' : 'g/cm³';
 
-  // Update table headers
   const ths = document.querySelectorAll('.results-table th');
   if (ths[3]) ths[3].textContent = `E (${eUnit})`;
   if (ths[4]) ths[4].innerHTML   = `σ<sub>y</sub> (${syUnit})`;
   if (ths[5]) ths[5].textContent = `ρ (${rhoUnit})`;
 
   tbody.innerHTML = materials.map((mat, i) => {
-    const id   = mat.identification;
-    const slug = id.slug;
+    const id     = mat.identification;
+    const slug   = id.slug;
     const catCls = id.category.toLowerCase().replace(/\s+/g, '-');
 
     const eRaw  = mat.mechanical_common?.youngs_modulus?.value ?? null;
@@ -546,21 +637,20 @@ function renderResults(materials, mi, meritValues) {
       return `<td class="${cls}">${fmtV(v, d)}</td>`;
     };
 
-    const rank = mi ? `<span class="rank-badge">${i + 1}</span>` : '';
-    const meritScore = mi && meritValues?.[slug] != null
-      ? Number(meritValues[slug].toFixed(3)).toString()
-      : null;
+    const rankBadge   = rankInfo ? `<span class="rank-badge">${i + 1}</span>` : '';
+    const rankScore   = rankInfo?.values?.[slug] ?? null;
+    const rankDisplay = rankScore != null ? Number(rankScore.toPrecision(4)).toString() : '—';
 
     return `<tr>
       <td class="col-check">
         <input type="checkbox" class="result-check" data-slug="${slug}">
       </td>
-      <td class="col-name">${rank}<a href="material.html?slug=${slug}">${id.name}</a></td>
+      <td class="col-name">${rankBadge}<a href="material.html?slug=${slug}">${id.name}</a></td>
       <td><span class="badge badge-${catCls}">${id.category}</span></td>
-      ${numCell(eDisp, sys === 'imperial' ? 1 : 1)}
+      ${numCell(eDisp, 1)}
       ${numCell(syDisp, 0)}
       ${numCell(rDisp, sys === 'imperial' ? 4 : 2)}
-      ${mi ? `<td class="col-num">${meritScore ?? '—'}</td>` : ''}
+      ${rankInfo ? `<td class="col-num">${rankDisplay}</td>` : ''}
     </tr>`;
   }).join('');
 

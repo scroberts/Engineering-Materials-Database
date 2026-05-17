@@ -75,14 +75,21 @@
         <p class="filter-hint" id="filter-hint" hidden>Maximum 5 filters.</p>
       </section>
 
-      <!-- Merit index -->
+      <!-- Ranking -->
       <section class="select-section">
-        <h3 class="section-heading">Merit Index Ranking</h3>
+        <h3 class="section-heading">Ranking</h3>
         <div class="merit-row">
           <label class="ctrl-label">
             Rank by
             <select id="ctrl-merit" class="ctrl-select merit-select">
-              <option value="">None</option>
+              <option value="">None (alphabetical)</option>
+            </select>
+          </label>
+          <label class="ctrl-label" id="ctrl-direction-label">
+            Direction
+            <select id="ctrl-direction" class="ctrl-select">
+              <option value="desc">Highest first</option>
+              <option value="asc">Lowest first</option>
             </select>
           </label>
           <p class="merit-hint" id="merit-hint"></p>
