@@ -191,3 +191,9 @@ All values are stored in canonical units in JSON. Conversion to display units ha
 ## License
 
 For educational use at the University of Victoria. Material property data is sourced from published references cited within each material file.
+
+---
+
+## AI Disclosure
+
+Development of this tool was assisted by [Claude](https://claude.ai) (Anthropic). AI was used for JavaScript feature development, JSON data entry from reference sources, schema design, and code review. All material property values were verified against primary sources cited within each material file.
