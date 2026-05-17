@@ -272,6 +272,26 @@
 }
 .filter-reset:hover { color: var(--color-danger); }
 
+.btn-advanced-select {
+  display: block;
+  width: 100%;
+  margin-top: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.15s;
+}
+.btn-advanced-select:hover {
+  background: #d0e4f7;
+}
+
 /* ── Compare bar ──────────────────────────────────────────────────────── */
 
 .compare-bar {
@@ -318,6 +338,17 @@
   padding: 0;
 }
 .compare-bar-clear:hover { color: #fff; }
+
+.compare-bar-btn-secondary {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.compare-bar-btn-secondary:hover { background: rgba(255,255,255,0.25); }
+.compare-bar-btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
 
 /* ── Export dropdown ──────────────────────────────────────────────────── */
 

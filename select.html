@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Selection — UVIC Engineering Materials Database</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/select.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-title">
+        <h1>Materials Database</h1>
+        <span class="site-subtitle">UVIC Design Engineering</span>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html"   class="nav-link">Browse</a>
+        <a href="compare.html" class="nav-link">Compare</a>
+        <a href="select.html"  class="nav-link active">Select</a>
+        <a href="submit.html"  class="nav-link">Submit</a>
+        <button class="nav-link" data-action="show-disclaimer">Disclaimer</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="select-layout">
+    <div class="select-inner">
+
+      <div class="select-header">
+        <h2 class="select-title">Advanced Material Selection</h2>
+        <p class="select-subtitle">Filter by property ranges and rank by merit index to find the best material for your application.</p>
+      </div>
+
+      <!-- Pre-selection panel -->
+      <section class="prefilter-panel" id="prefilter-panel" hidden>
+        <div class="prefilter-header">
+          <span class="prefilter-label">Pre-filter from Browse</span>
+          <a href="index.html" id="prefilter-edit-link" class="prefilter-edit">Edit on Browse page →</a>
+        </div>
+        <div class="prefilter-tags" id="prefilter-tags"></div>
+        <p class="prefilter-count" id="prefilter-count"></p>
+      </section>
+
+      <!-- Controls row -->
+      <div class="select-controls">
+        <label class="ctrl-label">
+          Max results
+          <input type="number" id="ctrl-max-results" class="ctrl-input" value="10" min="1" max="50">
+        </label>
+        <label class="ctrl-label">
+          Units
+          <select id="ctrl-units" class="ctrl-select">
+            <option value="metric">Metric</option>
+            <option value="imperial">Imperial</option>
+          </select>
+        </label>
+        <label class="ctrl-label">
+          Temperature
+          <select id="ctrl-temp" class="ctrl-select">
+            <option value="°C">°C</option>
+            <option value="K">K</option>
+            <option value="°F">°F</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Property filters -->
+      <section class="select-section">
+        <h3 class="section-heading">Property Filters</h3>
+        <div class="filter-rows" id="filter-rows"></div>
+        <button class="btn-add-filter" id="btn-add-filter" type="button">+ Add Filter</button>
+        <p class="filter-hint" id="filter-hint" hidden>Maximum 5 filters.</p>
+      </section>
+
+      <!-- Merit index -->
+      <section class="select-section">
+        <h3 class="section-heading">Merit Index Ranking</h3>
+        <div class="merit-row">
+          <label class="ctrl-label">
+            Rank by
+            <select id="ctrl-merit" class="ctrl-select merit-select">
+              <option value="">None</option>
+            </select>
+          </label>
+          <p class="merit-hint" id="merit-hint"></p>
+        </div>
+      </section>
+
+      <!-- Find button -->
+      <div class="find-row">
+        <button class="btn btn-primary btn-find" id="btn-find" type="button">Find Materials</button>
+      </div>
+
+      <!-- Results -->
+      <section class="results-section" id="results-section" hidden>
+        <div class="results-header">
+          <h3 class="section-heading" id="results-heading"></h3>
+          <div class="results-actions">
+            <button class="btn-select-all" id="btn-select-all" type="button">Select All</button>
+            <button class="btn btn-primary btn-compare-selected" id="btn-compare-selected"
+                    type="button" disabled>Compare Selected (0)</button>
+          </div>
+        </div>
+        <div class="results-table-wrap">
+          <table class="results-table" id="results-table">
+            <thead>
+              <tr>
+                <th class="col-check"></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>E (GPa)</th>
+                <th>σ<sub>y</sub></th>
+                <th>ρ</th>
+                <th id="col-merit-header" hidden></th>
+              </tr>
+            </thead>
+            <tbody id="results-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="js/core/disclaimer.js"></script>
+  <script type="module" src="js/pages/select.js"></script>
+</body>
+</html>

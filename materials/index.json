@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T15:14:37Z",
+  "generated": "2026-05-17T16:57:30Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -20,7 +20,8 @@
       "youngs_modulus": 375,
       "yield_strength": null,
       "tensile_strength": 0.262,
-      "density": 3.89
+      "density": 3.89,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "silicon-carbide",
@@ -39,7 +40,8 @@
       "youngs_modulus": 410,
       "yield_strength": null,
       "tensile_strength": 0.32,
-      "density": 3.1
+      "density": 3.1,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "c-sic-woven",
@@ -58,7 +60,8 @@
       "youngs_modulus": 90.0,
       "yield_strength": null,
       "tensile_strength": 0.237,
-      "density": 2.1
+      "density": 2.1,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "cfrp-ud",
@@ -78,7 +81,8 @@
       "youngs_modulus": 135.0,
       "yield_strength": null,
       "tensile_strength": 1.5,
-      "density": 1.58
+      "density": 1.58,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "gfrp-woven",
@@ -98,7 +102,8 @@
       "youngs_modulus": 20.0,
       "yield_strength": null,
       "tensile_strength": 0.27,
-      "density": 1.8
+      "density": 1.8,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "epdm",
@@ -113,7 +118,8 @@
       "youngs_modulus": null,
       "yield_strength": null,
       "tensile_strength": 0.014,
-      "density": 1.27
+      "density": 1.27,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "fluorocarbon-viton",
@@ -128,7 +134,8 @@
       "youngs_modulus": null,
       "yield_strength": null,
       "tensile_strength": 0.008,
-      "density": 1.9
+      "density": 1.9,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "nitrile-nbr",
@@ -143,7 +150,8 @@
       "youngs_modulus": null,
       "yield_strength": null,
       "tensile_strength": 0.014,
-      "density": 1.27
+      "density": 1.27,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "silicone-vmq",
@@ -158,7 +166,8 @@
       "youngs_modulus": null,
       "yield_strength": null,
       "tensile_strength": 0.0065,
-      "density": 1.25
+      "density": 1.25,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "bk7-optical-glass",
@@ -177,7 +186,8 @@
       "youngs_modulus": 82,
       "yield_strength": null,
       "tensile_strength": null,
-      "density": 2.51
+      "density": 2.51,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "borosilicate-glass",
@@ -196,7 +206,8 @@
       "youngs_modulus": 64,
       "yield_strength": null,
       "tensile_strength": 0.025,
-      "density": 2.23
+      "density": 2.23,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "ule-glass",
@@ -215,7 +226,8 @@
       "youngs_modulus": 67.6,
       "yield_strength": null,
       "tensile_strength": 0.05,
-      "density": 2.21
+      "density": 2.21,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "zerodur-grade-0",
@@ -234,7 +246,8 @@
       "youngs_modulus": 90.3,
       "yield_strength": null,
       "tensile_strength": null,
-      "density": 2.53
+      "density": 2.53,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "alsi10mg",
@@ -251,7 +264,8 @@
       "youngs_modulus": 70,
       "yield_strength": 0.27,
       "tensile_strength": 0.46,
-      "density": 2.67
+      "density": 2.67,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "aluminum-1100-o",
@@ -270,7 +284,8 @@
       "youngs_modulus": 70,
       "yield_strength": 0.035,
       "tensile_strength": 0.09,
-      "density": 2.71
+      "density": 2.71,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "aluminum-5052-h32",
@@ -289,7 +304,8 @@
       "youngs_modulus": 70.3,
       "yield_strength": 0.193,
       "tensile_strength": 0.228,
-      "density": 2.68
+      "density": 2.68,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "aluminum-6061-t6",
@@ -312,7 +328,8 @@
       "youngs_modulus": 68.9,
       "yield_strength": 0.276,
       "tensile_strength": 0.31,
-      "density": 2.7
+      "density": 2.7,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "aluminum-7075-t6",
@@ -331,7 +348,8 @@
       "youngs_modulus": 71.7,
       "yield_strength": 0.503,
       "tensile_strength": 0.572,
-      "density": 2.81
+      "density": 2.81,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "beryllium-s65",
@@ -349,7 +367,8 @@
       "youngs_modulus": 287,
       "yield_strength": 0.24,
       "tensile_strength": 0.37,
-      "density": 1.85
+      "density": 1.85,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "copper-c11000",
@@ -373,7 +392,8 @@
       "youngs_modulus": 117,
       "yield_strength": 0.069,
       "tensile_strength": 0.22,
-      "density": 8.94
+      "density": 8.94,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "inconel-625",
@@ -398,7 +418,8 @@
       "youngs_modulus": 207,
       "yield_strength": 0.517,
       "tensile_strength": 0.93,
-      "density": 8.44
+      "density": 8.44,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "inconel-718",
@@ -422,7 +443,8 @@
       "youngs_modulus": 200,
       "yield_strength": 1.035,
       "tensile_strength": 1.24,
-      "density": 8.19
+      "density": 8.19,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "invar-36-alloy",
@@ -441,7 +463,8 @@
       "youngs_modulus": 148,
       "yield_strength": 0.483,
       "tensile_strength": 0.621,
-      "density": 8.05
+      "density": 8.05,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "stainless-303",
@@ -459,7 +482,8 @@
       "youngs_modulus": 193,
       "yield_strength": 0.19,
       "tensile_strength": 0.62,
-      "density": 7.9
+      "density": 7.9,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "stainless-304",
@@ -482,7 +506,8 @@
       "youngs_modulus": 193,
       "yield_strength": 0.205,
       "tensile_strength": 0.515,
-      "density": 8.0
+      "density": 8.0,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "stainless-316",
@@ -507,7 +532,8 @@
       "youngs_modulus": 193,
       "yield_strength": 0.2,
       "tensile_strength": 0.517,
-      "density": 8.03
+      "density": 8.03,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "steel-4340",
@@ -525,7 +551,8 @@
       "youngs_modulus": 200,
       "yield_strength": 1.62,
       "tensile_strength": 1.76,
-      "density": 7.85
+      "density": 7.85,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-a2",
@@ -544,7 +571,8 @@
       "youngs_modulus": 203,
       "yield_strength": 1.586,
       "tensile_strength": 2.068,
-      "density": 7.86
+      "density": 7.86,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-h13",
@@ -565,7 +593,8 @@
       "youngs_modulus": 210,
       "yield_strength": 1.28,
       "tensile_strength": 1.42,
-      "density": 7.8
+      "density": 7.8,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-mild-a36",
@@ -586,7 +615,8 @@
       "youngs_modulus": 200,
       "yield_strength": 0.25,
       "tensile_strength": 0.4,
-      "density": 7.85
+      "density": 7.85,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-spring-5160",
@@ -604,7 +634,8 @@
       "youngs_modulus": 207,
       "yield_strength": 1.38,
       "tensile_strength": 1.57,
-      "density": 7.85
+      "density": 7.85,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "titanium-6al-4v",
@@ -614,7 +645,8 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
-        "3D Print (DMLS/SLM)"
+        "3D Print (DMLS/SLM)",
+        "Sintering"
       ],
       "common_forms": [
         "Sheet",
@@ -625,7 +657,8 @@
       "youngs_modulus": 114,
       "yield_strength": 0.88,
       "tensile_strength": 0.95,
-      "density": 4.43
+      "density": 4.43,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "balsa-wood",
@@ -642,7 +675,8 @@
       "youngs_modulus": 3.5,
       "yield_strength": null,
       "tensile_strength": 0.012,
-      "density": 0.15
+      "density": 0.15,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "birch-plywood",
@@ -659,7 +693,8 @@
       "youngs_modulus": 10.0,
       "yield_strength": null,
       "tensile_strength": 0.045,
-      "density": 0.68
+      "density": 0.68,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "abs-fdm",
@@ -676,7 +711,8 @@
       "youngs_modulus": 2.2,
       "yield_strength": null,
       "tensile_strength": 0.04,
-      "density": 1.04
+      "density": 1.04,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "abs",
@@ -696,7 +732,8 @@
       "youngs_modulus": 2.1,
       "yield_strength": 0.04,
       "tensile_strength": 0.047,
-      "density": 1.05
+      "density": 1.05,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "acrylic-pmma",
@@ -715,7 +752,8 @@
       "youngs_modulus": 3.2,
       "yield_strength": null,
       "tensile_strength": 0.07,
-      "density": 1.18
+      "density": 1.18,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "peek",
@@ -735,7 +773,8 @@
       "youngs_modulus": 4.0,
       "yield_strength": 0.098,
       "tensile_strength": 0.098,
-      "density": 1.3
+      "density": 1.3,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "petg-fdm",
@@ -752,7 +791,8 @@
       "youngs_modulus": 2.1,
       "yield_strength": null,
       "tensile_strength": 0.053,
-      "density": 1.23
+      "density": 1.23,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "pla-fdm",
@@ -769,7 +809,8 @@
       "youngs_modulus": 3.5,
       "yield_strength": null,
       "tensile_strength": 0.065,
-      "density": 1.24
+      "density": 1.24,
+      "magnetic_classification": "Diamagnetic"
     },
     {
       "slug": "pom-delrin",
@@ -791,7 +832,8 @@
       "youngs_modulus": 3.1,
       "yield_strength": 0.069,
       "tensile_strength": 0.069,
-      "density": 1.41
+      "density": 1.41,
+      "magnetic_classification": "Diamagnetic"
     }
   ]
 }

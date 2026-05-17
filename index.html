@@ -19,6 +19,7 @@
       <nav class="site-nav" aria-label="Main navigation">
         <a href="index.html"    class="nav-link active">Browse</a>
         <a href="compare.html"  class="nav-link">Compare</a>
+        <a href="select.html"   class="nav-link">Select</a>
         <a href="submit.html"   class="nav-link">Submit</a>
         <button class="nav-link" data-action="show-disclaimer">Disclaimer</button>
       </nav>
@@ -65,8 +66,18 @@
       </div>
 
       <div class="filter-section">
+        <p class="filter-heading">Magnetic Class</p>
+        <div class="checkbox-group" id="filter-magnetic">
+          <!-- populated by browse.js -->
+        </div>
+      </div>
+
+      <div class="filter-section">
         <button class="filter-reset" id="filter-reset" type="button">
           Clear all filters
+        </button>
+        <button class="btn-advanced-select" id="btn-advanced-select" type="button">
+          Advanced Selection →
         </button>
       </div>
 
@@ -89,6 +100,10 @@
     <span class="compare-bar-count" id="compare-count"></span>
     <button class="compare-bar-btn" id="btn-compare" type="button">
       Compare →
+    </button>
+    <button class="compare-bar-btn compare-bar-btn-secondary" id="btn-compare-all-filtered"
+            type="button" hidden>
+      Compare All Filtered →
     </button>
     <button class="compare-bar-clear" id="btn-clear-compare" type="button">
       Clear

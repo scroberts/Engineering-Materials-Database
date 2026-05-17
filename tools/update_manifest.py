@@ -37,10 +37,11 @@ def extract_entry(data, filepath):
         "fabrication_processes":ident.get("fabrication_processes", []),
         "common_forms":         ident.get("common_forms", []),
         "usage_frequency":      ident.get("usage_frequency", "Common"),
-        "youngs_modulus":       val(mech, "youngs_modulus"),
-        "yield_strength":       val(mech, "yield_strength"),
-        "tensile_strength":     val(mech, "tensile_strength"),
-        "density":              val(phys, "density"),
+        "youngs_modulus":         val(mech, "youngs_modulus"),
+        "yield_strength":         val(mech, "yield_strength"),
+        "tensile_strength":       val(mech, "tensile_strength"),
+        "density":                val(phys, "density"),
+        "magnetic_classification": phys.get("magnetic_classification", {}).get("value"),
     }
 
 

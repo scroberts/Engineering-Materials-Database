@@ -47,6 +47,7 @@ function readFiltersFromURL() {
     fab:        new Set(p.getAll('fab')),
     forms:      new Set(p.getAll('form')),
     frequency:  new Set(p.getAll('freq')),
+    magnetic:   new Set(p.getAll('magnetic')),
   };
 }
 
@@ -57,6 +58,7 @@ function writeFiltersToURL(f) {
   for (const c of f.fab)        p.append('fab', c);
   for (const c of f.forms)      p.append('form', c);
   for (const fr of f.frequency) p.append('freq', fr);
+  for (const m of f.magnetic)   p.append('magnetic', m);
   const qs = p.toString();
   history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
 }
@@ -79,6 +81,7 @@ function materialMatches(mat, f) {
     if (![...f.forms].some(v => set.has(v))) return false;
   }
   if (f.frequency.size > 0 && !f.frequency.has(mat.usage_frequency)) return false;
+  if (f.magnetic.size > 0 && !f.magnetic.has(mat.magnetic_classification)) return false;
   return true;
 }
 
@@ -139,10 +142,13 @@ function renderCard(mat) {
 
 // ── Grid rendering ─────────────────────────────────────────────────────────
 
+let visibleSlugs = [];   // slugs currently shown in grid (for Compare All Filtered)
+
 function renderGrid(filters) {
   const grid    = document.getElementById('materials-grid');
   const counter = document.getElementById('result-count');
   const visible = allMaterials.filter(m => materialMatches(m, filters));
+  visibleSlugs  = visible.map(m => m.slug);
 
   counter.textContent = `${visible.length} of ${allMaterials.length} material${allMaterials.length === 1 ? '' : 's'}`;
 
@@ -152,6 +158,7 @@ function renderGrid(filters) {
         <strong>No materials match these filters.</strong>
         <p>Try broadening your search or clearing some filters.</p>
       </div>`;
+    updateCompareBar();
     return;
   }
 
@@ -176,19 +183,43 @@ function renderGrid(filters) {
       updateCompareBar();
     });
   });
+
+  updateCompareBar();
 }
 
 // ── Compare bar ────────────────────────────────────────────────────────────
 
 function updateCompareBar() {
-  const bar   = document.getElementById('compare-bar');
-  const count = document.getElementById('compare-count');
-  const btn   = document.getElementById('btn-compare');
+  const bar      = document.getElementById('compare-bar');
+  const count    = document.getElementById('compare-count');
+  const btn      = document.getElementById('btn-compare');
+  const btnAll   = document.getElementById('btn-compare-all-filtered');
 
   sessionStorage.setItem('compareSet', [...compareSet].join(','));
 
+  // "Compare All Filtered" button visibility
+  const n = visibleSlugs.length;
+  if (btnAll) {
+    const show = n >= 2;
+    btnAll.hidden = !show;
+    if (show) {
+      const tooMany = n > MAX_COMPARE;
+      btnAll.disabled = tooMany;
+      btnAll.title    = tooMany ? `Max ${MAX_COMPARE} for comparison` : '';
+      btnAll.textContent = `Compare All Filtered (${n}) →`;
+    }
+  }
+
   if (compareSet.size === 0) {
-    bar.hidden = true;
+    if (btnAll && !btnAll.hidden) {
+      // Keep bar visible to expose the Compare All Filtered button
+      bar.hidden = false;
+      count.textContent = '';
+      btn.disabled = true;
+      btn.style.opacity = '0.5';
+    } else {
+      bar.hidden = true;
+    }
     return;
   }
 
@@ -228,6 +259,12 @@ function buildSidebar(currentFilters) {
   const freqGroup = document.getElementById('filter-frequency');
   freqGroup.innerHTML = USAGE_FREQUENCIES.map(fr => checkboxHtml('freq', fr, currentFilters.frequency)).join('');
 
+  // Magnetic classification checkboxes
+  const magGroup = document.getElementById('filter-magnetic');
+  if (magGroup) {
+    magGroup.innerHTML = ['Ferromagnetic', 'Paramagnetic', 'Diamagnetic'].map(m => checkboxHtml('magnetic', m, currentFilters.magnetic)).join('');
+  }
+
   // Search input
   document.getElementById('search-input').value = currentFilters.search;
 }
@@ -250,11 +287,13 @@ function collectFilters() {
     fab:        new Set(),
     forms:      new Set(),
     frequency:  new Set(),
+    magnetic:   new Set(),
   };
   document.querySelectorAll('input[name="cat"]:checked').forEach(el => f.categories.add(el.value));
   document.querySelectorAll('input[name="fab"]:checked').forEach(el => f.fab.add(el.value));
   document.querySelectorAll('input[name="form"]:checked').forEach(el => f.forms.add(el.value));
   document.querySelectorAll('input[name="freq"]:checked').forEach(el => f.frequency.add(el.value));
+  document.querySelectorAll('input[name="magnetic"]:checked').forEach(el => f.magnetic.add(el.value));
   return f;
 }
 
@@ -277,11 +316,27 @@ function wireSidebar() {
 
   document.getElementById('filter-reset').addEventListener('click', () => {
     history.replaceState(null, '', location.pathname);
-    buildSidebar({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set() });
-    renderGrid({ search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set() });
+    const empty = { search: '', categories: new Set(), fab: new Set(), forms: new Set(), frequency: new Set(), magnetic: new Set() };
+    buildSidebar(empty);
+    renderGrid(empty);
     compareSet.clear();
     updateCompareBar();
   });
+
+  const btnAdvanced = document.getElementById('btn-advanced-select');
+  if (btnAdvanced) {
+    btnAdvanced.addEventListener('click', () => {
+      const f = collectFilters();
+      const p = new URLSearchParams();
+      for (const c of f.categories) p.append('cat', c);
+      for (const c of f.fab)        p.append('fab', c);
+      for (const c of f.forms)      p.append('form', c);
+      for (const fr of f.frequency) p.append('freq', fr);
+      for (const m of f.magnetic)   p.append('magnetic', m);
+      const qs = p.toString();
+      location.href = `select.html${qs ? '?' + qs : ''}`;
+    });
+  }
 }
 
 function wireCompareBar() {
@@ -294,6 +349,13 @@ function wireCompareBar() {
     updateCompareBar();
     renderGrid(collectFilters());
   });
+  const btnAll = document.getElementById('btn-compare-all-filtered');
+  if (btnAll) {
+    btnAll.addEventListener('click', () => {
+      if (visibleSlugs.length < 2 || visibleSlugs.length > MAX_COMPARE) return;
+      location.href = `compare.html?slugs=${visibleSlugs.join(',')}`;
+    });
+  }
 }
 
 // ── Init ───────────────────────────────────────────────────────────────────
