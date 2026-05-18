@@ -1,46 +1,113 @@
 {
   "schema_version": 1,
-
   "identification": {
-    "name":       "Cast Acrylic (PMMA)",
-    "slug":       "acrylic-pmma",
-    "category":   "Plastic",
-    "fabrication_processes": ["Machining", "Polishing"],
-    "common_forms": ["Sheet", "Plate"],
+    "name": "Cast Acrylic (PMMA)",
+    "slug": "acrylic-pmma",
+    "category": "Plastic",
+    "fabrication_processes": [
+      "Machining",
+      "Bending",
+      "Polishing"
+    ],
+    "common_forms": [
+      "Sheet",
+      "Plate"
+    ],
     "common_form_notes": "Sheet (1.5–6 mm) and plate (6–50 mm); both laser-cuttable and CNC machinable",
     "usage_frequency": "Common",
     "notes": "Cast acrylic (PMMA) properties shown; cast grade has ~5–10°C higher usable temperature and better optical properties than extruded grade due to lower residual stress. PMMA fails in a brittle manner at room temperature (elongation ~4%); no conventional yield point is defined. Compressive strength approximately 100 MPa (estimated; independently specified). Hardness reported as Rockwell M 93. Thermal diffusivity derived from k, ρ, Cp."
   },
-
   "typical_usage": "Transparent enclosures, optical windows, machine guards, laser-cut panels, display signage, and low-cost optical diffusers. Excellent optical clarity (transmittance >92% visible). Laser-cuttable with clean edges.",
-
   "mechanical_common": {
-    "youngs_modulus":       { "value": 3.2,   "ref": "makeitfrom-acrylic" },
-    "poissons_ratio":       { "value": 0.38,  "ref": "makeitfrom-acrylic" },
-    "yield_strength":       { "value": null,  "ref": null },
-    "tensile_strength":     { "value": 0.070, "ref": "makeitfrom-acrylic" },
-    "compressive_modulus":  { "value": null,  "ref": null },
-    "compressive_strength": { "value": 100,   "ref": "makeitfrom-acrylic" },
-    "usable_temp_range":    { "min": -40, "max": 70, "ref": "makeitfrom-acrylic" }
+    "youngs_modulus": {
+      "value": 3.2,
+      "ref": "makeitfrom-acrylic"
+    },
+    "poissons_ratio": {
+      "value": 0.38,
+      "ref": "makeitfrom-acrylic"
+    },
+    "yield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "tensile_strength": {
+      "value": 0.07,
+      "ref": "makeitfrom-acrylic"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": 100,
+      "ref": "makeitfrom-acrylic"
+    },
+    "usable_temp_range": {
+      "min": -40,
+      "max": 70,
+      "ref": "makeitfrom-acrylic"
+    }
   },
-
   "mechanical_other": {
-    "microyield_strength":  { "value": null, "ref": null },
-    "creep_strength":       { "value": null, "ref": null },
-    "fatigue_sn_curve":     { "points": [], "ref": null },
-    "fracture_toughness":   { "value": null, "ref": null },
-    "hardness_vickers":     { "value": null, "ref": null },
-    "hardness_brinell":     { "value": null, "ref": null },
-    "hardness_rockwell":    { "value": 93, "scale": "M", "ref": "makeitfrom-acrylic" },
-    "hardness_shore":       { "value": null, "scale": null, "ref": null },
-    "ductility":            { "min": null, "max": null, "typical": 4, "ref": "makeitfrom-acrylic" },
-    "shear_strength":       { "value": null, "ref": null }
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": 93,
+      "scale": "M",
+      "ref": "makeitfrom-acrylic"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 4,
+      "ref": "makeitfrom-acrylic"
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
   },
-
   "physical": {
-    "density":                { "value": 1.18, "ref": "makeitfrom-acrylic" },
-    "electrical_conductivity":{ "value": null, "ref": null },
-    "vapour_pressure":        { "value": null, "ref": null },
+    "density": {
+      "value": 1.18,
+      "ref": "makeitfrom-acrylic"
+    },
+    "electrical_conductivity": {
+      "value": null,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
     "thermal_expansion": {
       "value": 76,
       "table": [],
@@ -56,18 +123,30 @@
       "table": [],
       "ref": "makeitfrom-acrylic"
     },
-    "thermal_diffusivity":    { "value": 0.0011, "ref": null },
-    "melting_point_tm":       { "value": null,   "ref": null },
-    "glass_transition_tg":    { "value": 110,    "ref": "makeitfrom-acrylic" },
-    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+    "thermal_diffusivity": {
+      "value": 0.0011,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": 110,
+      "ref": "makeitfrom-acrylic"
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
   },
-
-  "references": ["makeitfrom-acrylic"],
-
+  "references": [
+    "makeitfrom-acrylic"
+  ],
   "metadata": {
-    "submitted_by":  "scroberts",
+    "submitted_by": "scroberts",
     "submitted_date": "2026-05-16",
-    "approved_by":   "scroberts",
+    "approved_by": "scroberts",
     "approved_date": "2026-05-16"
   }
 }

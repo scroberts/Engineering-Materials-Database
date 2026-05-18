@@ -4,69 +4,177 @@
     "name": "Aluminum 5052-H32",
     "slug": "aluminum-5052-h32",
     "category": "Metal",
-    "fabrication_processes": ["Machining", "Welding"],
-    "common_forms": ["Sheet", "Plate"],
+    "fabrication_processes": [
+      "Machining",
+      "Welding",
+      "Bending"
+    ],
+    "common_forms": [
+      "Sheet",
+      "Plate"
+    ],
     "common_form_notes": "Predominantly stocked as sheet and plate. Excellent formability in this temper.",
     "usage_frequency": "Common",
     "notes": "H32 temper: strain-hardened then stabilized (quarter-hard). Non-heat-treatable Al-Mg alloy. Superior corrosion resistance (especially marine and salt-spray) compared to 6061, with excellent formability and weldability. Not as machinable as 6061. Mechanical properties from MIL-HDBK-5J (freely available); AZoM article linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for wrought aluminium alloys (5083-O polynomial used as the nearest 5xxx-series proxy; all wrought Al alloys agree within ±4%). Room-temperature CTE from MIL-HDBK-5J."
   },
-
   "typical_usage": "Marine hull plating, fuel and oil tanks, pressure vessels, flooring panels, refrigerator liners, storm shutters, fan blades, and sheet metal fabrication requiring high corrosion resistance with moderate strength.",
-
   "mechanical_common": {
-    "youngs_modulus":      { "value": 70.3,  "ref": "mil-hdbk-5j-2003" },
-    "poissons_ratio":      { "value": 0.33,  "ref": "mil-hdbk-5j-2003" },
-    "yield_strength":      { "value": 0.193, "ref": "mil-hdbk-5j-2003" },
-    "tensile_strength":    { "value": 0.228, "ref": "mil-hdbk-5j-2003" },
-    "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 193,   "ref": "mil-hdbk-5j-2003" },
-    "usable_temp_range":   { "min": -196, "max": 150, "ref": "mil-hdbk-5j-2003" }
+    "youngs_modulus": {
+      "value": 70.3,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "poissons_ratio": {
+      "value": 0.33,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "yield_strength": {
+      "value": 0.193,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "tensile_strength": {
+      "value": 0.228,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": 193,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "usable_temp_range": {
+      "min": -196,
+      "max": 150,
+      "ref": "mil-hdbk-5j-2003"
+    }
   },
-
   "mechanical_other": {
-    "microyield_strength": { "value": null, "ref": null },
-    "creep_strength":      { "value": null, "ref": null },
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
     "fatigue_sn_curve": {
       "points": [
-        { "stress": 0.172, "cycles": 100000 },
-        { "stress": 0.138, "cycles": 1000000 },
-        { "stress": 0.117, "cycles": 500000000 }
+        {
+          "stress": 0.172,
+          "cycles": 100000
+        },
+        {
+          "stress": 0.138,
+          "cycles": 1000000
+        },
+        {
+          "stress": 0.117,
+          "cycles": 500000000
+        }
       ],
       "ref": "mil-hdbk-5j-2003"
     },
-    "fracture_toughness": { "value": null,  "ref": null },
-    "hardness_vickers":   { "value": null,  "ref": null },
-    "hardness_brinell":   { "value": 60,    "ref": "mil-hdbk-5j-2003" },
-    "hardness_rockwell":  { "value": 55, "scale": "B", "ref": "mil-hdbk-5j-2003" },
-    "hardness_shore":    { "value": null, "scale": null, "ref": null },
-    "ductility":          { "min": 12, "max": null, "typical": null, "ref": "mil-hdbk-5j-2003" },
-    "shear_strength":     { "value": 0.138, "ref": "mil-hdbk-5j-2003" }
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": 60,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "hardness_rockwell": {
+      "value": 55,
+      "scale": "B",
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": 12,
+      "max": null,
+      "typical": null,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "shear_strength": {
+      "value": 0.138,
+      "ref": "mil-hdbk-5j-2003"
+    }
   },
-
   "physical": {
-    "density":                { "value": 2.68,  "ref": "mil-hdbk-5j-2003" },
-    "electrical_conductivity":{ "value": 35.0,  "ref": "mil-hdbk-5j-2003" },
-    "vapour_pressure":        { "value": null,  "ref": null },
+    "density": {
+      "value": 2.68,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "electrical_conductivity": {
+      "value": 35.0,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
     "thermal_expansion": {
       "value": 23.8,
       "table": [
-        { "temp": -196, "cte": 8.7 },
-        { "temp": -150, "cte": 14.0 },
-        { "temp": -100, "cte": 18.3 },
-        { "temp": 20,   "cte": 23.8 }
+        {
+          "temp": -196,
+          "cte": 8.7
+        },
+        {
+          "temp": -150,
+          "cte": 14.0
+        },
+        {
+          "temp": -100,
+          "cte": 18.3
+        },
+        {
+          "temp": 20,
+          "cte": 23.8
+        }
       ],
       "ref": "nist-cryo-al"
     },
-    "thermal_conductivity":{ "value": 138, "table": [],  "ref": "mil-hdbk-5j-2003" },
-    "specific_heat":       { "value": 880, "table": [],  "ref": "mil-hdbk-5j-2003" },
-    "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 649,  "ref": "mil-hdbk-5j-2003" },
-    "glass_transition_tg": { "value": null, "ref": null },
-    "magnetic_classification": { "value": "Paramagnetic", "ref": null }
+    "thermal_conductivity": {
+      "value": 138,
+      "table": [],
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "specific_heat": {
+      "value": 880,
+      "table": [],
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 649,
+      "ref": "mil-hdbk-5j-2003"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Paramagnetic",
+      "ref": null
+    }
   },
-
-  "references": ["azom-aluminum-5052", "mil-hdbk-5j-2003", "nist-cryo-al"],
-
+  "references": [
+    "azom-aluminum-5052",
+    "mil-hdbk-5j-2003",
+    "nist-cryo-al"
+  ],
   "metadata": {
     "submitted_by": "admin",
     "submitted_date": "2026-05-14",

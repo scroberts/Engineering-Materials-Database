@@ -401,7 +401,7 @@ const FORM_SECTIONS = [
       { id: 'category',   label: 'Category',              type: 'select',   required: true,
         options: ['Metal', 'Plastic', 'Ceramic', 'Composite', 'Glass', 'Natural Material', 'Elastomer'] },
       { id: 'fabrication_processes', label: 'Fabrication processes', type: 'checkbox',
-        options: ['Machining', 'Welding', 'Casting', 'Extrusion', 'Moulding',
+        options: ['Machining', 'Welding', 'Bending', 'Casting', 'Extrusion', 'Moulding',
                   '3D Print (FDM)', '3D Print (SLA)', '3D Print (SLS)',
                   '3D Print (DMLS/SLM)', '3D Print (Binder Jet)', 'Sintering',
                   'Composite Layup', 'Vacuum Infusion', 'Plating', 'Polishing'] },

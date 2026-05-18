@@ -33,6 +33,7 @@
       "enum": [
         "Machining",
         "Welding",
+        "Bending",
         "Casting",
         "Extrusion",
         "Moulding",

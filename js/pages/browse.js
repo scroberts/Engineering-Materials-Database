@@ -22,7 +22,7 @@ function frequencyBadge(freq) {
 const MAX_COMPARE = 10;
 
 const FABRICATION_PROCESSES = [
-  'Machining', 'Welding', 'Casting', 'Extrusion', 'Moulding',
+  'Machining', 'Welding', 'Bending', 'Casting', 'Extrusion',
   '3D Print (FDM)', '3D Print (SLA)', '3D Print (SLS)',
   '3D Print (DMLS/SLM)', '3D Print (Binder Jet)', 'Sintering',
   'Composite Layup', 'Vacuum Infusion', 'Plating', 'Polishing',
