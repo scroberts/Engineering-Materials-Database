@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-17T16:57:30Z",
+  "generated": "2026-05-18T03:38:07Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -274,7 +274,8 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding"
+        "Welding",
+        "Bending"
       ],
       "common_forms": [
         "Sheet",
@@ -294,7 +295,8 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding"
+        "Welding",
+        "Bending"
       ],
       "common_forms": [
         "Sheet",
@@ -378,6 +380,7 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
+        "Bending",
         "Casting",
         "Extrusion",
         "Polishing",
@@ -493,6 +496,7 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
+        "Bending",
         "Casting",
         "Polishing"
       ],
@@ -517,6 +521,7 @@
       "fabrication_processes": [
         "Machining",
         "Welding",
+        "Bending",
         "Polishing",
         "Plating",
         "3D Print (DMLS/SLM)",
@@ -603,7 +608,8 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding"
+        "Welding",
+        "Bending"
       ],
       "common_forms": [
         "Sheet",
@@ -624,7 +630,8 @@
       "name": "Spring Steel SAE 5160 (Q&T, 47 HRC)",
       "category": "Metal",
       "fabrication_processes": [
-        "Machining"
+        "Machining",
+        "Bending"
       ],
       "common_forms": [
         "Round Bar",
@@ -742,6 +749,7 @@
       "category": "Plastic",
       "fabrication_processes": [
         "Machining",
+        "Bending",
         "Polishing"
       ],
       "common_forms": [
