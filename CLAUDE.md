@@ -51,7 +51,7 @@ materials/
                     steel-4340.json, steel-a2.json, steel-h13.json,
                     steel-mild-a36.json, steel-spring-5160.json,
                     titanium-6al-4v.json
-  plastics/         abs.json, abs-fdm.json, acrylic-pmma.json, peek.json,
+  plastics/         abs.json, acrylic-pmma.json, peek.json,
                     petg-fdm.json, pla-fdm.json, pom-delrin.json
   ceramics/         alumina-al2o3.json, silicon-carbide.json
   composites/       c-sic-woven.json, cfrp-ud.json, gfrp-woven.json
@@ -101,7 +101,7 @@ All values stored in canonical units in JSON. Convert only at display time.
 - Reference entries have: `short_label`, `doi`, `bibtex`, optionally `url`
 
 ### Detail page (`js/pages/detail.js`)
-- Unit conversion: `data-canonical` + `data-canonical-unit` attributes; updated via `innerHTML` (not `textContent` — preserves `<sup>` tags)
+- Unit conversion: `data-canonical` + `data-canonical-unit` attributes; number set via `textContent`, unit appended as text or as a `<span>` with `innerHTML` only for entries in the hardcoded `UNIT_HTML` map (MPa·m½, ksi·in½)
 - Temperature and electrical conductivity selectors are document-wide scope
 - Reference badges: `_refNums` Map built once at start of `render()` → `[N]` anchor links to `#ref-N`
 - Reference link priority: DOI → `entry.url` → BibTeX `url` field → ISBN WorldCat → none
@@ -115,6 +115,8 @@ All values stored in canonical units in JSON. Convert only at display time.
 - Edit button on each ref panel item opens form pre-populated; key field locked during edit
 - On download: converts display units → canonical before writing JSON; sets `schema_version: 1` and `submitted_date`
 - **Edit mode:** `?slug=<slug>` in URL triggers edit mode — fetches existing material, pre-fills all fields, locks slug, changes button to "Download Updated JSON", shows replace-file instructions after download
+- `thermal_conductivity` and `specific_heat` use `type: 'thermal-table'` field type — same UI pattern as CTE (single value + temperature-dependent table with add/remove rows). Getters: `getThermalTable(fieldId, valueKey, canonicalUnit)`. Prefill: `prefillThermalTable(fieldId, valueKey, prop)`.
+- New references added via the form are embedded in the downloaded JSON under `new_references`; admin must also copy them into `references/index.json` when merging the PR
 
 ### Shear strength derivation
 When no sourced shear strength value is available, derive using von Mises criterion: `τ = UTS / √3`. Store the computed value with `"ref": null` and note the derivation method in the material's `notes` field. Do not use the 0.6×UTS empirical approximation.
@@ -133,5 +135,9 @@ Three values: `"Ferromagnetic"` (incl. ferrimagnetic — strongly magnetic, caut
 `js/core/export.js` provides `buildRows(materials, unitSystem)`, `downloadCSV()`, and `downloadXLSX()`. Both detail and compare pages have a "Download ▾" dropdown with four options: CSV/Excel × current-units/canonical. SheetJS loaded via CDN in `material.html` and `compare.html`. Sections exported: IDENTIFICATION, MECHANICAL, PHYSICAL, CTE VS TEMPERATURE (if table data present), FATIGUE S-N CURVE (if points present), MERIT INDICES.
 
 ## What's Next
-1. Reference punch list — remaining materials with ref gaps: **A2 Tool Steel**, **Alumina Al₂O₃**, **ABS**
-2. Additional seed materials — consider **316L SS (AM-specific condition)**, **Maraging Steel 300**, **Ti-6Al-4V (AM as-built)**
+1. Reference punch list — remaining materials with ref gaps: **Alumina Al₂O₃** (specific_heat, thermal_diffusivity, melting_point_tm)
+2. CI / merge-process gaps:
+   - Manifest (`materials/index.json`) is regenerated manually after merge — consider a CI step that auto-regenerates and commits it
+   - No CI check that all `ref` keys in a submitted material JSON exist in `references/index.json`
+   - `new_references` entries in submitted JSONs must be manually copied to `references/index.json` by the reviewer
+3. Additional seed materials — consider **316L SS (AM-specific condition)**, **Maraging Steel 300**, **Ti-6Al-4V (AM as-built)**
