@@ -49,16 +49,20 @@ def validate_file(path, schema, reference_keys):
     if slug and slug != path.stem:
         errors.append(f"Slug mismatch: slug='{slug}' but filename='{path.stem}.json'")
 
-    # Check all referenced keys exist in references/index.json
+    # Keys embedded in new_references are valid for this file even if not yet
+    # in references/index.json — this is the documented submit-form workflow.
+    valid_keys = reference_keys | set(data.get("new_references", {}).keys())
+
+    # Check all referenced keys exist in references/index.json (or new_references)
     for key in data.get("references", []):
-        if key not in reference_keys:
+        if key not in valid_keys:
             errors.append(f"Unknown reference key '{key}' — not found in references/index.json")
 
     # Check property-level ref keys also exist
     def check_refs(obj, path_str=""):
         if isinstance(obj, dict):
             if "ref" in obj and obj["ref"] is not None:
-                if obj["ref"] not in reference_keys:
+                if obj["ref"] not in valid_keys:
                     errors.append(f"Unknown reference key '{obj['ref']}' at {path_str}")
             for k, v in obj.items():
                 check_refs(v, f"{path_str}.{k}" if path_str else k)
