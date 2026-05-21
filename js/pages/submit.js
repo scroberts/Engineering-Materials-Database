@@ -95,33 +95,58 @@ function applyEditModeUI(mat) {
 
 // ── Reference panel ──────────────────────────────────────────────────────────
 
+/** Split and sort _refs: new-session entries first, then canonical, both alphabetical by short_label. */
+function sortedRefEntries() {
+  const cmp = (a, b) => a[1].short_label.localeCompare(b[1].short_label, undefined, { sensitivity: 'base' });
+  const newEntries = Object.entries(_refs).filter(([k]) => !_canonicalKeys.has(k)).sort(cmp);
+  const canonical  = Object.entries(_refs).filter(([k]) =>  _canonicalKeys.has(k)).sort(cmp);
+  return { newEntries, canonical };
+}
+
 function renderRefPanel() {
   const list = document.getElementById('ref-panel-list');
   list.innerHTML = '';
-  for (const [key, entry] of Object.entries(_refs)) {
-    const li = document.createElement('li');
-    li.className = 'ref-panel-item';
 
-    const labelRow = document.createElement('div');
-    labelRow.className = 'ref-panel-item-row';
+  const { newEntries, canonical } = sortedRefEntries();
 
-    const textWrap = document.createElement('div');
-    textWrap.innerHTML = `<strong>${esc(entry.short_label)}</strong><div class="ref-panel-key">${esc(key)}</div>`;
-
-    const editBtn = document.createElement('button');
-    editBtn.type = 'button';
-    editBtn.className = 'btn-ref-edit';
-    editBtn.textContent = 'Edit';
-    editBtn.dataset.refKey = key;
-    editBtn.addEventListener('click', () => openEditRef(key));
-
-    labelRow.append(textWrap, editBtn);
-    li.appendChild(labelRow);
-    list.appendChild(li);
-  }
-  if (!Object.keys(_refs).length) {
+  if (!newEntries.length && !canonical.length) {
     list.innerHTML = '<li class="ref-panel-item" style="color:var(--color-muted);font-style:italic">No references loaded</li>';
+  } else {
+    const addItem = (key, entry) => {
+      const li = document.createElement('li');
+      li.className = 'ref-panel-item';
+      const labelRow = document.createElement('div');
+      labelRow.className = 'ref-panel-item-row';
+      const textWrap = document.createElement('div');
+      textWrap.innerHTML = `<strong>${esc(entry.short_label)}</strong><div class="ref-panel-key">${esc(key)}</div>`;
+      const editBtn = document.createElement('button');
+      editBtn.type = 'button';
+      editBtn.className = 'btn-ref-edit';
+      editBtn.textContent = 'Edit';
+      editBtn.dataset.refKey = key;
+      editBtn.addEventListener('click', () => openEditRef(key));
+      labelRow.append(textWrap, editBtn);
+      li.appendChild(labelRow);
+      list.appendChild(li);
+    };
+
+    if (newEntries.length) {
+      const hdr = document.createElement('li');
+      hdr.className = 'ref-panel-section-header';
+      hdr.textContent = 'New (this session)';
+      list.appendChild(hdr);
+      newEntries.forEach(([k, e]) => addItem(k, e));
+    }
+
+    if (canonical.length) {
+      const hdr = document.createElement('li');
+      hdr.className = 'ref-panel-section-header';
+      hdr.textContent = 'Reference database';
+      list.appendChild(hdr);
+      canonical.forEach(([k, e]) => addItem(k, e));
+    }
   }
+
   // Refresh all ref selects in the form
   for (const sel of document.querySelectorAll('.form-ref-select')) {
     populateRefSelect(sel);
@@ -131,12 +156,33 @@ function renderRefPanel() {
 function populateRefSelect(sel) {
   const current = sel.value;
   sel.innerHTML = '<option value="">— no ref —</option>';
-  for (const [key, entry] of Object.entries(_refs)) {
-    const opt = document.createElement('option');
-    opt.value = key;
-    opt.textContent = entry.short_label;
-    sel.appendChild(opt);
+
+  const { newEntries, canonical } = sortedRefEntries();
+
+  if (newEntries.length) {
+    const grp = document.createElement('optgroup');
+    grp.label = 'New (this session)';
+    newEntries.forEach(([k, e]) => {
+      const opt = document.createElement('option');
+      opt.value = k;
+      opt.textContent = e.short_label;
+      grp.appendChild(opt);
+    });
+    sel.appendChild(grp);
   }
+
+  if (canonical.length) {
+    const grp = document.createElement('optgroup');
+    grp.label = 'Reference database';
+    canonical.forEach(([k, e]) => {
+      const opt = document.createElement('option');
+      opt.value = k;
+      opt.textContent = e.short_label;
+      grp.appendChild(opt);
+    });
+    sel.appendChild(grp);
+  }
+
   if (current && _refs[current]) sel.value = current;
 }
 

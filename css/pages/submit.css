@@ -426,6 +426,17 @@ textarea.form-control { resize: vertical; }
 
 .ref-panel-item:last-child { border-bottom: none; }
 
+.ref-panel-section-header {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted);
+  background: var(--color-bg-subtle, #f8f9fa);
+  border-bottom: 1px solid var(--color-border);
+}
+
 .ref-panel-key {
   font-family: var(--font-mono);
   font-size: 0.72rem;
