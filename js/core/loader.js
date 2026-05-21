@@ -61,7 +61,7 @@ export async function loadMaterialBatch(slugs) {
 export async function loadReferences() {
   if (store.has('references')) return store.get('references');
 
-  const res = await fetch('references/index.json');
+  const res = await fetch('references/index.json', { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to fetch references (${res.status})`);
 
   const data = await res.json();

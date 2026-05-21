@@ -59,7 +59,7 @@
     "fatigue_sn_curve": {
       "points": [
         {
-          "stress": 20000,
+          "stress": 0.1379,
           "cycles": 100000000
         }
       ],
@@ -136,7 +136,7 @@
       "ref": "matweb-brass-astm-b16-h02"
     },
     "specific_heat": {
-      "value": 0.38,
+      "value": 375,
       "table": [],
       "ref": "matweb-brass-astm-b16-h02"
     },

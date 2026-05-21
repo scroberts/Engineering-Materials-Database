@@ -888,6 +888,10 @@ function render(mat, refs) {
   const refKeys = mat.references ?? [];
   _refNums = new Map(refKeys.map((k, i) => [k, i + 1]));
 
+  // Merge any new_references embedded in this material so the detail page
+  // works before import_new_refs.py --write has been run.
+  const mergedRefs = mat.new_references ? { ...refs, ...mat.new_references } : refs;
+
   const layout = document.getElementById('detail-layout');
 
   layout.innerHTML =
@@ -898,7 +902,7 @@ function render(mat, refs) {
     renderMechanicalOther(mat) +
     renderPhysical(mat) +
     renderFabricationForms(mat) +
-    renderReferences(mat, refs);
+    renderReferences(mat, mergedRefs);
 
   layout.querySelectorAll('.detail-section').forEach(wireSectionToggle);
   layout.querySelectorAll('.unit-select').forEach(wireUnitSelector);
