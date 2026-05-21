@@ -178,8 +178,12 @@ export function convertThermalDiff(val, toUnit) {
 
 // ── Hardness conversions (approximate) ────────────────────────────────────
 
-/** HV → HB  (valid for HV < 650) */
-export function hvToHb(hv) { return hv != null ? Math.round(hv / 1.05) : null; }
+/** HV → HB  (approximate; reliable below HV 650 only) */
+export function hvToHb(hv) {
+  if (hv == null) return null;
+  if (hv >= 650) console.warn(`hvToHb: conversion unreliable above HV 650 (got ${hv})`);
+  return Math.round(hv / 1.05);
+}
 
 /** HB → HV */
 export function hbToHv(hb) { return hb != null ? Math.round(hb * 1.05) : null; }
@@ -198,10 +202,6 @@ export function densityKgM3(gcm3) { return gcm3 != null ? gcm3 * 1000 : null; }
 export function fmt(value, unit, overrideDecimals) {
   if (value == null || isNaN(value)) return '—';
   const d = overrideDecimals ?? UNIT_DECIMALS[unit] ?? 2;
-  // Use locale formatting for large numbers (e.g. psi)
-  if (Math.abs(value) >= 10000) {
-    return Number(value.toFixed(d)).toLocaleString();
-  }
   return Number(value.toFixed(d)).toString();
 }
 

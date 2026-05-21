@@ -129,13 +129,23 @@ function wireUnitSelector(selectEl) {
       const raw = parseFloat(td.dataset.canonical);
       if (isNaN(raw)) return;
 
-      const converted   = convertFromCanonical(raw, canonicalUnit, toUnit);
-      const displayText = `${fmt(converted, toUnit)} ${displayUnitHtml(toUnit)}`;
+      const converted = convertFromCanonical(raw, canonicalUnit, toUnit);
 
-      // Preserve child nodes that should survive the innerHTML reset
+      // Save child nodes before clearing
       const badge = td.querySelector('.prop-ref');
       const note  = td.querySelector('.prop-note');
-      td.innerHTML = displayText;
+
+      // Rebuild using DOM methods — keeps fmt() and toUnit out of innerHTML
+      td.textContent = `${fmt(converted, toUnit)} `;
+      const unitHtml = UNIT_HTML[toUnit];
+      if (unitHtml) {
+        // UNIT_HTML values are hardcoded developer strings (e.g. MPa·m<sup>½</sup>)
+        const unitEl = document.createElement('span');
+        unitEl.innerHTML = unitHtml;
+        td.appendChild(unitEl);
+      } else {
+        td.append(toUnit);
+      }
       if (note)  td.appendChild(note);
       if (badge) td.appendChild(badge);
     });

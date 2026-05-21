@@ -144,7 +144,7 @@ function makeBarChart(id, title, labels, values, yLabel, decimals = 2, yAxisTitl
   if (!canvas) return;
 
   const datasets = materials.map((mat, i) =>
-    makeDataset(mat, i, values[i])
+    makeDataset(mat, i, values[i] ?? [])
   );
 
   const hasData = datasets.some(ds => ds.data.some(v => v != null));
