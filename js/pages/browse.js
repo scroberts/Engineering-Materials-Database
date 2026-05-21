@@ -380,6 +380,7 @@ async function init() {
     const manifest = await loadManifest();
     allMaterials = manifest.materials;
   } catch (err) {
+    // Safe: all content below is hardcoded — no user input interpolated
     grid.innerHTML = `<p class="error-message">
       Could not load materials. Make sure you are serving the site from a web server,
       not opening the file directly in the browser.<br><br>

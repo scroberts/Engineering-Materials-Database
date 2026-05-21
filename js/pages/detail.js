@@ -279,6 +279,7 @@ function sectionCard(title, bodyHtml, collapsed = false) {
 }
 
 function tipLabel(text, tooltipKey) {
+  if (!TOOLTIPS[tooltipKey]) console.warn(`tipLabel: no tooltip for key "${tooltipKey}"`);
   const tip = escHtml(TOOLTIPS[tooltipKey] ?? '');
   return `<span class="prop-label" title="${tip}">${text}</span>`;
 }

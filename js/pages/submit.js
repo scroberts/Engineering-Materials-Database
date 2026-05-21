@@ -89,7 +89,7 @@ function applyEditModeUI(mat) {
   const slugIn = document.getElementById('field-slug');
   if (slugIn) {
     slugIn.readOnly = true;
-    slugIn.dataset.userEdited = '1';
+    slugIn.dataset.userEdited = 'true';
   }
 }
 
@@ -1112,7 +1112,7 @@ function wireForm() {
           .replace(/^-+|-+$/g, '');
       }
     });
-    slugIn.addEventListener('input', () => { slugIn.dataset.userEdited = '1'; });
+    slugIn.addEventListener('input', () => { slugIn.dataset.userEdited = 'true'; });
   }
 
   // Pre-fill upload
@@ -1395,6 +1395,9 @@ function validateExport(mat) {
   if (!/^[a-z0-9-]+$/.test(mat.identification.slug || ''))
     errs.push('• Slug must be lowercase letters, numbers, and hyphens only');
   if (!mat.identification.category) errs.push('• Category is required');
+  const hasValue = (obj) => Object.values(obj ?? {}).some(p => p?.value != null);
+  if (!hasValue(mat.mechanical_common) && !hasValue(mat.physical))
+    errs.push('• At least one mechanical or physical property value is required');
   return errs;
 }
 
