@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-18T03:38:07Z",
+  "generated": "2026-05-21T04:02:05Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -537,7 +537,7 @@
       "youngs_modulus": 193,
       "yield_strength": 0.2,
       "tensile_strength": 0.517,
-      "density": 8.03,
+      "density": 8.0,
       "magnetic_classification": "Paramagnetic"
     },
     {
@@ -701,24 +701,6 @@
       "yield_strength": null,
       "tensile_strength": 0.045,
       "density": 0.68,
-      "magnetic_classification": "Diamagnetic"
-    },
-    {
-      "slug": "abs-fdm",
-      "path": "materials/plastics/abs-fdm.json",
-      "name": "ABS (FDM 3D Printed)",
-      "category": "Plastic",
-      "fabrication_processes": [
-        "3D Print (FDM)"
-      ],
-      "common_forms": [
-        "Filament"
-      ],
-      "usage_frequency": "Common",
-      "youngs_modulus": 2.2,
-      "yield_strength": null,
-      "tensile_strength": 0.04,
-      "density": 1.04,
       "magnetic_classification": "Diamagnetic"
     },
     {
