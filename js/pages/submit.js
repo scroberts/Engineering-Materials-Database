@@ -35,10 +35,6 @@ let _refs = {};
  */
 let _canonicalKeys = new Set();
 
-/** Preserved from the loaded JSON — no table UI exists for these fields. */
-let _kTable  = [];
-let _cpTable = [];
-
 // ── Boot ────────────────────────────────────────────────────────────────────
 
 async function init() {
@@ -492,11 +488,13 @@ const FORM_SECTIONS = [
         hint: 'Pa (at 20 °C)' },
       { id: 'thermal_expansion',     label: 'CTE (α)',                 type: 'cte',
         hint: 'Enter single value and/or temperature-dependent table' },
-      { id: 'thermal_conductivity',  label: 'Thermal Conductivity (k)', type: 'number',
-        hint: 'Heat conducted per unit temperature gradient',
+      { id: 'thermal_conductivity',  label: 'Thermal Conductivity (k)', type: 'thermal-table',
+        hint: 'Enter single value and/or temperature-dependent table',
+        valueKey: 'k', valueLabel: 'k',
         canonicalUnit: 'W/m·K', displayUnits: THERMAL_COND_UNITS },
-      { id: 'specific_heat',         label: 'Specific Heat (Cp)',      type: 'number',
-        hint: 'Energy to raise temperature per unit mass',
+      { id: 'specific_heat',         label: 'Specific Heat (Cp)',      type: 'thermal-table',
+        hint: 'Enter single value and/or temperature-dependent table',
+        valueKey: 'cp', valueLabel: 'Cp',
         canonicalUnit: 'J/(kg·K)', displayUnits: SPECIFIC_HEAT_UNITS },
       { id: 'thermal_diffusivity',   label: 'Thermal Diffusivity (D)', type: 'number',
         hint: 'Leave blank to compute from k, ρ, Cp',
@@ -542,7 +540,7 @@ function buildSection(sec) {
 
 function buildField(field) {
   const wrap = document.createElement('div');
-  if (field.type === 'sn' || field.type === 'cte' || field.type === 'hardness') {
+  if (field.type === 'sn' || field.type === 'cte' || field.type === 'hardness' || field.type === 'thermal-table') {
     wrap.className = 'form-row wide';
   } else if (field.type === 'checkbox') {
     wrap.className = 'form-row wide';
@@ -569,7 +567,8 @@ function buildField(field) {
     case 'range3':    wrap.appendChild(buildRange3(field));   break;
     case 'hardness':  wrap.appendChild(buildHardness(field)); break;
     case 'sn':        wrap.appendChild(buildSN(field));       break;
-    case 'cte':       wrap.appendChild(buildCTE(field));      break;
+    case 'cte':           wrap.appendChild(buildCTE(field));           break;
+    case 'thermal-table': wrap.appendChild(buildThermalTable(field)); break;
     case 'rockwell':  wrap.appendChild(buildRockwell(field)); break;
     case 'magclass':  wrap.appendChild(buildMagClass(field)); break;
     default:          wrap.appendChild(buildText(field));
@@ -984,6 +983,93 @@ function addCTERow(container) {
   container.appendChild(row);
 }
 
+function buildThermalTable(f) {
+  const wrap = document.createElement('div');
+  wrap.className = 'cte-editor';
+  wrap.id = `field-${f.id}`;
+
+  // Value unit selector
+  const valUnitRow = document.createElement('div');
+  valUnitRow.style.cssText = 'display:flex;align-items:center;gap:0.4rem;margin-bottom:0.3rem;font-size:0.8rem;color:var(--color-muted);';
+  const valUnitLbl = document.createElement('span');
+  valUnitLbl.textContent = 'Unit:';
+  const valUnitSel = document.createElement('select');
+  valUnitSel.className = 'form-unit-select';
+  valUnitSel.id = `field-${f.id}_value_unit`;
+  for (const u of f.displayUnits) {
+    const opt = document.createElement('option');
+    opt.value = u; opt.textContent = u;
+    valUnitSel.appendChild(opt);
+  }
+  valUnitRow.append(valUnitLbl, valUnitSel);
+  wrap.appendChild(valUnitRow);
+
+  // Single value + ref
+  const singleRow = document.createElement('div');
+  singleRow.className = 'form-input-group';
+  const singleIn = document.createElement('input');
+  singleIn.type = 'number'; singleIn.step = 'any'; singleIn.placeholder = 'single value';
+  singleIn.id = `field-${f.id}_value`; singleIn.className = 'form-control';
+  const refSel = buildRefSelect(); refSel.dataset.fieldId = f.id;
+  singleRow.append(singleIn, refSel);
+  wrap.appendChild(singleRow);
+
+  // Table section
+  const tableRows = document.createElement('div');
+  tableRows.className = 'cte-rows';
+  tableRows.style.marginTop = '0.4rem';
+
+  const tableUnitRow = document.createElement('div');
+  tableUnitRow.style.cssText = 'display:flex;align-items:center;gap:0.4rem;margin-top:0.5rem;margin-bottom:0.2rem;';
+  const tableUnitLbl = document.createElement('span');
+  tableUnitLbl.style.cssText = 'font-size:0.75rem;color:var(--color-muted);';
+  tableUnitLbl.textContent = 'Table temperature unit:';
+  const tableUnitSel = document.createElement('select');
+  tableUnitSel.className = 'form-unit-select';
+  tableUnitSel.id = `field-${f.id}_temp_unit`;
+  for (const u of TEMPERATURE_UNITS) {
+    const opt = document.createElement('option');
+    opt.value = u; opt.textContent = u;
+    if (u === 'K') opt.selected = true;
+    tableUnitSel.appendChild(opt);
+  }
+  tableUnitRow.append(tableUnitLbl, tableUnitSel);
+  wrap.appendChild(tableUnitRow);
+
+  const tableHeader = document.createElement('div');
+  tableHeader.style.fontSize = '0.75rem'; tableHeader.style.color = 'var(--color-muted)';
+  tableHeader.style.marginBottom = '0.2rem';
+  tableHeader.textContent = 'Temperature-dependent values (optional):';
+
+  const addBtn = document.createElement('button');
+  addBtn.type = 'button'; addBtn.className = 'sn-add-btn';
+  addBtn.textContent = '+ Add temperature point';
+  addBtn.addEventListener('click', () => addThermalTableRow(tableRows, f.valueLabel));
+
+  wrap.append(tableHeader, tableRows, addBtn);
+  return wrap;
+}
+
+function addThermalTableRow(container, valueLabel) {
+  const row = document.createElement('div');
+  row.className = 'cte-row';
+
+  const tempLbl = document.createElement('label'); tempLbl.textContent = 'Temp';
+  const tempIn  = document.createElement('input');
+  tempIn.type = 'number'; tempIn.step = 'any'; tempIn.className = 'form-control thermal-temp';
+
+  const valLbl  = document.createElement('label'); valLbl.textContent = valueLabel;
+  const valIn   = document.createElement('input');
+  valIn.type = 'number'; valIn.step = 'any'; valIn.className = 'form-control thermal-val';
+
+  const removeBtn = document.createElement('button');
+  removeBtn.type = 'button'; removeBtn.className = 'sn-remove-btn'; removeBtn.textContent = '×';
+  removeBtn.addEventListener('click', () => row.remove());
+
+  row.append(tempLbl, tempIn, valLbl, valIn, removeBtn);
+  container.appendChild(row);
+}
+
 function buildMagClass(f) {
   const group = document.createElement('div');
   group.className = 'form-input-group';
@@ -1132,10 +1218,8 @@ function prefillForm(mat) {
   setNumberField('density',               ph.density?.value,               ph.density?.ref);
   setNumberField('electrical_conductivity', ph.electrical_conductivity?.value, ph.electrical_conductivity?.ref);
   setNumberField('vapour_pressure',       ph.vapour_pressure?.value,       ph.vapour_pressure?.ref);
-  setNumberField('thermal_conductivity',  ph.thermal_conductivity?.value,  ph.thermal_conductivity?.ref);
-  setNumberField('specific_heat',         ph.specific_heat?.value,         ph.specific_heat?.ref);
-  _kTable  = ph.thermal_conductivity?.table ?? [];
-  _cpTable = ph.specific_heat?.table ?? [];
+  prefillThermalTable('thermal_conductivity', 'k',  ph.thermal_conductivity);
+  prefillThermalTable('specific_heat',        'cp', ph.specific_heat);
   setNumberField('thermal_diffusivity',   ph.thermal_diffusivity?.value,   ph.thermal_diffusivity?.ref);
   // Stored in °C; convert to K for pre-fill (form unit select defaults to K)
   const cToK = v => v != null ? Math.round((v + 273.15) * 10) / 10 : null;
@@ -1243,6 +1327,38 @@ function prefillCTE(table) {
   }
 }
 
+function prefillThermalTable(fieldId, valueKey, prop) {
+  if (!prop) return;
+  const canonicalUnit = valueKey === 'k' ? 'W/m·K' : 'J/(kg·K)';
+  const valueLabel    = valueKey === 'k' ? 'k' : 'Cp';
+
+  // Reset value unit to canonical so the stored value displays as-is
+  const valUnitEl = document.getElementById(`field-${fieldId}_value_unit`);
+  if (valUnitEl) valUnitEl.value = canonicalUnit;
+
+  const valIn = document.getElementById(`field-${fieldId}_value`);
+  if (valIn && prop.value != null) valIn.value = String(prop.value);
+
+  setRefField(fieldId, prop.ref);
+
+  if (!prop.table?.length) return;
+  const container = document.querySelector(`#field-${fieldId} .cte-rows`);
+  if (!container) return;
+
+  // Reset temp unit to K (values stored in °C; K is the form default)
+  const tempUnitEl = document.getElementById(`field-${fieldId}_temp_unit`);
+  if (tempUnitEl) tempUnitEl.value = 'K';
+
+  const cToK = v => v != null ? Math.round((v + 273.15) * 10) / 10 : v;
+  for (const pt of prop.table) {
+    addThermalTableRow(container, valueLabel);
+    const rows = container.querySelectorAll('.cte-row');
+    const last = rows[rows.length - 1];
+    last.querySelector('.thermal-temp').value = cToK(pt.temp) ?? '';
+    last.querySelector('.thermal-val').value  = pt[valueKey] ?? '';
+  }
+}
+
 // ── JSON export ───────────────────────────────────────────────────────────────
 
 function downloadJSON() {
@@ -1329,8 +1445,8 @@ function buildMaterialJSON() {
     electrical_conductivity:getValuedProp('electrical_conductivity','% IACS'),
     vapour_pressure:       getValuedPropRaw('vapour_pressure'),
     thermal_expansion:     getCTE(),
-    thermal_conductivity:  { ...getValuedProp('thermal_conductivity',  'W/m·K'), table: _kTable },
-    specific_heat:         { ...getValuedProp('specific_heat',         'J/(kg·K)'), table: _cpTable },
+    thermal_conductivity:  getThermalTable('thermal_conductivity', 'k',  'W/m·K'),
+    specific_heat:         getThermalTable('specific_heat',        'cp', 'J/(kg·K)'),
     thermal_diffusivity:   getValuedProp('thermal_diffusivity',   'cm²/s'),
     melting_point_tm:      getValuedProp('melting_point_tm',      '°C'),
     glass_transition_tg:   getValuedProp('glass_transition_tg',  '°C'),
@@ -1534,6 +1650,31 @@ function getSNData() {
     }
   }
   return { points, ref: getRefKey('fatigue_sn_curve') };
+}
+
+function getThermalTable(fieldId, valueKey, canonicalUnit) {
+  const valIn  = document.getElementById(`field-${fieldId}_value`);
+  const raw    = valIn ? parseFloat(valIn.value) : NaN;
+  const valUnit = document.getElementById(`field-${fieldId}_value_unit`)?.value ?? canonicalUnit;
+  const tempUnit = document.getElementById(`field-${fieldId}_temp_unit`)?.value ?? 'K';
+
+  const value = isNaN(raw) ? null : toCanonical(raw, null, canonicalUnit, valUnit);
+
+  const tableRows = document.querySelectorAll(`#field-${fieldId} .cte-row`);
+  const table = [];
+  for (const row of tableRows) {
+    const tempEntered = parseFloat(row.querySelector('.thermal-temp')?.value);
+    const valEntered  = parseFloat(row.querySelector('.thermal-val')?.value);
+    if (!isNaN(tempEntered) && !isNaN(valEntered)) {
+      const tempC    = toCanonical(tempEntered, null, '°C', tempUnit);
+      const valCanon = toCanonical(valEntered,  null, canonicalUnit, valUnit);
+      const pt = { temp: Math.round(tempC * 10) / 10 };
+      pt[valueKey] = valCanon;
+      table.push(pt);
+    }
+  }
+
+  return { value, table, ref: getRefKey(fieldId) };
 }
 
 function getCTE() {
