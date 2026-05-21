@@ -21,7 +21,7 @@
     ],
     "common_form_notes": "Widely stocked in sheet, plate, tube, and bar. 316L (low-carbon variant) preferred for welded assemblies to prevent sensitisation.",
     "usage_frequency": "Common",
-    "notes": "Austenitic stainless steel with 2–3% Mo addition for superior chloride and pitting corrosion resistance compared to 304/303. Yield strength (200 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A276 specifies a minimum of 207 MPa (30 ksi). 316L (low carbon, ≤0.03% C) is preferred when welding and is the standard grade used for metal AM (DMLS/SLM and Binder Jet); the lower carbon content prevents sensitisation during the thermal cycles of AM and welding. Electrical conductivity derived from resistivity of 0.74 µΩ·m. Shear strength derived from von Mises criterion: UTS/√3 = 517/1.732 ≈ 299 MPa."
+    "notes": "Austenitic stainless steel with 2–3% Mo addition for superior chloride and pitting corrosion resistance compared to 304/303. Yield strength (200 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A276 specifies a minimum of 207 MPa (30 ksi). Tensile strength 517 MPa is the ASTM A276 minimum of 75 ksi converted to metric. 316L (low carbon, ≤0.03% C) is preferred when welding and is the standard grade used for metal AM (DMLS/SLM and Binder Jet); the lower carbon content prevents sensitisation during the thermal cycles of AM and welding. Electrical conductivity derived from resistivity of 0.74 µΩ·m. Shear strength derived from von Mises criterion: UTS/√3 = 517/1.732 ≈ 299 MPa. Melting point is solidus; liquidus 1400°C (MatWeb)."
   },
   "typical_usage": "Marine hardware, boat fittings and fasteners; pharmaceutical and food-processing equipment; chemical process piping and vessels; surgical implants; architectural cladding in coastal environments; cryogenic components.",
   "mechanical_common": {
@@ -31,7 +31,7 @@
     },
     "poissons_ratio": {
       "value": 0.28,
-      "ref": "azom-stainless-316"
+      "ref": null
     },
     "yield_strength": {
       "value": 0.2,
@@ -39,7 +39,7 @@
     },
     "tensile_strength": {
       "value": 0.517,
-      "ref": "azom-stainless-316"
+      "ref": null
     },
     "compressive_modulus": {
       "value": null,
@@ -47,7 +47,7 @@
     },
     "compressive_strength": {
       "value": 200,
-      "ref": "azom-stainless-316"
+      "ref": null
     },
     "usable_temp_range": {
       "min": -200,
@@ -70,16 +70,16 @@
     },
     "hardness_vickers": {
       "value": 155,
-      "ref": "theworldmaterial-316"
+      "ref": "matweb-stainless-316"
     },
     "hardness_brinell": {
       "value": 149,
-      "ref": "theworldmaterial-316"
+      "ref": "matweb-stainless-316"
     },
     "hardness_rockwell": {
-      "value": 79,
+      "value": 80,
       "scale": "B",
-      "ref": "theworldmaterial-316"
+      "ref": "matweb-stainless-316"
     },
     "hardness_shore": {
       "value": null,
@@ -99,8 +99,8 @@
   },
   "physical": {
     "density": {
-      "value": 8.03,
-      "ref": "theworldmaterial-316"
+      "value": 8.00,
+      "ref": "matweb-stainless-316"
     },
     "electrical_conductivity": {
       "value": 2.3,
@@ -134,17 +134,17 @@
       "ref": "azom-stainless-316"
     },
     "specific_heat": {
-      "value": 502,
+      "value": 500,
       "table": [],
-      "ref": "theworldmaterial-316"
+      "ref": "matweb-stainless-316"
     },
     "thermal_diffusivity": {
       "value": 0.0405,
-      "ref": "theworldmaterial-316"
+      "ref": null
     },
     "melting_point_tm": {
-      "value": 1399,
-      "ref": "theworldmaterial-316"
+      "value": 1370,
+      "ref": "matweb-stainless-316"
     },
     "glass_transition_tg": {
       "value": null,
@@ -157,7 +157,7 @@
   },
   "references": [
     "azom-stainless-316",
-    "theworldmaterial-316"
+    "matweb-stainless-316"
   ],
   "metadata": {
     "submitted_by": "admin",

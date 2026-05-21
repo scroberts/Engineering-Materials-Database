@@ -397,6 +397,12 @@
     "bibtex": null,
     "url": "https://www.sandmeyersteel.com/inconel-alloy-625/"
   },
+  "matweb-stainless-316": {
+    "short_label": "MatWeb: 316 Stainless Steel, annealed bar",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=dfced4f11d63459e8ef8733d1c7c1ad2"
+  },
   "azom-h13-tool-steel": {
     "short_label": "AZoM: H13 Hot Work Tool Steel",
     "doi": null,
