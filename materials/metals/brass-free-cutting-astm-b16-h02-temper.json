@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Brass, Free Cutting, ASTM B16, H02 Temper",
+    "slug": "brass-free-cutting-astm-b16-h02-temper",
+    "category": "Metal",
+    "fabrication_processes": [
+      "Machining"
+    ],
+    "common_forms": [
+      "Plate",
+      "Round Bar"
+    ],
+    "common_form_notes": null,
+    "usage_frequency": "Common",
+    "notes": "Material properties specified for thicknesses <= 12.7 mm"
+  },
+  "typical_usage": null,
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 96.52720000000001,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "poissons_ratio": {
+      "value": 0.32,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "yield_strength": {
+      "value": 0.17237000000000002,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "tensile_strength": {
+      "value": 0.3930036,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [
+        {
+          "stress": 20000,
+          "cycles": 100000000
+        }
+      ],
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": 65,
+      "scale": "B",
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": 7,
+      "max": 20,
+      "typical": 25,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "shear_strength": {
+      "value": 0.2206336,
+      "ref": "matweb-brass-astm-b16-h02"
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 8.497730746052044,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "electrical_conductivity": {
+      "value": null,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 20.52,
+      "table": [
+        {
+          "temp": 20,
+          "cte": 20.52
+        },
+        {
+          "temp": 300,
+          "cte": 20.52
+        }
+      ],
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "thermal_conductivity": {
+      "value": 115,
+      "table": [
+        {
+          "temp": 20,
+          "k": 115
+        }
+      ],
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "specific_heat": {
+      "value": 0.38,
+      "table": [],
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 885,
+      "ref": "matweb-brass-astm-b16-h02"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "references": [
+    "matweb-brass-astm-b16-h02"
+  ],
+  "new_references": {
+    "matweb-brass-astm-b16-h02": {
+      "short_label": "MatWeb: Brass ASTM B16 H02",
+      "doi": null,
+      "bibtex": null,
+      "url": "https://www.matweb.com/search/datasheet.aspx?matguid=9b82636b70e7489eadf4610fbcdedbc2&n=1"
+    }
+  },
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-05-21",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
