@@ -69,6 +69,7 @@ tools/
   update_manifest.py  Regenerate materials/index.json
   migrate.py          Schema migration tool (dry-run default; --write to apply)
   import_bibtex.py    BibTeX import tool (dry-run default; --write to merge)
+  import_new_refs.py  Promote new_references from material JSONs → references/index.json (dry-run default; --write to apply)
 
 .github/
   workflows/validate-schema.yml   CI: runs validate.py on PRs touching materials/
@@ -116,7 +117,7 @@ All values stored in canonical units in JSON. Convert only at display time.
 - On download: converts display units → canonical before writing JSON; sets `schema_version: 1` and `submitted_date`
 - **Edit mode:** `?slug=<slug>` in URL triggers edit mode — fetches existing material, pre-fills all fields, locks slug, changes button to "Download Updated JSON", shows replace-file instructions after download
 - `thermal_conductivity` and `specific_heat` use `type: 'thermal-table'` field type — same UI pattern as CTE (single value + temperature-dependent table with add/remove rows). Getters: `getThermalTable(fieldId, valueKey, canonicalUnit)`. Prefill: `prefillThermalTable(fieldId, valueKey, prop)`.
-- New references added via the form are embedded in the downloaded JSON under `new_references`; admin must also copy them into `references/index.json` when merging the PR
+- New references added via the form are embedded in the downloaded JSON under `new_references`; after merging the PR, run `python tools/import_new_refs.py --write` to promote them into `references/index.json`
 
 ### Shear strength derivation
 When no sourced shear strength value is available, derive using von Mises criterion: `τ = UTS / √3`. Store the computed value with `"ref": null` and note the derivation method in the material's `notes` field. Do not use the 0.6×UTS empirical approximation.
@@ -139,5 +140,5 @@ Three values: `"Ferromagnetic"` (incl. ferrimagnetic — strongly magnetic, caut
 2. CI / merge-process gaps:
    - Manifest (`materials/index.json`) is regenerated manually after merge — consider a CI step that auto-regenerates and commits it
    - No CI check that all `ref` keys in a submitted material JSON exist in `references/index.json`
-   - `new_references` entries in submitted JSONs must be manually copied to `references/index.json` by the reviewer
+   - After merging a PR, run `python tools/import_new_refs.py --write` to auto-promote any `new_references` entries into `references/index.json`
 3. Additional seed materials — consider **316L SS (AM-specific condition)**, **Maraging Steel 300**, **Ti-6Al-4V (AM as-built)**

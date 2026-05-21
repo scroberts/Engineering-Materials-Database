@@ -91,6 +91,7 @@ pip install -r tools/requirements.txt
 | `python tools/update_manifest.py` | Regenerate `materials/index.json` | After merging any new material |
 | `python tools/migrate.py` | Apply schema version migrations | When schema version increments |
 | `python tools/import_bibtex.py` | Bulk-import references from a `.bib` file | When adding references in bulk |
+| `python tools/import_new_refs.py --write` | Promote `new_references` from material JSONs into `references/index.json` | After merging a PR that used `new_references` |
 
 ---
 
@@ -98,7 +99,7 @@ pip install -r tools/requirements.txt
 
 1. Use the **Submit** page to fill in properties and download a validated JSON file, or copy an existing file from `materials/<category>/` as a template.
 2. Place the file in the correct `materials/<category>/` subfolder. The filename must match the `slug` field.
-3. Add any new references to `references/index.json` (BibTeX cite key → entry).
+3. If using new references not yet in `references/index.json`, embed them under `new_references` in your material JSON (the Submit page does this automatically). After the PR is merged, run `python tools/import_new_refs.py --write` to promote them into the global index.
 4. Run `python tools/validate.py` — fix any errors.
 5. Run `python tools/update_manifest.py` to regenerate the manifest.
 6. Open a Pull Request. CI will re-run validation automatically.
