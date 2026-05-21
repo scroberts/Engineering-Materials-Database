@@ -35,6 +35,10 @@ let _refs = {};
  */
 let _canonicalKeys = new Set();
 
+/** Preserved from the loaded JSON — no table UI exists for these fields. */
+let _kTable  = [];
+let _cpTable = [];
+
 // ── Boot ────────────────────────────────────────────────────────────────────
 
 async function init() {
@@ -1130,6 +1134,8 @@ function prefillForm(mat) {
   setNumberField('vapour_pressure',       ph.vapour_pressure?.value,       ph.vapour_pressure?.ref);
   setNumberField('thermal_conductivity',  ph.thermal_conductivity?.value,  ph.thermal_conductivity?.ref);
   setNumberField('specific_heat',         ph.specific_heat?.value,         ph.specific_heat?.ref);
+  _kTable  = ph.thermal_conductivity?.table ?? [];
+  _cpTable = ph.specific_heat?.table ?? [];
   setNumberField('thermal_diffusivity',   ph.thermal_diffusivity?.value,   ph.thermal_diffusivity?.ref);
   // Stored in °C; convert to K for pre-fill (form unit select defaults to K)
   const cToK = v => v != null ? Math.round((v + 273.15) * 10) / 10 : null;
@@ -1323,8 +1329,8 @@ function buildMaterialJSON() {
     electrical_conductivity:getValuedProp('electrical_conductivity','% IACS'),
     vapour_pressure:       getValuedPropRaw('vapour_pressure'),
     thermal_expansion:     getCTE(),
-    thermal_conductivity:  { ...getValuedProp('thermal_conductivity',  'W/m·K'), table: [] },
-    specific_heat:         { ...getValuedProp('specific_heat',         'J/(kg·K)'), table: [] },
+    thermal_conductivity:  { ...getValuedProp('thermal_conductivity',  'W/m·K'), table: _kTable },
+    specific_heat:         { ...getValuedProp('specific_heat',         'J/(kg·K)'), table: _cpTable },
     thermal_diffusivity:   getValuedProp('thermal_diffusivity',   'cm²/s'),
     melting_point_tm:      getValuedProp('melting_point_tm',      '°C'),
     glass_transition_tg:   getValuedProp('glass_transition_tg',  '°C'),
