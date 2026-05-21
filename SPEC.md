@@ -104,9 +104,9 @@ References can be added to the database in two ways:
 
 ### Attaching References to Properties
 
-Each property field has a reference dropdown beside it. The dropdown lists all references currently in the database (displayed as the short label, e.g. "Paquin 1997"). A property may have one reference attached to it, or none.
+Each property field has a reference dropdown beside it. The dropdown lists all references in two groups: "New (this session)" first (alphabetical), then "Reference database" (alphabetical). A property may have one reference attached to it, or none.
 
-When submitting a new material, if the required reference is not yet in the database, the student can add it through the reference entry form first, then attach it to the relevant fields.
+When submitting a new material, if the required reference is not yet in `references/index.json`, the student adds it via the reference entry form. These new references are embedded in the downloaded JSON under a `new_references` field and are valid for that file without needing to be in the global index first. After the PR is merged, the admin runs `python tools/import_new_refs.py --write` to promote them into `references/index.json`.
 
 ---
 
@@ -117,10 +117,10 @@ When submitting a new material, if the required reference is not yet in the data
 | Field                          | Input Type    | Options / Notes |
 |--------------------------------|---------------|-----------------|
 | Material Name                  | Text          | Full descriptive name, e.g. "Aluminum 6061-T6" |
-| Category                       | Single select | Metal, Plastic, Ceramic, Composite |
-| Commonly Available             | Checkbox      | Uncheck to flag a material as uncommon or hard to source |
-| Suitable Fabrication Processes | Multi-select  | Machining, Welding, Forging, Casting, Extrude, Injection Moulding, 3D Print (FDM), 3D Print (SLA), 3D Print (SLS), Vacuum Infusion, Composite Layup, Plateable, Polishable |
-| Common Forms                   | Multi-select  | Sheet, Plate, Round Bar, Angles and Structural Profiles, Filament |
+| Category                       | Single select | Metal, Plastic, Ceramic, Composite, Glass, Natural Material, Elastomer |
+| Usage Frequency                | Single select | Common (readily available), Specialty (less common), Exotic (rare/hard to source) |
+| Suitable Fabrication Processes | Multi-select  | Machining, Welding, Bending, Forging, Casting, Extrusion, Moulding, 3D Print (FDM), 3D Print (SLA), 3D Print (SLS), Vacuum Infusion, Composite Layup |
+| Common Forms                   | Multi-select  | Sheet, Plate, Round Bar, Tube, Angle/Channel, Wire, Powder, Filament |
 | Common Form Notes              | Text box      | Free text, e.g. availability notes or standard sizes |
 | Notes                          | Text box      | General notes about the material |
 
@@ -168,8 +168,8 @@ Each field has a reference selector dropdown.
 | Electrical Conductivity       | Float                                                                           | % IACS, MS/m, S/m          | Stored in % IACS. 1 % IACS = 0.58 MS/m = 580,000 S/m. Copper = 100 % IACS. |
 | Vapour Pressure               | Float                                                                           | Pa                         | No conversion |
 | Thermal Expansion (CTE)       | Float (single value) or table of up to 10 (Temperature °C, CTE µm/m·°C) pairs  | µm/m·°C                    | Stored in °C. Temperature column in multi-point table is displayed in the globally selected temperature unit. A curve is fitted through multi-point data for display. |
-| Thermal Conductivity          | Float                                                                           | W/m·K                      | |
-| Specific Heat                 | Float                                                                           | J/kg·K                     | |
+| Thermal Conductivity          | Float (single value) or table of up to 12 (Temperature °C, k W/m·K) pairs      | W/m·K                      | Temperature-dependent table rendered in the same expandable pattern as CTE |
+| Specific Heat                 | Float (single value) or table of up to 12 (Temperature °C, Cp J/kg·K) pairs    | J/kg·K                     | Temperature-dependent table rendered in the same expandable pattern as CTE |
 | Thermal Diffusivity           | Float                                                                           | cm²/s                      | If not entered, computed from k / (ρ · Cp) and labelled "(k/ρCp)" |
 | Melting Point (Tm)            | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For crystalline materials (metals, ceramics). Leave blank for amorphous materials. |
 | Glass Transition Temp. (Tg)   | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For amorphous polymers and glasses. Leave blank for crystalline materials. |
@@ -346,7 +346,7 @@ After the file is downloaded, the form displays instructions for submitting via 
 
 1. Fork the UVIC Materials Database repository.
 2. Place the `.json` file in the `materials/<category>/` subfolder.
-3. If you added new references, also update `references/index.json`.
+3. New references you added are already embedded in the JSON under `new_references` — no separate file edit needed.
 4. Open a Pull Request to the `main` branch with the title: `Add material: <Material Name>`.
 5. Complete the checklist in the PR template.
 6. An administrator will review the submission and may request changes.
@@ -364,20 +364,21 @@ Student submissions arrive as GitHub Pull Requests. The PR diff shows the full c
 - [ ] File is placed in the correct `materials/<category>/` subfolder
 - [ ] Filename matches the `slug` field inside the JSON
 - [ ] `schema_version` matches the current version
-- [ ] All pressure values are in GPa
+- [ ] All pressure values are in GPa; compressive strength in MPa
 - [ ] At least one property has a reference attached
-- [ ] `commonly_available` is set appropriately
-- [ ] Any new references are added to `references/index.json`
+- [ ] `usage_frequency` is set appropriately (Common / Specialty / Exotic)
+- [ ] New references either exist in `references/index.json` or are embedded under `new_references` in the material JSON
 
 ### After Merging
 
 After a PR is merged, the admin runs:
 
 ```bash
-python tools/update_manifest.py
+python tools/import_new_refs.py --write   # promote any new_references into references/index.json
+python tools/update_manifest.py           # regenerate materials/index.json
 ```
 
-This regenerates `materials/index.json` (the manifest used by the browse page) and must be committed to `main`.
+Both outputs must be committed to `main`.
 
 ---
 
@@ -391,6 +392,7 @@ Located in `tools/`. Run locally or in CI. Require `pip install -r tools/require
 | `tools/update_manifest.py` | Walk the `materials/` tree and regenerate `materials/index.json`. Run after every merge. |
 | `tools/migrate.py`         | Migrate material files from an older schema version to the current one. Originals are backed up to `tools/backup/` before modification. |
 | `tools/import_bibtex.py`   | Parse a `.bib` file and add new entries to `references/index.json`, generating short labels automatically. |
+| `tools/import_new_refs.py` | Scan all material JSONs for `new_references` entries and merge any new keys into `references/index.json`. Dry-run by default; pass `--write` to apply. Run after merging a PR that used `new_references`. |
 
 ---
 
@@ -410,7 +412,7 @@ This ensures old entries are never broken by format changes.
 
 > Items in this section are incomplete or pending decisions. Remove entries once resolved.
 
-- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) and ABS (HRC, k, Cp, diffusivity, Tg refs) have values without citations.
+- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) has values without citations.
 - **Advanced Material Selection** — Phase 2 feature; see Section 12 for full spec.
 
 ---
