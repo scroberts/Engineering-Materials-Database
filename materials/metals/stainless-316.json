@@ -30,8 +30,8 @@
       "ref": "azom-stainless-316"
     },
     "poissons_ratio": {
-      "value": 0.28,
-      "ref": null
+      "value": 0.26,
+      "ref": "spacematdb-316"
     },
     "yield_strength": {
       "value": 0.2,
@@ -157,7 +157,8 @@
   },
   "references": [
     "azom-stainless-316",
-    "matweb-stainless-316"
+    "matweb-stainless-316",
+    "spacematdb-316"
   ],
   "metadata": {
     "submitted_by": "admin",

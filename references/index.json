@@ -199,6 +199,12 @@
     "bibtex": null,
     "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=b6fb00b235f0442da4d31a0cd04671c9"
   },
+  "spacematdb-316": {
+    "short_label": "SpaceMatDB: AISI 316 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=AISI%20316"
+  },
   "spacematdb_invar36": {
     "short_label": "SpaceMatDB: Invar 36",
     "doi": null,
