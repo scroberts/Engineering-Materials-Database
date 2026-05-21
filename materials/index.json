@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-21T04:02:05Z",
+  "generated": "2026-05-21T05:14:26Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -371,6 +371,25 @@
       "tensile_strength": 0.37,
       "density": 1.85,
       "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "brass-free-cutting-astm-b16-h02-temper",
+      "path": "materials/metals/brass-free-cutting-astm-b16-h02-temper.json",
+      "name": "Brass, Free Cutting, ASTM B16, H02 Temper",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 96.52720000000001,
+      "yield_strength": 0.17237000000000002,
+      "tensile_strength": 0.3930036,
+      "density": 8.497730746052044,
+      "magnetic_classification": null
     },
     {
       "slug": "copper-c11000",

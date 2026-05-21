@@ -427,4 +427,10 @@
     "bibtex": null,
     "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-H13-T20813-Chromium-Hot-Work-Steel"
   }
+ "matweb-brass-astm-b16-h02": {
+    "short_label": "MatWeb: Brass ASTM B16 H02",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?matguid=9b82636b70e7489eadf4610fbcdedbc2&n=1"
+  }
 }
