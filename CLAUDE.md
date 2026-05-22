@@ -71,9 +71,11 @@ tools/
   import_bibtex.py    BibTeX import tool (dry-run default; --write to merge)
   import_new_refs.py  Promote new_references from material JSONs → references/index.json (dry-run default; --write to apply)
   download_refs.py    Fetch each URL in references/index.json and save as <stub>.html/.pdf
+                        ⚠ Save to the OneDrive folder below — HTML/PDF files are gitignored
                         --delay SECS   pause between requests (default 1.5)
                         --force        re-download files that already exist
   parse_refs.py       Parse downloaded HTML files into material-schema-format JSON (canonical units)
+                        ⚠ Always pass the OneDrive path as <html_dir> — never a path inside the repo
                         <html_dir>     directory of downloaded HTML files
                         --glob PATTERN filter files, e.g. "azom*.html" (default: *.html)
                         --output DIR   output directory (default: <html_dir>/parsed/)
@@ -83,6 +85,14 @@ tools/
                         --tolerance N  relative tolerance, e.g. 0.03 = 3% (default: 0.05)
                         --no-fix       report only; do not prompt to update files
                         --verbose      also list properties that match their references
+
+Reference HTML/PDF storage (outside the repo, gitignored):
+  ~/Library/CloudStorage/OneDrive-UniversityofVictoria/Documents/Work/Research/Materials Database/
+  Typical workflow:
+    python tools/download_refs.py "$REFS_DIR"
+    python tools/parse_refs.py "$REFS_DIR"
+    python tools/compare_refs.py "*.json" --refs-dir "$REFS_DIR/parsed"
+  where REFS_DIR is the OneDrive path above.
 
 .github/
   workflows/validate-schema.yml   CI: runs validate.py on PRs touching materials/

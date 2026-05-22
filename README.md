@@ -99,6 +99,8 @@ pip install -r tools/requirements.txt
 
 A three-step workflow for auditing material property values against their cited web sources.
 
+> **Storage note:** downloaded HTML and PDF files are kept **outside the repository** (gitignored) in a local folder such as OneDrive. Never save them inside the repo directory.
+
 **Step 1 — download**
 
 ```
@@ -107,7 +109,7 @@ python tools/download_refs.py <output_dir> [options]
 
 | Option | Default | Description |
 |---|---|---|
-| `<output_dir>` | *(required)* | Directory to save downloaded files |
+| `<output_dir>` | *(required)* | Directory to save downloaded files — use a path **outside** the repo |
 | `--delay SECS` | `1.5` | Pause between requests (be polite to servers) |
 | `--force` | off | Re-download files that already exist |
 
