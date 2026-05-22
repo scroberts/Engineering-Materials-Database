@@ -4,14 +4,8 @@
     "name": "Spring Steel SAE 5160 (Q&T, 47 HRC)",
     "slug": "steel-spring-5160",
     "category": "Metal",
-    "fabrication_processes": [
-      "Machining",
-      "Bending"
-    ],
-    "common_forms": [
-      "Round Bar",
-      "Sheet"
-    ],
+    "fabrication_processes": [ "Machining", "Bending" ],
+    "common_forms": [ "Round Bar", "Sheet" ],
     "common_form_notes": "Available as hot-rolled bar and flat strip from steel service centres in the annealed condition for forming, then heat-treated by the end user. Pre-hardened round bar is also available in smaller diameters from specialist suppliers.",
     "usage_frequency": "Common",
     "notes": "SAE 5160 chromium alloy spring steel (0.56–0.64% C, 0.75–1.0% Cr), quenched and tempered to approximately 47 HRC (typical temper temperature ~400 °C). This is a commonly specified automotive and industrial spring hardness balancing fatigue strength with adequate toughness. Strength is very sensitive to tempering temperature — do not expose in service to temperatures exceeding ~200 °C as this approaches the lower end of the tempering range and will relieve residual compressive stress or reduce hardness, reducing load capacity and fatigue life. SAE 5160 is sometimes incorrectly called 'chrome-vanadium'; the vanadium-bearing spring steel is SAE 6150 (51CrV4) which offers superior fatigue performance for demanding applications. Shear strength derived from von Mises criterion: UTS/√3 = 1570/√3 ≈ 906 MPa."
@@ -19,7 +13,7 @@
   "typical_usage": "Automotive coil springs, leaf springs, torsion bars, suspension links, and anti-roll bars. Also used for industrial coil springs, agricultural equipment springs, and high-strength bolts and fasteners where good fatigue resistance is required.",
   "mechanical_common": {
     "youngs_modulus": {
-      "value": 207,
+      "value": 190.0,
       "ref": "azom-5160"
     },
     "poissons_ratio": {
@@ -139,10 +133,7 @@
       "ref": null
     }
   },
-  "references": [
-    "azom-5160",
-    "makeitfrom-5160"
-  ],
+  "references": [ "azom-5160", "makeitfrom-5160" ],
   "metadata": {
     "submitted_by": "admin",
     "submitted_date": "2026-05-15",
