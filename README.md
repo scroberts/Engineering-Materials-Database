@@ -85,16 +85,63 @@ source .venv/bin/activate          # macOS/Linux
 pip install -r tools/requirements.txt
 ```
 
+### Data management
+
 | Script | Purpose | When to run |
 |---|---|---|
 | `python tools/validate.py` | Validate all material JSONs against the schema | Before every commit touching `materials/` |
 | `python tools/update_manifest.py` | Regenerate `materials/index.json` | After merging any new material |
 | `python tools/migrate.py` | Apply schema version migrations | When schema version increments |
-| `python tools/import_bibtex.py` | Bulk-import references from a `.bib` file | When adding references in bulk |
-| `python tools/import_new_refs.py --write` | Promote `new_references` from material JSONs into `references/index.json` | After merging a PR that used `new_references` |
-| `python tools/download_refs.py <dir>` | Fetch each URL in `references/index.json` and save as `<stub>.html` or `<stub>.pdf`; failures logged to `failed.txt` | Reference archival and data verification |
-| `python tools/parse_refs.py <dir>` | Parse downloaded HTML files into material-schema-format JSON (canonical units) for comparison | After `download_refs.py`; use `--glob azom*.html` to filter by site |
-| `python tools/compare_refs.py <pattern> --refs-dir <dir>` | Compare material JSON values against parsed reference data; reports unreferenced values and mismatches; prompts to fix discrepancies | Data quality auditing |
+| `python tools/import_bibtex.py [file.bib] [--write]` | Bulk-import references from a `.bib` file | When adding references in bulk |
+| `python tools/import_new_refs.py [files] [--write]` | Promote `new_references` from material JSONs into `references/index.json` | After merging a PR that used `new_references` |
+
+### Reference verification
+
+A three-step workflow for auditing material property values against their cited web sources.
+
+**Step 1 — download**
+
+```
+python tools/download_refs.py <output_dir> [options]
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `<output_dir>` | *(required)* | Directory to save downloaded files |
+| `--delay SECS` | `1.5` | Pause between requests (be polite to servers) |
+| `--force` | off | Re-download files that already exist |
+
+Fetches every URL in `references/index.json` and saves each as `<output_dir>/<stub>.html` or `.pdf`. If the HTML page links to a PDF, that is downloaded too. Failures are logged to `<output_dir>/failed.txt`.
+
+**Step 2 — parse**
+
+```
+python tools/parse_refs.py <html_dir> [options]
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `<html_dir>` | *(required)* | Directory of downloaded HTML files |
+| `--glob PATTERN` | `*.html` | Filter files, e.g. `"azom*.html"` |
+| `--output DIR` | `<html_dir>/parsed/` | Where to write the output JSON files |
+
+Reads each HTML file, detects the source site from the filename prefix (`azom-*`, `makeitfrom-*`, `matweb-*`, `spacematdb-*`, `theworldmaterial-*`, `engineersedge-*`, `hightempmetals-*`, `efunda-*`, `nist-*`), and extracts property values using a site-specific parser. Output is one JSON per file in material-schema format with canonical units. Unrecognised properties are stored under `_raw`.
+
+**Step 3 — compare**
+
+```
+python tools/compare_refs.py <pattern> --refs-dir <dir> [options]
+```
+
+| Option | Default | Description |
+|---|---|---|
+| `<pattern>` | *(required)* | Filename or glob to match material JSONs, e.g. `aluminum*.json` or `*.json` |
+| `--refs-dir DIR` | *(required)* | Directory of parsed reference JSONs from Step 2 |
+| `--tolerance FRAC` | `0.05` | Relative tolerance for value comparison (0.05 = 5%) |
+| `--no-fix` | off | Report only; never prompt to update material files |
+| `--verbose` | off | Also list properties that match their cited references |
+
+For each material JSON, reports: properties with a value but no reference assigned; cited reference keys with no parsed file (expected for PDFs); and numeric mismatches beyond the tolerance. For simple numeric mismatches, prompts `y/N` to patch the value in-place.
 
 ---
 
