@@ -26,6 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent.parent
 MATERIALS_DIR = ROOT / "materials"
+REFERENCES_PATH = ROOT / "references" / "index.json"
 
 # ── Units for display ─────────────────────────────────────────────────────────
 
@@ -215,12 +216,27 @@ def find_material_files(pattern: str) -> list[Path]:
 
 # ── Per-file comparison ───────────────────────────────────────────────────────
 
+def _ref_url(entry: dict) -> str | None:
+    """Return the best URL for a reference index entry (DOI → url → BibTeX url)."""
+    if entry.get("doi"):
+        return f"https://doi.org/{entry['doi']}"
+    if entry.get("url"):
+        return entry["url"]
+    if entry.get("bibtex"):
+        import re as _re
+        m = _re.search(r'\burl\s*=\s*\{([^}]+)\}', entry["bibtex"])
+        if m:
+            return m.group(1).strip()
+    return None
+
+
 def compare_material(
     mat_path: Path,
     refs_dir: Path,
     tolerance: float,
     allow_fix: bool,
     verbose: bool,
+    ref_index: dict,
 ) -> int:
     try:
         mat = json.loads(mat_path.read_text(encoding="utf-8"))
@@ -281,7 +297,10 @@ def compare_material(
         print("  " + "─" * 68)
         for ref_key, paths in sorted(missing_file.items()):
             props = ", ".join(p.split(".")[-1] for p in paths)
-            print(f"    {ref_key:<40s}  used by: {props}")
+            url = _ref_url(ref_index.get(ref_key, {})) or "no URL"
+            print(f"    {ref_key}")
+            print(f"      url      : {url}")
+            print(f"      used by  : {props}")
 
     # ── Mismatches ────────────────────────────────────────────────────────────
     if mismatches:
@@ -353,6 +372,12 @@ def main() -> None:
         print(f"ERROR: --refs-dir {refs_dir!r} is not a directory")
         sys.exit(1)
 
+    try:
+        ref_index = json.loads(REFERENCES_PATH.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as e:
+        print(f"ERROR reading {REFERENCES_PATH}: {e}")
+        sys.exit(1)
+
     files = find_material_files(args.pattern)
     if not files:
         print(f"No material JSON files found matching: {args.pattern!r}")
@@ -366,7 +391,7 @@ def main() -> None:
     total_issues = 0
     for mat_path in files:
         total_issues += compare_material(
-            mat_path, refs_dir, args.tolerance, not args.no_fix, args.verbose
+            mat_path, refs_dir, args.tolerance, not args.no_fix, args.verbose, ref_index
         )
 
     print(f"\n{'=' * 78}")
