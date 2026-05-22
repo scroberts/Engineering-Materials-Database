@@ -42,6 +42,11 @@ HEADERS = {
 TIMEOUT = 25  # seconds
 
 
+def safe_filename(stub: str) -> str:
+    """Replace characters that are invalid in filenames (e.g. '/' in DOI keys)."""
+    return re.sub(r'[/\\:*?"<>|]', '_', stub)
+
+
 def resolve_url(entry: dict) -> str | None:
     """Return the best URL for a reference entry, matching detail.js priority order."""
     if entry.get("doi"):
@@ -63,7 +68,8 @@ def find_pdf_link(html: str, base_url: str) -> str | None:
 
 
 def already_downloaded(stub: str, output_dir: Path) -> bool:
-    return (output_dir / f"{stub}.html").exists() or (output_dir / f"{stub}.pdf").exists()
+    name = safe_filename(stub)
+    return (output_dir / f"{name}.html").exists() or (output_dir / f"{name}.pdf").exists()
 
 
 def fetch(url: str) -> requests.Response:
@@ -95,17 +101,18 @@ def download_one(stub: str, entry: dict, output_dir: Path, delay: float, force: 
 
     content_type = resp.headers.get("Content-Type", "").split(";")[0].strip().lower()
     final_url = resp.url  # after redirects
+    name = safe_filename(stub)
 
     # ── Save primary response ─────────────────────────────────────────────────
     if "application/pdf" in content_type or final_url.lower().split("?")[0].endswith(".pdf"):
-        path = output_dir / f"{stub}.pdf"
+        path = output_dir / f"{name}.pdf"
         path.write_bytes(resp.content)
         print(f"  PDF   {stub:40s}  {final_url}")
         time.sleep(delay)
         return {"status": "ok", "url": final_url, "reason": None}
 
     # HTML — save page
-    path = output_dir / f"{stub}.html"
+    path = output_dir / f"{name}.html"
     path.write_bytes(resp.content)
     print(f"  HTML  {stub:40s}  {final_url}")
 
@@ -117,7 +124,7 @@ def download_one(stub: str, entry: dict, output_dir: Path, delay: float, force: 
             time.sleep(delay)
             pdf_resp = fetch(pdf_url)
             pdf_resp.raise_for_status()
-            pdf_path = output_dir / f"{stub}.pdf"
+            pdf_path = output_dir / f"{name}.pdf"
             pdf_path.write_bytes(pdf_resp.content)
             print(f"  PDF   {stub:40s}  {pdf_url}  (linked)")
     except Exception:
