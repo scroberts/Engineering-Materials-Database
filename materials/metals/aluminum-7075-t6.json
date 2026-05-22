@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Widely stocked as plate, sheet, and bar. Typically purchased in T6 or T651 temper (stress-relieved plate). Not recommended for welding in most applications.",
     "usage_frequency": "Common",
-    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (freely available); eFunda linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for wrought aluminium alloys (6061-T6 polynomial used as proxy; dedicated 7075 polynomial not published — all wrought Al alloys agree within ±4%). Above-RT CTE from MIL-HDBK-5J."
+    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (freely available); eFunda linked for cross-reference. Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values from the NIST Cryogenic Materials Database polynomial for wrought aluminium alloys (6061-T6 polynomial used as proxy; dedicated 7075 polynomial not published — all wrought Al alloys agree within ±4%). Above-RT CTE from MIL-HDBK-5J. Melting point is solidus (477°C); liquidus 635°C (MIL-HDBK-5J)."
   },
 
   "typical_usage": "Aerospace structural members, aircraft fittings and bulkheads, high-performance bicycle frames, rock climbing equipment, competitive cycling components, and any application requiring maximum specific strength in aluminum.",
@@ -63,7 +63,7 @@
     "thermal_conductivity":{ "value": 130, "table": [],  "ref": "mil-hdbk-5j-2003" },
     "specific_heat":       { "value": 960, "table": [],  "ref": "mil-hdbk-5j-2003" },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 635,  "ref": "mil-hdbk-5j-2003" },
+    "melting_point_tm":    { "value": 477,  "ref": "mil-hdbk-5j-2003" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },

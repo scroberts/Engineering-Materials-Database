@@ -99,7 +99,7 @@ All values stored in canonical units in JSON. Convert only at display time.
 | Compressive Strength | MPa | Exception — stored in MPa not GPa |
 | Fracture Toughness | MPa·m^0.5 | Display as MPa·m½ using `<sup>½</sup>` |
 | Density | g/cm³ | Display both g/cm³ and kg/m³ simultaneously |
-| Temperature | °C | |
+| Temperature | °C | `melting_point_tm` stores the **solidus** temperature; document the liquidus in the material's `notes` field |
 | CTE | µm/m·K | displayed as µm/m·K (°C and K are identical in magnitude) |
 | Thermal conductivity | W/m·K | |
 | Specific heat | J/kg·K | |

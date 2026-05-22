@@ -15,7 +15,7 @@
     ],
     "common_form_notes": "Commonly available as sheet and foil. Very soft — easily formed, spun, and deep-drawn.",
     "usage_frequency": "Common",
-    "notes": "Commercially pure aluminum (99.0% min Al). O temper: fully annealed, softest and most ductile condition. AZoM lists elastic modulus as 70–80 GPa for the 1100 alloy family; the value of 70 GPa used here corresponds to the lower bound and is consistent with the Aluminum Association standard value of 69 GPa. Thermal conductivity sourced from Aluminum Association data (k = 222 W/m·K for O temper). Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values computed from the NIST Cryogenic Materials Database polynomial for 1100 aluminium (underlying data: Mann, NBS, 1977; ±4% accuracy). All wrought aluminium alloys share essentially the same cryogenic CTE polynomial. Room-temperature CTE value from AZoM."
+    "notes": "Commercially pure aluminum (99.0% min Al). O temper: fully annealed, softest and most ductile condition. AZoM lists elastic modulus as 70–80 GPa for the 1100 alloy family; the value of 70 GPa used here corresponds to the lower bound and is consistent with the Aluminum Association standard value of 69 GPa. Thermal conductivity sourced from Aluminum Association data (k = 222 W/m·K for O temper). Cryogenic CTE table entries (−196 to −100 °C) are instantaneous values computed from the NIST Cryogenic Materials Database polynomial for 1100 aluminium (underlying data: Mann, NBS, 1977; ±4% accuracy). All wrought aluminium alloys share essentially the same cryogenic CTE polynomial. Room-temperature CTE value from AZoM. Melting point is solidus (643°C); liquidus 657°C (MatWeb)."
   },
   "typical_usage": "Electrical busbars and conductors, heat exchanger fins, reflective sheet, chemical process equipment, food and chemical containers, spinning and deep-drawing applications requiring maximum formability.",
   "mechanical_common": {
@@ -150,8 +150,8 @@
       "ref": null
     },
     "melting_point_tm": {
-      "value": 657,
-      "ref": null
+      "value": 643,
+      "ref": "matweb-aluminum-1100"
     },
     "glass_transition_tg": {
       "value": null,

@@ -8,7 +8,7 @@
     "common_forms": ["Round Bar"],
     "common_form_notes": "Primarily stocked as round bar for turned parts. Sheet and plate are uncommon for 303 — use 304 or 316 for those applications.",
     "usage_frequency": "Common",
-    "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability and corrosion resistance. Not suitable for welding. Yield strength (190 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A582 specifies a minimum of 241 MPa (35 ksi). Typical as-produced material falls between these values. Electrical conductivity derived from resistivity of 0.72 µΩ·m. Shear strength derived from von Mises criterion: UTS/√3 = 620/1.732 ≈ 358 MPa."
+    "notes": "Free-machining austenitic stainless steel. Sulfur addition (0.15% min) dramatically improves machinability at the cost of reduced weldability and corrosion resistance. Not suitable for welding. Yield strength (190 MPa) is the EN 10088-3 minimum for annealed bar; ASTM A582 specifies a minimum of 241 MPa (35 ksi). Typical as-produced material falls between these values. Electrical conductivity derived from resistivity of 0.72 µΩ·m. Shear strength derived from von Mises criterion: UTS/√3 = 620/1.732 ≈ 358 MPa. Melting point is solidus (1399°C); liquidus 1455°C."
   },
 
   "typical_usage": "CNC-turned shafts, fittings, fasteners, bushings, valve stems, and precision machined parts requiring good corrosion resistance combined with high-volume machinability. The default stainless for turned parts.",
@@ -51,7 +51,7 @@
     "thermal_conductivity":{ "value": 16.3, "table": [], "ref": "azom-stainless-303" },
     "specific_heat":       { "value": 500, "table": [],  "ref": "theworldmaterial-303" },
     "thermal_diffusivity": { "value": null, "ref": null },
-    "melting_point_tm":    { "value": 1455, "ref": "azom-stainless-303" },
+    "melting_point_tm":    { "value": 1399, "ref": "azom-stainless-303" },
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
