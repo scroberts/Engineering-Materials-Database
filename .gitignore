@@ -18,7 +18,5 @@ Thumbs.db
 # Large reference PDFs — store locally, do not commit (GitHub 50 MB file limit)
 references/*.pdf
 
-# Downloaded reference HTML/PDF files — stored locally and in OneDrive, not in git
-refs_html/*.html
-refs_html/*.pdf
-refs_html/*.txt
+# Downloaded reference files — stored locally and in OneDrive, not in git
+refs_html/
