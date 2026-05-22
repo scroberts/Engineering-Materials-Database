@@ -158,10 +158,11 @@ def _convert_conductivity(value: float, unit: str) -> float | None:
 def _convert_specific_heat(value: float, unit: str) -> float | None:
     """Convert specific heat to J/kg·K."""
     u = _nu(unit)
-    if 'j/kgk' in u or 'j/kg' in u:
-        return value
+    # kj/kg must be checked before j/kg — 'kj/kgk' contains the substring 'j/kgk'
     if 'kj/kg' in u:
         return value * 1000.0
+    if 'j/kgk' in u or 'j/kg' in u:
+        return value
     if 'btu/lb' in u:
         return value * 4186.8
     if 'cal/gk' in u or 'cal/g' in u:
