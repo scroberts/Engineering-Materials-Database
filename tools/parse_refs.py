@@ -493,13 +493,14 @@ class MatWebParser(BaseParser):
                 name = title.get_text(strip=True).split("|")[0].strip()
 
         rows = []
-        # MatWeb uses a specific table structure
+        # MatWeb tables: [Property] [Metric value+unit] [Imperial value+unit]
+        # Always parse value and unit from cells[1] only; cells[2] is the imperial
+        # column and must NOT be used as the unit string (it contains a number+unit
+        # that would cause the metric value to be re-converted with the wrong unit).
         for table in soup.find_all("table", class_=re.compile(r'tablediv|datatable|property', re.I)):
             for tr in table.find_all("tr"):
                 cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
-                if len(cells) >= 3:
-                    rows.append((cells[0], cells[1], cells[2]))
-                elif len(cells) == 2:
+                if len(cells) >= 2:
                     m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
                     if m:
                         rows.append((cells[0], m.group(1), m.group(2)))
@@ -509,10 +510,13 @@ class MatWebParser(BaseParser):
             for table in soup.find_all("table"):
                 for tr in table.find_all("tr"):
                     cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
-                    if len(cells) >= 2 and _num(cells[1]) is not None:
-                        val_raw = cells[1]
-                        unit_raw = cells[2] if len(cells) > 2 else ""
-                        rows.append((cells[0], val_raw, unit_raw))
+                    if len(cells) >= 2:
+                        prop = cells[0]
+                        if not prop or _num(prop) is not None:
+                            continue
+                        m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
+                        if m:
+                            rows.append((prop, m.group(1), m.group(2)))
 
         parsed, raw = self._apply_rows(rows)
         result = _empty_result(stub, self.site, None)

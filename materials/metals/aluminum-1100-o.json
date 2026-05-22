@@ -138,12 +138,12 @@
     "thermal_conductivity": {
       "value": 222,
       "table": [],
-      "ref": null
+      "ref": "matweb-aluminum-1100"
     },
     "specific_heat": {
       "value": 904,
       "table": [],
-      "ref": null
+      "ref": "matweb-aluminum-1100"
     },
     "thermal_diffusivity": {
       "value": null,
@@ -165,6 +165,7 @@
   "references": [
     "azom-aluminum-1100",
     "asm-metals-handbook-desk-1984",
+    "matweb-aluminum-1100",
     "nist-cryo-al"
   ],
   "metadata": {
