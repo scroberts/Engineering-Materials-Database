@@ -129,9 +129,10 @@ def _convert_cte(value: float, unit: str) -> float | None:
         if '/f' in u or 'perf' in u:
             return value * 1.8
         return value   # ppm/°C = µm/m·K
-    if '1/f' in u or 'in/in' in u or 'ft/ft' in u:
+    # Bare SI units: value already in 1/K or 1/°F (e.g. 11.7e-6 /K → ×1e6)
+    if '1/f' in u or '/f' in u or 'in/in' in u or 'ft/ft' in u:
         return value * 1.8e6
-    if '1/k' in u or '1/c' in u:
+    if '1/k' in u or '1/c' in u or '/k' in u or '/c' in u:
         return value * 1e6
     return None
 
