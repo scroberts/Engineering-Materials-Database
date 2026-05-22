@@ -92,6 +92,9 @@ pip install -r tools/requirements.txt
 | `python tools/migrate.py` | Apply schema version migrations | When schema version increments |
 | `python tools/import_bibtex.py` | Bulk-import references from a `.bib` file | When adding references in bulk |
 | `python tools/import_new_refs.py --write` | Promote `new_references` from material JSONs into `references/index.json` | After merging a PR that used `new_references` |
+| `python tools/download_refs.py <dir>` | Fetch each URL in `references/index.json` and save as `<stub>.html` or `<stub>.pdf`; failures logged to `failed.txt` | Reference archival and data verification |
+| `python tools/parse_refs.py <dir>` | Parse downloaded HTML files into material-schema-format JSON (canonical units) for comparison | After `download_refs.py`; use `--glob azom*.html` to filter by site |
+| `python tools/compare_refs.py <pattern> --refs-dir <dir>` | Compare material JSON values against parsed reference data; reports unreferenced values and mismatches; prompts to fix discrepancies | Data quality auditing |
 
 ---
 
@@ -160,6 +163,10 @@ tools/
   update_manifest.py
   migrate.py
   import_bibtex.py
+  import_new_refs.py
+  download_refs.py
+  parse_refs.py
+  compare_refs.py
   requirements.txt
 
 .github/

@@ -70,6 +70,19 @@ tools/
   migrate.py          Schema migration tool (dry-run default; --write to apply)
   import_bibtex.py    BibTeX import tool (dry-run default; --write to merge)
   import_new_refs.py  Promote new_references from material JSONs → references/index.json (dry-run default; --write to apply)
+  download_refs.py    Fetch each URL in references/index.json and save as <stub>.html/.pdf
+                        --delay SECS   pause between requests (default 1.5)
+                        --force        re-download files that already exist
+  parse_refs.py       Parse downloaded HTML files into material-schema-format JSON (canonical units)
+                        <html_dir>     directory of downloaded HTML files
+                        --glob PATTERN filter files, e.g. "azom*.html" (default: *.html)
+                        --output DIR   output directory (default: <html_dir>/parsed/)
+  compare_refs.py     Compare material JSON values against parsed reference data
+                        <pattern>      filename glob, e.g. aluminum*.json or *.json
+                        --refs-dir DIR directory of parsed reference JSONs (required)
+                        --tolerance N  relative tolerance, e.g. 0.03 = 3% (default: 0.05)
+                        --no-fix       report only; do not prompt to update files
+                        --verbose      also list properties that match their references
 
 .github/
   workflows/validate-schema.yml   CI: runs validate.py on PRs touching materials/

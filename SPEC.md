@@ -393,6 +393,9 @@ Located in `tools/`. Run locally or in CI. Require `pip install -r tools/require
 | `tools/migrate.py`         | Migrate material files from an older schema version to the current one. Originals are backed up to `tools/backup/` before modification. |
 | `tools/import_bibtex.py`   | Parse a `.bib` file and add new entries to `references/index.json`, generating short labels automatically. |
 | `tools/import_new_refs.py` | Scan all material JSONs for `new_references` entries and merge any new keys into `references/index.json`. Dry-run by default; pass `--write` to apply. Run after merging a PR that used `new_references`. |
+| `tools/download_refs.py <dir>` | Fetch each URL in `references/index.json` and save as `<stub>.html` or `<stub>.pdf`. Skips already-downloaded files. Flags: `--delay SECS` (default 1.5), `--force`. Logs failures to `<dir>/failed.txt`. |
+| `tools/parse_refs.py <dir>` | Parse downloaded HTML files into material-schema-format JSON with canonical units. Detects site from filename prefix (`azom-*`, `makeitfrom-*`, `matweb-*`, etc.) and applies a site-specific parser. Flags: `--glob PATTERN` (e.g. `"azom*.html"`), `--output DIR` (default: `<dir>/parsed/`). |
+| `tools/compare_refs.py <pattern> --refs-dir <dir>` | Compare material JSON property values against parsed reference data. Reports: values with no reference, reference keys with no parsed file, and numeric mismatches. Prompts `y/n` to update mismatched values in-place. Flags: `--tolerance FRAC` (default 0.05 = 5%), `--no-fix`, `--verbose`. |
 
 ---
 

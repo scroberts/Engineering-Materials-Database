@@ -60,7 +60,10 @@ Build a static materials database website for UVIC Design Engineering students, 
 │   ├── migrate.py          # Migrate material files to latest schema version
 │   ├── import_bibtex.py    # Parse .bib files and add to references/index.json
 │   ├── import_new_refs.py  # Promote new_references from material JSONs into references/index.json
-│   └── requirements.txt    # jsonschema, bibtexparser
+│   ├── download_refs.py    # Fetch reference URLs and save as <stub>.html/.pdf
+│   ├── parse_refs.py       # Parse downloaded HTML into material-schema-format JSON
+│   ├── compare_refs.py     # Compare material values against parsed references; offers fixes
+│   └── requirements.txt    # jsonschema, bibtexparser, requests, beautifulsoup4
 
 └── .github/
     ├── PULL_REQUEST_TEMPLATE.md
