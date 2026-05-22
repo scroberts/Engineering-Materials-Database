@@ -62,13 +62,13 @@
     },
     "thermal_conductivity":{ "value": 167, "table": [],   "ref": "mil-hdbk-5j-2003" },
     "specific_heat":       { "value": 896, "table": [],   "ref": "mil-hdbk-5j-2003" },
-    "thermal_diffusivity": { "value": 0.689, "ref": null },
+    "thermal_diffusivity": { "value": 0.64, "ref": "engineers-edge-thermal-diffusivity" },
     "melting_point_tm":    { "value": 582,   "ref": "mil-hdbk-5j-2003" },
     "glass_transition_tg": { "value": null,  "ref": null },
     "magnetic_classification": { "value": "Paramagnetic", "ref": null }
   },
 
-  "references": ["azom-aluminum-6061", "matweb-al6061-t6", "mil-hdbk-5j-2003", "nist-cryo-al"],
+  "references": ["azom-aluminum-6061", "engineers-edge-thermal-diffusivity", "matweb-al6061-t6", "mil-hdbk-5j-2003", "nist-cryo-al"],
 
   "metadata": {
     "submitted_by": "admin",

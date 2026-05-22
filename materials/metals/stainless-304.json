@@ -199,8 +199,8 @@
       "ref": "nist-cryo-ss304"
     },
     "thermal_diffusivity": {
-      "value": null,
-      "ref": null
+      "value": 0.042,
+      "ref": "engineers-edge-thermal-diffusivity"
     },
     "melting_point_tm": {
       "value": 1400,
@@ -217,8 +217,9 @@
   },
   "references": [
     "azom-stainless-304",
-    "theworldmaterial-304",
-    "nist-cryo-ss304"
+    "engineers-edge-thermal-diffusivity",
+    "nist-cryo-ss304",
+    "theworldmaterial-304"
   ],
   "metadata": {
     "submitted_by": "admin",

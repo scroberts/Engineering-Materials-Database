@@ -837,6 +837,7 @@ _PARSERS: dict[str, type[BaseParser]] = {
     "spacematdb":       SpaceMatDBParser,
     "theworldmaterial": TheWorldMaterialParser,
     "engineersedge":    EngineersEdgeParser,
+    "engineers-edge":   EngineersEdgeParser,
     "hightempmetals":   HighTempMetalsParser,
     "efunda":           EfundaParser,
     "nist":             NISTParser,
