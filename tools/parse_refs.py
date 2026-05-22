@@ -38,10 +38,27 @@ def _num(s: str) -> float | None:
     s = (
         s.replace('−', '-')   # Unicode minus
          .replace('–', '-')   # en-dash (sometimes used as minus)
-         .replace(',', '')         # thousands separator
+         .replace(',', '')    # thousands separator
     )
+    # Normalise "1.1 x 10^-1" / "1.1 × 10^-1" → "1.1e-1" before regex
+    s = re.sub(r'([-+]?\d+\.?\d*)\s*[x×]\s*10\^([+-]?\d+)', r'\1e\2', s)
     m = re.search(r'[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?', s)
     return float(m.group()) if m else None
+
+
+_SCI_X_RE = re.compile(r'([-+]?\d[\d,]*\.?\d*)\s*[x×]\s*10\^([+-]?\d+)')
+
+
+def _split_val_unit(cell: str) -> tuple[str, str] | None:
+    """
+    Split a value+unit cell string into (value_str, unit_str).
+    Normalises 'N x 10^E' / 'N × 10^E' notation to 'NeE' before splitting,
+    so that e.g. '1.1 x 10^-1 BTU/lb-°F' yields ('1.1e-1', 'BTU/lb-°F').
+    Returns None if no leading number is found.
+    """
+    cell = _SCI_X_RE.sub(r'\1e\2', cell.strip())
+    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cell, re.DOTALL)
+    return (m.group(1), m.group(2)) if m else None
 
 
 def _nu(s: str) -> str:
@@ -124,6 +141,9 @@ def _convert_conductivity(value: float, unit: str) -> float | None:
     u = _nu(unit)
     if 'w/m' in u:
         return value
+    # BTU·in/(hr·ft²·°F) must be checked before BTU/(hr·ft·°F) — factor of 12 difference
+    if 'btu' in u and 'in' in u and 'hr' in u:
+        return value * 0.14423
     if 'btu' in u and 'hr' in u:
         return value * 1.73073
     if 'btu' in u and 'in' in u and 's' in u:
@@ -385,18 +405,18 @@ class AZoMParser(BaseParser):
                     if len(cells) == 2:
                         # Value and unit combined
                         val_raw = cells[1]
-                        num_m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', val_raw)
+                        num_m = _split_val_unit(val_raw)
                         if num_m:
-                            rows.append((prop_name, num_m.group(1), num_m.group(2)))
+                            rows.append((prop_name, num_m[0], num_m[1]))
                         else:
                             rows.append((prop_name, val_raw, ""))
                     elif len(cells) >= 3:
                         # Try: [name] [metric value+unit] [imperial value+unit]
                         # Use first (metric) value column
                         metric_cell = cells[1]
-                        num_m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', metric_cell)
+                        num_m = _split_val_unit(metric_cell)
                         if num_m:
-                            rows.append((prop_name, num_m.group(1), num_m.group(2)))
+                            rows.append((prop_name, num_m[0], num_m[1]))
                         else:
                             rows.append((prop_name, metric_cell, ""))
 
@@ -464,9 +484,9 @@ class MakeItFromParser(BaseParser):
                 if len(cells) >= 2:
                     prop = cells[0]
                     val_raw = cells[1]
-                    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*)\s*(.*)', val_raw)
+                    m = _split_val_unit(val_raw)
                     if m:
-                        rows.append((prop, m.group(1), m.group(2)))
+                        rows.append((prop, m[0], m[1]))
         return rows
 
 
@@ -501,9 +521,9 @@ class MatWebParser(BaseParser):
             for tr in table.find_all("tr"):
                 cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
                 if len(cells) >= 2:
-                    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
+                    m = _split_val_unit(cells[1])
                     if m:
-                        rows.append((cells[0], m.group(1), m.group(2)))
+                        rows.append((cells[0], m[0], m[1]))
 
         # Fallback: any table that looks like property data
         if not rows:
@@ -514,9 +534,9 @@ class MatWebParser(BaseParser):
                         prop = cells[0]
                         if not prop or _num(prop) is not None:
                             continue
-                        m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
+                        m = _split_val_unit(cells[1])
                         if m:
-                            rows.append((prop, m.group(1), m.group(2)))
+                            rows.append((prop, m[0], m[1]))
 
         parsed, raw = self._apply_rows(rows)
         result = _empty_result(stub, self.site, None)
@@ -550,9 +570,9 @@ class SpaceMatDBParser(BaseParser):
                     continue
                 prop = cells[0]
                 val_raw = cells[1]
-                m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', val_raw)
+                m = _split_val_unit(val_raw)
                 if m:
-                    rows.append((prop, m.group(1), m.group(2)))
+                    rows.append((prop, m[0], m[1]))
                 else:
                     rows.append((prop, val_raw, ""))
 
@@ -599,9 +619,9 @@ class TheWorldMaterialParser(BaseParser):
                     prop = cells[0]
                     # Use first numeric value column
                     for cell in cells[1:]:
-                        m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cell.strip())
+                        m = _split_val_unit(cell)
                         if m:
-                            rows.append((prop, m.group(1), m.group(2)))
+                            rows.append((prop, m[0], m[1]))
                             break
 
         parsed, raw = self._apply_rows(rows)
@@ -643,9 +663,9 @@ class EngineersEdgeParser(BaseParser):
                     continue
                 # Take first cell with a number as the metric value
                 for cell in cells[1:]:
-                    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cell.strip())
+                    m = _split_val_unit(cell)
                     if m:
-                        rows.append((prop, m.group(1), m.group(2)))
+                        rows.append((prop, m[0], m[1]))
                         break
 
         parsed, raw = self._apply_rows(rows)
@@ -709,9 +729,9 @@ class HighTempMetalsParser(BaseParser):
                     cells = [td.get_text(" ", strip=True) for td in tr.find_all(["td", "th"])]
                     if len(cells) >= 2:
                         prop = cells[0]
-                        m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
+                        m = _split_val_unit(cells[1])
                         if m:
-                            rows.append((prop, m.group(1), m.group(2)))
+                            rows.append((prop, m[0], m[1]))
 
         parsed, raw = self._apply_rows(rows)
         result = _empty_result(stub, self.site, None)
@@ -744,9 +764,9 @@ class EfundaParser(BaseParser):
                 if len(cells) >= 3:
                     rows.append((cells[0], cells[1], cells[2]))
                 elif len(cells) == 2:
-                    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cells[1])
+                    m = _split_val_unit(cells[1])
                     if m:
-                        rows.append((cells[0], m.group(1), m.group(2)))
+                        rows.append((cells[0], m[0], m[1]))
 
         parsed, raw = self._apply_rows(rows)
         result = _empty_result(stub, self.site, None)
@@ -779,9 +799,9 @@ class NISTParser(BaseParser):
                 if len(cells) >= 2:
                     prop = cells[0]
                     for cell in cells[1:]:
-                        m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cell)
+                        m = _split_val_unit(cell)
                         if m:
-                            rows.append((prop, m.group(1), m.group(2)))
+                            rows.append((prop, m[0], m[1]))
                             break
 
         parsed, raw = self._apply_rows(rows)
@@ -816,9 +836,9 @@ class GenericParser(BaseParser):
                 if not prop or _num(prop) is not None:
                     continue  # Skip rows where first cell is a number (header/spacer)
                 for cell in cells[1:]:
-                    m = re.match(r'^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*(.*)', cell.strip())
+                    m = _split_val_unit(cell)
                     if m:
-                        rows.append((prop, m.group(1), m.group(2)))
+                        rows.append((prop, m[0], m[1]))
                         break
 
         parsed, raw = self._apply_rows(rows)
