@@ -3,7 +3,7 @@
  *
  * Reads ?slugs=a,b,c from the URL, loads all materials in parallel, then
  * renders bar charts per property group, S-N curve overlay, CTE vs
- * temperature overlay, and a merit-index table (M1–M13).
+ * temperature overlay, and a merit-index table (M1–M10).
  */
 
 import { loadMaterialBatch, loadReferences } from '../core/loader.js';
@@ -972,7 +972,7 @@ function renderPage() {
 
       <section class="compare-section">
         <h2 class="compare-section-title">
-          Merit Indices (M1–M13)
+          Merit Indices (M1–M10)
           <span class="merit-legend">
             <span class="merit-up">↑</span> higher is better &nbsp;
             <span class="merit-down">↓</span> lower is better &nbsp;

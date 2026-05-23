@@ -30,7 +30,7 @@ js/core/
   store.js          In-memory Map cache
   schema.js         migrateToLatest() — currently v1, empty migrations
   units.js          All unit conversions
-  derived.js        Shear modulus, specific stiffness, M1–M13 merit indices
+  derived.js        Shear modulus, specific stiffness, M1–M10 merit indices
   tooltips.js       Hover tooltip definitions for all properties
   export.js         buildRows() + downloadCSV() + downloadXLSX() — used by detail.js and compare.js
 

@@ -82,28 +82,10 @@ export const MERIT_INDICES = [
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 0.5) / rho : null; },
   },
-  {
-    id: 'M3', group: 'Stiffness',
-    shortName: 'Min-mass panel stiffness',
-    ref: 'ashby-materials-selection',
-    label: 'E^⅓ / ρ',
-    description: 'Plate deflection at minimum mass — same concept as M2 but for a flat plate loaded in bending. The exponent changes because plates carry load differently than beams. Higher is better.',
-    higherIsBetter: true,
-    fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 1/3) / rho : null; },
-  },
-  {
-    id: 'M4', group: 'Stiffness',
-    shortName: 'Resonant frequency',
-    ref: '10.1117/12.279804',
-    label: 'E^½ / ρ',
-    description: 'Resonant frequency at minimum mass — compares materials by the natural frequency they produce in a structure of a given mass. Higher is better: a material with high E½/ρ will vibrate at a higher frequency, making it harder for external disturbances to excite resonance.',
-    higherIsBetter: true,
-    fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 0.5) / rho : null; },
-  },
 
   // Strength-limited design
   {
-    id: 'M5', group: 'Strength',
+    id: 'M3', group: 'Strength',
     shortName: 'Specific strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y / ρ',
@@ -112,7 +94,7 @@ export const MERIT_INDICES = [
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? sig_y / rho : null; },
   },
   {
-    id: 'M6', group: 'Strength',
+    id: 'M4', group: 'Strength',
     shortName: 'Beam strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y^⅔ / ρ',
@@ -121,18 +103,18 @@ export const MERIT_INDICES = [
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 2/3) / rho : null; },
   },
   {
-    id: 'M7', group: 'Strength',
+    id: 'M5', group: 'Strength',
     shortName: 'Panel strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y^½ / ρ',
-    description: 'Plate strength at minimum mass — same concept as M6 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
+    description: 'Plate strength at minimum mass — same concept as M4 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 0.5) / rho : null; },
   },
 
   // Fracture and damage tolerance
   {
-    id: 'M8', group: 'Fracture',
+    id: 'M6', group: 'Fracture',
     shortName: 'Ductility index',
     ref: 'anderson-fracture-mechanics',
     label: 'K_IC / σ_y',
@@ -145,19 +127,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M9', group: 'Fracture',
-    shortName: 'Fracture zone size',
-    ref: 'anderson-fracture-mechanics',
-    label: 'K_IC² / σ_y²',
-    description: 'Fracture process zone size — similar to M8 but proportional to (K_IC/σ_y)². Larger values indicate more energy is absorbed during crack growth. Particularly important for brittle materials like ceramics and glasses where this zone is very small. Higher is better.',
-    higherIsBetter: true,
-    fn: mat => {
-      const { K_IC, sig_y } = get(mat);
-      return (K_IC && sig_y) ? (K_IC * K_IC) / (sig_y * 1000 * sig_y * 1000) : null;
-    },
-  },
-  {
-    id: 'M10', group: 'Fracture',
+    id: 'M7', group: 'Fracture',
     shortName: 'Specific toughness',
     ref: 'ashby-materials-selection',
     label: 'K_IC / ρ',
@@ -171,7 +141,7 @@ export const MERIT_INDICES = [
 
   // Thermal design
   {
-    id: 'M11', group: 'Thermal',
+    id: 'M8', group: 'Thermal',
     shortName: 'Thermal distortion (steady)',
     ref: '10.1117/12.279804',
     label: 'α / k',
@@ -183,7 +153,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M12', group: 'Thermal',
+    id: 'M9', group: 'Thermal',
     shortName: 'Thermal distortion (transient)',
     ref: '10.1117/12.279804',
     label: 'α / D',
@@ -203,7 +173,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M13', group: 'Thermal',
+    id: 'M10', group: 'Thermal',
     shortName: 'Thermal diffusivity',
     ref: 'incropera-heat-transfer',
     label: 'k / (ρ·C_p)',
