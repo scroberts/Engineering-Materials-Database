@@ -82,10 +82,19 @@ export const MERIT_INDICES = [
     higherIsBetter: true,
     fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 0.5) / rho : null; },
   },
+  {
+    id: 'M3', group: 'Stiffness',
+    shortName: 'Min-mass panel stiffness',
+    ref: 'ashby-materials-selection',
+    label: 'E^⅓ / ρ',
+    description: 'Plate deflection at minimum mass — if you redesign a flat plate in each material to have the same bending stiffness, which material gives the lightest result? Higher is better.',
+    higherIsBetter: true,
+    fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 1/3) / rho : null; },
+  },
 
   // Strength-limited design
   {
-    id: 'M3', group: 'Strength',
+    id: 'M4', group: 'Strength',
     shortName: 'Specific strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y / ρ',
@@ -94,7 +103,7 @@ export const MERIT_INDICES = [
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? sig_y / rho : null; },
   },
   {
-    id: 'M4', group: 'Strength',
+    id: 'M5', group: 'Strength',
     shortName: 'Beam strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y^⅔ / ρ',
@@ -103,18 +112,18 @@ export const MERIT_INDICES = [
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 2/3) / rho : null; },
   },
   {
-    id: 'M5', group: 'Strength',
+    id: 'M6', group: 'Strength',
     shortName: 'Panel strength',
     ref: 'ashby-materials-selection',
     label: 'σ_y^½ / ρ',
-    description: 'Plate strength at minimum mass — same concept as M4 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
+    description: 'Plate strength at minimum mass — same concept as M5 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
     higherIsBetter: true,
     fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 0.5) / rho : null; },
   },
 
   // Fracture and damage tolerance
   {
-    id: 'M6', group: 'Fracture',
+    id: 'M7', group: 'Fracture',
     shortName: 'Ductility index',
     ref: 'anderson-fracture-mechanics',
     label: 'K_IC / σ_y',
@@ -127,7 +136,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M7', group: 'Fracture',
+    id: 'M8', group: 'Fracture',
     shortName: 'Specific toughness',
     ref: 'ashby-materials-selection',
     label: 'K_IC / ρ',
@@ -141,7 +150,7 @@ export const MERIT_INDICES = [
 
   // Thermal design
   {
-    id: 'M8', group: 'Thermal',
+    id: 'M9', group: 'Thermal',
     shortName: 'Thermal distortion (steady)',
     ref: '10.1117/12.279804',
     label: 'α / k',
@@ -153,7 +162,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M9', group: 'Thermal',
+    id: 'M10', group: 'Thermal',
     shortName: 'Thermal distortion (transient)',
     ref: '10.1117/12.279804',
     label: 'α / D',
@@ -173,7 +182,7 @@ export const MERIT_INDICES = [
     },
   },
   {
-    id: 'M10', group: 'Thermal',
+    id: 'M11', group: 'Thermal',
     shortName: 'Thermal diffusivity',
     ref: 'incropera-heat-transfer',
     label: 'k / (ρ·C_p)',
