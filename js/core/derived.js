@@ -104,7 +104,7 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M5', group: 'Strength',
-    shortName: 'Beam strength',
+    shortName: 'Beam Strength Index',
     ref: 'ashby-materials-selection',
     label: 'σ_y^⅔ / ρ',
     description: 'Beam strength at minimum mass — if you redesign a beam in each material to carry the same load before yielding, which material gives the lightest result? Higher is better.',
@@ -113,7 +113,7 @@ export const MERIT_INDICES = [
   },
   {
     id: 'M6', group: 'Strength',
-    shortName: 'Panel strength',
+    shortName: 'Panel Strength Index',
     ref: 'ashby-materials-selection',
     label: 'σ_y^½ / ρ',
     description: 'Plate strength at minimum mass — same concept as M5 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
@@ -124,10 +124,10 @@ export const MERIT_INDICES = [
   // Fracture and damage tolerance
   {
     id: 'M7', group: 'Fracture',
-    shortName: 'Ductility index',
+    shortName: 'Damage Tolerance Index',
     ref: 'anderson-fracture-mechanics',
     label: 'K_IC / σ_y',
-    description: 'Plastic zone size / ductility index — a measure of how much a crack tip can yield before fracture. Higher K_IC/σ_y means a larger plastic zone, indicating a tougher, more forgiving material that gives warning before fracture. Higher is better.',
+    description: 'K_IC / σ_y — Damage tolerance index: proportional to the largest crack a material can tolerate before fracture (units of m^½). Higher values indicate a more damage-tolerant material that can survive larger pre-existing flaws without catastrophic failure. Particularly discriminating for brittle materials (ceramics, glasses) versus tough alloys. Higher is better.',
     higherIsBetter: true,
     fn: mat => {
       const { K_IC, sig_y } = get(mat);
@@ -154,7 +154,7 @@ export const MERIT_INDICES = [
     shortName: 'Thermal distortion (steady)',
     ref: '10.1117/12.279804',
     label: 'α / k',
-    description: 'Steady-state thermal distortion — how much a component distorts under a sustained heat load. α/k compares thermal expansion (tendency to grow) against thermal conductivity (ability to even out temperature). Lower is better: materials like SiC and ULE excel here because they either expand very little or conduct heat away quickly.',
+    description: 'α / k — Steady-state thermal distortion: how much a component distorts under a sustained heat flux. Lower α (less expansion) and higher k (faster heat redistribution) both reduce distortion — minimising α/k minimises shape change. Materials like SiC and ULE glass rank best. Note: the reciprocal k/α (maximise) is called the thermal stability index in the literature (e.g. Ansys Performance Indices Booklet p. 27) and carries identical ranking information. Lower is better.',
     higherIsBetter: false,
     fn: mat => {
       const { alpha, k } = get(mat);
@@ -165,8 +165,8 @@ export const MERIT_INDICES = [
     id: 'M10', group: 'Thermal',
     shortName: 'Thermal distortion (transient)',
     ref: '10.1117/12.279804',
-    label: 'α / D',
-    description: 'Transient thermal distortion — how much a component distorts during a sudden change in temperature, before steady-state is reached. α/D compares thermal expansion against thermal diffusivity (how quickly temperature equalizes through the material). Lower is better.',
+    label: 'α / a',
+    description: 'α / a — Transient thermal distortion: how much a component distorts during a sudden change in temperature, before steady-state is reached. Here a = k/(ρ·C_p) is thermal diffusivity (standard symbol from Ansys booklet p. 31). α/a compares thermal expansion against how quickly temperature equalises through the material. Lower is better.',
     higherIsBetter: false,
     fn: mat => {
       const { alpha, D } = get(mat);
