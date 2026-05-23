@@ -488,6 +488,14 @@ td.merit-best {
 }
 .merit-ref-sup:hover { color: var(--color-text); }
 
+.merit-note {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 0.75rem;
+}
+.merit-note a { color: var(--color-muted); }
+.merit-note a:hover { color: var(--color-text); }
+
 .merit-footnotes {
   margin-top: 0.75rem;
   padding-left: 1.5rem;

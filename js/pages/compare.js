@@ -979,6 +979,7 @@ function renderPage() {
             <span class="merit-best-swatch"></span> best in class
           </span>
         </h2>
+        <p class="merit-note">See also the <a href="https://www.ansys.com/academic/educators/education-resources/performance-indices-booklet" target="_blank" rel="noopener">Ansys Performance Indices Reference Booklet</a> for a comprehensive treatment of material performance indices.</p>
         <div class="merit-table-wrap" id="merit-table-container">
           <!-- populated by renderMeritTable() -->
         </div>
