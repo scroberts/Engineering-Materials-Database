@@ -234,7 +234,7 @@ Merit indices are Ashby-style figures of merit for comparing materials under a s
 | K_IC    | Fracture Toughness    | MPa·m^0.5      |
 | α       | CTE                   | µm/m·°C        |
 | k       | Thermal Conductivity  | W/m·K          |
-| D       | Thermal Diffusivity   | cm²/s          |
+| a       | Thermal Diffusivity   | cm²/s          |
 | C_p     | Specific Heat         | J/kg·K         |
 
 #### Stiffness-Limited Design
@@ -595,7 +595,7 @@ Entered values are converted from display unit to canonical unit before comparis
 
 ### 12.8 Merit Index Ranking
 
-A single `<select>` with "None" and all 13 indices (grouped by Stiffness / Strength / Fracture / Thermal). The direction (↑ higher / ↓ lower) is auto-set from `MERIT_INDICES[i].higherIsBetter` in `derived.js` and shown as helper text below the selector.
+A single `<select>` with "None" and all 11 indices (grouped by Stiffness / Strength / Fracture / Thermal). The direction (↑ higher / ↓ lower) is auto-set from `MERIT_INDICES[i].higherIsBetter` in `derived.js` and shown as helper text below the selector.
 
 **Ranking logic** (applied after all property filters):
 
