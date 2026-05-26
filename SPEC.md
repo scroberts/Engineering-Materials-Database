@@ -242,37 +242,35 @@ Merit indices are Ashby-style figures of merit for comparing materials under a s
 | Index        | Formula         | Better | Application                                      |
 |--------------|-----------------|--------|--------------------------------------------------|
 | M1           | E / ρ           | Higher | Specific stiffness — constant cross-section rod or beam |
-| M2           | (E / ρ)^½       | Higher | Beam deflection at minimum mass                  |
-| M3           | (E / ρ)^⅓       | Higher | Plate deflection at minimum mass                 |
-| M4           | E^½ / ρ         | Higher | Resonant frequency at minimum mass (Paquin [Ref 1]) |
+| M2           | E^½ / ρ         | Higher | Beam Efficiency Index — beam deflection at minimum mass |
+| M3           | E^⅓ / ρ         | Higher | Panel Efficiency Index — plate deflection at minimum mass |
 
 #### Strength-Limited Design
 
 | Index        | Formula         | Better | Application                                      |
 |--------------|-----------------|--------|--------------------------------------------------|
-| M5           | σ_y / ρ         | Higher | Specific strength — constant cross-section rod   |
-| M6           | σ_y^⅔ / ρ      | Higher | Beam strength at minimum mass                    |
-| M7           | σ_y^½ / ρ      | Higher | Plate strength at minimum mass                   |
+| M4           | σ_y / ρ         | Higher | Specific strength — constant cross-section rod   |
+| M5           | σ_y^⅔ / ρ      | Higher | Beam Strength Index — beam strength at minimum mass |
+| M6           | σ_y^½ / ρ      | Higher | Panel Strength Index — plate strength at minimum mass |
 
 #### Fracture and Damage Tolerance
 
 | Index        | Formula         | Better | Application                                      |
 |--------------|-----------------|--------|--------------------------------------------------|
-| M8           | K_IC / σ_y      | Higher | Plastic zone size; ductility index               |
-| M9           | K_IC² / σ_y²    | Higher | Fracture process zone size                       |
-| M10          | K_IC / ρ        | Higher | Toughness per unit mass                          |
+| M7           | K_IC / σ_y      | Higher | Damage Tolerance Index — critical flaw size a material can survive |
+| M8           | K_IC / ρ        | Higher | Specific toughness — toughness per unit mass     |
 
 #### Thermal Design
 
 | Index        | Formula         | Better | Application                                      |
 |--------------|-----------------|--------|--------------------------------------------------|
-| M11          | α / k           | Lower  | Steady-state thermal distortion (Paquin Table 4) |
-| M12          | α / D           | Lower  | Transient thermal distortion                     |
-| M13          | k / (ρ · C_p)   | Higher | Thermal diffusivity — speed of transient response (equivalent to D) |
+| M9           | α / k           | Lower  | Steady-state thermal distortion                  |
+| M10          | α / a           | Lower  | Transient thermal distortion (a = k / ρ·C_p)    |
+| M11          | k / (ρ · C_p)   | Higher | Thermal diffusivity — speed of transient response |
 
-> **Note:** Indices M11 and M12 are "lower is better" — materials with small CTE and high conductivity/diffusivity resist thermal distortion. All other indices are "higher is better". The bar chart colour-codes the direction automatically (green shade for best performer).
+> **Note:** Indices M9 and M10 are "lower is better" — materials with small CTE and high conductivity/diffusivity resist thermal distortion. All other indices are "higher is better". The bar chart colour-codes the direction automatically (green shade for best performer).
 
-> **Note — M13:** k / (ρ · C_p) is the definition of thermal diffusivity D. If D is directly entered for a material, M13 is computed from D directly. Otherwise it is computed from k, ρ, and C_p if all three are available.
+> **Note — M11:** k / (ρ · C_p) is the definition of thermal diffusivity (symbol a or D). If thermal diffusivity is directly entered for a material, M11 uses that value directly; otherwise it is computed from k, ρ, and C_p if all three are available.
 
 A merit index is displayed as "—" for a given material if any required property is missing.
 
@@ -290,7 +288,7 @@ Before downloading, the user selects a unit scope:
 
 **File format:** columns are `Property`, `Unit`, then one column per material name. Section divider rows (IDENTIFICATION, MECHANICAL, PHYSICAL, MERIT INDICES) separate the property groups. Missing values are empty cells; text values (category, fabrication processes, magnetic classification) appear as plain text.
 
-The compare page export also includes a MERIT INDICES section (M1–M13 Ashby indices) with the computed value for each material.
+The compare page export also includes a MERIT INDICES section (M1–M11 Ashby indices) with the computed value for each material.
 
 Single material: filename is `<slug>.csv` or `<slug>.xlsx`. Multiple materials: `materials_comparison.csv` or `materials_comparison.xlsx`.
 
@@ -430,7 +428,7 @@ The Advanced Material Selection page (`select.html`) provides a structured, thre
 
 1. **Categorical pre-filters** — narrow the candidate set by category, fabrication process, common forms, usage frequency, and magnetic classification (inherited from the Browse page via URL params)
 2. **Property range filters** — up to 5 numeric constraints (e.g. yield strength ≥ 500 MPa, density ≤ 5 g/cm³)
-3. **Merit index ranking** — rank remaining candidates by any of M1–M13 and return the top N
+3. **Merit index ranking** — rank remaining candidates by any of M1–M11 and return the top N
 
 Results display as a selectable table that feeds directly into the Compare page.
 
@@ -603,7 +601,7 @@ A single `<select>` with "None" and all 13 indices (grouped by Stiffness / Stren
 
 1. Compute `MERIT_INDICES[i].fn(material)` for each remaining candidate
 2. Exclude materials returning `null` (missing required inputs)
-3. Sort descending (higherIsBetter) or ascending (M11, M12)
+3. Sort descending (higherIsBetter) or ascending (M9, M10)
 4. Truncate to `maxResults`
 
 When a merit index is active, a column is added to the results table showing each material's index value (3 significant figures).
@@ -699,7 +697,7 @@ async function findMaterials():
 | Select: `between` operator | Two value inputs appear |
 | Select: property with null value for a material | That material excluded |
 | Select: merit index M1 | Results sorted by E/ρ descending |
-| Select: merit index M11 | Results sorted by α/k ascending (lower is better) |
+| Select: merit index M9  | Results sorted by α/k ascending (lower is better) |
 | Select: "Select All" | All result checkboxes checked |
 | Select: "Compare Selected (3)" | Navigates to `compare.html?slugs=slug1,slug2,slug3` |
 | Select: >10 boxes checked | Compare button disabled, shows "Max 10" |
