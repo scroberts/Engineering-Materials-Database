@@ -33,7 +33,7 @@ Build a static materials database website for UVIC Design Engineering students, 
 │   │   ├── store.js        # In-memory Map cache keyed by slug
 │   │   ├── schema.js       # Schema version constants + in-browser migration runner
 │   │   ├── units.js        # Unit conversion: convert(value, fromUnit, toUnit)
-│   │   ├── derived.js      # Calculated properties and merit indices M1–M13
+│   │   ├── derived.js      # Calculated properties and merit indices M1–M11
 │   │   └── tooltips.js     # Property name → definition string map
 │   └── pages/
 │       ├── browse.js       # Filter/search/card rendering for index.html
@@ -242,7 +242,7 @@ Receives `?slugs=slug1,slug2,...` (max 10). Fetches all material JSONs in parall
 
 **CTE vs Temperature chart** — monotone cubic interpolation between table points; shown for materials with multi-point CTE tables.
 
-**Merit Index table** — one row per index (M1–M13), one column per material. Each cell shows the numeric value and an inline mini-bar (width proportional to performance within the row). Best performer highlighted. "—" for missing data. Rows grouped into collapsible sections; row checkboxes show/hide individual indices.
+**Merit Index table** — one row per index (M1–M11), one column per material. Each cell shows the numeric value and an inline mini-bar (width proportional to performance within the row). Best performer highlighted. "—" for missing data. Rows grouped into collapsible sections; row checkboxes show/hide individual indices.
 
 **CSV export** — user chooses visible-only (current display units) or all properties (canonical units).
 
@@ -387,18 +387,18 @@ Install dependencies: `pip install -r tools/requirements.txt`
 
 ### Phase 2 — Advanced Material Selection
 
-- [ ] 20. `magnetic_classification` added to manifest — extend `tools/update_manifest.py` to extract `physical.magnetic_classification.value`; regenerate `materials/index.json`
-- [ ] 21. Browse: Magnetic Classification filter — add `<fieldset id="filter-magnetic">` to `index.html` sidebar; extend `materialMatches()` in `browse.js` to filter on `?magnetic=` URL param
-- [ ] 22. Browse: "Compare All Filtered" button — shows in compare-bar when 2–10 filtered materials visible; disabled (tooltip) when >10; navigates to `compare.html?slugs=...`
-- [ ] 23. Browse: "Advanced Selection →" button — below Reset in sidebar; builds `select.html?cat=...&fab=...&form=...&freq=...&magnetic=...` from current filter state and navigates
-- [ ] 24. Nav "Select" link — add to all 5 pages (`index.html`, `material.html`, `compare.html`, `submit.html`, `select.html`) between Compare and Submit
-- [ ] 25. `select.html` — page shell: site header, nav, h1, pre-selection panel, max-results/units/temp controls, property filter rows, merit index selector, Find Materials button, results section
-- [ ] 26. `css/pages/select.css` — page-specific styles for filter rows, property selector layout, results table
-- [ ] 27. `js/pages/select.js` — pre-selection panel (read URL params, display read-only, "Edit" link); Add/Remove filter rows; unit label auto-update; Find Materials button wiring
-- [ ] 28. `js/pages/select.js` — two-phase filtering algorithm: manifest pre-filter → `loadMaterialBatch()` → property range filters → merit index ranking → top-N results
-- [ ] 29. `js/pages/select.js` — results rendering: table with checkboxes, "Select All" link, "Compare Selected (N)" button → `compare.html?slugs=...`
-- [ ] 30. `js/core/disclaimer.js` — add `select.html` to pages that load the disclaimer banner
-- [ ] 31. End-to-end verification — full checklist from SPEC.md §12.12
+- [x] 20. `magnetic_classification` added to manifest — extend `tools/update_manifest.py` to extract `physical.magnetic_classification.value`; regenerate `materials/index.json`
+- [x] 21. Browse: Magnetic Classification filter — add `<fieldset id="filter-magnetic">` to `index.html` sidebar; extend `materialMatches()` in `browse.js` to filter on `?magnetic=` URL param
+- [x] 22. Browse: "Compare All Filtered" button — shows in compare-bar when 2–10 filtered materials visible; disabled (tooltip) when >10; navigates to `compare.html?slugs=...`
+- [x] 23. Browse: "Advanced Selection →" button — below Reset in sidebar; builds `select.html?cat=...&fab=...&form=...&freq=...&magnetic=...` from current filter state and navigates
+- [x] 24. Nav "Select" link — add to all 5 pages (`index.html`, `material.html`, `compare.html`, `submit.html`, `select.html`) between Compare and Submit
+- [x] 25. `select.html` — page shell: site header, nav, h1, pre-selection panel, max-results/units/temp controls, property filter rows, merit index selector, Find Materials button, results section
+- [x] 26. `css/pages/select.css` — page-specific styles for filter rows, property selector layout, results table
+- [x] 27. `js/pages/select.js` — pre-selection panel (read URL params, display read-only, "Edit" link); Add/Remove filter rows; unit label auto-update; Find Materials button wiring
+- [x] 28. `js/pages/select.js` — two-phase filtering algorithm: manifest pre-filter → `loadMaterialBatch()` → property range filters → merit index ranking → top-N results
+- [x] 29. `js/pages/select.js` — results rendering: table with checkboxes, "Select All" link, "Compare Selected (N)" button → `compare.html?slugs=...`
+- [x] 30. `js/core/disclaimer.js` — add `select.html` to pages that load the disclaimer banner
+- [x] 31. End-to-end verification — full checklist from SPEC.md §12.12
 
 ---
 
@@ -410,6 +410,6 @@ Install dependencies: `pip install -r tools/requirements.txt`
 | Manifest generation | `python tools/update_manifest.py` | `materials/index.json` reflects all seed files |
 | Browse page | `python -m http.server`, open `index.html` | Filters narrow results; URL params update; Compare button appears |
 | Detail page | Navigate to `material.html?slug=aluminum-6061-t6` | Unit dropdowns recalculate; derived properties shown; tooltips appear |
-| Compare page | Select 3 materials → Compare | Bar charts render; merit index table shows M1–M13; CSV downloads correctly |
+| Compare page | Select 3 materials → Compare | Bar charts render; merit index table shows M1–M11; CSV downloads correctly |
 | Submit form | Fill form → Download JSON | File has canonical units, correct `schema_version`; re-uploading pre-fills form correctly |
 | Unit round-trip | Convert GPa → psi → GPa | Returns to original value within floating-point tolerance |

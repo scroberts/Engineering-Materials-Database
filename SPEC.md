@@ -413,8 +413,7 @@ This ensures old entries are never broken by format changes.
 
 > Items in this section are incomplete or pending decisions. Remove entries once resolved.
 
-- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) has values without citations.
-- **Advanced Material Selection** — Phase 2 feature; see Section 12 for full spec.
+- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) and C/SiC Woven (all properties) have values without citations.
 
 ---
 
@@ -499,7 +498,7 @@ h1: Advanced Material Selection
 ┌─ Pre-selection (from Browse) ──────────────────────── [Edit on Browse] ─┐
 │  Category: Metal                                                         │
 │  Fabrication: Machining, Welding                                         │
-│  19 materials in starting set                                            │
+│  20 materials in starting set                                            │
 │  (or "All 41 materials — no pre-filters applied")                        │
 └──────────────────────────────────────────────────────────────────────────┘
 
@@ -690,7 +689,7 @@ async function findMaterials():
 | Browse: "Compare All Filtered (N)" with 2–10 visible | Navigates to compare.html with N slugs |
 | Browse: "Compare All Filtered" with >10 visible | Button disabled |
 | Browse: "Advanced Selection →" with Metal filter active | Navigates to `select.html?cat=Metal` |
-| Select: open with `?cat=Metal` | Pre-selection shows "Category: Metal · 19 materials in starting set" |
+| Select: open with `?cat=Metal` | Pre-selection shows "Category: Metal · 20 materials in starting set" |
 | Select: open with no params | Shows "All 41 materials — no pre-filters applied" |
 | Select: yield ≥ 500 MPa (Metric) | Only materials with σ_y ≥ 0.5 GPa canonical |
 | Select: yield ≥ 72.5 ksi (Imperial) | Same result as above (72.5 ksi ≈ 500 MPa) |

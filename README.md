@@ -25,8 +25,8 @@ A static reference database of engineering material properties for Design Engine
 
 | Category | Materials |
 |---|---|
-| Metals (19) | Aluminium alloys (1100-O, 5052-H32, 6061-T6, 7075-T6), AlSi10Mg, Beryllium S65, Copper C11000, Inconel 625, Inconel 718, Invar 36, Stainless 303/304/316, Steel 4340/A2/H13/Mild A36/Spring 5160, Ti-6Al-4V |
-| Plastics (7) | ABS, ABS-FDM, Acrylic (PMMA), PEEK, PETG-FDM, PLA-FDM, POM (Delrin) |
+| Metals (20) | Aluminium alloys (1100-O, 5052-H32, 6061-T6, 7075-T6), AlSi10Mg, Beryllium S65, Brass (Free-Cutting ASTM B16), Copper C11000, Inconel 625, Inconel 718, Invar 36, Stainless 303/304/316, Steel 4340/A2/H13/Mild A36/Spring 5160, Ti-6Al-4V |
+| Plastics (6) | ABS, Acrylic (PMMA), PEEK, PETG-FDM, PLA-FDM, POM (Delrin) |
 | Ceramics (2) | Alumina Al₂O₃, Silicon Carbide |
 | Composites (3) | CFRP-UD, C-SiC Woven, GFRP Woven |
 | Elastomers (4) | EPDM, Fluorocarbon (Viton), Nitrile (NBR), Silicone (VMQ) |
@@ -180,7 +180,7 @@ js/
     loader.js           Fetch + cache manifest and material files
     store.js            In-memory Map cache
     units.js            All unit conversions
-    derived.js          Shear modulus, specific stiffness, merit indices M1–M13
+    derived.js          Shear modulus, specific stiffness, merit indices M1–M11
     schema.js           Schema version migration runner
     tooltips.js         Property label → definition map
     export.js           CSV and Excel download
@@ -193,8 +193,8 @@ js/
 
 materials/
   index.json            Generated manifest (do not edit by hand)
-  metals/               19 material JSON files
-  plastics/             7 material JSON files
+  metals/               20 material JSON files
+  plastics/             6 material JSON files
   ceramics/             2 material JSON files
   composites/           3 material JSON files
   elastomers/           4 material JSON files
