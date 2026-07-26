@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "AISI 1018 Steel (Cold-Drawn)",
+    "slug": "steel-1018-cold-drawn",
+    "category": "Metal",
+    "fabrication_processes": [ "Machining", "Welding", "Bending" ],
+    "common_forms": [ "Round Bar", "Sheet", "Plate" ],
+    "common_form_notes": "Most commonly stocked as cold-drawn round bar (the default form for machined shafts, pins, and general stock); also available hot-rolled in sheet and plate. Excellent machinability makes it a common general-purpose choice when high strength isn't required.",
+    "usage_frequency": "Common",
+    "notes": "Low-carbon (~0.18% C) steel, cold-drawn condition — mechanical properties are specific to cold-drawn bar stock and are noticeably higher than the hot-rolled condition of the same grade. Thermal properties (CTE, thermal conductivity, specific heat) are reported for the annealed condition since cold-drawn-specific thermal data wasn't found; these properties don't vary meaningfully with cold work for plain carbon steels. Young's modulus: AZoM and MatWeb sources both point to ~205 GPa (MatWeb's page literally states \"0.205 GPa\", an evident source typo for 205 GPa); TheWorldMaterial separately lists 186 GPa for the grade generally (not tied to a specific condition) — used 205 GPa as the representative value given two-source agreement. MatWeb's page also has an evident order-of-magnitude typo for Tensile Strength Ultimate (\"440000 MPa\") and Shear Modulus (\"0.0800 GPa\") — both disregarded in favor of AZoM/TheWorldMaterial agreement (440 MPa tensile) and the standard isotropic relation (shear modulus not stored; derived.js computes G = E/(2(1+ν)) ≈ 79.5 GPa from the stored E and ν, consistent with AZoM's directly stated 80.0 GPa). Shear strength derived from von Mises criterion: UTS/√3 = 440/1.732 ≈ 254 MPa. Electrical conductivity derived from MatWeb's stated resistivity (1.59×10⁻⁵ Ω·cm @ 0°C) via %IACS = (1.7241 µΩ·cm / 15.9 µΩ·cm) × 100 ≈ 10.8% IACS."
+  },
+  "typical_usage": "General-purpose machined parts, shafts, pins, dowels, spacers, mounting plates, fixtures, and carburized components (gears, worms, ratchets) where high surface hardness with a tough core is wanted. Not for high-strength or high-fatigue applications — use 4340 or a spring steel instead. The default \"just need a steel part\" choice for capstone machining.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 205,
+      "ref": "azom-1018"
+    },
+    "poissons_ratio": {
+      "value": 0.29,
+      "ref": "azom-1018"
+    },
+    "yield_strength": {
+      "value": 0.37,
+      "ref": "azom-1018"
+    },
+    "tensile_strength": {
+      "value": 0.44,
+      "ref": "azom-1018"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": 131,
+      "ref": "azom-1018"
+    },
+    "hardness_brinell": {
+      "value": 126,
+      "ref": "azom-1018"
+    },
+    "hardness_rockwell": {
+      "value": 71,
+      "scale": "B",
+      "ref": "azom-1018"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 15,
+      "ref": "azom-1018"
+    },
+    "shear_strength": {
+      "value": 0.254,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 7.87,
+      "ref": "azom-1018"
+    },
+    "electrical_conductivity": {
+      "value": 10.8,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 12.0,
+      "table": [
+        { "temp": 100, "cte": 12.0 },
+        { "temp": 400, "cte": 13.5 },
+        { "temp": 600, "cte": 14.5 }
+      ],
+      "ref": "theworldmaterial-1018"
+    },
+    "thermal_conductivity": {
+      "value": 51.9,
+      "table": [
+        { "temp": 0,   "k": 51.9 },
+        { "temp": 100, "k": 50.8 },
+        { "temp": 200, "k": 48.9 }
+      ],
+      "ref": "theworldmaterial-1018"
+    },
+    "specific_heat": {
+      "value": 486,
+      "table": [
+        { "temp": 100, "cp": 486 },
+        { "temp": 200, "cp": 519 }
+      ],
+      "ref": "theworldmaterial-1018"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Ferromagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "azom-1018", "matweb-1018", "theworldmaterial-1018" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

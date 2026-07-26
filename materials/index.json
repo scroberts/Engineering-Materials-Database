@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T04:31:09Z",
+  "generated": "2026-07-26T05:10:15Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -558,6 +558,28 @@
       "tensile_strength": 0.517,
       "density": 8.0,
       "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "steel-1018-cold-drawn",
+      "path": "materials/metals/steel-1018-cold-drawn.json",
+      "name": "AISI 1018 Steel (Cold-Drawn)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 205,
+      "yield_strength": 0.37,
+      "tensile_strength": 0.44,
+      "density": 7.87,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-4340",

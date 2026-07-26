@@ -444,5 +444,23 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.engineersedge.com/heat_transfer/thermal_diffusivity_table_13953.htm"
+  },
+  "azom-1018": {
+    "short_label": "AZoM: AISI 1018 Mild/Low Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6115"
+  },
+  "matweb-1018": {
+    "short_label": "MatWeb: AISI 1018 Mild/Low Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=c45dcf3c46b34bcf82cd0999fafba237"
+  },
+  "theworldmaterial-1018": {
+    "short_label": "TheWorldMaterial: ASTM SAE AISI 1018 Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/astm-sae-aisi-1018-carbon-steel/"
   }
 }
