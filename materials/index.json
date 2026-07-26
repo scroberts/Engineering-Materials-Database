@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T20:30:46Z",
+  "generated": "2026-07-26T20:57:08Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -650,6 +650,27 @@
       "youngs_modulus": 200,
       "yield_strength": 1.172,
       "tensile_strength": 1.276,
+      "density": 7.8,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "stainless-17-7ph-th1050",
+      "path": "materials/metals/stainless-17-7ph-th1050.json",
+      "name": "Stainless Steel 17-7 PH (Condition TH1050)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 204,
+      "yield_strength": 1.03,
+      "tensile_strength": 1.24,
       "density": 7.8,
       "magnetic_classification": "Ferromagnetic"
     },
