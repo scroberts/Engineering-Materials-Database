@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T16:34:40Z",
+  "generated": "2026-07-26T17:08:50Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -509,6 +509,27 @@
       "yield_strength": 0.483,
       "tensile_strength": 0.621,
       "density": 8.05,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "stainless-17-4ph-h1025",
+      "path": "materials/metals/stainless-17-4ph-h1025.json",
+      "name": "Stainless Steel 17-4 PH (Condition H1025)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 200,
+      "yield_strength": 1.172,
+      "tensile_strength": 1.276,
+      "density": 7.8,
       "magnetic_classification": "Ferromagnetic"
     },
     {

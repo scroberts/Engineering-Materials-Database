@@ -504,5 +504,23 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "azom-17-4ph": {
+    "short_label": "AZoM: Stainless Steel Grade 17-4 (UNS S17400)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6778"
+  },
+  "wikipedia-17-4-stainless-steel": {
+    "short_label": "Wikipedia: 17-4 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://en.wikipedia.org/wiki/17-4_stainless_steel"
+  },
+  "aksteel-17-4ph-h1025": {
+    "short_label": "AK Steel: 17-4 PH Precipitation Hardening Stainless Steel, Condition H 1025",
+    "doi": null,
+    "bibtex": null,
+    "url": null
   }
 }

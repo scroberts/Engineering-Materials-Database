@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Stainless Steel 17-4 PH (Condition H1025)",
+    "slug": "stainless-17-4ph-h1025",
+    "category": "Metal",
+    "fabrication_processes": [ "Machining", "Welding", "Polishing" ],
+    "common_forms": [ "Round Bar", "Plate" ],
+    "common_form_notes": "Commonly stocked as round bar in the as-annealed Condition A (e.g. McMaster-Carr, per ASTM A564/AMS 5643) — NOT pre-aged. Machine in the softer annealed state, then age-harden (single furnace cycle, ~4 h at 1025°F/552°C for H1025) afterward for minimal dimensional change. The properties stored here are for the aged H1025 condition; as-purchased/as-machined stock is significantly weaker (~Rockwell C30 vs. H1025's C38) until that heat-treat step is done.",
+    "usage_frequency": "Specialty",
+    "notes": "A precipitation-hardening (PH) stainless — selected deliberately for a specific combination of high strength and good corrosion resistance, not a routine/default stainless choice like 303/304/316. H1025 (aged at 1025°F/552°C) was chosen as the representative condition: the most commonly specified general-purpose temper, balancing strength, toughness, and corrosion/stress-corrosion-cracking resistance better than the higher-strength but less tough H900 condition. Strength/hardness/elongation are from AK Steel's Condition H1025-specific datasheet (these vary significantly with aging condition). Young's modulus, Poisson's ratio, and CTE are essentially condition-independent (aging affects strength via precipitate formation, not elastic stiffness) and are cross-validated across three sources: AZoM (E 190–210 GPa, ν 0.27–0.30, shear modulus 77.4 GPa — back-calculating E from G and ν gives ≈198 GPa, consistent) and Wikipedia (E 197–207 GPa, density 7800–7900 kg/m³, both agreeing closely with AK Steel's H1025 density of 7.80 g/cm³). Thermal conductivity (17.9 W/m·K) is AZoM's value explicitly labeled for Condition H900, used here as a reasonable estimate since thermal conductivity doesn't vary much with aging condition — flagged since it isn't H1025-specific. Usable temperature max (300 °C) is Wikipedia's stated corrosion-resistance service limit, not a distinct mechanical-property limit. Shear strength derived via von Mises: UTS/√3 = 1276/1.732 ≈ 737 MPa. Magnetic (ferromagnetic) due to its martensitic structure — a notable difference from the austenitic 303/304/316 grades already in this database, which are only weakly (para)magnetic."
+  },
+  "typical_usage": "High-strength, corrosion-resistant machined parts: shafts, fasteners, valve components, pump parts, and structural fittings in marine/ROV/AUV applications where 303/304/316 don't offer enough strength. Common in aerospace and firearms industries for the same strength/corrosion-resistance combination. Choose a lower-aging-temperature condition (e.g. H900) instead if maximum strength matters more than toughness/corrosion resistance; choose a higher one (H1075/H1150) if the reverse.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 200,
+      "ref": "wikipedia-17-4-stainless-steel"
+    },
+    "poissons_ratio": {
+      "value": 0.28,
+      "ref": "azom-17-4ph"
+    },
+    "yield_strength": {
+      "value": 1.172,
+      "ref": "aksteel-17-4ph-h1025"
+    },
+    "tensile_strength": {
+      "value": 1.276,
+      "ref": "aksteel-17-4ph-h1025"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": 300,
+      "ref": "wikipedia-17-4-stainless-steel"
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": 38,
+      "scale": "C",
+      "ref": "aksteel-17-4ph-h1025"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 8.0,
+      "ref": "aksteel-17-4ph-h1025"
+    },
+    "shear_strength": {
+      "value": 0.737,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 7.8,
+      "ref": "aksteel-17-4ph-h1025"
+    },
+    "electrical_conductivity": {
+      "value": null,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 10.8,
+      "table": [],
+      "ref": "azom-17-4ph"
+    },
+    "thermal_conductivity": {
+      "value": 17.9,
+      "table": [],
+      "ref": "azom-17-4ph"
+    },
+    "specific_heat": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Ferromagnetic",
+      "ref": "wikipedia-17-4-stainless-steel"
+    }
+  },
+  "references": [ "azom-17-4ph", "wikipedia-17-4-stainless-steel", "aksteel-17-4ph-h1025" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
