@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Nylon 12 (PA12)",
+    "slug": "pa12-nylon12",
+    "category": "Plastic",
+    "fabrication_processes": [ "Machining", "Moulding", "3D Print (SLS)" ],
+    "common_forms": [ "Round Bar", "Sheet", "Powder" ],
+    "common_form_notes": "The dominant SLS (Selective Laser Sintering) 3D printing powder — most SLS-printed nylon parts are PA12 unless otherwise specified. Also stocked as bulk rod/sheet for machining, and used for its low moisture absorption and good chemical/fuel resistance in tubing and fittings.",
+    "usage_frequency": "Specialty",
+    "notes": "Values from a generic materials-database-style source (min value of reported min–max ranges used throughout, given as a representative figure — actual grades vary within the stated range). Absorbs less moisture than PA6, so its properties are more stable in humid service than PA6's. Source's reported ductility/elongation figure (~1.9–2.1%) was not used — it reads as implausibly low for PA12, which has a reputation for high flexibility and impact toughness, and no reliable alternate figure was found across the given sources; left null rather than propagate a likely-erroneous number. Similarly, the source's stated \"Minimum Service Temperature\" (90 K ≈ −183 °C) reads as a generic materials-science figure rather than a practical design limit (real-world low-temperature embrittlement for nylons typically becomes a concern far above that), so usable_temp_range is left null rather than suggest an unrealistic cryogenic rating. Glass transition converted from source's 330 K. Yield strength derived from the source's \"Elastic Limit\" (47 MPa) — treated as the closest per-source analog to yield strength for an unreinforced thermoplastic, not a directly-labeled \"yield strength\" row."
+  },
+  "typical_usage": "SLS-printed functional prototypes and end-use parts (brackets, housings, snap-fits, living hinges) needing good impact toughness and low moisture pickup; fuel lines, pneumatic tubing, and cable jacketing where chemical resistance matters. Choose over PA6 when moisture stability or SLS printability is the priority; choose PA6 (or POM) instead for higher stiffness/strength bulk-machined parts.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 1.6,
+      "ref": "azom-pa12"
+    },
+    "poissons_ratio": {
+      "value": 0.38,
+      "ref": "azom-pa12"
+    },
+    "yield_strength": {
+      "value": 0.047,
+      "ref": "azom-pa12"
+    },
+    "tensile_strength": {
+      "value": 0.055,
+      "ref": "azom-pa12"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": 49,
+      "ref": "azom-pa12"
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": 1.2,
+      "ref": "azom-pa12"
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": null,
+      "ref": null
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 1.02,
+      "ref": "azom-pa12"
+    },
+    "electrical_conductivity": {
+      "value": 0,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 90,
+      "table": [],
+      "ref": "azom-pa12"
+    },
+    "thermal_conductivity": {
+      "value": 0.17,
+      "table": [],
+      "ref": "azom-pa12"
+    },
+    "specific_heat": {
+      "value": 1700,
+      "table": [],
+      "ref": "azom-pa12"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": 56.85,
+      "ref": "azom-pa12"
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "azom-pa12", "nylonplastic-pa6-vs-pa12" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

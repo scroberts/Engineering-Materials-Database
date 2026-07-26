@@ -468,5 +468,23 @@
     "doi": null,
     "bibtex": null,
     "url": "https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma6063t5"
+  },
+  "azom-pa6": {
+    "short_label": "AZoM: Polyamide 6 (Nylon 6, PA 6)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=442"
+  },
+  "azom-pa12": {
+    "short_label": "AZoM: Polyamide 12 (Nylon 12, PA 12)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/properties.aspx?ArticleID=753"
+  },
+  "nylonplastic-pa6-vs-pa12": {
+    "short_label": "NylonPlastic.com: PA6 vs PA12 Comparison Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://nylonplastic.com/pa6-vs-pa12-comparison-guide/"
   }
 }

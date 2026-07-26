@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Nylon 6 (PA6)",
+    "slug": "pa6-nylon6",
+    "category": "Plastic",
+    "fabrication_processes": [ "Machining", "Moulding", "Extrusion", "3D Print (FDM)" ],
+    "common_forms": [ "Round Bar", "Sheet", "Plate" ],
+    "common_form_notes": "Widely stocked as extruded rod, sheet, and plate for machining (gears, bushings, wear pads). Also available as FDM filament, though less common than PA12/nylon-composite blends for printing.",
+    "usage_frequency": "Common",
+    "notes": "Values are for the general-purpose (unreinforced, unfilled) grade. Nylon is strongly hygroscopic — mechanical properties reported here (tensile 40 MPa, flexural-modulus-derived stiffness 1.0 GPa) appear to reflect a moisture-conditioned state; a separate source (nylonplastic.com comparison guide) cites dry-as-molded PA6 at ~80 MPa tensile and ~3.2 GPa flexural modulus — roughly double/triple. Real parts absorb ambient moisture in service, so design margins should account for this drop rather than assuming dry-as-molded values; check the specific grade's datasheet if this matters for your application. Young's modulus stored here is the source's Flexural Modulus (no separate tensile/Young's modulus was reported) — flexural and tensile modulus are usually close for rigid unreinforced thermoplastics but are not identical measurements. Shear strength not derived (von Mises criterion is for ductile isotropic metals, not applied here). Melting point is a processing range (230–280 °C per source); 230 °C stored as the representative (lower-bound) value."
+  },
+  "typical_usage": "Gears, bushings, bearings, rollers, wear plates, cable ties, and general-purpose machined or moulded parts needing a tough, low-friction, wear-resistant plastic. A common substitute for POM/Delrin where slightly better toughness and lower cost matter more than POM's superior dimensional stability and lower moisture sensitivity.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 1.0,
+      "ref": "azom-pa6"
+    },
+    "poissons_ratio": {
+      "value": null,
+      "ref": null
+    },
+    "yield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "tensile_strength": {
+      "value": 0.04,
+      "ref": "azom-pa6"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": 80,
+      "ref": "azom-pa6"
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": 75,
+      "scale": "D",
+      "ref": "azom-pa6"
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 60,
+      "ref": "azom-pa6"
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 1.14,
+      "ref": "azom-pa6"
+    },
+    "electrical_conductivity": {
+      "value": 0,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 100,
+      "table": [],
+      "ref": "azom-pa6"
+    },
+    "thermal_conductivity": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "specific_heat": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 230,
+      "ref": "azom-pa6"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "azom-pa6", "nylonplastic-pa6-vs-pa12" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

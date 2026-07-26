@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T05:19:20Z",
+  "generated": "2026-07-26T05:38:32Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -826,6 +826,51 @@
       "yield_strength": null,
       "tensile_strength": 0.07,
       "density": 1.18,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "pa12-nylon12",
+      "path": "materials/plastics/pa12-nylon12.json",
+      "name": "Nylon 12 (PA12)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Moulding",
+        "3D Print (SLS)"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 1.6,
+      "yield_strength": 0.047,
+      "tensile_strength": 0.055,
+      "density": 1.02,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "pa6-nylon6",
+      "path": "materials/plastics/pa6-nylon6.json",
+      "name": "Nylon 6 (PA6)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Moulding",
+        "Extrusion",
+        "3D Print (FDM)"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 1.0,
+      "yield_strength": null,
+      "tensile_strength": 0.04,
+      "density": 1.14,
       "magnetic_classification": "Diamagnetic"
     },
     {
