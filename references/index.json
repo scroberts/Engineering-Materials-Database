@@ -486,5 +486,17 @@
     "doi": null,
     "bibtex": null,
     "url": "https://nylonplastic.com/pa6-vs-pa12-comparison-guide/"
+  },
+  "matweb-nylon6-overview": {
+    "short_label": "MatWeb: Overview of Materials for Nylon 6, Unreinforced",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=fb48404b7e04433bb3ee3d2a0af922ff"
+  },
+  "smithmetal-pa12": {
+    "short_label": "Smiths Metal Centres: Extruded Nylon 12 (PA12) Datasheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
   }
 }

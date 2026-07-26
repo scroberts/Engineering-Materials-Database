@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T05:38:32Z",
+  "generated": "2026-07-26T06:14:43Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -844,8 +844,8 @@
         "Powder"
       ],
       "usage_frequency": "Specialty",
-      "youngs_modulus": 1.6,
-      "yield_strength": 0.047,
+      "youngs_modulus": 1.8,
+      "yield_strength": 0.05,
       "tensile_strength": 0.055,
       "density": 1.02,
       "magnetic_classification": "Diamagnetic"
@@ -867,9 +867,9 @@
         "Plate"
       ],
       "usage_frequency": "Common",
-      "youngs_modulus": 1.0,
-      "yield_strength": null,
-      "tensile_strength": 0.04,
+      "youngs_modulus": 2.64,
+      "yield_strength": 0.0638,
+      "tensile_strength": 0.067,
       "density": 1.14,
       "magnetic_classification": "Diamagnetic"
     },

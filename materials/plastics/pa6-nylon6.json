@@ -8,38 +8,38 @@
     "common_forms": [ "Round Bar", "Sheet", "Plate" ],
     "common_form_notes": "Widely stocked as extruded rod, sheet, and plate for machining (gears, bushings, wear pads). Also available as FDM filament, though less common than PA12/nylon-composite blends for printing.",
     "usage_frequency": "Common",
-    "notes": "Values are for the general-purpose (unreinforced, unfilled) grade. Nylon is strongly hygroscopic — mechanical properties reported here (tensile 40 MPa, flexural-modulus-derived stiffness 1.0 GPa) appear to reflect a moisture-conditioned state; a separate source (nylonplastic.com comparison guide) cites dry-as-molded PA6 at ~80 MPa tensile and ~3.2 GPa flexural modulus — roughly double/triple. Real parts absorb ambient moisture in service, so design margins should account for this drop rather than assuming dry-as-molded values; check the specific grade's datasheet if this matters for your application. Young's modulus stored here is the source's Flexural Modulus (no separate tensile/Young's modulus was reported) — flexural and tensile modulus are usually close for rigid unreinforced thermoplastics but are not identical measurements. Shear strength not derived (von Mises criterion is for ductile isotropic metals, not applied here). Melting point is a processing range (230–280 °C per source); 230 °C stored as the representative (lower-bound) value."
+    "notes": "Values are for the general-purpose (unreinforced, unfilled) grade, primarily from MatWeb's aggregate \"Overview of materials for Nylon 6, Unreinforced\" page, which averages across hundreds of specific commercial datasheets (grade counts noted below) — more statistically representative for a general/typical entry than any single manufacturer's datasheet. Grade counts behind the stored values: Young's modulus n=465, yield strength n=458, tensile strength n=323, elongation n=626, density n=816, shear strength n=8, compressive yield n=17, specific heat n=42, melting point n=604, max service temperature n=108, glass transition n=5, Poisson's ratio n=7, Shore D hardness n=46. Nylon is strongly hygroscopic — the stored tensile strength (67.0 MPa) is an average across moisture states and sits between AZoM's single moisture-conditioned datasheet value (40 MPa) and the nylonplastic.com comparison guide's dry-as-molded figure (~80 MPa); real parts absorb ambient moisture in service, so use the low end of this range for conservative design margins. MatWeb's aggregate also reported a Thermal Conductivity average of 2.89 W/m·K (n=64) — disregarded as implausible for an unreinforced thermoplastic (typical nylon k is ~0.2–0.3 W/m·K; the source's own stated range tops out at 31.7 W/m·K, a metal-like figure that suggests contamination from filled/reinforced grades despite the \"Unreinforced\" filter, or a data-entry error in the aggregated dataset); left null rather than propagate it. Shear strength is a directly-reported value, not derived. Electrical conductivity is nominally 0% IACS (electrical insulator)."
   },
   "typical_usage": "Gears, bushings, bearings, rollers, wear plates, cable ties, and general-purpose machined or moulded parts needing a tough, low-friction, wear-resistant plastic. A common substitute for POM/Delrin where slightly better toughness and lower cost matter more than POM's superior dimensional stability and lower moisture sensitivity.",
   "mechanical_common": {
     "youngs_modulus": {
-      "value": 1.0,
-      "ref": "azom-pa6"
+      "value": 2.64,
+      "ref": "matweb-nylon6-overview"
     },
     "poissons_ratio": {
-      "value": null,
-      "ref": null
+      "value": 0.349,
+      "ref": "matweb-nylon6-overview"
     },
     "yield_strength": {
-      "value": null,
-      "ref": null
+      "value": 0.0638,
+      "ref": "matweb-nylon6-overview"
     },
     "tensile_strength": {
-      "value": 0.04,
-      "ref": "azom-pa6"
+      "value": 0.067,
+      "ref": "matweb-nylon6-overview"
     },
     "compressive_modulus": {
       "value": null,
       "ref": null
     },
     "compressive_strength": {
-      "value": null,
-      "ref": null
+      "value": 66.6,
+      "ref": "matweb-nylon6-overview"
     },
     "usable_temp_range": {
       "min": null,
-      "max": 80,
-      "ref": "azom-pa6"
+      "max": 122,
+      "ref": "matweb-nylon6-overview"
     }
   },
   "mechanical_other": {
@@ -73,25 +73,25 @@
       "ref": null
     },
     "hardness_shore": {
-      "value": 75,
+      "value": 77.3,
       "scale": "D",
-      "ref": "azom-pa6"
+      "ref": "matweb-nylon6-overview"
     },
     "ductility": {
       "min": null,
       "max": null,
-      "typical": 60,
-      "ref": "azom-pa6"
+      "typical": 64,
+      "ref": "matweb-nylon6-overview"
     },
     "shear_strength": {
-      "value": null,
-      "ref": null
+      "value": 0.0688,
+      "ref": "matweb-nylon6-overview"
     }
   },
   "physical": {
     "density": {
       "value": 1.14,
-      "ref": "azom-pa6"
+      "ref": "matweb-nylon6-overview"
     },
     "electrical_conductivity": {
       "value": 0,
@@ -102,9 +102,9 @@
       "ref": null
     },
     "thermal_expansion": {
-      "value": 100,
+      "value": 80.5,
       "table": [],
-      "ref": "azom-pa6"
+      "ref": "matweb-nylon6-overview"
     },
     "thermal_conductivity": {
       "value": null,
@@ -112,28 +112,28 @@
       "ref": null
     },
     "specific_heat": {
-      "value": null,
+      "value": 1710,
       "table": [],
-      "ref": null
+      "ref": "matweb-nylon6-overview"
     },
     "thermal_diffusivity": {
       "value": null,
       "ref": null
     },
     "melting_point_tm": {
-      "value": 230,
-      "ref": "azom-pa6"
+      "value": 220,
+      "ref": "matweb-nylon6-overview"
     },
     "glass_transition_tg": {
-      "value": null,
-      "ref": null
+      "value": 120,
+      "ref": "matweb-nylon6-overview"
     },
     "magnetic_classification": {
       "value": "Diamagnetic",
       "ref": null
     }
   },
-  "references": [ "azom-pa6", "nylonplastic-pa6-vs-pa12" ],
+  "references": [ "azom-pa6", "nylonplastic-pa6-vs-pa12", "matweb-nylon6-overview" ],
   "metadata": {
     "submitted_by": null,
     "submitted_date": "2026-07-26",
