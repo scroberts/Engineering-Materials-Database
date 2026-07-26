@@ -546,5 +546,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.eos.info/05-datasheet-images/Assets_MDS_Metal/EOS_MargingSteel_MS1/Material_DataSheet_EOS_MaragingSteel_MS1_en.pdf"
+  },
+  "protolabs-316l-dmls": {
+    "short_label": "MatWeb: Proto Labs 316L Stainless Steel - DMLS",
+    "doi": null,
+    "bibtex": null,
+    "url": null
   }
 }

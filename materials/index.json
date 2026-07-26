@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T19:07:42Z",
+  "generated": "2026-07-26T19:18:54Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -639,6 +639,25 @@
       "youngs_modulus": 193,
       "yield_strength": 0.2,
       "tensile_strength": 0.517,
+      "density": 8.0,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "stainless-316l-dmls",
+      "path": "materials/metals/stainless-316l-dmls.json",
+      "name": "Stainless Steel 316L (DMLS)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 193,
+      "yield_strength": 0.172,
+      "tensile_strength": 0.483,
       "density": 8.0,
       "magnetic_classification": "Paramagnetic"
     },
