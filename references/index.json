@@ -576,5 +576,23 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "specialmetals-nitinol-shape-memory": {
+    "short_label": "MatWeb: Special Metals Nitinol High-Temperature Shape Memory Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "specialmetals-nitinol-superelastic": {
+    "short_label": "MatWeb: Special Metals Nitinol Superelastic Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "goodfellow-nitinol-overview": {
+    "short_label": "Goodfellow: Nitinol - The Shape-Memory Alloy Explained",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.goodfellow.com/usa/resources/nitinol-where-motion-meets-memory/"
   }
 }

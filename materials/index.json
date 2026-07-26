@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T20:15:39Z",
+  "generated": "2026-07-26T20:30:46Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -591,6 +591,46 @@
       "tensile_strength": 2.115,
       "density": 8.0,
       "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "nitinol-shape-memory",
+      "path": "materials/metals/nitinol-shape-memory.json",
+      "name": "Nitinol (NiTi Shape Memory Alloy)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Tube"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 1.24,
+      "density": 6.5,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "nitinol-superelastic",
+      "path": "materials/metals/nitinol-superelastic.json",
+      "name": "Nitinol (NiTi Superelastic Alloy)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Tube"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": null,
+      "yield_strength": 0.814,
+      "tensile_strength": 1.07,
+      "density": 6.5,
+      "magnetic_classification": "Paramagnetic"
     },
     {
       "slug": "stainless-17-4ph-h1025",
