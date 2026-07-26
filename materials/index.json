@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T06:14:43Z",
+  "generated": "2026-07-26T16:34:40Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -928,6 +928,28 @@
       "yield_strength": null,
       "tensile_strength": 0.065,
       "density": 1.24,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "polycarbonate",
+      "path": "materials/plastics/polycarbonate.json",
+      "name": "Polycarbonate (PC)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Bending",
+        "Polishing",
+        "3D Print (FDM)"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 2.31,
+      "yield_strength": 0.0627,
+      "tensile_strength": 0.0659,
+      "density": 1.2,
       "magnetic_classification": "Diamagnetic"
     },
     {
