@@ -318,9 +318,21 @@ def _empty_result(stub: str, site: str, source_url: str | None) -> dict:
     }
 
 
+_ROCKWELL_SCALE_PATH = "mechanical_other.hardness_rockwell"
+_ROCKWELL_SCALE_RE = re.compile(r"rockwell\s*([a-z])\b", re.I)
+
+
+def _rockwell_scale(name: str) -> str | None:
+    """Rockwell scale letter from a property name, e.g. 'Hardness, Rockwell C' -> 'C'."""
+    m = _ROCKWELL_SCALE_RE.search(name)
+    return m.group(1).upper() if m else None
+
+
 def _finish(result: dict, parsed: dict, raw: dict) -> dict:
     """Merge parsed properties and raw leftovers into the result template."""
     for path, value in parsed.items():
+        if path == f"{_ROCKWELL_SCALE_PATH}__scale":
+            continue  # side-channel, consumed by the hardness_rockwell branch below
         if path.startswith("mechanical_common."):
             key = path.split(".", 1)[1]
             result["mechanical_common"][key] = _vp(value)
@@ -332,7 +344,9 @@ def _finish(result: dict, parsed: dict, raw: dict) -> dict:
                 }
             elif key == "hardness_rockwell":
                 result["mechanical_other"]["hardness_rockwell"] = {
-                    "value": value, "scale": None, "ref": None
+                    "value": value,
+                    "scale": parsed.get(f"{_ROCKWELL_SCALE_PATH}__scale"),
+                    "ref": None,
                 }
             else:
                 result["mechanical_other"][key] = _vp(value)
@@ -371,6 +385,10 @@ class BaseParser:
             if result:
                 path, canon = result
                 parsed[path] = canon
+                if path == _ROCKWELL_SCALE_PATH:
+                    scale = _rockwell_scale(name)
+                    if scale:
+                        parsed[f"{_ROCKWELL_SCALE_PATH}__scale"] = scale
             else:
                 raw[name] = f"{value_str} {unit_str}".strip()
         return parsed, raw

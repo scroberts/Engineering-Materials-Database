@@ -51,6 +51,17 @@
             <input type="file" id="prefill-upload" accept=".json" class="submit-prefill-input">
             <span id="prefill-status" class="submit-prefill-status"></span>
           </div>
+          <div class="submit-prefill-row">
+            <label class="submit-prefill-label" for="prefill-html-upload">Pre-fill from HTML:</label>
+            <input type="file" id="prefill-html-upload" accept=".html,.htm" class="submit-prefill-input">
+            <span id="prefill-html-status" class="submit-prefill-status"></span>
+          </div>
+          <div class="submit-prefill-url-row" id="prefill-html-url-row" hidden>
+            <label class="submit-prefill-label" for="prefill-html-url">Source URL (not found in file):</label>
+            <input type="url" id="prefill-html-url" class="submit-prefill-input" placeholder="https://...">
+            <button type="button" id="prefill-html-url-confirm" class="btn-ref-save">Use this URL</button>
+            <button type="button" id="prefill-html-url-skip" class="btn-ref-cancel">Skip (fields only)</button>
+          </div>
         </div>
 
         <form id="submit-form" novalidate>

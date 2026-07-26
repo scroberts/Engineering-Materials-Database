@@ -12,6 +12,7 @@
 
 import { loadReferences, loadMaterial } from '../core/loader.js';
 import { migrateToLatest } from '../core/schema.js';
+import { parseHtmlToMaterial } from '../core/htmlImport.js';
 import {
   PRESSURE_UNITS, COMP_STRENGTH_UNITS, FRACTURE_UNITS, TEMPERATURE_UNITS,
   DENSITY_UNITS, ELECTRICAL_UNITS, CTE_UNITS, THERMAL_COND_UNITS,
@@ -34,6 +35,9 @@ let _refs = {};
  * downloaded JSON under `new_references` so it survives a round-trip.
  */
 let _canonicalKeys = new Set();
+
+/** Parsed HTML import waiting on a manual source-URL decision ({ parsed, fileName } or null). */
+let _pendingHtmlImport = null;
 
 // ── Boot ────────────────────────────────────────────────────────────────────
 
@@ -305,6 +309,22 @@ function saveBibtexRef() {
   finishSave();
 }
 
+/** Slugify a reference label into a unique, unused key in `_refs`. */
+function slugifyRefKey(label, avoidKey = null) {
+  const base = label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  let key = base; let n = 2;
+  while (_refs[key] && key !== avoidKey) { key = `${base}-${n++}`; }
+  return key;
+}
+
+/** Add a reference entry directly (no form involved) and refresh dependent UI. Returns the key. */
+function addUrlReference(label, url) {
+  const key = slugifyRefKey(label);
+  _refs[key] = { short_label: label, doi: null, bibtex: null, url };
+  renderRefPanel();
+  return key;
+}
+
 function saveUrlRef() {
   const labelIn = document.getElementById('ref-url-label-input');
   const urlIn   = document.getElementById('ref-url-input');
@@ -316,13 +336,7 @@ function saveUrlRef() {
 
   // Auto-generate key from label if blank (and not editing)
   let key = _editingKey ?? keyIn.value.trim();
-  if (!key) {
-    key = label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-    // Ensure unique
-    let k = key; let n = 2;
-    while (_refs[k] && k !== _editingKey) { k = `${key}-${n++}`; }
-    key = k;
-  }
+  if (!key) key = slugifyRefKey(label, _editingKey);
 
   _refs[key] = {
     short_label: label,
@@ -1177,11 +1191,99 @@ function wireForm() {
     }
   });
 
+  // Pre-fill from HTML (see js/core/htmlImport.js)
+  document.getElementById('prefill-html-upload').addEventListener('change', async e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const status = document.getElementById('prefill-html-status');
+    const urlRow = document.getElementById('prefill-html-url-row');
+    try {
+      const text   = await file.text();
+      const parsed = parseHtmlToMaterial(file.name, text);
+      if (parsed.sourceUrl) {
+        const key = addUrlReference(referenceLabel(parsed, file.name), parsed.sourceUrl);
+        applyHtmlPrefill(parsed, key);
+        urlRow.hidden = true;
+      } else {
+        _pendingHtmlImport = { parsed, fileName: file.name };
+        urlRow.hidden = false;
+        status.style.color = '';
+        status.textContent =
+          `Parsed ${parsed.populatedCount} propert${parsed.populatedCount === 1 ? 'y' : 'ies'} from ${parsed.siteLabel}, ` +
+          `but no source URL was found in the file — enter one below, or skip to pre-fill fields without a reference.`;
+      }
+    } catch (err) {
+      status.textContent = `Error: ${err.message}`;
+      status.style.color = 'var(--color-danger)';
+    }
+  });
+
+  document.getElementById('prefill-html-url-confirm').addEventListener('click', () => {
+    if (!_pendingHtmlImport) return;
+    const { parsed, fileName } = _pendingHtmlImport;
+    const url = document.getElementById('prefill-html-url').value.trim();
+    const key = url ? addUrlReference(referenceLabel(parsed, fileName), url) : null;
+    applyHtmlPrefill(parsed, key);
+    dismissHtmlUrlPrompt();
+  });
+
+  document.getElementById('prefill-html-url-skip').addEventListener('click', () => {
+    if (!_pendingHtmlImport) return;
+    applyHtmlPrefill(_pendingHtmlImport.parsed, null);
+    dismissHtmlUrlPrompt();
+  });
+
   // Download button
   document.getElementById('btn-download').addEventListener('click', downloadJSON);
 
   // Add-ref panel wiring
   wireAddRefForm();
+}
+
+// ── Pre-fill from HTML ────────────────────────────────────────────────────────
+
+function referenceLabel(parsed, fallbackName) {
+  return `${parsed.mat.identification.name ?? fallbackName} — ${parsed.siteLabel}`;
+}
+
+function dismissHtmlUrlPrompt() {
+  document.getElementById('prefill-html-url-row').hidden = true;
+  document.getElementById('prefill-html-url').value = '';
+  _pendingHtmlImport = null;
+}
+
+/**
+ * Set ref = refKey on every populated leaf in mat's property sections, so that
+ * prefillForm() (unmodified) wires up each field's reference dropdown as it
+ * populates the field itself.
+ */
+function assignRefToPopulated(mat, refKey) {
+  for (const section of ['mechanical_common', 'mechanical_other', 'physical']) {
+    const obj = mat[section];
+    if (!obj) continue;
+    for (const prop of Object.values(obj)) {
+      if (!prop || typeof prop !== 'object' || !('ref' in prop)) continue;
+      const hasValue = ['value', 'typical', 'min', 'max'].some(k => prop[k] != null);
+      if (hasValue) prop.ref = refKey;
+    }
+  }
+}
+
+function applyHtmlPrefill({ mat, siteLabel, populatedCount, unmatchedRaw }, refKey) {
+  if (refKey) assignRefToPopulated(mat, refKey);
+  prefillForm(migrateToLatest(mat));
+
+  const parts = [`Pre-filled ${populatedCount} propert${populatedCount === 1 ? 'y' : 'ies'} from ${siteLabel}`];
+  if (refKey) parts.push(`added reference [${refKey}] and linked it to all populated fields`);
+  const rawCount = Object.keys(unmatchedRaw).length;
+  if (rawCount) {
+    parts.push(`${rawCount} propert${rawCount === 1 ? 'y' : 'ies'} not recognized (see console)`);
+    console.log('Unrecognized properties from HTML import:', unmatchedRaw);
+  }
+  const status = document.getElementById('prefill-html-status');
+  status.style.color = '';
+  status.textContent = parts.join(' — ') +
+    '. Existing values in these fields were overwritten — review before downloading.';
 }
 
 // ── Pre-fill ─────────────────────────────────────────────────────────────────
@@ -1441,6 +1543,7 @@ function validateExport(mat) {
   if (!/^[a-z0-9-]+$/.test(mat.identification.slug || ''))
     errs.push('• Slug must be lowercase letters, numbers, and hyphens only');
   if (!mat.identification.category) errs.push('• Category is required');
+  if (!mat.identification.usage_frequency) errs.push('• Usage Frequency is required');
   const hasValue = (obj) => Object.values(obj ?? {}).some(p => p?.value != null);
   if (!hasValue(mat.mechanical_common) && !hasValue(mat.physical))
     errs.push('• At least one mechanical or physical property value is required');
