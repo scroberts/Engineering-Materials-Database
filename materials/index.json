@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T19:27:46Z",
+  "generated": "2026-07-26T20:05:47Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -532,13 +532,34 @@
       "magnetic_classification": "Ferromagnetic"
     },
     {
+      "slug": "magnesium-az31b-h24",
+      "path": "materials/metals/magnesium-az31b-h24.json",
+      "name": "Magnesium AZ31B-H24",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 45.0,
+      "yield_strength": 0.22,
+      "tensile_strength": 0.29,
+      "density": 1.77,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
       "slug": "maraging-300-dmls-aged",
       "path": "materials/metals/maraging-300-dmls-aged.json",
       "name": "Maraging Steel 300 (DMLS, Aged)",
       "category": "Metal",
       "fabrication_processes": [
         "3D Print (DMLS/SLM)",
-        "Machining"
+        "Machining",
+        "Welding"
       ],
       "common_forms": [
         "Powder"

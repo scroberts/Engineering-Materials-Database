@@ -558,5 +558,17 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.eos.info/var/assets/03_system-related-assets/material-related-contents/metal-materials-and-examples/metal-material-datasheet/titan/ti64/material_datasheet_eos_titanium_ti64_grade5_en_web.pdf"
+  },
+  "mdpi-maraging-haz-embrittlement-2024": {
+    "short_label": "MDPI/PMC: Embrittlement Fracture Behavior and Mechanical Properties in HAZ of Welded Maraging Steel",
+    "doi": "10.3390/ma17020440",
+    "bibtex": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10817506/"
+  },
+  "matweb-az31b-h24": {
+    "short_label": "MatWeb: Magnesium AZ31B-H24, Hard Rolled Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
   }
 }
