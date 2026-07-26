@@ -377,6 +377,15 @@ class BaseParser:
         Given [(name, value_str, unit_str), ...], apply _map_property to each.
         Returns (parsed, raw) where parsed = {schema_path: canonical_value}
         and raw = {name: value_str + unit_str} for unmapped rows.
+
+        First match per schema path wins, not last. Found via a real AISI 1018
+        AZoM page: rows like "Hardness, Rockwell B (Converted from Brinell
+        hardness)" spuriously substring-match the hardness_brinell pattern.
+        Last-write-wins let that overwrite the correct primary "Hardness,
+        Brinell" row (126) with an unrelated converted value (71) — silently
+        wrong, not just missing. The primary row for a property consistently
+        appears before parenthetical cross-references to it. (js/core/htmlImport.js
+        has the identical fix, found and applied there first.)
         """
         parsed = {}
         raw = {}
@@ -384,11 +393,12 @@ class BaseParser:
             result = _map_property(name, value_str, unit_str)
             if result:
                 path, canon = result
-                parsed[path] = canon
-                if path == _ROCKWELL_SCALE_PATH:
-                    scale = _rockwell_scale(name)
-                    if scale:
-                        parsed[f"{_ROCKWELL_SCALE_PATH}__scale"] = scale
+                if path not in parsed:
+                    parsed[path] = canon
+                    if path == _ROCKWELL_SCALE_PATH:
+                        scale = _rockwell_scale(name)
+                        if scale:
+                            parsed[f"{_ROCKWELL_SCALE_PATH}__scale"] = scale
             else:
                 raw[name] = f"{value_str} {unit_str}".strip()
         return parsed, raw
