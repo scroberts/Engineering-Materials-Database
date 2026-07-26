@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T17:08:50Z",
+  "generated": "2026-07-26T17:20:46Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -286,6 +286,26 @@
       "yield_strength": 0.035,
       "tensile_strength": 0.09,
       "density": 2.71,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "aluminum-2024-t3",
+      "path": "materials/metals/aluminum-2024-t3.json",
+      "name": "Aluminum 2024-T3",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 73.1,
+      "yield_strength": 0.345,
+      "tensile_strength": 0.483,
+      "density": 2.78,
       "magnetic_classification": "Paramagnetic"
     },
     {
