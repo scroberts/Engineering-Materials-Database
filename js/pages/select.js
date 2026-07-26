@@ -15,6 +15,12 @@ import {
   convertThermalCond, convertSpecificHeat, convertThermalDiff,
 } from '../core/units.js';
 
+function escHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 // ── Filterable property definitions ────────────────────────────────────────
 
 const PROPERTIES = [
@@ -205,7 +211,7 @@ function buildPrefilterPanel() {
   const panel = document.getElementById('prefilter-panel');
   const tagsEl = document.getElementById('prefilter-tags');
 
-  tagsEl.innerHTML = tags.map(t => `<span class="prefilter-tag">${t}</span>`).join('');
+  tagsEl.innerHTML = tags.map(t => `<span class="prefilter-tag">${escHtml(t)}</span>`).join('');
 
   // Build edit link preserving params
   const editUrl = `index.html${location.search ? location.search : ''}`;
@@ -645,8 +651,8 @@ function renderResults(materials, rankInfo) {
       <td class="col-check">
         <input type="checkbox" class="result-check" data-slug="${slug}">
       </td>
-      <td class="col-name">${rankBadge}<a href="material.html?slug=${slug}">${id.name}</a></td>
-      <td><span class="badge badge-${catCls}">${id.category}</span></td>
+      <td class="col-name">${rankBadge}<a href="material.html?slug=${slug}">${escHtml(id.name)}</a></td>
+      <td><span class="badge badge-${catCls}">${escHtml(id.category)}</span></td>
       ${numCell(eDisp, 1)}
       ${numCell(syDisp, 0)}
       ${numCell(rDisp, sys === 'imperial' ? 4 : 2)}
