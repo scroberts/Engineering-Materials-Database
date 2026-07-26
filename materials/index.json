@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T19:18:54Z",
+  "generated": "2026-07-26T19:27:46Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -827,6 +827,25 @@
       "yield_strength": 1.1,
       "tensile_strength": 1.17,
       "density": 4.43,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "titanium-ti64-dmls-heat-treated",
+      "path": "materials/metals/titanium-ti64-dmls-heat-treated.json",
+      "name": "Titanium Ti-6Al-4V Grade 5 (DMLS, Heat Treated)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 114,
+      "yield_strength": 0.99,
+      "tensile_strength": 1.08,
+      "density": 4.4,
       "magnetic_classification": "Paramagnetic"
     },
     {

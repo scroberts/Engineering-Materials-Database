@@ -552,5 +552,11 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "eos-titanium-ti64-grade5-official-mds": {
+    "short_label": "EOS: Titanium Ti64 Grade 5 Official Material Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.eos.info/var/assets/03_system-related-assets/material-related-contents/metal-materials-and-examples/metal-material-datasheet/titan/ti64/material_datasheet_eos_titanium_ti64_grade5_en_web.pdf"
   }
 }
