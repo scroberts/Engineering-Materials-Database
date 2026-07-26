@@ -194,6 +194,10 @@ const PROP_MAP = [
   ['yield strength', 'mechanical_common.yield_strength', convertPressureToGPa],
   ['0.2% proof', 'mechanical_common.yield_strength', convertPressureToGPa],
   ['proof stress', 'mechanical_common.yield_strength', convertPressureToGPa],
+  // Bare "Tensile Strength" (no Ultimate/Yield qualifier) — must come after the
+  // qualified patterns above so those get first shot; catches unqualified rows
+  // like AZoM's plain "Tensile Strength (MPa)" cells (found on 1018 steel, PA6, PA12).
+  ['tensile strength', 'mechanical_common.tensile_strength', convertPressureToGPa],
   ['compressive yield', 'mechanical_common.compressive_strength', convertPressureToMPa],
   ['compressive strength', 'mechanical_common.compressive_strength', convertPressureToMPa],
   ['elongation', 'mechanical_other.ductility', null],
@@ -219,6 +223,8 @@ const PROP_MAP = [
   ['thermal diffusivity', 'physical.thermal_diffusivity', convertThermalDiffusivity],
   ['melting point', 'physical.melting_point_tm', convertTemp],
   ['solidus', 'physical.melting_point_tm', convertTemp],
+  ['glass transition', 'physical.glass_transition_tg', convertTemp],
+  ['glass temperature', 'physical.glass_transition_tg', convertTemp],
   ['electrical conductivity', 'physical.electrical_conductivity', null],
 ];
 

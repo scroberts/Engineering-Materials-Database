@@ -224,6 +224,10 @@ _PROP_MAP = [
     ("yield strength", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
     ("0.2% proof", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
     ("proof stress", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
+    # Bare "Tensile Strength" (no Ultimate/Yield qualifier) — must come after the
+    # qualified patterns above so those get first shot; catches unqualified rows
+    # like AZoM's plain "Tensile Strength (MPa)" cells (found on 1018 steel, PA6, PA12).
+    ("tensile strength", "mechanical_common.tensile_strength", _convert_pressure_to_gpa, "GPa"),
     ("compressive yield", "mechanical_common.compressive_strength", _convert_pressure_to_mpa, "MPa"),
     ("compressive strength", "mechanical_common.compressive_strength", _convert_pressure_to_mpa, "MPa"),
     ("elongation", "mechanical_other.ductility", None, "%"),
@@ -250,6 +254,8 @@ _PROP_MAP = [
     ("thermal diffusivity", "physical.thermal_diffusivity", _convert_thermal_diffusivity, "cm²/s"),
     ("melting point", "physical.melting_point_tm", _convert_temp, "°C"),
     ("solidus", "physical.melting_point_tm", _convert_temp, "°C"),
+    ("glass transition", "physical.glass_transition_tg", _convert_temp, "°C"),
+    ("glass temperature", "physical.glass_transition_tg", _convert_temp, "°C"),
     ("electrical conductivity", "physical.electrical_conductivity", None, "% IACS"),
 ]
 
