@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-21T05:14:26Z",
+  "generated": "2026-07-26T04:31:09Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -657,7 +657,7 @@
         "Sheet"
       ],
       "usage_frequency": "Common",
-      "youngs_modulus": 207,
+      "youngs_modulus": 190.0,
       "yield_strength": 1.38,
       "tensile_strength": 1.57,
       "density": 7.85,
@@ -683,6 +683,25 @@
       "youngs_modulus": 114,
       "yield_strength": 0.88,
       "tensile_strength": 0.95,
+      "density": 4.43,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "titanium-ti-6al-4v-grade-5-sta",
+      "path": "materials/metals/titanium-ti-6al-4v-grade-5-sta.json",
+      "name": "Titanium Ti-6Al-4V (Grade 5) STA",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 114,
+      "yield_strength": 1.1,
+      "tensile_strength": 1.17,
       "density": 4.43,
       "magnetic_classification": "Paramagnetic"
     },

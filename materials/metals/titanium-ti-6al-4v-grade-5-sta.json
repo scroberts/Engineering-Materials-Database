@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Titanium Ti-6Al-4V (Grade 5) STA",
+    "slug": "titanium-ti-6al-4v-grade-5-sta",
+    "category": "Metal",
+    "fabrication_processes": [
+      "Machining"
+    ],
+    "common_forms": [
+      "Sheet",
+      "Plate"
+    ],
+    "common_form_notes": null,
+    "usage_frequency": "Specialty",
+    "notes": "Material is solution treated and aged."
+  },
+  "typical_usage": "Aerospace, deep sea pressure hulls, landing gear components. Materials is bio-compatible, but the annealed form of Grade 5 is used for implants.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 114,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "poissons_ratio": {
+      "value": 0.33,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "yield_strength": {
+      "value": 1.1,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "tensile_strength": {
+      "value": 1.17,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": 42.9,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "hardness_vickers": {
+      "value": 396,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "hardness_brinell": {
+      "value": 379,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "hardness_rockwell": {
+      "value": 41,
+      "scale": "C",
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 10,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "shear_strength": {
+      "value": 0.76,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 4.43,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "electrical_conductivity": {
+      "value": null,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 8.6,
+      "table": [],
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "thermal_conductivity": {
+      "value": 6.7,
+      "table": [],
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "specific_heat": {
+      "value": 526.3,
+      "table": [],
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 1604,
+      "ref": "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Paramagnetic",
+      "ref": null
+    }
+  },
+  "references": [
+    "titanium-ti-6al-4v-grade-5-sta-html-source-file"
+  ],
+  "new_references": {
+    "titanium-ti-6al-4v-grade-5-sta-html-source-file": {
+      "short_label": "Titanium Ti-6Al-4V (Grade 5), STA.html — source file",
+      "doi": null,
+      "bibtex": null,
+      "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=b350a789eda946c6b86a3e4d3c577b39"
+    }
+  },
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
