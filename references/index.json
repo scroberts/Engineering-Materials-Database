@@ -528,5 +528,23 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "eos-maragingsteel-ms1-dmls": {
+    "short_label": "MatWeb: EOS MaragingSteel MS1 DMLS on EOS M 300-4",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-maraging-300-annealed": {
+    "short_label": "MatWeb: AISI Grade 18Ni (300) Maraging Steel, Nominal Annealed Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "eos-maragingsteel-ms1-official-mds": {
+    "short_label": "EOS: MaragingSteel MS1 Official Material Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.eos.info/05-datasheet-images/Assets_MDS_Metal/EOS_MargingSteel_MS1/Material_DataSheet_EOS_MaragingSteel_MS1_en.pdf"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T17:20:46Z",
+  "generated": "2026-07-26T19:07:42Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -529,6 +529,25 @@
       "yield_strength": 0.483,
       "tensile_strength": 0.621,
       "density": 8.05,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "maraging-300-dmls-aged",
+      "path": "materials/metals/maraging-300-dmls-aged.json",
+      "name": "Maraging Steel 300 (DMLS, Aged)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 190,
+      "yield_strength": 2.015,
+      "tensile_strength": 2.115,
+      "density": 8.0,
       "magnetic_classification": "Ferromagnetic"
     },
     {
