@@ -462,5 +462,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.theworldmaterial.com/astm-sae-aisi-1018-carbon-steel/"
+  },
+  "asm-matweb-6063-t5": {
+    "short_label": "ASM MatWeb: Aluminum 6063-T5",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma6063t5"
   }
 }

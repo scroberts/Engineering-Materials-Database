@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T05:10:15Z",
+  "generated": "2026-07-26T05:19:20Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -330,6 +330,29 @@
       "youngs_modulus": 68.9,
       "yield_strength": 0.276,
       "tensile_strength": 0.31,
+      "density": 2.7,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "aluminum-6063-t5",
+      "path": "materials/metals/aluminum-6063-t5.json",
+      "name": "Aluminum 6063-T5",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Extrusion",
+        "Bending"
+      ],
+      "common_forms": [
+        "Angles and Structural Profiles",
+        "Tube",
+        "Round Bar"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 68.9,
+      "yield_strength": 0.145,
+      "tensile_strength": 0.186,
       "density": 2.7,
       "magnetic_classification": "Paramagnetic"
     },

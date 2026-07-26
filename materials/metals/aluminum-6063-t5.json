@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Aluminum 6063-T5",
+    "slug": "aluminum-6063-t5",
+    "category": "Metal",
+    "fabrication_processes": [ "Machining", "Welding", "Extrusion", "Bending" ],
+    "common_forms": [ "Angles and Structural Profiles", "Tube", "Round Bar" ],
+    "common_form_notes": "The dominant architectural/structural extrusion alloy — T-slot rail (e.g. 8020-style), tube, and custom extruded profiles. Weaker than 6061-T6 but extrudes into much finer detail and has substantially higher thermal conductivity; not typically stocked as sheet/plate the way 6061 is.",
+    "usage_frequency": "Common",
+    "notes": "T5 temper: cooled from an elevated-temperature shaping process (extrusion) then artificially aged, without a separate solution heat-treatment step. Source page had no <h1>/usable <title> (legacy ASM-hosted MatWeb datasheet) — material name taken from the page's own heading text, not auto-extracted. Melting point is solidus (616 °C); liquidus 654 °C. Shear modulus (25.8 GPa per source) is not stored — derived.js computes G = E/(2(1+ν)) ≈ 25.9 GPa from the stored E and ν, consistent with the source. Electrical conductivity derived from source resistivity (3.16×10⁻⁶ Ω·cm) via %IACS = (1.7241 µΩ·cm / 3.16 µΩ·cm) × 100 ≈ 54.6% IACS."
+  },
+  "typical_usage": "T-slot extrusion framing for robotics/mechatronics chassis and enclosures, architectural trim and window/door framing, tubing, heat sinks (high thermal conductivity), and other extruded structural shapes where moderate strength and excellent extrudability/surface finish matter more than peak strength.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 68.9,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "poissons_ratio": {
+      "value": 0.33,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "yield_strength": {
+      "value": 0.145,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "tensile_strength": {
+      "value": 0.186,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": 70,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "hardness_brinell": {
+      "value": 60,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 12,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "shear_strength": {
+      "value": 0.117,
+      "ref": "asm-matweb-6063-t5"
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 2.7,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "electrical_conductivity": {
+      "value": 54.6,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 23.4,
+      "table": [
+        { "temp": 20,  "cte": 23.4 },
+        { "temp": 250, "cte": 25.6 }
+      ],
+      "ref": "asm-matweb-6063-t5"
+    },
+    "thermal_conductivity": {
+      "value": 209,
+      "table": [],
+      "ref": "asm-matweb-6063-t5"
+    },
+    "specific_heat": {
+      "value": 900,
+      "table": [],
+      "ref": "asm-matweb-6063-t5"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 616,
+      "ref": "asm-matweb-6063-t5"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Paramagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "asm-matweb-6063-t5" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
