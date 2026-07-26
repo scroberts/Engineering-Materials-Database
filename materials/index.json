@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T20:05:47Z",
+  "generated": "2026-07-26T20:15:39Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -42,6 +42,27 @@
       "tensile_strength": 0.32,
       "density": 3.1,
       "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "tungsten-carbide-wc-6co",
+      "path": "materials/ceramics/tungsten-carbide-wc-6co.json",
+      "name": "Tungsten Carbide - Cobalt (WC-6Co Cemented Carbide)",
+      "category": "Ceramic",
+      "fabrication_processes": [
+        "Machining",
+        "Sintering",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": 627,
+      "yield_strength": null,
+      "tensile_strength": 1.93,
+      "density": 14.9,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "c-sic-woven",
