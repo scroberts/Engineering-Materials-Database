@@ -5,11 +5,11 @@
     "name":       "Silicone Rubber (VMQ)",
     "slug":       "silicone-vmq",
     "category":   "Elastomer",
-    "fabrication_processes": [],
+    "fabrication_processes": ["Moulding"],
     "common_forms": ["Sheet"],
     "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer",
     "usage_frequency": "Specialty",
-    "notes": "Standard 70 Shore A VMQ (dimethyl silicone) compound. Lowest tensile and tear strength of the four common O-ring materials; not recommended for dynamic sealing or high-pressure applications. Highest CTE and widest temperature range of common elastomers. FDA-compliant grades available for food and medical contact. Poor resistance to mineral oils and aromatic solvents. Thermal diffusivity derived from k, ρ, Cp."
+    "notes": "Standard 70 Shore A VMQ (dimethyl silicone) compound. Lowest tensile and tear strength of the four common O-ring materials; not recommended for dynamic sealing or high-pressure applications. Highest CTE (coefficient of thermal expansion) and widest temperature range of common elastomers. FDA (U.S. Food and Drug Administration)-compliant grades available for food and medical contact. Poor resistance to mineral oils and aromatic solvents. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."
   },
 
   "typical_usage": "O-rings and seals where wide temperature range is critical: cryogenic systems, high-temperature ovens, food and medical equipment, vacuum systems, and static seals requiring low compression set over extended service life.",

@@ -8,7 +8,7 @@
     "common_forms": ["Round Bar", "Plate"],
     "common_form_notes": "Supplied in annealed condition for machining; hardened and tempered in-shop after roughing.",
     "usage_frequency": "Specialty",
-    "notes": "Air-hardening tool steel (AISI A2 / DIN 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC 60). AZoM lists hardness as 64 HRC in the as-air-hardened condition (no temper); the database value of 60 HRC reflects the typical working condition after a 200 °C double-temper. Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state. Thermal conductivity (38 W/m·K) is higher than AZoM's figure; Online Metals value consistent with low Cr content (5%) vs. stainless steels (18% Cr, ~16 W/m·K)."
+    "notes": "Air-hardening tool steel (AISI (American Iron and Steel Institute) A2 / DIN (German industrial standard) 1.2363). Properties listed for hardened and tempered condition (~200 °C temper, HRC (Rockwell C hardness) 60). AZoM lists hardness as 64 HRC in the as-air-hardened condition (no temper); the database value of 60 HRC reflects the typical working condition after a 200 °C double-temper. Excellent dimensional stability during heat treatment due to balanced alloy content. Not recommended for welding in hardened state. Thermal conductivity (38 W/m·K) is higher than AZoM's figure; Online Metals value consistent with low Cr content (5%) vs. stainless steels (18% Cr, ~16 W/m·K)."
   },
 
   "typical_usage": "Punches, blanking and forming dies, shear blades, gauges, thread-rolling dies, and precision cutting tools requiring high hardness with good dimensional stability after heat treatment.",

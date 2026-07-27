@@ -8,7 +8,7 @@
     "common_forms": ["Filament"],
     "common_form_notes": "1.75 mm and 2.85 mm diameter filament. Requires heated bed. Tends to string — retraction tuning important.",
     "usage_frequency": "Common",
-    "notes": "Polyethylene Terephthalate Glycol (PETG) printed via FDM. Glycol modification prevents the brittleness of standard PET. Good balance of strength, toughness, chemical resistance, and printability — often considered the best all-around FDM material. Water and chemically resistant per Simplify3D. Fatigue resistant. Higher service temperature than PLA. Properties are anisotropic; use XY-oriented load paths for structural parts."
+    "notes": "Polyethylene Terephthalate Glycol (PETG) printed via FDM (fused deposition modeling). Glycol modification prevents the brittleness of standard PET (polyethylene terephthalate, the unmodified base polymer). Good balance of strength, toughness, chemical resistance, and printability — often considered the best all-around FDM material. Water and chemically resistant per Simplify3D. Fatigue resistant. Higher service temperature than PLA. Properties are anisotropic; use XY-oriented load paths for structural parts."
   },
 
   "typical_usage": "Mechanical parts, food-contact containers (uncoated filament, verify food safety of specific brand), water bottles and liquid tanks, chemical-resistant housings, outdoor-use brackets, and functional prototypes requiring better toughness than PLA.",

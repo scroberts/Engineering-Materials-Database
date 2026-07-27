@@ -9,10 +9,10 @@
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Large telescope mirror blanks, lithography stages, precision reference surfaces",
     "usage_frequency": "Exotic",
-    "notes": "ULE 7972 is Corning's titania-silicate ultra-low expansion glass. CTE tolerance is 0 ± 0.030 µm/m·K measured 5–35°C — tighter than ZERODUR® Grade 0 (±0.100). Hardness converted from Knoop 460 HK (200 g load) using HV ≈ HK/1.05. Tensile strength 49.8 MPa from Corning datasheet. Glass transition temperature is approximate annealing point. Thermal diffusivity derived from k, ρ, Cp."
+    "notes": "ULE 7972 is Corning's titania-silicate ultra-low expansion glass. CTE (coefficient of thermal expansion) tolerance is 0 ± 0.030 µm/m·K measured 5–35°C — tighter than ZERODUR® Grade 0 (±0.100). Hardness converted from Knoop 460 HK (Knoop hardness, 200 g load) to HV (Vickers hardness) using HV ≈ HK/1.05. Tensile strength 49.8 MPa from Corning datasheet. Glass transition temperature is approximate annealing point. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."
   },
 
-  "typical_usage": "Primary and secondary mirrors for large ground-based and space telescopes, EUV lithography stages, laser cavity reference surfaces, and any precision optical structure where near-zero thermal deformation is critical.",
+  "typical_usage": "Primary and secondary mirrors for large ground-based and space telescopes, EUV (extreme ultraviolet) lithography stages, laser cavity reference surfaces, and any precision optical structure where near-zero thermal deformation is critical.",
 
   "mechanical_common": {
     "youngs_modulus":       { "value": 67.6,  "ref": "pgo-online-ule" },

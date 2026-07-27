@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-27T00:56:35Z",
+  "generated": "2026-07-27T01:59:22Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -8,6 +8,7 @@
       "category": "Ceramic",
       "fabrication_processes": [
         "Casting",
+        "Sintering",
         "Machining",
         "Polishing"
       ],
@@ -29,6 +30,7 @@
       "name": "Silicon Carbide (Sintered)",
       "category": "Ceramic",
       "fabrication_processes": [
+        "Sintering",
         "Machining",
         "Polishing"
       ],
@@ -95,6 +97,7 @@
         "Machining"
       ],
       "common_forms": [
+        "Prepreg",
         "Sheet",
         "Plate"
       ],
@@ -137,6 +140,7 @@
         "Machining"
       ],
       "common_forms": [
+        "Prepreg",
         "Sheet",
         "Plate"
       ],
@@ -170,7 +174,9 @@
       "path": "materials/elastomers/epdm.json",
       "name": "EPDM Rubber",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -186,7 +192,9 @@
       "path": "materials/elastomers/fluorocarbon-viton.json",
       "name": "Fluorocarbon Rubber (FKM / Viton\u00ae)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -202,7 +210,9 @@
       "path": "materials/elastomers/nitrile-nbr.json",
       "name": "Nitrile Rubber (NBR / Buna-N)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -218,7 +228,9 @@
       "path": "materials/elastomers/silicone-vmq.json",
       "name": "Silicone Rubber (VMQ)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -505,8 +517,7 @@
         "Bending",
         "Casting",
         "Extrusion",
-        "Polishing",
-        "3D Print (DMLS/SLM)"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -767,10 +778,7 @@
         "Welding",
         "Bending",
         "Polishing",
-        "Plating",
-        "3D Print (DMLS/SLM)",
-        "3D Print (Binder Jet)",
-        "Sintering"
+        "Plating"
       ],
       "common_forms": [
         "Sheet",
@@ -936,9 +944,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding",
-        "3D Print (DMLS/SLM)",
-        "Sintering"
+        "Welding"
       ],
       "common_forms": [
         "Sheet",
@@ -1104,7 +1110,8 @@
       "common_forms": [
         "Round Bar",
         "Sheet",
-        "Plate"
+        "Plate",
+        "Filament"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 2.64,
@@ -1183,7 +1190,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Filament"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 2.31,
@@ -1206,7 +1214,8 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Filament"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 3.1,

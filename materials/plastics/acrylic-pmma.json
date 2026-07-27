@@ -15,7 +15,7 @@
     ],
     "common_form_notes": "Sheet (1.5–6 mm) and plate (6–50 mm); both laser-cuttable and CNC machinable",
     "usage_frequency": "Common",
-    "notes": "Cast acrylic (PMMA) properties shown; cast grade has ~5–10°C higher usable temperature and better optical properties than extruded grade due to lower residual stress. PMMA fails in a brittle manner at room temperature (elongation ~4%); no conventional yield point is defined. Compressive strength approximately 100 MPa (estimated; independently specified). Hardness reported as Rockwell M 93. Thermal diffusivity derived from k, ρ, Cp."
+    "notes": "Cast acrylic (PMMA, poly(methyl methacrylate)) properties shown; cast grade has ~5–10°C higher usable temperature and better optical properties than extruded grade due to lower residual stress. PMMA fails in a brittle manner at room temperature (elongation ~4%); no conventional yield point is defined. Compressive strength approximately 100 MPa (estimated; independently specified). Hardness reported as Rockwell M 93. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."
   },
   "typical_usage": "Transparent enclosures, optical windows, machine guards, laser-cut panels, display signage, and low-cost optical diffusers. Excellent optical clarity (transmittance >92% visible). Laser-cuttable with clean edges.",
   "mechanical_common": {

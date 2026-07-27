@@ -8,7 +8,7 @@
     "common_forms": ["Filament"],
     "common_form_notes": "1.75 mm and 2.85 mm diameter filament. The most beginner-friendly FDM material — does not require a heated bed.",
     "usage_frequency": "Common",
-    "notes": "Polylactic Acid (PLA) printed via FDM. Bio-derived and compostable under industrial conditions. Stiffest common FDM material but brittle — low elongation to failure with no clear yield point. Very low max service temperature (52 °C per Simplify3D) limits use in any warm environment (car interiors, outdoor direct sun). Properties are anisotropic; inter-layer (Z) strength significantly lower than XY. Not recommended for structural parts in humid or UV-exposed environments."
+    "notes": "Polylactic Acid (PLA) printed via FDM (fused deposition modeling). Bio-derived and compostable under industrial conditions. Stiffest common FDM material but brittle — low elongation to failure with no clear yield point. Very low max service temperature (52 °C per Simplify3D) limits use in any warm environment (car interiors, outdoor direct sun). Properties are anisotropic; inter-layer (Z) strength significantly lower than XY. Not recommended for structural parts in humid or UV-exposed environments."
   },
 
   "typical_usage": "Visual prototypes, display models, low-stress brackets and clips, hobby and art projects, educational models, and any short-duration functional part that will not exceed 50 °C.",
