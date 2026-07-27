@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-26T21:22:37Z",
+  "generated": "2026-07-27T00:56:35Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -145,6 +145,24 @@
       "yield_strength": null,
       "tensile_strength": null,
       "density": 1.35,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "synfoam-sw9-syntactic-foam",
+      "path": "materials/composites/synfoam-sw9-syntactic-foam.json",
+      "name": "Synfoam SW-9 Syntactic Foam",
+      "category": "Composite",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": null,
+      "density": 0.144,
       "magnetic_classification": "Diamagnetic"
     },
     {

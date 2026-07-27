@@ -606,5 +606,17 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "matweb-synfoam-sw9": {
+    "short_label": "MatWeb: Synfoam SW-9 Syntactic Foam",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "synfoam-official-sw-product-page": {
+    "short_label": "SynFoam (Division of UDC): SynFoam SW Product Page and Standard Properties Table",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://synfoam.com/Products/SynFoam_SW"
   }
 }
