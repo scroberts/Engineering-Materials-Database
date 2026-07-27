@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Kevlar 49 / Epoxy (Unidirectional, 0°)",
+    "slug": "kevlar49-epoxy-ud",
+    "category": "Composite",
+    "fabrication_processes": [ "Composite Layup", "Vacuum Infusion", "Machining" ],
+    "common_forms": [ "Sheet", "Plate" ],
+    "common_form_notes": "Supplied as unidirectional prepreg tape (Solvay CYCOM 985 resin system, 177°C/350°F autoclave cure) and laid up into panels/plates, matching the unidirectional carbon fibre entry in this database's construction method (0° fibre orientation, not woven fabric).",
+    "usage_frequency": "Specialty",
+    "notes": "Values are for the 0° (fibre-direction) properties of a unidirectional Kevlar 49/epoxy laminate — directly comparable in architecture to the unidirectional carbon fibre/epoxy entry in this database (same 0° layup convention), giving a clean fibre-type comparison (aramid vs. carbon) at similar construction. DATA GAP: this source (a MatWeb datasheet transcribed from an aerospace qualification test program) reports tensile modulus, compressive strength/modulus, and interlaminar shear strength at multiple temperatures and moisture conditions, but does NOT report tensile strength, Poisson's ratio, or any thermal properties (CTE, thermal conductivity, specific heat) at all — checked the raw source directly and via two supplementary searches (the actual manufacturer TDS PDF exists but sits behind active Cloudflare bot-protection, so wasn't fetched). Left tensile_strength null rather than substitute a compressive or modulus figure; this is a genuine limitation of this specific source, not a reflection of the material — Kevlar 49's whole reputation is built on exceptional tensile strength-to-weight (~3000+ MPa for the fibre itself), so a future source with that number would meaningfully improve this entry. A real, well-known characteristic of aramid composites IS captured here: compressive strength (214 MPa dry) is dramatically lower than the modulus values would suggest for a material this stiff — aramid fibres buckle/kink under compressive load far more readily than carbon or glass fibres, giving Kevlar composites a pronounced tension/compression strength asymmetry (their key design weakness) — this is the composite-fibre analog to the crystal-structure-driven tension/compression asymmetry already noted on the Magnesium AZ31B entry, though the underlying mechanism (fibre microbuckling vs. crystallographic twinning) is completely different. Also moisture-sensitive: compressive strength drops from 214 MPa dry to 165 MPa wet, and shear strength from 37.2 MPa dry to 34.5 MPa wet at room temperature — smaller effect than Nylon 6's moisture sensitivity elsewhere in this database, but real. Shear strength (37.2 MPa) is specifically interlaminar (short-beam/ILSS test method) — a matrix-dominated through-thickness property, not in-plane fibre-direction shear; not derived via von Mises, since that criterion doesn't apply to anisotropic fibre composites the way it does to isotropic ductile metals. All values are room-temperature (24°C), dry condition, 0° fibre direction unless otherwise noted."
+  },
+  "typical_usage": "Impact-resistant and ballistic-protection panels, and applications where toughness/damage tolerance matters more than raw stiffness or compressive strength: helmets, vehicle armor panels, and protective enclosures. Compared to the carbon fibre/epoxy entry in this database: choose Kevlar for better impact toughness and damage tolerance; choose carbon fibre instead for higher stiffness and much better compressive strength, since Kevlar's fibre-buckling weakness in compression is a serious design constraint for load-bearing structural members.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 30.0,
+      "ref": "matweb-cycom985-kevlar49"
+    },
+    "poissons_ratio": {
+      "value": null,
+      "ref": null
+    },
+    "yield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "tensile_strength": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_modulus": {
+      "value": 29.0,
+      "ref": "matweb-cycom985-kevlar49"
+    },
+    "compressive_strength": {
+      "value": 214,
+      "ref": "matweb-cycom985-kevlar49"
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": null,
+      "ref": null
+    },
+    "shear_strength": {
+      "value": 0.0372,
+      "ref": "matweb-cycom985-kevlar49"
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 1.35,
+      "ref": "matweb-cycom985-kevlar49"
+    },
+    "electrical_conductivity": {
+      "value": 0,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_conductivity": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "specific_heat": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "matweb-cycom985-kevlar49" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
