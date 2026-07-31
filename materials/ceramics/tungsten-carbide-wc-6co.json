@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Tungsten Carbide - Cobalt (WC-6Co Cemented Carbide)",
+    "slug": "tungsten-carbide-wc-6co",
+    "category": "Ceramic",
+    "fabrication_processes": [ "Machining", "Sintering", "Polishing" ],
+    "common_forms": [ "Round Bar", "Plate" ],
+    "common_form_notes": "A true cermet (ceramic-metal composite): tungsten carbide grains bound by a 6 wt.% cobalt metal binder, powder-pressed and sintered to near-net shape. Supplied as blanks, rod, and finished inserts/wear parts rather than general machining stock. Machining requires diamond or CBN (cubic boron nitride) tooling and typically means grinding/EDM (electrical discharge machining), not conventional cutting — final precision grinding/lapping is standard for tooling and wear-part tolerances.",
+    "usage_frequency": "Exotic",
+    "notes": "An extreme-property comparison material — not something a capstone team would machine or build with directly (requires specialized diamond-grinding/EDM equipment), included for hardness/density/stiffness comparison against the rest of the database. Flexural (transverse rupture) strength (1930 MPa) is recorded here as the tensile strength — this is standard practice for cemented carbides and other brittle ceramics/cermets, which cannot be reliably gripped and pulled in a simple tension test; it is not a true axial tensile strength. Shear strength is not derived via von Mises, unlike the ductile metals in this database — von Mises is a yield criterion for ductile materials undergoing plastic deformation, and cemented carbide fails by brittle fracture, so the criterion doesn't physically apply here. Hardness is reported on the Rockwell A scale (standard for cemented carbides given their extreme hardness — Rockwell B/C scales aren't appropriate). Shear modulus (259 GPa, not stored, listed by the source as \"Calculated\") is self-consistent with the stored E and ν: G = E/(2(1+ν)) = 627/2.42 ≈ 259 GPa, an exact match. Magnetic classification is Ferromagnetic, not Diamagnetic/Paramagnetic like other ceramics in this database — this is a genuine, well-known characteristic of cobalt-cemented carbides: the cobalt binder phase (6% by mass here) is itself ferromagnetic, and magnetic saturation measurement is a standard industrial QC (quality control) method for verifying binder content and detecting eta-phase (binder depletion) defects in cemented carbide grades. No melting point is stored — a WC-Co composite doesn't melt as a single phase (the cobalt binder melts around 1493°C; the WC ceramic phase itself doesn't melt but would decompose at much higher temperature), so a single \"melting point\" isn't a physically meaningful figure for the composite. Compressive strength and fracture toughness were not reported by this source and are left null rather than estimated — cemented carbides are known for very high compressive strength (often several GPa) and, unusually for a ceramic-hard material, decent fracture toughness (~8–15 MPa·m½) thanks to the metal binder phase, but no specific values were found here."
+  },
+  "typical_usage": "Cutting tool inserts, dies, punches, and wear-resistant parts (nozzles, seal faces, valve components) needing extreme hardness and wear resistance. A reference point for \"how hard/dense/stiff can a practical engineering material get\" — density nearly twice steel's, modulus roughly 3x steel's, but brittle and requiring specialized grinding/EDM to shape, unlike any metal in this database.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 627,
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "poissons_ratio": {
+      "value": 0.21,
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "yield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "tensile_strength": {
+      "value": 1.93,
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": 92,
+      "scale": "A",
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": null,
+      "ref": null
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 14.9,
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "electrical_conductivity": {
+      "value": null,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 4.7,
+      "table": [
+        { "temp": 400, "cte": 4.7 },
+        { "temp": 800, "cte": 5.3 }
+      ],
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "thermal_conductivity": {
+      "value": 100,
+      "table": [],
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "specific_heat": {
+      "value": 209.3,
+      "table": [],
+      "ref": "matweb-coorstek-aci-co6-wc"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Ferromagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "matweb-coorstek-aci-co6-wc" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

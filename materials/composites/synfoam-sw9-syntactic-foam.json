@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Synfoam SW-9 Syntactic Foam",
+    "slug": "synfoam-sw9-syntactic-foam",
+    "category": "Composite",
+    "fabrication_processes": [ "Machining" ],
+    "common_forms": [ "Plate" ],
+    "common_form_notes": "Supplied as fully-cured solid blocks (6\" × 12\" × 24\") rather than sheet/plate stock in the conventional sense — machined by the end user into custom shapes and sizes. \"Plate\" is the closest available form option; treat it as an approximation for a solid cast block.",
+    "usage_frequency": "Specialty",
+    "notes": "A particle-reinforced composite: hollow glass microspheres embedded in a resin (typically epoxy) matrix, engineered specifically for buoyancy under sustained hydrostatic pressure — unlike closed-cell foams, the rigid glass microspheres resist crushing/collapse at depth, so buoyancy is retained rather than lost under pressure. Density and compressive strength are cross-validated by two independent sources (MatWeb and the manufacturer's own site) agreeing closely: the manufacturer specifies SW-9 as a 9 ± 1 lb/ft³ grade (nominal 0.144 g/cm³, tolerance range 0.128–0.160 g/cm³ — stored value uses this manufacturer nominal rather than MatWeb's slightly different unlabeled range of 0.112–0.176 g/cc) with compressive strength of 300 psi = 2.07 MPa, an exact match to MatWeb's independently-stated 2.07 MPa. Depth rating (100 m) and service pressure (145 psi) also match exactly between both sources, and are internally self-consistent: 100 m of seawater produces almost exactly 145 psi of hydrostatic pressure (ρgh). Water absorption is specified by the manufacturer as <5% (24 hours at depth) — a maximum spec, not currently tracked as a property in this database. The manufacturer's full \"Standard Properties\" table resolves the earlier ambiguity about the product line's depth range definitively: SW-5 (50 m) / SW-9 (100 m) / SW-12 (150 m) / SW-15 (200 m) / SW-18 (500 m) — confirming SW-9 specifically is a shallow-water grade, while general marketing language describing the line as good to \"1,000 m\" refers to the family's higher-density end (SW-18 reaches 500 m per the spec table; the 1,000 m figure may describe a newer/different grade or be a rounded marketing claim, not literally SW-18's spec). This matches realistic capstone AUV/ROV pool/shallow-water testing depths rather than full-ocean-depth applications. DATA GAP: no modulus, tensile strength, Poisson's ratio, or thermal properties are available from either source — a genuine limitation, not an oversight. Compressive strength (2.07 MPa) is very low in absolute terms compared to structural materials elsewhere in this database — appropriate, since this material's design role is buoyancy, not load-bearing strength."
+  },
+  "typical_usage": "Buoyancy modules and flotation for underwater vehicles (AUVs — autonomous underwater vehicles — and ROVs — remotely operated vehicles), instrumentation housings, and subsea equipment needing reliable, depth-stable buoyancy without the water absorption and pressure-collapse issues of conventional closed-cell foams. Select a grade primarily by required depth/pressure rating and target buoyancy (density) — this SW-9 (shallow-water) grade suits pool/lake/shallow-ocean testing; denser grades in the same product family extend to much greater depths at the cost of reduced buoyancy.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "poissons_ratio": {
+      "value": null,
+      "ref": null
+    },
+    "yield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "tensile_strength": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": 2.07,
+      "ref": "synfoam-official-sw-product-page"
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": null,
+      "ref": null
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 0.144,
+      "ref": "synfoam-official-sw-product-page"
+    },
+    "electrical_conductivity": {
+      "value": 0,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_conductivity": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "specific_heat": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": null,
+      "ref": null
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "matweb-synfoam-sw9", "synfoam-official-sw-product-page" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

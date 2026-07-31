@@ -9,7 +9,7 @@
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Lenses, prisms, windows, beamsplitters, optical fibre components",
     "usage_frequency": "Specialty",
-    "notes": "N-BK7 is the current Schott designation (lead-free); older designation BK7 refers to the same glass type. Most widely specified optical glass due to its broad visible transmittance and ease of fabrication. Hardness converted from Knoop 610 HK (ISO 9385) using HV ≈ HK/1.05. Schott does not publish a tensile or compressive strength for optical-grade glass; strength is surface-quality dependent."
+    "notes": "N-BK7 is the current Schott designation (lead-free); older designation BK7 refers to the same glass type. Most widely specified optical glass due to its broad visible transmittance and ease of fabrication. Hardness converted from Knoop 610 HK (Knoop hardness, per ISO 9385 — International Organization for Standardization) to HV (Vickers hardness) using HV ≈ HK/1.05. Schott does not publish a tensile or compressive strength for optical-grade glass; strength is surface-quality dependent."
   },
 
   "typical_usage": "Optical lenses, prisms, windows, and beamsplitters across the visible spectrum. The default optical glass for non-critical applications where cost, availability, and machinability matter more than thermal stability.",

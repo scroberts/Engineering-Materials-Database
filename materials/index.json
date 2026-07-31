@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-31T00:26:22Z",
+  "generated": "2026-07-31T00:34:05Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -8,6 +8,7 @@
       "category": "Ceramic",
       "fabrication_processes": [
         "Casting",
+        "Sintering",
         "Machining",
         "Polishing"
       ],
@@ -29,6 +30,7 @@
       "name": "Silicon Carbide (Sintered)",
       "category": "Ceramic",
       "fabrication_processes": [
+        "Sintering",
         "Machining",
         "Polishing"
       ],
@@ -42,6 +44,27 @@
       "tensile_strength": 0.32,
       "density": 3.1,
       "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "tungsten-carbide-wc-6co",
+      "path": "materials/ceramics/tungsten-carbide-wc-6co.json",
+      "name": "Tungsten Carbide - Cobalt (WC-6Co Cemented Carbide)",
+      "category": "Ceramic",
+      "fabrication_processes": [
+        "Machining",
+        "Sintering",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": 627,
+      "yield_strength": null,
+      "tensile_strength": 1.93,
+      "density": 14.9,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "c-sic-woven",
@@ -74,6 +97,7 @@
         "Machining"
       ],
       "common_forms": [
+        "Prepreg",
         "Sheet",
         "Plate"
       ],
@@ -106,11 +130,53 @@
       "magnetic_classification": "Diamagnetic"
     },
     {
+      "slug": "kevlar49-epoxy-ud",
+      "path": "materials/composites/kevlar49-epoxy-ud.json",
+      "name": "Kevlar 49 / Epoxy (Unidirectional, 0\u00b0)",
+      "category": "Composite",
+      "fabrication_processes": [
+        "Composite Layup",
+        "Vacuum Infusion",
+        "Machining"
+      ],
+      "common_forms": [
+        "Prepreg",
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 30.0,
+      "yield_strength": null,
+      "tensile_strength": null,
+      "density": 1.35,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "synfoam-sw9-syntactic-foam",
+      "path": "materials/composites/synfoam-sw9-syntactic-foam.json",
+      "name": "Synfoam SW-9 Syntactic Foam",
+      "category": "Composite",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": null,
+      "density": 0.144,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
       "slug": "epdm",
       "path": "materials/elastomers/epdm.json",
       "name": "EPDM Rubber",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -126,7 +192,9 @@
       "path": "materials/elastomers/fluorocarbon-viton.json",
       "name": "Fluorocarbon Rubber (FKM / Viton\u00ae)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -142,7 +210,9 @@
       "path": "materials/elastomers/nitrile-nbr.json",
       "name": "Nitrile Rubber (NBR / Buna-N)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -158,7 +228,9 @@
       "path": "materials/elastomers/silicone-vmq.json",
       "name": "Silicone Rubber (VMQ)",
       "category": "Elastomer",
-      "fabrication_processes": [],
+      "fabrication_processes": [
+        "Moulding"
+      ],
       "common_forms": [
         "Sheet"
       ],
@@ -289,6 +361,26 @@
       "magnetic_classification": "Paramagnetic"
     },
     {
+      "slug": "aluminum-2024-t3",
+      "path": "materials/metals/aluminum-2024-t3.json",
+      "name": "Aluminum 2024-T3",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 73.1,
+      "yield_strength": 0.345,
+      "tensile_strength": 0.483,
+      "density": 2.78,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
       "slug": "aluminum-5052-h32",
       "path": "materials/metals/aluminum-5052-h32.json",
       "name": "Aluminum 5052-H32",
@@ -330,6 +422,29 @@
       "youngs_modulus": 68.9,
       "yield_strength": 0.276,
       "tensile_strength": 0.31,
+      "density": 2.7,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "aluminum-6063-t5",
+      "path": "materials/metals/aluminum-6063-t5.json",
+      "name": "Aluminum 6063-T5",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Extrusion",
+        "Bending"
+      ],
+      "common_forms": [
+        "Angles and Structural Profiles",
+        "Tube",
+        "Round Bar"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 68.9,
+      "yield_strength": 0.145,
+      "tensile_strength": 0.186,
       "density": 2.7,
       "magnetic_classification": "Paramagnetic"
     },
@@ -402,8 +517,7 @@
         "Bending",
         "Casting",
         "Extrusion",
-        "Polishing",
-        "3D Print (DMLS/SLM)"
+        "Polishing"
       ],
       "common_forms": [
         "Sheet",
@@ -489,6 +603,128 @@
       "magnetic_classification": "Ferromagnetic"
     },
     {
+      "slug": "magnesium-az31b-h24",
+      "path": "materials/metals/magnesium-az31b-h24.json",
+      "name": "Magnesium AZ31B-H24",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 45.0,
+      "yield_strength": 0.22,
+      "tensile_strength": 0.29,
+      "density": 1.77,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "maraging-300-dmls-aged",
+      "path": "materials/metals/maraging-300-dmls-aged.json",
+      "name": "Maraging Steel 300 (DMLS, Aged)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining",
+        "Welding"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 190,
+      "yield_strength": 2.015,
+      "tensile_strength": 2.115,
+      "density": 8.0,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "nitinol-shape-memory",
+      "path": "materials/metals/nitinol-shape-memory.json",
+      "name": "Nitinol (NiTi Shape Memory Alloy)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Tube"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": null,
+      "yield_strength": null,
+      "tensile_strength": 1.24,
+      "density": 6.5,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "nitinol-superelastic",
+      "path": "materials/metals/nitinol-superelastic.json",
+      "name": "Nitinol (NiTi Superelastic Alloy)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Tube"
+      ],
+      "usage_frequency": "Exotic",
+      "youngs_modulus": null,
+      "yield_strength": 0.814,
+      "tensile_strength": 1.07,
+      "density": 6.5,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "stainless-17-4ph-h1025",
+      "path": "materials/metals/stainless-17-4ph-h1025.json",
+      "name": "Stainless Steel 17-4 PH (Condition H1025)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 200,
+      "yield_strength": 1.172,
+      "tensile_strength": 1.276,
+      "density": 7.8,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "stainless-17-7ph-th1050",
+      "path": "materials/metals/stainless-17-7ph-th1050.json",
+      "name": "Stainless Steel 17-7 PH (Condition TH1050)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Polishing"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 204,
+      "yield_strength": 1.03,
+      "tensile_strength": 1.24,
+      "density": 7.8,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
       "slug": "stainless-303",
       "path": "materials/metals/stainless-303.json",
       "name": "Stainless Steel 303 (Annealed)",
@@ -542,10 +778,7 @@
         "Welding",
         "Bending",
         "Polishing",
-        "Plating",
-        "3D Print (DMLS/SLM)",
-        "3D Print (Binder Jet)",
-        "Sintering"
+        "Plating"
       ],
       "common_forms": [
         "Sheet",
@@ -558,6 +791,47 @@
       "tensile_strength": 0.517,
       "density": 8.0,
       "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "stainless-316l-dmls",
+      "path": "materials/metals/stainless-316l-dmls.json",
+      "name": "Stainless Steel 316L (DMLS)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 193,
+      "yield_strength": 0.172,
+      "tensile_strength": 0.483,
+      "density": 8.0,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "steel-1018-cold-drawn",
+      "path": "materials/metals/steel-1018-cold-drawn.json",
+      "name": "AISI 1018 Steel (Cold-Drawn)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 205,
+      "yield_strength": 0.37,
+      "tensile_strength": 0.44,
+      "density": 7.87,
+      "magnetic_classification": "Ferromagnetic"
     },
     {
       "slug": "steel-4340",
@@ -670,9 +944,7 @@
       "category": "Metal",
       "fabrication_processes": [
         "Machining",
-        "Welding",
-        "3D Print (DMLS/SLM)",
-        "Sintering"
+        "Welding"
       ],
       "common_forms": [
         "Sheet",
@@ -684,6 +956,44 @@
       "yield_strength": 0.88,
       "tensile_strength": 0.95,
       "density": 4.43,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "titanium-ti-6al-4v-grade-5-sta",
+      "path": "materials/metals/titanium-ti-6al-4v-grade-5-sta.json",
+      "name": "Titanium Ti-6Al-4V (Grade 5) STA",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 114,
+      "yield_strength": 1.1,
+      "tensile_strength": 1.17,
+      "density": 4.43,
+      "magnetic_classification": "Paramagnetic"
+    },
+    {
+      "slug": "titanium-ti64-dmls-heat-treated",
+      "path": "materials/metals/titanium-ti64-dmls-heat-treated.json",
+      "name": "Titanium Ti-6Al-4V Grade 5 (DMLS, Heat Treated)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "3D Print (DMLS/SLM)",
+        "Machining"
+      ],
+      "common_forms": [
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 114,
+      "yield_strength": 0.99,
+      "tensile_strength": 1.08,
+      "density": 4.4,
       "magnetic_classification": "Paramagnetic"
     },
     {
@@ -765,6 +1075,52 @@
       "magnetic_classification": "Diamagnetic"
     },
     {
+      "slug": "pa12-nylon12",
+      "path": "materials/plastics/pa12-nylon12.json",
+      "name": "Nylon 12 (PA12)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Moulding",
+        "3D Print (SLS)"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Powder"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 1.8,
+      "yield_strength": 0.05,
+      "tensile_strength": 0.055,
+      "density": 1.02,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "pa6-nylon6",
+      "path": "materials/plastics/pa6-nylon6.json",
+      "name": "Nylon 6 (PA6)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Moulding",
+        "Extrusion",
+        "3D Print (FDM)"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate",
+        "Filament"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 2.64,
+      "yield_strength": 0.0638,
+      "tensile_strength": 0.067,
+      "density": 1.14,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
       "slug": "peek",
       "path": "materials/plastics/peek.json",
       "name": "PEEK (Polyether Ether Ketone)",
@@ -822,6 +1178,29 @@
       "magnetic_classification": "Diamagnetic"
     },
     {
+      "slug": "polycarbonate",
+      "path": "materials/plastics/polycarbonate.json",
+      "name": "Polycarbonate (PC)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Bending",
+        "Polishing",
+        "3D Print (FDM)"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Filament"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 2.31,
+      "yield_strength": 0.0627,
+      "tensile_strength": 0.0659,
+      "density": 1.2,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
       "slug": "pom-delrin",
       "path": "materials/plastics/pom-delrin.json",
       "name": "Acetal Homopolymer (Delrin / POM-H)",
@@ -835,7 +1214,8 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Filament"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 3.1,

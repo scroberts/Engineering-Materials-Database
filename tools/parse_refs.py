@@ -229,6 +229,10 @@ _PROP_MAP = [
     ("yield strength", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
     ("0.2% proof", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
     ("proof stress", "mechanical_common.yield_strength", _convert_pressure_to_gpa, "GPa"),
+    # Bare "Tensile Strength" (no Ultimate/Yield qualifier) — must come after the
+    # qualified patterns above so those get first shot; catches unqualified rows
+    # like AZoM's plain "Tensile Strength (MPa)" cells (found on 1018 steel, PA6, PA12).
+    ("tensile strength", "mechanical_common.tensile_strength", _convert_pressure_to_gpa, "GPa"),
     ("compressive yield", "mechanical_common.compressive_strength", _convert_pressure_to_mpa, "MPa"),
     ("compressive strength", "mechanical_common.compressive_strength", _convert_pressure_to_mpa, "MPa"),
     ("elongation", "mechanical_other.ductility", None, "%"),
@@ -255,6 +259,8 @@ _PROP_MAP = [
     ("thermal diffusivity", "physical.thermal_diffusivity", _convert_thermal_diffusivity, "cm²/s"),
     ("melting point", "physical.melting_point_tm", _convert_temp, "°C"),
     ("solidus", "physical.melting_point_tm", _convert_temp, "°C"),
+    ("glass transition", "physical.glass_transition_tg", _convert_temp, "°C"),
+    ("glass temperature", "physical.glass_transition_tg", _convert_temp, "°C"),
     ("electrical conductivity", "physical.electrical_conductivity", None, "% IACS"),
 ]
 
@@ -323,9 +329,21 @@ def _empty_result(stub: str, site: str, source_url: str | None) -> dict:
     }
 
 
+_ROCKWELL_SCALE_PATH = "mechanical_other.hardness_rockwell"
+_ROCKWELL_SCALE_RE = re.compile(r"rockwell\s*([a-z])\b", re.I)
+
+
+def _rockwell_scale(name: str) -> str | None:
+    """Rockwell scale letter from a property name, e.g. 'Hardness, Rockwell C' -> 'C'."""
+    m = _ROCKWELL_SCALE_RE.search(name)
+    return m.group(1).upper() if m else None
+
+
 def _finish(result: dict, parsed: dict, raw: dict) -> dict:
     """Merge parsed properties and raw leftovers into the result template."""
     for path, value in parsed.items():
+        if path == f"{_ROCKWELL_SCALE_PATH}__scale":
+            continue  # side-channel, consumed by the hardness_rockwell branch below
         if path.startswith("mechanical_common."):
             key = path.split(".", 1)[1]
             result["mechanical_common"][key] = _vp(value)
@@ -337,7 +355,9 @@ def _finish(result: dict, parsed: dict, raw: dict) -> dict:
                 }
             elif key == "hardness_rockwell":
                 result["mechanical_other"]["hardness_rockwell"] = {
-                    "value": value, "scale": None, "ref": None
+                    "value": value,
+                    "scale": parsed.get(f"{_ROCKWELL_SCALE_PATH}__scale"),
+                    "ref": None,
                 }
             else:
                 result["mechanical_other"][key] = _vp(value)
@@ -368,6 +388,15 @@ class BaseParser:
         Given [(name, value_str, unit_str), ...], apply _map_property to each.
         Returns (parsed, raw) where parsed = {schema_path: canonical_value}
         and raw = {name: value_str + unit_str} for unmapped rows.
+
+        First match per schema path wins, not last. Found via a real AISI 1018
+        AZoM page: rows like "Hardness, Rockwell B (Converted from Brinell
+        hardness)" spuriously substring-match the hardness_brinell pattern.
+        Last-write-wins let that overwrite the correct primary "Hardness,
+        Brinell" row (126) with an unrelated converted value (71) — silently
+        wrong, not just missing. The primary row for a property consistently
+        appears before parenthetical cross-references to it. (js/core/htmlImport.js
+        has the identical fix, found and applied there first.)
         """
         parsed = {}
         raw = {}
@@ -375,7 +404,12 @@ class BaseParser:
             result = _map_property(name, value_str, unit_str)
             if result:
                 path, canon = result
-                parsed[path] = canon
+                if path not in parsed:
+                    parsed[path] = canon
+                    if path == _ROCKWELL_SCALE_PATH:
+                        scale = _rockwell_scale(name)
+                        if scale:
+                            parsed[f"{_ROCKWELL_SCALE_PATH}__scale"] = scale
             else:
                 raw[name] = f"{value_str} {unit_str}".strip()
         return parsed, raw

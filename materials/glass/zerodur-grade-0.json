@@ -9,7 +9,7 @@
     "common_forms": ["Plate", "Round Bar"],
     "common_form_notes": "Mirror blanks, optical substrates, telescope primaries",
     "usage_frequency": "Exotic",
-    "notes": "Hardness converted from Knoop 620 HK (ISO 9385) using HV ≈ HK/1.05. Schott does not publish a formal tensile or compressive strength specification; the 100 MPa working load guidance is not a material strength limit. CTE is nominal Grade 0 (CTE class 0: 0 ± 0.100 µm/m·K, measured 0–50°C). Zerodur is an amorphous glass-ceramic; use glass_transition_tg not melting_point_tm."
+    "notes": "Hardness converted from Knoop 620 HK (Knoop hardness, per ISO 9385 — International Organization for Standardization) to HV (Vickers hardness) using HV ≈ HK/1.05. Schott does not publish a formal tensile or compressive strength specification; the 100 MPa working load guidance is not a material strength limit. CTE (coefficient of thermal expansion) is nominal Grade 0 (CTE class 0: 0 ± 0.100 µm/m·K, measured 0–50°C). Zerodur is an amorphous glass-ceramic; characterise it by its glass transition temperature, not a melting point."
   },
 
   "typical_usage": "Precision optical mirror substrates, telescope primaries and secondaries, laser gyroscope blocks, dimensional standards, and any opto-mechanical component requiring near-zero thermal expansion.",

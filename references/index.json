@@ -450,5 +450,179 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.engineersedge.com/heat_transfer/thermal_diffusivity_table_13953.htm"
+  },
+  "azom-1018": {
+    "short_label": "AZoM: AISI 1018 Mild/Low Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6115"
+  },
+  "matweb-1018": {
+    "short_label": "MatWeb: AISI 1018 Mild/Low Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=c45dcf3c46b34bcf82cd0999fafba237"
+  },
+  "theworldmaterial-1018": {
+    "short_label": "TheWorldMaterial: ASTM SAE AISI 1018 Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/astm-sae-aisi-1018-carbon-steel/"
+  },
+  "asm-matweb-6063-t5": {
+    "short_label": "ASM MatWeb: Aluminum 6063-T5",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma6063t5"
+  },
+  "azom-pa6": {
+    "short_label": "AZoM: Polyamide 6 (Nylon 6, PA 6)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=442"
+  },
+  "azom-pa12": {
+    "short_label": "AZoM: Polyamide 12 (Nylon 12, PA 12)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/properties.aspx?ArticleID=753"
+  },
+  "nylonplastic-pa6-vs-pa12": {
+    "short_label": "NylonPlastic.com: PA6 vs PA12 Comparison Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://nylonplastic.com/pa6-vs-pa12-comparison-guide/"
+  },
+  "matweb-nylon6-overview": {
+    "short_label": "MatWeb: Overview of Materials for Nylon 6, Unreinforced",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=fb48404b7e04433bb3ee3d2a0af922ff"
+  },
+  "smithmetal-pa12": {
+    "short_label": "Smiths Metal Centres: Extruded Nylon 12 (PA12) Datasheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-polycarbonate-extruded-overview": {
+    "short_label": "MatWeb: Overview of Materials for Polycarbonate, Extruded",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "azom-17-4ph": {
+    "short_label": "AZoM: Stainless Steel Grade 17-4 (UNS S17400)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.azom.com/article.aspx?ArticleID=6778"
+  },
+  "wikipedia-17-4-stainless-steel": {
+    "short_label": "Wikipedia: 17-4 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://en.wikipedia.org/wiki/17-4_stainless_steel"
+  },
+  "aksteel-17-4ph-h1025": {
+    "short_label": "AK Steel: 17-4 PH Precipitation Hardening Stainless Steel, Condition H 1025",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-aluminum-2024-t3": {
+    "short_label": "MatWeb: Aluminum 2024-T3",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "eos-maragingsteel-ms1-dmls": {
+    "short_label": "MatWeb: EOS MaragingSteel MS1 DMLS on EOS M 300-4",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-maraging-300-annealed": {
+    "short_label": "MatWeb: AISI Grade 18Ni (300) Maraging Steel, Nominal Annealed Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "eos-maragingsteel-ms1-official-mds": {
+    "short_label": "EOS: MaragingSteel MS1 Official Material Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.eos.info/05-datasheet-images/Assets_MDS_Metal/EOS_MargingSteel_MS1/Material_DataSheet_EOS_MaragingSteel_MS1_en.pdf"
+  },
+  "protolabs-316l-dmls": {
+    "short_label": "MatWeb: Proto Labs 316L Stainless Steel - DMLS",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "eos-titanium-ti64-grade5-official-mds": {
+    "short_label": "EOS: Titanium Ti64 Grade 5 Official Material Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.eos.info/var/assets/03_system-related-assets/material-related-contents/metal-materials-and-examples/metal-material-datasheet/titan/ti64/material_datasheet_eos_titanium_ti64_grade5_en_web.pdf"
+  },
+  "mdpi-maraging-haz-embrittlement-2024": {
+    "short_label": "MDPI/PMC: Embrittlement Fracture Behavior and Mechanical Properties in HAZ of Welded Maraging Steel",
+    "doi": "10.3390/ma17020440",
+    "bibtex": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10817506/"
+  },
+  "matweb-az31b-h24": {
+    "short_label": "MatWeb: Magnesium AZ31B-H24, Hard Rolled Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-coorstek-aci-co6-wc": {
+    "short_label": "MatWeb: CoorsTek ACI-Co6 Tungsten Carbide",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "specialmetals-nitinol-shape-memory": {
+    "short_label": "MatWeb: Special Metals Nitinol High-Temperature Shape Memory Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "specialmetals-nitinol-superelastic": {
+    "short_label": "MatWeb: Special Metals Nitinol Superelastic Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "goodfellow-nitinol-overview": {
+    "short_label": "Goodfellow: Nitinol - The Shape-Memory Alloy Explained",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.goodfellow.com/usa/resources/nitinol-where-motion-meets-memory/"
+  },
+  "matweb-17-7ph-th1050": {
+    "short_label": "MatWeb: 17-7 PH Stainless Steel, TH1050, Plate, Sheet, and Strip",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-cycom985-kevlar49": {
+    "short_label": "MatWeb: Solvay CYCOM 985 Epoxy + Kevlar 49 Fiber Laminate",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-synfoam-sw9": {
+    "short_label": "MatWeb: Synfoam SW-9 Syntactic Foam",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "synfoam-official-sw-product-page": {
+    "short_label": "SynFoam (Division of UDC): SynFoam SW Product Page and Standard Properties Table",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://synfoam.com/Products/SynFoam_SW"
   }
 }

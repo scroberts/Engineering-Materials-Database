@@ -11,10 +11,16 @@ import { loadManifest } from '../core/loader.js';
 
 const USAGE_FREQUENCIES = ['Common', 'Specialty', 'Exotic'];
 
+function escHtml(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function frequencyBadge(freq) {
   if (!freq) return '';
   const cls = freq === 'Exotic' ? 'badge-exotic' : freq === 'Specialty' ? 'badge-specialty' : 'badge-common';
-  return `<span class="badge ${cls}">${freq}</span>`;
+  return `<span class="badge ${cls}">${escHtml(freq)}</span>`;
 }
 
 // ── Constants ──────────────────────────────────────────────────────────────
@@ -117,9 +123,9 @@ function renderCard(mat) {
   return `
     <div class="material-card${selected ? ' is-selected' : ''}" data-slug="${mat.slug}">
       <div class="card-header">
-        <h2 class="card-name">${mat.name}</h2>
+        <h2 class="card-name">${escHtml(mat.name)}</h2>
         <div class="card-badges">
-          <span class="badge badge-${catClass}">${mat.category}</span>
+          <span class="badge badge-${catClass}">${escHtml(mat.category)}</span>
           ${frequencyBadge(mat.usage_frequency)}
         </div>
       </div>

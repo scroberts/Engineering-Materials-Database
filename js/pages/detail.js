@@ -158,10 +158,10 @@ function wireUnitSelector(selectEl) {
       document.querySelectorAll('.temp-range-display').forEach(span => {
         const minC = parseFloat(span.dataset.minC);
         const maxC = parseFloat(span.dataset.maxC);
-        if (!isNaN(minC) && !isNaN(maxC)) {
-          const minVal = fmt(convertTemperature(minC, toUnit), toUnit);
-          const maxVal = fmt(convertTemperature(maxC, toUnit), toUnit);
-          span.textContent = `${minVal} ${toUnit} to ${maxVal} ${toUnit}`;
+        if (!isNaN(minC) || !isNaN(maxC)) {
+          const minVal = !isNaN(minC) ? `${fmt(convertTemperature(minC, toUnit), toUnit)} ${toUnit}` : '—';
+          const maxVal = !isNaN(maxC) ? `${fmt(convertTemperature(maxC, toUnit), toUnit)} ${toUnit}` : '—';
+          span.textContent = `${minVal} to ${maxVal}`;
         }
       });
     }
@@ -291,13 +291,13 @@ function renderMechanicalCommon(mat) {
 
   const tempRange = mc.usable_temp_range;
   let tempRangeHtml = '—';
-  if (tempRange?.min != null && tempRange?.max != null) {
-    const minK = Math.round(tempRange.min + 273.15);
-    const maxK = Math.round(tempRange.max + 273.15);
+  if (tempRange?.min != null || tempRange?.max != null) {
+    const minK = tempRange.min != null ? Math.round(tempRange.min + 273.15) : null;
+    const maxK = tempRange.max != null ? Math.round(tempRange.max + 273.15) : null;
     tempRangeHtml = `<span class="temp-range-display"
-        data-min-c="${tempRange.min}"
-        data-max-c="${tempRange.max}">
-      ${minK} K to ${maxK} K
+        data-min-c="${tempRange.min ?? ''}"
+        data-max-c="${tempRange.max ?? ''}">
+      ${minK != null ? `${minK} K` : '—'} to ${maxK != null ? `${maxK} K` : '—'}
     </span>`;
   }
 

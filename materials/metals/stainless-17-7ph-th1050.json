@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Stainless Steel 17-7 PH (Condition TH1050)",
+    "slug": "stainless-17-7ph-th1050",
+    "category": "Metal",
+    "fabrication_processes": [ "Machining", "Welding", "Polishing" ],
+    "common_forms": [ "Sheet", "Plate" ],
+    "common_form_notes": "Supplied in the solution-annealed Condition A for forming/machining, then conditioned and aged by the end user to reach the properties shown here — an extra step versus 17-4 PH. 17-7 PH is semi-austenitic: unlike 17-4 PH (martensitic even in the annealed state), Condition A 17-7 PH is largely austenite and must first be \"conditioned\" (a thermal or mechanical treatment that transforms the retained austenite to martensite) before the final aging step can precipitation-harden it. TH1050 uses thermal conditioning (heating to a high temperature, then cooling) followed by aging at 1050°F (565°C); the alternative conditions RH950 (subzero/refrigeration conditioning + 950°F age, higher strength/lower ductility) and CH900 (cold-work conditioning + 900°F age, highest strength) trade ductility for strength versus TH1050.",
+    "usage_frequency": "Specialty",
+    "notes": "A precipitation-hardening stainless chosen for high strength with better formability than 17-4 PH during the pre-hardened (Condition A) state, at the cost of a more involved heat-treatment sequence (conditioning + aging, vs. 17-4 PH's single aging step). TH1050 was chosen as the representative condition — the standard, most commonly specified general-purpose temper, analogous to how H1025 was chosen for the 17-4 PH entry in this database, balancing strength and ductility better than the higher-strength RH950/CH900 conditions. Elongation is reported as a range (3.0–7.0%) rather than a single typical value; stored as min/max with no typical figure. Shear strength derived via von Mises: UTS (ultimate tensile strength)/√3 = 1240/1.732 ≈ 716 MPa (appropriate here, unlike the brittle ceramic/cermet entries in this database, since this is a standard ductile hardened stainless with normal dislocation-slip yielding behavior). Melting point is solidus (1400°C); liquidus is 1450°C. Electrical conductivity (2.08% IACS (International Annealed Copper Standard)) derived from the source's stated resistivity (83.0 µΩ·cm). Ferromagnetic — like 17-4 PH, the final aged condition is predominantly martensitic."
+  },
+  "typical_usage": "High-strength, formable stainless parts where the material must be shaped in a softer state before final hardening: springs, fasteners, diaphragms, and aerospace structural components needing a good strength/corrosion-resistance/formability balance. Choose over 17-4 PH when better cold-formability in the pre-hardened state matters; choose 17-4 PH instead for a simpler single-step aging process without the semi-austenitic conditioning step. Like 17-4 PH, costs noticeably more than 303/304/316 and needs post-fabrication heat treatment — only worth the extra process complexity when a part must both be formed and reach hardened-steel strength levels.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 204,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "poissons_ratio": {
+      "value": null,
+      "ref": null
+    },
+    "yield_strength": {
+      "value": 1.03,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "tensile_strength": {
+      "value": 1.24,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": 38,
+      "scale": "C",
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": 3.0,
+      "max": 7.0,
+      "typical": null,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "shear_strength": {
+      "value": 0.716,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 7.8,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "electrical_conductivity": {
+      "value": 2.08,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 11.0,
+      "table": [
+        { "temp": 100, "cte": 11.0 },
+        { "temp": 315, "cte": 11.6 }
+      ],
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "thermal_conductivity": {
+      "value": 16.4,
+      "table": [],
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "specific_heat": {
+      "value": 460,
+      "table": [],
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 1400,
+      "ref": "matweb-17-7ph-th1050"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Ferromagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "matweb-17-7ph-th1050" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

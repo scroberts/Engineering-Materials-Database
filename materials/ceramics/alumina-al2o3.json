@@ -4,7 +4,7 @@
     "name": "Alumina (Al₂O₃, 99.5%)",
     "slug": "alumina-al2o3",
     "category": "Ceramic",
-    "fabrication_processes": ["Casting", "Machining", "Polishing"],
+    "fabrication_processes": ["Casting", "Sintering", "Machining", "Polishing"],
     "common_forms": ["Sheet", "Plate", "Round Bar"],
     "common_form_notes": "Typically sourced as custom-machined blanks or standard rod/plate stock from specialist ceramic suppliers. Post-sintering grinding/lapping required for tight tolerances. Casting here refers to slip casting and dry pressing followed by sintering.",
     "usage_frequency": "Specialty",

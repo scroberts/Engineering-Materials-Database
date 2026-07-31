@@ -5,11 +5,11 @@
     "name":       "Fluorocarbon Rubber (FKM / Viton®)",
     "slug":       "fluorocarbon-viton",
     "category":   "Elastomer",
-    "fabrication_processes": [],
+    "fabrication_processes": ["Moulding"],
     "common_forms": ["Sheet"],
     "common_form_notes": "O-rings, seals, sheet stock; standard 70 Shore A durometer",
     "usage_frequency": "Specialty",
-    "notes": "Standard 70 Shore A FKM compound. Viton® is a registered trademark of Chemours; generic term is fluorocarbon rubber (FKM). Properties vary with fluorine content (66–70%) and specific formulation. Higher density than other elastomers due to fluorine content. Temperature range -20 to +200°C continuous; brief excursions to +240°C. Limited resistance to polar solvents, amines, and MEK. Thermal diffusivity derived from k, ρ, Cp."
+    "notes": "Standard 70 Shore A FKM compound. Viton® is a registered trademark of Chemours; generic term is fluorocarbon rubber (FKM). Properties vary with fluorine content (66–70%) and specific formulation. Higher density than other elastomers due to fluorine content. Temperature range -20 to +200°C continuous; brief excursions to +240°C. Limited resistance to polar solvents, amines, and MEK (methyl ethyl ketone). Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."
   },
 
   "typical_usage": "O-rings and seals in high-temperature and chemically aggressive environments: aerospace fuel systems, automotive engines, chemical processing equipment, and vacuum chambers requiring low outgassing.",

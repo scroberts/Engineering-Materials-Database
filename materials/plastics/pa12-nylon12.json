@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Nylon 12 (PA12)",
+    "slug": "pa12-nylon12",
+    "category": "Plastic",
+    "fabrication_processes": [ "Machining", "Moulding", "3D Print (SLS)" ],
+    "common_forms": [ "Round Bar", "Sheet", "Powder" ],
+    "common_form_notes": "The dominant SLS (Selective Laser Sintering) 3D printing powder — most SLS-printed nylon parts are PA12 unless otherwise specified. Also stocked as bulk rod/sheet for machining (extruded round bar up to 200mm dia., sheet/plate up to 50mm thick per Smiths Metal Centres), and used for its low moisture absorption and good chemical/fuel resistance in tubing and fittings.",
+    "usage_frequency": "Specialty",
+    "notes": "Mechanical/thermal properties primarily from a Smiths Metal Centres extruded PA12 (polyamide 12, i.e. Nylon 12) manufacturer datasheet (natural/unfilled grade column; the same datasheet also lists a 30%-glass-filled grade, not stored here). This resolved several gaps and one prior uncertainty from the earlier AZoM-aggregate-sourced data: elongation at break is 200% per this datasheet — confirms the earlier decision to reject a different aggregate source's implausible ~1.9–2.1% figure as erroneous (PA12 genuinely is highly flexible). Melting point (178°C), Shore D hardness (78), and usable temperature range (−50 to +80°C long-term without high mechanical load; short-term max +140°C) were previously unavailable and are now populated with directly-applicable datasheet figures rather than left null. Yield strength updated to this datasheet's directly-labeled \"Tensile strength @ yield\" (50 MPa), superseding an earlier derivation from a different source's ambiguously-named \"Elastic Limit\" row. Thermal conductivity (0.30 W/m·K) and CTE (coefficient of thermal expansion) (100 µm/m·K, average 20–60°C) also updated to this single dedicated datasheet's values, preferred over a generic aggregate database's range. Tensile strength (ultimate, 55 MPa) and compressive strength (49 MPa) retained from the earlier AZoM source, since this datasheet reports only a yield figure, not distinct ultimate-tensile or compressive values. Glass transition (56.85°C, from AZoM) and melting point (178°C, from this datasheet) are both populated, reflecting PA12's real semi-crystalline behaviour — it has both a melting point (Tm) and a glass transition (Tg), unlike purely crystalline or purely amorphous materials, which typically show only one or the other."
+  },
+  "typical_usage": "SLS-printed functional prototypes and end-use parts (brackets, housings, snap-fits, living hinges) needing good impact toughness and low moisture pickup; bearing and gearbox components; sealing/dampening elements valued for noise and vibration damping; fuel lines, pneumatic tubing, and quick-disconnect couplings where chemical resistance matters. Choose over PA6 when moisture stability, impact toughness, or SLS printability is the priority; choose PA6 (or POM) instead for higher stiffness/strength bulk-machined parts.",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 1.8,
+      "ref": "smithmetal-pa12"
+    },
+    "poissons_ratio": {
+      "value": 0.38,
+      "ref": "azom-pa12"
+    },
+    "yield_strength": {
+      "value": 0.05,
+      "ref": "smithmetal-pa12"
+    },
+    "tensile_strength": {
+      "value": 0.055,
+      "ref": "azom-pa12"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": 49,
+      "ref": "azom-pa12"
+    },
+    "usable_temp_range": {
+      "min": -50,
+      "max": 80,
+      "ref": "smithmetal-pa12"
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null
+    },
+    "fracture_toughness": {
+      "value": 1.2,
+      "ref": "azom-pa12"
+    },
+    "hardness_vickers": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_brinell": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_rockwell": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "hardness_shore": {
+      "value": 78,
+      "scale": "D",
+      "ref": "smithmetal-pa12"
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 200,
+      "ref": "smithmetal-pa12"
+    },
+    "shear_strength": {
+      "value": null,
+      "ref": null
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 1.02,
+      "ref": "smithmetal-pa12"
+    },
+    "electrical_conductivity": {
+      "value": 0,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 100,
+      "table": [],
+      "ref": "smithmetal-pa12"
+    },
+    "thermal_conductivity": {
+      "value": 0.3,
+      "table": [],
+      "ref": "smithmetal-pa12"
+    },
+    "specific_heat": {
+      "value": 1700,
+      "table": [],
+      "ref": "smithmetal-pa12"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 178,
+      "ref": "smithmetal-pa12"
+    },
+    "glass_transition_tg": {
+      "value": 56.85,
+      "ref": "azom-pa12"
+    },
+    "magnetic_classification": {
+      "value": "Diamagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "azom-pa12", "nylonplastic-pa6-vs-pa12", "smithmetal-pa12" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}

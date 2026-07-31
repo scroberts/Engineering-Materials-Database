@@ -9,10 +9,10 @@
     "common_forms": ["Sheet"],
     "common_form_notes": "Sheets, strips, and blocks in standard hobby/model sizes",
     "usage_frequency": "Specialty",
-    "notes": "Balsa properties are highly density-dependent; published values vary 2–3× between grades (E from 2–9 GPa, UTS from 7–46 MPa). Values here represent mid-density model/structural grade (ρ ≈ 0.15 g/cm³). Young's modulus, tensile, and compressive strength are along-grain values; transverse values are 10–20× lower. CTE is the radial (along-grain) value. Standard hardness scales (HV, HB, Rockwell) are not applicable. Thermal diffusivity derived from k, ρ, Cp."
+    "notes": "Balsa properties are highly density-dependent; published values vary 2–3× between grades (E from 2–9 GPa, UTS (ultimate tensile strength) from 7–46 MPa). Values here represent mid-density model/structural grade (ρ ≈ 0.15 g/cm³). Young's modulus, tensile, and compressive strength are along-grain values; transverse values are 10–20× lower. CTE (coefficient of thermal expansion) is the radial (along-grain) value. Standard hardness scales (HV (Vickers hardness), HB (Brinell hardness), Rockwell) are not applicable. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."
   },
 
-  "typical_usage": "RC aircraft structures, sandwich core material for composite laminates, wind tunnel models, and prototyping of lightweight structural concepts where the highest specific stiffness per cost is needed.",
+  "typical_usage": "RC (radio-controlled) aircraft structures, sandwich core material for composite laminates, wind tunnel models, and prototyping of lightweight structural concepts where the highest specific stiffness per cost is needed.",
 
   "mechanical_common": {
     "youngs_modulus":       { "value": 3.5,   "ref": "usda-wood-handbook" },

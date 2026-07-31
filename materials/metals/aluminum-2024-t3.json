@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "Aluminum 2024-T3",
+    "slug": "aluminum-2024-t3",
+    "category": "Metal",
+    "fabrication_processes": [ "Machining" ],
+    "common_forms": [ "Sheet", "Plate", "Round Bar" ],
+    "common_form_notes": "The classic aerospace aircraft-skin sheet alloy — high strength-to-weight for its era, though superseded by 7075 where even higher strength is needed. Poor weldability (high copper content, like other 2xxx-series alloys) means it's joined mechanically (rivets, fasteners) rather than welded, unlike 6061.",
+    "usage_frequency": "Common",
+    "notes": "All mechanical/thermal values are Aluminum Association \"Typical\" figures from a single MatWeb datasheet — internally consistent (back-calculating shear modulus from the stored E=73.1 GPa and ν=0.33 gives G ≈ 27.5 GPa, matching the source's directly-stated 28.0 GPa closely) and consistent with commonly-cited textbook values for this well-known alloy. Shear strength (283 MPa) is a directly-reported value, not derived. Electrical conductivity (29.6% IACS (International Annealed Copper Standard)) derived from the source's stated electrical resistivity (5.82 µΩ·cm) via %IACS = (1.7241/5.82)×100 — matches the commonly-cited ~30% IACS figure for 2024-T3. Melting point is solidus (502°C); liquidus is 638°C. Strength drops sharply at elevated temperature (source gives 52 MPa UTS (ultimate tensile strength) @ 316°C, 34 MPa @ 371°C) — not recorded as a usable temperature range here since no single service-temperature limit was given, but worth noting this alloy is not a high-temperature choice despite good room-temperature strength. Remains ductile at cryogenic temperatures (18% elongation reported at −196°C). A single fatigue data point (138 MPa @ 5×10⁸ cycles, completely reversed stress, RR Moore machine) is stored as the sole S-N curve point — not a full curve."
+  },
+  "typical_usage": "Aircraft fuselage skin and structural sheet, truck wheels, structural rivets, and other applications needing high strength-to-weight with good fatigue and fracture resistance. A common comparison point against 6061-T6 (much better weldability/machinability, lower strength) and 7075-T6 (higher strength, worse fatigue/fracture behavior in some regimes).",
+  "mechanical_common": {
+    "youngs_modulus": {
+      "value": 73.1,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "poissons_ratio": {
+      "value": 0.33,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "yield_strength": {
+      "value": 0.345,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "tensile_strength": {
+      "value": 0.483,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "compressive_modulus": {
+      "value": null,
+      "ref": null
+    },
+    "compressive_strength": {
+      "value": null,
+      "ref": null
+    },
+    "usable_temp_range": {
+      "min": null,
+      "max": null,
+      "ref": null
+    }
+  },
+  "mechanical_other": {
+    "microyield_strength": {
+      "value": null,
+      "ref": null
+    },
+    "creep_strength": {
+      "value": null,
+      "ref": null
+    },
+    "fatigue_sn_curve": {
+      "points": [
+        { "stress": 0.138, "cycles": 500000000 }
+      ],
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "fracture_toughness": {
+      "value": null,
+      "ref": null
+    },
+    "hardness_vickers": {
+      "value": 137,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "hardness_brinell": {
+      "value": 120,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "hardness_rockwell": {
+      "value": 75,
+      "scale": "B",
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "hardness_shore": {
+      "value": null,
+      "scale": null,
+      "ref": null
+    },
+    "ductility": {
+      "min": null,
+      "max": null,
+      "typical": 17,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "shear_strength": {
+      "value": 0.283,
+      "ref": "matweb-aluminum-2024-t3"
+    }
+  },
+  "physical": {
+    "density": {
+      "value": 2.78,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "electrical_conductivity": {
+      "value": 29.6,
+      "ref": null
+    },
+    "vapour_pressure": {
+      "value": null,
+      "ref": null
+    },
+    "thermal_expansion": {
+      "value": 23.2,
+      "table": [
+        { "temp": 20,  "cte": 21.1 },
+        { "temp": 100, "cte": 23.2 },
+        { "temp": 200, "cte": 23.8 }
+      ],
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "thermal_conductivity": {
+      "value": 121,
+      "table": [],
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "specific_heat": {
+      "value": 875,
+      "table": [],
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "thermal_diffusivity": {
+      "value": null,
+      "ref": null
+    },
+    "melting_point_tm": {
+      "value": 502,
+      "ref": "matweb-aluminum-2024-t3"
+    },
+    "glass_transition_tg": {
+      "value": null,
+      "ref": null
+    },
+    "magnetic_classification": {
+      "value": "Paramagnetic",
+      "ref": null
+    }
+  },
+  "references": [ "matweb-aluminum-2024-t3" ],
+  "metadata": {
+    "submitted_by": null,
+    "submitted_date": "2026-07-26",
+    "approved_by": null,
+    "approved_date": null
+  }
+}
