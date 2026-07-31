@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-21T05:14:26Z",
+  "generated": "2026-07-31T00:26:22Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -657,7 +657,7 @@
         "Sheet"
       ],
       "usage_frequency": "Common",
-      "youngs_modulus": 207,
+      "youngs_modulus": 190.0,
       "yield_strength": 1.38,
       "tensile_strength": 1.57,
       "density": 7.85,
@@ -842,6 +842,29 @@
       "yield_strength": 0.069,
       "tensile_strength": 0.069,
       "density": 1.41,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "uhmw-pe",
+      "path": "materials/plastics/uhmw-pe.json",
+      "name": "UHMW-PE (Ultra High Molecular Weight Polyethylene)",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Moulding",
+        "Extrusion"
+      ],
+      "common_forms": [
+        "Sheet",
+        "Plate",
+        "Round Bar",
+        "Tube"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 1.21,
+      "yield_strength": 0.0234,
+      "tensile_strength": 0.0441,
+      "density": 0.941,
       "magnetic_classification": "Diamagnetic"
     }
   ]

@@ -13,7 +13,7 @@ A static reference database of engineering material properties for Design Engine
 ## Features
 
 - **Browse** — filter materials by category, fabrication process, common forms, usage frequency, and magnetic classification; shareable URL state
-- **Advanced Selection** — three-tier filtering: categorical pre-filters → up to 5 numeric property range filters → merit index or property ranking (M1–M13)
+- **Advanced Selection** — three-tier filtering: categorical pre-filters → up to 5 numeric property range filters → merit index or property ranking (M1–M11)
 - **Compare** — side-by-side bar charts, S-N curve overlay, CTE vs temperature chart, and merit index table for up to 10 materials
 - **Detail view** — full property tables with unit conversion (metric/imperial), reference badges, and cryogenic data tables
 - **Submit** — form-based submission that exports a validated JSON file for review via GitHub Pull Request; supports edit mode for existing materials
@@ -21,12 +21,12 @@ A static reference database of engineering material properties for Design Engine
 
 ---
 
-## Material Coverage (41 materials)
+## Material Coverage (42 materials)
 
 | Category | Materials |
 |---|---|
 | Metals (20) | Aluminium alloys (1100-O, 5052-H32, 6061-T6, 7075-T6), AlSi10Mg, Beryllium S65, Brass (Free-Cutting ASTM B16), Copper C11000, Inconel 625, Inconel 718, Invar 36, Stainless 303/304/316, Steel 4340/A2/H13/Mild A36/Spring 5160, Ti-6Al-4V |
-| Plastics (6) | ABS, Acrylic (PMMA), PEEK, PETG-FDM, PLA-FDM, POM (Delrin) |
+| Plastics (7) | ABS, Acrylic (PMMA), PEEK, PETG-FDM, PLA-FDM, POM (Delrin), UHMW-PE |
 | Ceramics (2) | Alumina Al₂O₃, Silicon Carbide |
 | Composites (3) | CFRP-UD, C-SiC Woven, GFRP Woven |
 | Elastomers (4) | EPDM, Fluorocarbon (Viton), Nitrile (NBR), Silicone (VMQ) |
@@ -194,7 +194,7 @@ js/
 materials/
   index.json            Generated manifest (do not edit by hand)
   metals/               20 material JSON files
-  plastics/             6 material JSON files
+  plastics/             7 material JSON files
   ceramics/             2 material JSON files
   composites/           3 material JSON files
   elastomers/           4 material JSON files

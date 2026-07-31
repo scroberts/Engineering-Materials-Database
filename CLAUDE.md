@@ -52,7 +52,8 @@ materials/
                     steel-mild-a36.json, steel-spring-5160.json,
                     titanium-6al-4v.json
   plastics/         abs.json, acrylic-pmma.json, peek.json,
-                    petg-fdm.json, pla-fdm.json, pom-delrin.json
+                    petg-fdm.json, pla-fdm.json, pom-delrin.json,
+                    uhmw-pe.json
   ceramics/         alumina-al2o3.json, silicon-carbide.json
   composites/       c-sic-woven.json, cfrp-ud.json, gfrp-woven.json
   elastomers/       epdm.json, fluorocarbon-viton.json, nitrile-nbr.json,

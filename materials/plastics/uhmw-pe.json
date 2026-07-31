@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "identification": {
+    "name": "UHMW-PE (Ultra High Molecular Weight Polyethylene)",
+    "slug": "uhmw-pe",
+    "category": "Plastic",
+    "fabrication_processes": ["Machining", "Moulding", "Extrusion"],
+    "common_forms": ["Sheet", "Plate", "Round Bar", "Tube"],
+    "common_form_notes": "Widely available as compression-moulded or ram-extruded sheet, plate, round bar, and tube from plastics distributors. Machines well with sharp tooling and adequate chip clearance; very high melt viscosity makes it unsuitable for conventional injection moulding or 3D printing.",
+    "usage_frequency": "Common",
+    "notes": "Semi-crystalline thermoplastic with molecular weight ≥4.2 million g/mol (vs. ~0.5 million for standard HDPE), giving exceptional abrasion resistance, a very low coefficient of friction, high impact toughness (retained even at low temperature), and good chemical/corrosion resistance. Self-lubricating — commonly run dry against itself or steel. Data below are Garland Manufacturing's GAR-DUR® grade as reported by MatWeb, representative of generic unfilled, non-cross-linked virgin UHMW-PE. No tensile (Young's) modulus was reported by the source; the 1210 MPa flexural modulus (1% secant, ASTM D790B) is used in its place. Poisson's ratio (0.46) is a typical literature value for HDPE/UHMW-PE (Callister), not from the MatWeb source. usable_temp_range is derived from data in the source: −40 °C from Izod unnotched impact testing showing no break (NB) at −40 °C (ASTM D256A); 80 °C from heat deflection temperature at the lower 0.46 MPa (66 psi) load (ASTM D648) — HDT drops to 47 °C at the higher 1.8 MPa (264 psi) load, so stiffness under sustained higher stress falls off well below 80 °C. Coefficient of friction: 0.11 (UHMW-PE to UHMW-PE), 0.13 (to stainless steel), 0.14 (to rolled steel). Shear strength derived from von Mises criterion: UTS/√3 = 44.1/1.732 ≈ 25.5 MPa. Melting point reported as a narrow crystalline range (130–131 °C); the lower bound is stored. Glass transition temperature was not reported by the source and is left null rather than mixing in an unsourced literature value."
+  },
+
+  "typical_usage": "Wear strips, liners, and guides for chutes, hoppers, and conveyors in mining, pulp and paper, and bulk material handling; sprockets, gears, and bushings requiring a low coefficient of friction and self-lubricating dry-running performance; food-processing and refrigeration equipment; impact-resistant guards and wear plates replacing steel in abrasive or corrosive service.",
+
+  "mechanical_common": {
+    "youngs_modulus":      { "value": 1.21,   "ref": "matweb-gar-dur-uhmwpe" },
+    "poissons_ratio":      { "value": 0.46,   "ref": "callister2020" },
+    "yield_strength":      { "value": 0.0234, "ref": "matweb-gar-dur-uhmwpe" },
+    "tensile_strength":    { "value": 0.0441, "ref": "matweb-gar-dur-uhmwpe" },
+    "compressive_modulus": { "value": null,   "ref": null },
+    "compressive_strength":{ "value": null,   "ref": null },
+    "usable_temp_range":   { "min": -40, "max": 80, "ref": "matweb-gar-dur-uhmwpe" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength": { "value": null,  "ref": null },
+    "creep_strength":      { "value": null,  "ref": null },
+    "fatigue_sn_curve":    { "points": [], "ref": null },
+    "fracture_toughness":  { "value": null,  "ref": null },
+    "hardness_vickers":    { "value": null,  "ref": null },
+    "hardness_brinell":    { "value": null,  "ref": null },
+    "hardness_rockwell":   { "value": 64, "scale": "R", "ref": "matweb-gar-dur-uhmwpe" },
+    "hardness_shore":      { "value": 67, "scale": "D", "ref": "matweb-gar-dur-uhmwpe" },
+    "ductility":           { "min": null, "max": null, "typical": 350, "ref": "matweb-gar-dur-uhmwpe" },
+    "shear_strength":      { "value": 0.0255, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 0.941, "ref": "matweb-gar-dur-uhmwpe" },
+    "electrical_conductivity":{ "value": 0,     "ref": null },
+    "vapour_pressure":        { "value": null,   "ref": null },
+    "thermal_expansion": {
+      "value": 164,
+      "table": [],
+      "ref": "matweb-gar-dur-uhmwpe"
+    },
+    "thermal_conductivity":   { "value": null, "table": [],  "ref": null },
+    "specific_heat":          { "value": null, "table": [],  "ref": null },
+    "thermal_diffusivity":    { "value": null,   "ref": null },
+    "melting_point_tm":       { "value": 130,   "ref": "matweb-gar-dur-uhmwpe" },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["matweb-gar-dur-uhmwpe", "callister2020"],
+
+  "metadata": {
+    "submitted_by": "admin",
+    "submitted_date": "2026-07-30",
+    "approved_by": "admin",
+    "approved_date": "2026-07-30"
+  }
+}

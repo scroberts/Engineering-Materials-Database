@@ -499,7 +499,7 @@ h1: Advanced Material Selection
 │  Category: Metal                                                         │
 │  Fabrication: Machining, Welding                                         │
 │  20 materials in starting set                                            │
-│  (or "All 41 materials — no pre-filters applied")                        │
+│  (or "All 42 materials — no pre-filters applied")                        │
 └──────────────────────────────────────────────────────────────────────────┘
 
 Max results: [10]    Units: [Metric ▼]    Temperature: [°C ▼]
@@ -636,7 +636,7 @@ async function findMaterials():
 
   // Phase 2 — load full JSONs for candidates only
   fullMaterials = await loadMaterialBatch(candidates.map(m => m.slug))
-  // loader.js caches each by slug; worst case 41 parallel fetches
+  // loader.js caches each by slug; worst case 42 parallel fetches
 
   // Phase 3 — property range filters (up to 5)
   for each activeFilter:
@@ -683,14 +683,14 @@ async function findMaterials():
 
 | Test | Expected |
 |---|---|
-| `python tools/validate.py` | 41/41 valid |
+| `python tools/validate.py` | 42/42 valid |
 | `python tools/update_manifest.py` | Each manifest entry includes `magnetic_classification` |
 | Browse: check "Paramagnetic" | Only paramagnetic materials shown; `?magnetic=Paramagnetic` in URL |
 | Browse: "Compare All Filtered (N)" with 2–10 visible | Navigates to compare.html with N slugs |
 | Browse: "Compare All Filtered" with >10 visible | Button disabled |
 | Browse: "Advanced Selection →" with Metal filter active | Navigates to `select.html?cat=Metal` |
 | Select: open with `?cat=Metal` | Pre-selection shows "Category: Metal · 20 materials in starting set" |
-| Select: open with no params | Shows "All 41 materials — no pre-filters applied" |
+| Select: open with no params | Shows "All 42 materials — no pre-filters applied" |
 | Select: yield ≥ 500 MPa (Metric) | Only materials with σ_y ≥ 0.5 GPa canonical |
 | Select: yield ≥ 72.5 ksi (Imperial) | Same result as above (72.5 ksi ≈ 500 MPa) |
 | Select: `between` operator | Two value inputs appear |

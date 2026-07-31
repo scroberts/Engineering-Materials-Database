@@ -298,21 +298,19 @@ Chart.js 4.x via CDN: `https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.um
 
 **Merit indices** — all return null if any required input is missing:
 
-| ID | Function | Formula | Better |
-|----|---|---|---|
-| M1 | `meritM1(m)` | E / ρ | Higher |
-| M2 | `meritM2(m)` | (E/ρ)^0.5 | Higher |
-| M3 | `meritM3(m)` | (E/ρ)^(1/3) | Higher |
-| M4 | `meritM4(m)` | E^0.5 / ρ | Higher |
-| M5 | `meritM5(m)` | σ_y / ρ | Higher |
-| M6 | `meritM6(m)` | σ_y^(2/3) / ρ | Higher |
-| M7 | `meritM7(m)` | σ_y^0.5 / ρ | Higher |
-| M8 | `meritM8(m)` | K_IC / σ_y | Higher |
-| M9 | `meritM9(m)` | K_IC² / σ_y² | Higher |
-| M10 | `meritM10(m)` | K_IC / ρ | Higher |
-| M11 | `meritM11(m)` | α / k | Lower |
-| M12 | `meritM12(m)` | α / D | Lower |
-| M13 | `meritM13(m)` | k / (ρ·Cp) | Higher |
+| ID | Formula | Better |
+|----|---|---|
+| M1 | E / ρ | Higher |
+| M2 | E^½ / ρ | Higher |
+| M3 | E^⅓ / ρ | Higher |
+| M4 | σ_y / ρ | Higher |
+| M5 | σ_y^⅔ / ρ | Higher |
+| M6 | σ_y^½ / ρ | Higher |
+| M7 | K_IC / σ_y | Higher |
+| M8 | K_IC / ρ | Higher |
+| M9 | α / k | Lower |
+| M10 | α / a (a = k / ρ·Cp) | Lower |
+| M11 | k / (ρ·Cp) | Higher |
 
 Exported as `MERIT_INDICES = [{ id, label, fn, higherIsBetter }, ...]` so `compare.js` iterates generically.
 
@@ -379,7 +377,7 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 13. `tools/migrate.py` · `tools/import_bibtex.py`
 - [x] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
 - [x] 15. Edit mode — implemented as dual-mode `submit.html` (`?slug=` pre-fills form, locks slug, "Download Updated JSON")
-- [x] 16. Additional seed materials — 41 materials across metals, plastics, ceramics, composites, elastomers, glass, and natural categories
+- [x] 16. Additional seed materials — 42 materials across metals, plastics, ceramics, composites, elastomers, glass, and natural categories
 - [x] 17b. `tools/import_new_refs.py` — promote `new_references` from submitted JSONs into `references/index.json`; closes the manual copy step in the admin workflow
 - [x] 17. `404.html`
 - [x] 18. Merit index table improvements — shortName, augmented descriptions, reference footnotes in `derived.js` + `compare.js`
