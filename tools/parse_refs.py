@@ -125,15 +125,20 @@ def _convert_density(value: float, unit: str) -> float | None:
 def _convert_cte(value: float, unit: str) -> float | None:
     """Convert CTE to µm/m·K."""
     u = _nu(unit)
+    # Read the temperature scale from the trailing character rather than a
+    # '/f' or '/c' substring search: symbol-stripping in _nu() collapses
+    # e.g. 'µm/m·°F' to 'um/mf' and 'µin/in·°C' to 'uin/inc', so the '/'
+    # is no longer adjacent to the temperature letter. Ratio-only units
+    # (in/in, ft/ft) end in 'n'/'t' and carry no explicit marker; per
+    # convention these are °F unless an explicit °C/K unit is appended.
+    is_fahrenheit = u.endswith('f') or 'in/in' in u or 'ft/ft' in u
+    if u.endswith('c') or u.endswith('k'):
+        is_fahrenheit = False
     if 'ppm' in u or 'um/m' in u or 'ue/' in u:
-        if '/f' in u or 'perf' in u:
-            return value * 1.8
-        return value   # ppm/°C = µm/m·K
+        return value * 1.8 if is_fahrenheit else value   # ppm/°C = µm/m·K
     # Bare SI units: value already in 1/K or 1/°F (e.g. 11.7e-6 /K → ×1e6)
-    if '1/f' in u or '/f' in u or 'in/in' in u or 'ft/ft' in u:
-        return value * 1.8e6
-    if '1/k' in u or '1/c' in u or '/k' in u or '/c' in u:
-        return value * 1e6
+    if 'in/in' in u or 'ft/ft' in u or u.endswith('f') or u.endswith('c') or u.endswith('k'):
+        return value * (1.8e6 if is_fahrenheit else 1e6)
     return None
 
 
