@@ -624,5 +624,23 @@
     "doi": null,
     "bibtex": null,
     "url": "https://synfoam.com/Products/SynFoam_SW"
+  },
+  "matweb-mirel-p1004": {
+    "short_label": "MatWeb: Telles Mirel™ P1004 Injection Molding Grade PHA Bioplastic",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=9a8bbca39deb4e45be0710940d33448d"
+  },
+  "salesplastics-pha-filament": {
+    "short_label": "Sales Plastics: PHA Filament Technical Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://salesplastics.com/pha-filament/"
+  },
+  "wikipedia-polyhydroxyalkanoates": {
+    "short_label": "Wikipedia: Polyhydroxyalkanoates",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://en.wikipedia.org/wiki/Polyhydroxyalkanoates"
   }
 }
