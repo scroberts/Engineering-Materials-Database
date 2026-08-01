@@ -8,6 +8,7 @@ Static website for UVIC Design Engineering students to browse, compare, and refe
 
 - **Frontend:** Plain HTML/CSS/JS, ES modules (`type="module"`), no build step
 - **Charts:** Chart.js 4.x via CDN
+- **Analytics:** GoatCounter (privacy-friendly, no cookies) — script tag on all 6 top-level pages, dashboard at `scottroberts8314.goatcounter.com`; GitHub's own traffic tab does not count visits to the Pages site itself
 - **Data:** JSON files (`materials/`, `references/`)
 - **Admin tooling:** Python scripts in `tools/`, venv at `.venv/`
 - **Dev server:** `python -m http.server` from project root (ES modules require a server, not `file://`)
