@@ -6,7 +6,7 @@
     "slug":       "borosilicate-glass",
     "category":   "Glass",
     "fabrication_processes": ["Machining", "Polishing"],
-    "common_forms": ["Plate", "Round Bar"],
+    "common_forms": ["Plate", "Round Bar", "Tube"],
     "common_form_notes": "Laboratory glass, sight glasses, optical windows, mirror substrates",
     "usage_frequency": "Specialty",
     "notes": "BOROFLOAT® 33 (Schott) and Pyrex® 7740 (Corning) are both borosilicate glasses with similar compositions and near-identical properties; BOROFLOAT® 33 data used here as it has more complete current datasheets. Tensile strength (0.025 GPa) is the flexural/bending strength (MOR) per DIN (German industrial standard) 52292; safe-load bending strength is 7 MPa. Maximum service temperature 450°C continuous, 500°C brief (<10 h). Hardness converted from Knoop 480 HK (Knoop hardness, per ISO 9385 — International Organization for Standardization) to HV (Vickers hardness) using HV ≈ HK/1.05. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."

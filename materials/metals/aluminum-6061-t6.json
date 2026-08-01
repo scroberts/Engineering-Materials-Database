@@ -5,7 +5,7 @@
     "slug": "aluminum-6061-t6",
     "category": "Metal",
     "fabrication_processes": ["Machining", "Welding", "Extrusion", "Plating"],
-    "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles"],
+    "common_forms": ["Sheet", "Plate", "Round Bar", "Angles and Structural Profiles", "Tube"],
     "common_form_notes": "Widely stocked in most metals suppliers. Extrusions available in many standard profiles.",
     "usage_frequency": "Common",
     "notes": "T6 temper denotes solution heat-treated and artificially aged. One of the most commonly used aluminum alloys in mechanical design. Mechanical properties from MIL-HDBK-5J (U.S. Military Handbook 5J, freely available); AZoM article linked for cross-reference. Cryogenic CTE (coefficient of thermal expansion) table entries (−196 to −100 °C) are instantaneous values from the NIST (National Institute of Standards and Technology) Cryogenic Materials Database polynomial for 6061-T6 (underlying data: Mann, NBS (National Bureau of Standards, NIST's predecessor agency), 1977; ±4% accuracy). Above-RT CTE entries from MIL-HDBK-5J. Ductility (min 8%) is the MIL-HDBK-5J minimum specification for thicker product forms; AA typical values are 12% (round bar ≥12.7 mm) to 17% (sheet ≤1.59 mm) per MatWeb. Melting point is solidus (582°C); liquidus 652°C (MIL-HDBK-5J)."

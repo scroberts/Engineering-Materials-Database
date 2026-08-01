@@ -120,7 +120,7 @@ When submitting a new material, if the required reference is not yet in `referen
 | Category                       | Single select | Metal, Plastic, Ceramic, Composite, Glass, Natural Material, Elastomer |
 | Usage Frequency                | Single select | Common (readily available), Specialty (less common), Exotic (rare/hard to source) |
 | Suitable Fabrication Processes | Multi-select  | Machining, Welding, Bending, Casting, Extrusion, Moulding, 3D Print (FDM), 3D Print (SLA), 3D Print (SLS), 3D Print (DMLS/SLM), 3D Print (Binder Jet), Sintering, Composite Layup, Vacuum Infusion, Plating, Polishing |
-| Common Forms                   | Multi-select  | Sheet, Plate, Round Bar, Tube, Angles and Structural Profiles, Filament, Pellet, Powder, Prepreg |
+| Common Forms                   | Multi-select  | Sheet, Plate, Foil, Round Bar, Wire, Tube, Angles and Structural Profiles, Filament, Pellet, Powder, Prepreg |
 | Common Form Notes              | Text box      | Free text, e.g. availability notes or standard sizes |
 | Notes                          | Text box      | General notes about the material |
 

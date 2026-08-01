@@ -11,7 +11,9 @@
     ],
     "common_forms": [
       "Sheet",
-      "Plate"
+      "Plate",
+      "Foil",
+      "Tube"
     ],
     "common_form_notes": "Commonly available as sheet and foil. Very soft — easily formed, spun, and deep-drawn.",
     "usage_frequency": "Common",

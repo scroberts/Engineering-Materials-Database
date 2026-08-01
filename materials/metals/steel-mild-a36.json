@@ -5,7 +5,7 @@
     "slug": "steel-mild-a36",
     "category": "Metal",
     "fabrication_processes": [ "Machining", "Welding", "Bending" ],
-    "common_forms": [ "Sheet", "Plate", "Round Bar", "Angles and Structural Profiles" ],
+    "common_forms": [ "Sheet", "Plate", "Round Bar", "Angles and Structural Profiles", "Tube" ],
     "common_form_notes": "Extremely widely stocked in plate, bar, angle, channel, and I-beam sections. Most common structural steel in North America.",
     "usage_frequency": "Common",
     "notes": "Low-carbon structural steel per ASTM (American Society for Testing and Materials) A36/A36M. Hot-rolled condition. Yield and tensile strengths are ASTM A36 minimum specified values; as-supplied material typically exceeds these minimums. Equivalent to EN (European Norm) S275 and similar grades. Excellent weldability. Not suitable for service below approximately -30 °C without impact testing. Shear strength derived from von Mises criterion: UTS (ultimate tensile strength)/√3 = 400/1.732 ≈ 231 MPa. Melting point is solidus (1425°C); liquidus 1540°C (metalzenith-a36)."

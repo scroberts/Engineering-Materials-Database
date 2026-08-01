@@ -5,7 +5,7 @@
     "slug": "gfrp-woven",
     "category": "Composite",
     "fabrication_processes": ["Composite Layup", "Vacuum Infusion", "Machining"],
-    "common_forms": ["Sheet", "Plate"],
+    "common_forms": ["Sheet", "Plate", "Tube"],
     "common_form_notes": "Available as FR-4 (a flame-retardant grade designation) / NEMA (National Electrical Manufacturers Association) G-10 laminate sheet from electrical/insulation suppliers. Machines well with carbide tooling; avoid excessive heat during cutting to prevent delamination.",
     "usage_frequency": "Common",
     "notes": "Woven E-glass fabric / epoxy laminate per NEMA (National Electrical Manufacturers Association) Grade G-10 standard. Properties are for the in-plane (warp/fill) directions; a balanced weave makes properties approximately equal in both directions. Through-thickness tensile strength and interlaminar shear strength are much lower than in-plane values (typically 30–50 MPa) — design against delamination in peel or through-thickness loading. Shear strength is the in-plane measured value from NEMA G-10 data; von Mises derivation does not apply to composite materials. The epoxy matrix is a thermoset: no melting point; maximum service temperature is controlled by the matrix glass transition temperature, Tg (~130 °C for standard FR-4, a common flame-retardant fibreglass-epoxy grade). Not suitable for sustained loads at elevated temperature without specific creep data. Ductility values represent strain to fracture (brittle failure); there is no plastic yield."

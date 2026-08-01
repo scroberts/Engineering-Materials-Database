@@ -54,7 +54,9 @@
       "enum": [
         "Sheet",
         "Plate",
+        "Foil",
         "Round Bar",
+        "Wire",
         "Tube",
         "Angles and Structural Profiles",
         "Filament",

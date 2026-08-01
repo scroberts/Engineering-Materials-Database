@@ -5,7 +5,7 @@
     "slug": "steel-4340",
     "category": "Metal",
     "fabrication_processes": ["Machining"],
-    "common_forms": ["Round Bar", "Plate"],
+    "common_forms": ["Round Bar", "Plate", "Tube"],
     "common_form_notes": "Available as hot-rolled or annealed bar stock; heat treatment (austenitise, quench, temper) required to achieve listed properties. Do not weld in the hardened condition without pre-heat and post-weld temper.",
     "usage_frequency": "Specialty",
     "notes": "AISI (American Iron and Steel Institute) 4340 Ni-Cr-Mo ultra-high-strength steel, quenched and tempered at 315 °C (600 °F). CAUTION: the 250–370 °C (480–700 °F) tempering range is the Tempered Martensite Embrittlement (TME) zone — avoid this range when selecting a tempering temperature; 315 °C is shown here as a common aerospace/motorsport condition but toughness is reduced relative to tempering above 400 °C. Shear strength derived from von Mises criterion: UTS (ultimate tensile strength)/√3 = 1760/√3 ≈ 1016 MPa."

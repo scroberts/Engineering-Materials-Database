@@ -15,7 +15,10 @@
     "common_forms": [
       "Sheet",
       "Plate",
-      "Round Bar"
+      "Round Bar",
+      "Foil",
+      "Wire",
+      "Tube"
     ],
     "common_form_notes": "C11000 (electrolytic tough pitch) is the most common copper alloy, available in virtually all product forms from commodity suppliers. The OS050 (fully annealed) temper offers maximum ductility; H tempers are available for higher strength at the expense of ductility.",
     "usage_frequency": "Common",

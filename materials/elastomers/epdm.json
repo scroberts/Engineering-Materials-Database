@@ -6,7 +6,7 @@
     "slug":       "epdm",
     "category":   "Elastomer",
     "fabrication_processes": ["Moulding"],
-    "common_forms": ["Sheet"],
+    "common_forms": ["Sheet", "Tube"],
     "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer, peroxide-cured",
     "usage_frequency": "Common",
     "notes": "Standard 70 Shore A peroxide-cured EPDM (ethylene propylene diene monomer rubber) compound. Peroxide cure provides higher temperature resistance (to +150°C) compared to sulfur cure (to +125°C). EPDM is incompatible with petroleum oils and greases — do not use in contact with mineral oils, gasoline, or diesel. Excellent ozone, UV, and weathering resistance. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."

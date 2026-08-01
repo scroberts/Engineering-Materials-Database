@@ -14,7 +14,9 @@
     "common_forms": [
       "Sheet",
       "Plate",
-      "Round Bar"
+      "Round Bar",
+      "Tube",
+      "Wire"
     ],
     "common_form_notes": "Widely stocked in sheet, plate, tube, and bar. 316L (low-carbon variant) preferred for welded assemblies to prevent sensitisation; for metal-AM-printed parts, see the dedicated Stainless Steel 316L (DMLS) entry in this database rather than this wrought/annealed entry.",
     "usage_frequency": "Common",

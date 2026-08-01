@@ -466,7 +466,7 @@ const FORM_SECTIONS = [
                   '3D Print (DMLS/SLM)', '3D Print (Binder Jet)', 'Sintering',
                   'Composite Layup', 'Vacuum Infusion', 'Plating', 'Polishing'] },
       { id: 'common_forms', label: 'Common forms', type: 'checkbox',
-        options: ['Sheet', 'Plate', 'Round Bar', 'Tube',
+        options: ['Sheet', 'Plate', 'Foil', 'Round Bar', 'Wire', 'Tube',
                   'Angles and Structural Profiles', 'Filament',
                   'Pellet', 'Powder', 'Prepreg'] },
       { id: 'common_form_notes', label: 'Form notes', type: 'text',

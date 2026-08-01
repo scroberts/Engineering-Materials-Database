@@ -5,7 +5,7 @@
     "slug": "silicon-carbide",
     "category": "Ceramic",
     "fabrication_processes": ["Sintering", "Machining", "Polishing"],
-    "common_forms": ["Sheet", "Plate"],
+    "common_forms": ["Sheet", "Plate", "Tube"],
     "common_form_notes": "Supplied as sintered near-net-shape billets, tiles, or finished components. Machining requires diamond or CBN (cubic boron nitride) tooling; conventional cutting destroys the tooling. Final grinding/lapping to tight tolerances is standard for precision optical and bearing applications.",
     "usage_frequency": "Specialty",
     "notes": "Pressureless-sintered silicon carbide (SSiC / SC-30 grade, >98% theoretical density). SiC does not have a conventional melting point — it decomposes by sublimation above approximately 2730 °C. Maximum service temperature in air is limited to ~1375 °C by oxidation; in inert or vacuum environments, service to ~1650 °C is possible. Tensile strength is highly flaw-limited and variable; apply appropriate Weibull statistics and safety factors (do not use mean strength for design without a Weibull modulus). CTE (coefficient of thermal expansion) is approximately constant from 0–600 °C at ~4 µm/m·K. Electrical conductivity is effectively zero for structural sintered grades (impurity-doped SiC can be semiconducting but is not the structural form)."

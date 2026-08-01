@@ -6,7 +6,7 @@
     "slug":       "nitrile-nbr",
     "category":   "Elastomer",
     "fabrication_processes": ["Moulding"],
-    "common_forms": ["Sheet"],
+    "common_forms": ["Sheet", "Tube"],
     "common_form_notes": "O-rings, gaskets, sheet stock; standard 70 Shore A durometer",
     "usage_frequency": "Common",
     "notes": "Standard 70 Shore A compound. Properties vary with specific formulation and carbon black loading. Young's modulus is not defined for elastomers in the conventional sense (material is hyperelastic, not linearly elastic). No conventional yield point. Temperature range -30 to +100°C continuous; brief excursions to +120°C. Incompatible with ozone, UV, aromatic solvents, and ketones. Thermal diffusivity is derived from thermal conductivity (k), density (ρ), and specific heat (Cp) — not an independently measured value."

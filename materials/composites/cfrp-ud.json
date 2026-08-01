@@ -5,7 +5,7 @@
     "slug": "cfrp-ud",
     "category": "Composite",
     "fabrication_processes": ["Composite Layup", "Vacuum Infusion", "Machining"],
-    "common_forms": ["Prepreg", "Sheet", "Plate"],
+    "common_forms": ["Prepreg", "Sheet", "Plate", "Tube"],
     "common_form_notes": "Supplied as prepreg (pre-impregnated, frozen) or dry fabric for wet lay-up / vacuum infusion. Post-cure machining requires diamond or solid carbide tooling due to abrasive fibres.",
     "usage_frequency": "Common",
     "notes": "Properties are for a unidirectional (0°) lamina: standard-modulus carbon fibre (e.g. T300 or AS4, Ef ≈ 230 GPa) in a structural epoxy matrix at approximately 60 vol% fibre. The material is strongly anisotropic — E and strength values given are in the fibre direction (0°). Transverse modulus (90°) is approximately 8–10 GPa and transverse tensile strength approximately 40–60 MPa. For a quasi-isotropic lay-up [0/±45/90]s expect in-plane E ≈ 55–70 GPa and in-plane tensile strength ≈ 400–600 MPa. Thermoset matrix: no melting point; maximum service temperature is set by the matrix glass transition temperature (Tg). Yield strength is not applicable — CFRP (carbon-fibre-reinforced polymer) is linearly elastic to catastrophic fibre failure."

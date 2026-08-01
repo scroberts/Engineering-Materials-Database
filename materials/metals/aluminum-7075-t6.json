@@ -5,7 +5,7 @@
     "slug": "aluminum-7075-t6",
     "category": "Metal",
     "fabrication_processes": ["Machining"],
-    "common_forms": ["Sheet", "Plate", "Round Bar"],
+    "common_forms": ["Sheet", "Plate", "Round Bar", "Tube"],
     "common_form_notes": "Widely stocked as plate, sheet, and bar. Typically purchased in T6 or T651 temper (stress-relieved plate). Not recommended for welding in most applications.",
     "usage_frequency": "Specialty",
     "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (U.S. Military Handbook 5J, freely available); eFunda linked for cross-reference. Cryogenic CTE (coefficient of thermal expansion) table entries (−196 to −100 °C) are instantaneous values from the NIST (National Institute of Standards and Technology) Cryogenic Materials Database polynomial for wrought aluminium alloys (6061-T6 polynomial used as proxy; dedicated 7075 polynomial not published — all wrought Al alloys agree within ±4%). Above-RT CTE from MIL-HDBK-5J. Melting point is solidus (477°C); liquidus 635°C (MIL-HDBK-5J)."

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-01T21:46:39Z",
+  "generated": "2026-08-01T22:06:33Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -15,7 +15,8 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 375,
@@ -36,7 +37,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 410,
@@ -99,7 +101,8 @@
       "common_forms": [
         "Prepreg",
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 135.0,
@@ -120,7 +123,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 20.0,
@@ -178,7 +182,8 @@
         "Moulding"
       ],
       "common_forms": [
-        "Sheet"
+        "Sheet",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": null,
@@ -196,7 +201,8 @@
         "Moulding"
       ],
       "common_forms": [
-        "Sheet"
+        "Sheet",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": null,
@@ -214,7 +220,8 @@
         "Moulding"
       ],
       "common_forms": [
-        "Sheet"
+        "Sheet",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": null,
@@ -232,7 +239,8 @@
         "Moulding"
       ],
       "common_forms": [
-        "Sheet"
+        "Sheet",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": null,
@@ -272,7 +280,8 @@
       ],
       "common_forms": [
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 64,
@@ -351,7 +360,9 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Foil",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 70,
@@ -371,7 +382,8 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 73.1,
@@ -392,7 +404,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 70.3,
@@ -416,7 +429,8 @@
         "Sheet",
         "Plate",
         "Round Bar",
-        "Angles and Structural Profiles"
+        "Angles and Structural Profiles",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 68.9,
@@ -459,7 +473,8 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 71.7,
@@ -478,7 +493,8 @@
       ],
       "common_forms": [
         "Round Bar",
-        "Plate"
+        "Plate",
+        "Foil"
       ],
       "usage_frequency": "Exotic",
       "youngs_modulus": 287,
@@ -522,7 +538,10 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Foil",
+        "Wire",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 117,
@@ -548,6 +567,7 @@
         "Sheet",
         "Plate",
         "Round Bar",
+        "Tube",
         "Powder"
       ],
       "usage_frequency": "Specialty",
@@ -573,6 +593,7 @@
         "Sheet",
         "Plate",
         "Round Bar",
+        "Tube",
         "Powder"
       ],
       "usage_frequency": "Specialty",
@@ -593,7 +614,8 @@
       ],
       "common_forms": [
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Wire"
       ],
       "usage_frequency": "Exotic",
       "youngs_modulus": 148,
@@ -613,7 +635,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 45.0,
@@ -653,7 +676,8 @@
       ],
       "common_forms": [
         "Round Bar",
-        "Tube"
+        "Tube",
+        "Wire"
       ],
       "usage_frequency": "Exotic",
       "youngs_modulus": null,
@@ -673,7 +697,8 @@
       ],
       "common_forms": [
         "Round Bar",
-        "Tube"
+        "Tube",
+        "Wire"
       ],
       "usage_frequency": "Exotic",
       "youngs_modulus": null,
@@ -694,7 +719,8 @@
       ],
       "common_forms": [
         "Round Bar",
-        "Plate"
+        "Plate",
+        "Wire"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 200,
@@ -715,7 +741,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Wire"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 204,
@@ -759,7 +786,9 @@
         "Sheet",
         "Plate",
         "Round Bar",
-        "Angles and Structural Profiles"
+        "Angles and Structural Profiles",
+        "Tube",
+        "Wire"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 193,
@@ -783,7 +812,9 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube",
+        "Wire"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 193,
@@ -824,7 +855,8 @@
       "common_forms": [
         "Round Bar",
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 205,
@@ -843,7 +875,8 @@
       ],
       "common_forms": [
         "Round Bar",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 200,
@@ -908,7 +941,8 @@
         "Sheet",
         "Plate",
         "Round Bar",
-        "Angles and Structural Profiles"
+        "Angles and Structural Profiles",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 200,
@@ -949,7 +983,9 @@
       "common_forms": [
         "Sheet",
         "Plate",
-        "Round Bar"
+        "Round Bar",
+        "Tube",
+        "Wire"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 114,
@@ -1044,6 +1080,7 @@
       ],
       "common_forms": [
         "Sheet",
+        "Tube",
         "Filament"
       ],
       "usage_frequency": "Common",
@@ -1065,7 +1102,8 @@
       ],
       "common_forms": [
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 3.2,
@@ -1087,6 +1125,7 @@
       "common_forms": [
         "Round Bar",
         "Sheet",
+        "Tube",
         "Powder"
       ],
       "usage_frequency": "Specialty",
@@ -1111,6 +1150,7 @@
         "Round Bar",
         "Sheet",
         "Plate",
+        "Tube",
         "Filament"
       ],
       "usage_frequency": "Common",
@@ -1132,7 +1172,8 @@
       "common_forms": [
         "Round Bar",
         "Sheet",
-        "Plate"
+        "Plate",
+        "Tube"
       ],
       "usage_frequency": "Specialty",
       "youngs_modulus": 4.0,
@@ -1211,6 +1252,7 @@
       "common_forms": [
         "Sheet",
         "Plate",
+        "Tube",
         "Filament"
       ],
       "usage_frequency": "Common",
@@ -1235,6 +1277,7 @@
         "Sheet",
         "Plate",
         "Round Bar",
+        "Tube",
         "Filament"
       ],
       "usage_frequency": "Common",
