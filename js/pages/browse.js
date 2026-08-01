@@ -35,8 +35,8 @@ const FABRICATION_PROCESSES = [
 ];
 
 const COMMON_FORMS = [
-  'Sheet', 'Plate', 'Round Bar', 'Tube', 'Angles and Structural Profiles',
-  'Filament', 'Wire',
+  'Sheet', 'Plate', 'Foil', 'Round Bar', 'Wire', 'Tube',
+  'Angles and Structural Profiles', 'Filament', 'Pellet', 'Powder', 'Prepreg',
 ];
 
 // ── State ──────────────────────────────────────────────────────────────────
