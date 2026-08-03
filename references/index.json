@@ -642,5 +642,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://en.wikipedia.org/wiki/Polyhydroxyalkanoates"
+  },
+  "hodzic2020-pla-fdm": {
+    "short_label": "Hodžić et al. 2020: Strength Comparison of FDM 3D Printed PLA (TEM Journal)",
+    "doi": "10.18421/TEM93-18",
+    "bibtex": "@article{Hodzic2020,\n  author  = {Hodžić, Damir and Pandžić, Adi and Hajro, Ismar and Tasić, Petar},\n  title   = {Strength Comparison of {FDM} 3D Printed {PLA} Made by Different Manufacturers},\n  journal = {TEM Journal},\n  volume  = {9},\n  number  = {3},\n  pages   = {966--970},\n  year    = {2020},\n  doi     = {10.18421/TEM93-18}\n}",
+    "url": "https://doi.org/10.18421/TEM93-18"
   }
 }

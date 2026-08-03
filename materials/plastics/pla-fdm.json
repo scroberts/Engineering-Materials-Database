@@ -8,7 +8,7 @@
     "common_forms": ["Filament"],
     "common_form_notes": "1.75 mm and 2.85 mm diameter filament. The most beginner-friendly FDM material — does not require a heated bed.",
     "usage_frequency": "Common",
-    "notes": "Polylactic Acid (PLA) printed via FDM (fused deposition modeling). Bio-derived and compostable under industrial conditions. Stiffest common FDM material but brittle — low elongation to failure with no clear yield point. Very low max service temperature (52 °C per Simplify3D) limits use in any warm environment (car interiors, outdoor direct sun). Properties are anisotropic; inter-layer (Z) strength significantly lower than XY. Not recommended for structural parts in humid or UV-exposed environments."
+    "notes": "Polylactic Acid (PLA) printed via FDM (fused deposition modeling). Bio-derived and compostable under industrial conditions. Stiffest common FDM material but brittle — low elongation to failure. Yield strength (31.1 MPa, 0.2% offset) is the average across 5 filament brands tested by Hodžić et al. 2020 (TEM Journal, ISO 527-2 tensile testing on an Ultimaker S5, 100% infill, 0.15 mm layers, 5 specimens/brand) — brand-to-brand yield varied 26.0–36.3 MPa (33% spread) in that study, so treat this as a representative FDM value rather than a single-brand spec; all 5 brands showed a clear 0.2%-offset yield point in their stress-strain curves, contradicting an earlier, unsourced claim in this entry that PLA has no distinct yield. The same study's tensile strength averaged ~57.3 MPa (52.9–62.7 MPa range) across brands, somewhat lower than the 65 MPa Simplify3D figure already stored here for tensile_strength; both are retained rather than reconciled, since they come from different measurement methodologies (Simplify3D's isn't documented, while Hodžić et al. is a controlled, replicated study). Very low max service temperature (52 °C per Simplify3D) limits use in any warm environment (car interiors, outdoor direct sun). Properties are anisotropic; inter-layer (Z) strength significantly lower than XY. Not recommended for structural parts in humid or UV-exposed environments."
   },
 
   "typical_usage": "Visual prototypes, display models, low-stress brackets and clips, hobby and art projects, educational models, and any short-duration functional part that will not exceed 50 °C.",
@@ -16,7 +16,7 @@
   "mechanical_common": {
     "youngs_modulus":      { "value": 3.5,  "ref": "callister2020" },
     "poissons_ratio":      { "value": 0.36, "ref": "callister2020" },
-    "yield_strength":      { "value": null, "ref": null },
+    "yield_strength":      { "value": 0.0311, "ref": "hodzic2020-pla-fdm" },
     "tensile_strength":    { "value": 0.065, "ref": "simplify3d-materials-guide" },
     "compressive_modulus": { "value": null, "ref": null },
     "compressive_strength":{ "value": null, "ref": null },
@@ -53,7 +53,7 @@
     "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["simplify3d-materials-guide", "callister2020"],
+  "references": ["simplify3d-materials-guide", "callister2020", "hodzic2020-pla-fdm"],
 
   "metadata": {
     "submitted_by": "admin",
