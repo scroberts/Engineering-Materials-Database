@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T02:59:56Z",
+  "generated": "2026-08-03T03:16:01Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -1195,7 +1195,7 @@
       ],
       "usage_frequency": "Common",
       "youngs_modulus": 2.1,
-      "yield_strength": null,
+      "yield_strength": 0.0388,
       "tensile_strength": 0.053,
       "density": 1.23,
       "magnetic_classification": "Diamagnetic"

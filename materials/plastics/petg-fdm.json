@@ -8,7 +8,7 @@
     "common_forms": ["Filament"],
     "common_form_notes": "1.75 mm and 2.85 mm diameter filament. Requires heated bed. Tends to string — retraction tuning important.",
     "usage_frequency": "Common",
-    "notes": "Polyethylene Terephthalate Glycol (PETG) printed via FDM (fused deposition modeling). Glycol modification prevents the brittleness of standard PET (polyethylene terephthalate, the unmodified base polymer). Good balance of strength, toughness, chemical resistance, and printability — often considered the best all-around FDM material. Water and chemically resistant per Simplify3D. Fatigue resistant. Higher service temperature than PLA. Properties are anisotropic; use XY-oriented load paths for structural parts."
+    "notes": "Polyethylene Terephthalate Glycol (PETG) printed via FDM (fused deposition modeling). Glycol modification prevents the brittleness of standard PET (polyethylene terephthalate, the unmodified base polymer). Good balance of strength, toughness, chemical resistance, and printability — often considered the best all-around FDM material. Water and chemically resistant per Simplify3D. Fatigue resistant. Higher service temperature than PLA. Properties are anisotropic; use XY-oriented load paths for structural parts. Yield strength (38.8 MPa, 0.2% offset) is from Pandžić & Hodžić 2022 (33rd DAAAM International Symposium), a single-brand (AzureFilm) FDM tensile study at 100% infill using ISO 527-1 testing on a Shimadzu AGS-X (5 mm/min, 5 replicates) — the same rigorous methodology and research group as the PLA entry's yield-strength source. That study's tensile strength (49.8 MPa) and elastic modulus (2.10 GPa) at 100% infill both closely match the values already stored here from Simplify3D (53 MPa) and Callister (2.1 GPa), a good independent cross-check on the existing data."
   },
 
   "typical_usage": "Mechanical parts, food-contact containers (uncoated filament, verify food safety of specific brand), water bottles and liquid tanks, chemical-resistant housings, outdoor-use brackets, and functional prototypes requiring better toughness than PLA.",
@@ -16,7 +16,7 @@
   "mechanical_common": {
     "youngs_modulus":      { "value": 2.1,  "ref": "callister2020" },
     "poissons_ratio":      { "value": 0.38, "ref": "callister2020" },
-    "yield_strength":      { "value": null, "ref": null },
+    "yield_strength":      { "value": 0.0388, "ref": "pandzic2022-petg-fdm" },
     "tensile_strength":    { "value": 0.053, "ref": "simplify3d-materials-guide" },
     "compressive_modulus": { "value": null, "ref": null },
     "compressive_strength":{ "value": null, "ref": null },
@@ -53,7 +53,7 @@
     "magnetic_classification": { "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["simplify3d-materials-guide", "callister2020"],
+  "references": ["simplify3d-materials-guide", "callister2020", "pandzic2022-petg-fdm"],
 
   "metadata": {
     "submitted_by": "admin",

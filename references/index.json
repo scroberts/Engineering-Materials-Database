@@ -648,5 +648,11 @@
     "doi": "10.18421/TEM93-18",
     "bibtex": "@article{Hodzic2020,\n  author  = {Hodžić, Damir and Pandžić, Adi and Hajro, Ismar and Tasić, Petar},\n  title   = {Strength Comparison of {FDM} 3D Printed {PLA} Made by Different Manufacturers},\n  journal = {TEM Journal},\n  volume  = {9},\n  number  = {3},\n  pages   = {966--970},\n  year    = {2020},\n  doi     = {10.18421/TEM93-18}\n}",
     "url": "https://doi.org/10.18421/TEM93-18"
+  },
+  "pandzic2022-petg-fdm": {
+    "short_label": "Pandžić & Hodžić 2022: Tensile Properties of FDM PETG, ASA, and PLA-Strongman (33rd DAAAM Intl. Symposium)",
+    "doi": "10.2507/33rd.daaam.proceedings.031",
+    "bibtex": "@inproceedings{Pandzic2022,\n  author    = {Pandžić, Adi and Hodžić, Damir},\n  title     = {Tensile Mechanical Properties Comparation of {PETG}, {ASA} and {PLA}-Strongman {FDM} Printed Materials With and Without Infill Structure},\n  booktitle = {Proceedings of the 33rd DAAAM International Symposium},\n  editor    = {Katalinic, B.},\n  publisher = {DAAAM International},\n  address   = {Vienna, Austria},\n  pages     = {221--230},\n  year      = {2022},\n  isbn      = {978-3-902734-36-5},\n  issn      = {1726-9679},\n  doi       = {10.2507/33rd.daaam.proceedings.031}\n}",
+    "url": "https://doi.org/10.2507/33rd.daaam.proceedings.031"
   }
 }
