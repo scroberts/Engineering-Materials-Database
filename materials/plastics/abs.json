@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Tube", "Filament"],
     "common_form_notes": "FDM filament available in 1.75 mm and 2.85 mm diameters. Sheet stock available in various thicknesses.",
     "usage_frequency": "Common",
-    "notes": "Properties represent bulk injection-moulded ABS (acrylonitrile butadiene styrene, medium impact grade per AZoM). Young's modulus (tensile) and glass transition temperature are not listed on the AZoM reference page; 2.1 GPa is a standard tensile E for ABS and Tg = 105 °C is a widely published value. FDM (fused deposition modeling)-printed parts have significantly lower strength (typically 50–80% of bulk) and are anisotropic — inter-layer (Z-axis) strength is typically 40–60% of in-plane (XY) strength. Requires an enclosure to prevent warping on large prints. Emits styrene fumes during printing — ventilate or use an enclosure with filtration."
+    "notes": "Properties represent bulk injection-moulded ABS (acrylonitrile butadiene styrene, medium impact grade per AZoM). Young's modulus (tensile) and glass transition temperature are not listed on the AZoM reference page; 2.1 GPa is a standard tensile E for ABS and Tg = 105 °C is a widely published value. FDM (fused deposition modeling)-printed parts have significantly lower strength (typically 50–80% of bulk) and are anisotropic — inter-layer (Z-axis) strength is typically 40–60% of in-plane (XY) strength. Requires an enclosure to prevent warping on large prints. Emits styrene fumes during printing — ventilate or use an enclosure with filtration. usable_temp_range max corrected from 70 °C to 89 °C (2026-08-02): the prior value used AZoM's separate \"Max. Operating Temp.\" field for this grade, which was inconsistent with this same AZoM page's own heat deflection temperature (HDT) figures (98 °C @ 0.45 MPa, 89 °C @ 1.80 MPa) and made ABS appear less heat-resistant than PETG in this database — the reverse of ABS's well-established real-world behavior (ABS's Tg of ~105 °C and HDT of ~95–100 °C are both meaningfully higher than PETG's ~80 °C Tg and ~65–80 °C HDT; this is part of why enclosed-chamber printer designs such as Voron favor ABS/ASA for heat-exposed parts). Now uses AZoM's HDT @ 1.80 MPa (the higher, more conservative load) as the max usable temperature, consistent with the schema's \"creep/softening/degradation\" definition for this field."
   },
 
   "typical_usage": "Consumer product housings, automotive interior trim, electronic enclosures, pipe fittings. Chosen for its ease of processing, reasonable impact resistance, and dimensional stability.",
@@ -20,7 +20,7 @@
     "tensile_strength":    { "value": 0.047, "ref": "azom-abs" },
     "compressive_modulus": { "value": null,  "ref": null },
     "compressive_strength":{ "value": 65,    "ref": "azom-abs" },
-    "usable_temp_range":   { "min": -20, "max": 70, "ref": "azom-abs" }
+    "usable_temp_range":   { "min": -20, "max": 89, "ref": "azom-abs" }
   },
 
   "mechanical_other": {
