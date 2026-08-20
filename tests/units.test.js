@@ -26,6 +26,14 @@ import {
   fmtCycles,
 } from '../js/core/units.js';
 
+// For results of a multiplication where neither operand is exactly
+// representable in binary floating point (e.g. 100 * 0.58 = 57.999999999999996)
+// — assert.equal (strict ===) is correct for the exact-arithmetic cases
+// elsewhere in this file (1 * x is always exactly x in IEEE 754) but wrong here.
+const approx = (actual, expected, msg) => {
+  assert.ok(Math.abs(actual - expected) < 1e-9, `${msg}: expected ${expected}, got ${actual}`);
+};
+
 describe('convertPressure (canonical GPa -> display)', () => {
   test('GPa -> MPa/psi/ksi factors', () => {
     assert.equal(convertPressure(1, 'GPa'), 1);
@@ -98,7 +106,7 @@ describe('convertElectrical (canonical % IACS -> display)', () => {
     assert.equal(convertElectrical(30, '% IACS'), 30);
   });
   test('% IACS -> MS/m factor 0.58', () => {
-    assert.equal(convertElectrical(100, 'MS/m'), 58);
+    approx(convertElectrical(100, 'MS/m'), 58, '100 % IACS in MS/m'); // 100*0.58 has FP rounding error
   });
   test('% IACS -> S/m factor 5.8e5', () => {
     assert.equal(convertElectrical(1, 'S/m'), 580000);
