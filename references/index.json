@@ -654,5 +654,17 @@
     "doi": "10.2507/33rd.daaam.proceedings.031",
     "bibtex": "@inproceedings{Pandzic2022,\n  author    = {Pandžić, Adi and Hodžić, Damir},\n  title     = {Tensile Mechanical Properties Comparation of {PETG}, {ASA} and {PLA}-Strongman {FDM} Printed Materials With and Without Infill Structure},\n  booktitle = {Proceedings of the 33rd DAAAM International Symposium},\n  editor    = {Katalinic, B.},\n  publisher = {DAAAM International},\n  address   = {Vienna, Austria},\n  pages     = {221--230},\n  year      = {2022},\n  isbn      = {978-3-902734-36-5},\n  issn      = {1726-9679},\n  doi       = {10.2507/33rd.daaam.proceedings.031}\n}",
     "url": "https://doi.org/10.2507/33rd.daaam.proceedings.031"
+  },
+  "matweb-4130-normalized": {
+    "short_label": "MatWeb: AISI 4130 Steel, normalized at 870C (1600F)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=e1ccebe90cf94502b35c2a4745f63593"
+  },
+  "matweb-4130-normalized-25mm-round": {
+    "short_label": "MatWeb: AISI 4130 Steel, normalized 870C (1600F), air cooled, 25mm (1in) round",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=7eb7e2c6eab3433c9fb96eaa9f0312fb"
   }
 }

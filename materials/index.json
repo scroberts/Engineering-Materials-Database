@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-03T04:15:03Z",
+  "generated": "2026-08-20T17:48:43Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -863,6 +863,29 @@
       "yield_strength": 0.37,
       "tensile_strength": 0.44,
       "density": 7.87,
+      "magnetic_classification": "Ferromagnetic"
+    },
+    {
+      "slug": "steel-4130-normalized",
+      "path": "materials/metals/steel-4130-normalized.json",
+      "name": "AISI 4130 Steel (Normalized)",
+      "category": "Metal",
+      "fabrication_processes": [
+        "Machining",
+        "Welding",
+        "Bending"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Sheet",
+        "Plate",
+        "Tube"
+      ],
+      "usage_frequency": "Common",
+      "youngs_modulus": 205,
+      "yield_strength": 0.435,
+      "tensile_strength": 0.67,
+      "density": 7.85,
       "magnetic_classification": "Ferromagnetic"
     },
     {

@@ -63,6 +63,7 @@ materials/
                     stainless-303.json, stainless-304.json, stainless-316.json,
                     stainless-316l-dmls.json,
                     steel-1018-cold-drawn.json,
+                    steel-4130-normalized.json,
                     steel-4340.json, steel-a2.json, steel-h13.json,
                     steel-mild-a36.json, steel-spring-5160.json,
                     titanium-6al-4v.json, titanium-ti-6al-4v-grade-5-sta.json,

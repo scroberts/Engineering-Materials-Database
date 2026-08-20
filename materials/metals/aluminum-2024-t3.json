@@ -8,7 +8,7 @@
     "common_forms": [ "Sheet", "Plate", "Round Bar", "Tube" ],
     "common_form_notes": "The classic aerospace aircraft-skin sheet alloy — high strength-to-weight for its era, though superseded by 7075 where even higher strength is needed. Poor weldability (high copper content, like other 2xxx-series alloys) means it's joined mechanically (rivets, fasteners) rather than welded, unlike 6061.",
     "usage_frequency": "Specialty",
-    "notes": "All mechanical/thermal values are Aluminum Association \"Typical\" figures from a single MatWeb datasheet — internally consistent (back-calculating shear modulus from the stored E=73.1 GPa and ν=0.33 gives G ≈ 27.5 GPa, matching the source's directly-stated 28.0 GPa closely) and consistent with commonly-cited textbook values for this well-known alloy. Shear strength (283 MPa) is a directly-reported value, not derived. Electrical conductivity (29.6% IACS (International Annealed Copper Standard)) derived from the source's stated electrical resistivity (5.82 µΩ·cm) via %IACS = (1.7241/5.82)×100 — matches the commonly-cited ~30% IACS figure for 2024-T3. Melting point is solidus (502°C); liquidus is 638°C. Strength drops sharply at elevated temperature (source gives 52 MPa UTS (ultimate tensile strength) @ 316°C, 34 MPa @ 371°C) — not recorded as a usable temperature range here since no single service-temperature limit was given, but worth noting this alloy is not a high-temperature choice despite good room-temperature strength. Remains ductile at cryogenic temperatures (18% elongation reported at −196°C). A single fatigue data point (138 MPa @ 5×10⁸ cycles, completely reversed stress, RR Moore machine) is stored as the sole S-N curve point — not a full curve."
+    "notes": "All mechanical/thermal values are Aluminum Association \"Typical\" figures from a single MatWeb datasheet — internally consistent (back-calculating shear modulus from the stored E=73.1 GPa and ν=0.33 gives G ≈ 27.5 GPa, matching the source's directly-stated 28.0 GPa closely) and consistent with commonly-cited textbook values for this well-known alloy. Shear strength (283 MPa) is a directly-reported value, not derived. Electrical conductivity (29.6% IACS (International Annealed Copper Standard)) derived from the source's stated electrical resistivity (5.82 µΩ·cm) via %IACS = (1.7241/5.82)×100 — matches the commonly-cited ~30% IACS figure for 2024-T3. Melting point is solidus (502°C); liquidus is 638°C. Strength drops sharply at elevated temperature (source gives 52 MPa UTS (ultimate tensile strength) @ 316°C, 34 MPa @ 371°C) — not recorded as a usable temperature range here since no single service-temperature limit was given, but worth noting this alloy is not a high-temperature choice despite good room-temperature strength. Remains ductile at cryogenic temperatures (18% elongation reported at −196°C). Fatigue S-N curve (4 points, R=−1 fully reversed) is computed from MIL-HDBK-5J's best-fit equivalent-stress equation for unnotched 2024-T3 bare sheet, 0.090 in., electropolished, axial loading (Figure 3.2.3.1.8(e); sample size 107, R²=82%; this is the same product form/lot the earlier single-point MatWeb value was drawn from): Log Nf = 11.1 − 3.97·log(Seq−15.8), Seq = Smax·(1−R)^0.56. Solved at R=−1 for Smax at 1e5/1e6/1e7/5e8 cycles. Replaces a previously stored single point (138 MPa @ 5×10⁸ cycles) that was rotating-beam (RR Moore) data, not axial — mixing that test method with axial data would have been misleading, so it was dropped in favor of an internally consistent axial-load curve. The 5×10⁸-cycle point extrapolates beyond the equation's directly-tested life range; MIL-HDBK-5J's own caution note flags equivalent-stress extrapolation as potentially unreliable there, so treat it as approximate."
   },
   "typical_usage": "Aircraft fuselage skin and structural sheet, truck wheels, structural rivets, and other applications needing high strength-to-weight with good fatigue and fracture resistance. A common comparison point against 6061-T6 (much better weldability/machinability, lower strength) and 7075-T6 (higher strength, worse fatigue/fracture behavior in some regimes).",
   "mechanical_common": {
@@ -53,9 +53,12 @@
     },
     "fatigue_sn_curve": {
       "points": [
-        { "stress": 0.138, "cycles": 500000000 }
+        { "stress": 0.235, "cycles": 100000 },
+        { "stress": 0.164, "cycles": 1000000 },
+        { "stress": 0.124, "cycles": 10000000 },
+        { "stress": 0.093, "cycles": 500000000 }
       ],
-      "ref": "matweb-aluminum-2024-t3"
+      "ref": "mil-hdbk-5j-2003"
     },
     "fracture_toughness": {
       "value": null,
@@ -139,7 +142,7 @@
       "ref": null
     }
   },
-  "references": [ "matweb-aluminum-2024-t3" ],
+  "references": [ "matweb-aluminum-2024-t3", "mil-hdbk-5j-2003" ],
   "metadata": {
     "submitted_by": null,
     "submitted_date": "2026-07-26",
