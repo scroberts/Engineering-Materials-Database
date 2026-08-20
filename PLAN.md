@@ -377,7 +377,7 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 13. `tools/migrate.py` · `tools/import_bibtex.py`
 - [x] 14. `.github/PULL_REQUEST_TEMPLATE.md` · `.github/workflows/validate-schema.yml`
 - [x] 15. Edit mode — implemented as dual-mode `submit.html` (`?slug=` pre-fills form, locks slug, "Download Updated JSON")
-- [x] 16. Additional seed materials — 61 materials across metals, plastics, ceramics, composites, elastomers, glass, and natural categories
+- [x] 16. Additional seed materials — 62 materials across metals, plastics, ceramics, composites, elastomers, glass, and natural categories
 - [x] 17b. `tools/import_new_refs.py` — promote `new_references` from submitted JSONs into `references/index.json`; closes the manual copy step in the admin workflow
 - [x] 17. `404.html`
 - [x] 18. Merit index table improvements — shortName, augmented descriptions, reference footnotes in `derived.js` + `compare.js`

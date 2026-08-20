@@ -916,6 +916,12 @@ def _detect_site(stem: str) -> str:
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    # Windows consoles default to a legacy codepage (cp1252) that can't encode
+    # this script's output (box-drawing separator, arrows, µ in property names)
+    # — the parse itself succeeds but the summary print crashes with exit 1.
+    if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+        sys.stdout.reconfigure(errors="replace")
+
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
     )

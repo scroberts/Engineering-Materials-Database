@@ -103,7 +103,12 @@ def main():
     for filepath in sorted(files):
         total += 1
         errors = validate_file(filepath, schema, reference_keys)
-        rel = Path(filepath).relative_to(ROOT)
+        # relative_to() raises for paths outside ROOT (or relative CLI paths
+        # resolved against a different cwd) — fall back to the path as given.
+        try:
+            rel = Path(filepath).resolve().relative_to(ROOT.resolve())
+        except ValueError:
+            rel = Path(filepath)
         if errors:
             failed += 1
             print(f"FAIL  {rel}")

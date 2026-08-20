@@ -880,7 +880,7 @@ function renderDetailCharts(mat) {
               ticks: { font: { size: 11 } },
             },
             y: {
-              title: { display: true, text: 'Stress Amplitude (MPa)', color: '#64748b', font: { size: 11 } },
+              title: { display: true, text: 'Max Stress (MPa)', color: '#64748b', font: { size: 11 } },
               ticks: { font: { size: 11 } },
             },
           },
