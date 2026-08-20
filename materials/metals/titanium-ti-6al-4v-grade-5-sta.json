@@ -143,14 +143,6 @@
   "references": [
     "titanium-ti-6al-4v-grade-5-sta-html-source-file"
   ],
-  "new_references": {
-    "titanium-ti-6al-4v-grade-5-sta-html-source-file": {
-      "short_label": "Titanium Ti-6Al-4V (Grade 5), STA.html — source file",
-      "doi": null,
-      "bibtex": null,
-      "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=b350a789eda946c6b86a3e4d3c577b39"
-    }
-  },
   "metadata": {
     "submitted_by": null,
     "submitted_date": "2026-07-26",

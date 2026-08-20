@@ -1,81 +1,78 @@
 {
-  "mmpds01_2003": {
-    "short_label": "MMPDS-01 2003",
+  "10.1117/12.279804": {
+    "short_label": "Paquin 1997",
+    "doi": "10.1117/12.279804",
+    "bibtex": "@inproceedings{10.1117/12.279804,\n  author       = {Roger A. Paquin},\n  title        = {{Advanced materials: an overview}},\n  volume       = {10289},\n  booktitle    = {Advanced Materials for Optics and Precision Structures: A Critical Review},\n  editor       = {Mark A. Ealey and Roger A. Paquin and Thomas B. Parsonage},\n  organization = {International Society for Optics and Photonics},\n  publisher    = {SPIE},\n  pages        = {1028902},\n  year         = {1997},\n  doi          = {10.1117/12.279804},\n  url          = {https://doi.org/10.1117/12.279804}\n}"
+  },
+  "aksteel-17-4ph-h1025": {
+    "short_label": "AK Steel: 17-4 PH Precipitation Hardening Stainless Steel, Condition H 1025",
     "doi": null,
-    "bibtex": "@techreport{mmpds01_2003,\n  title       = {Metallic Materials Properties Development and Standardization (MMPDS)},\n  number      = {MMPDS-01},\n  institution = {Federal Aviation Administration (FAA) and Battelle Memorial Institute},\n  year        = {2003},\n  month       = jan,\n  note        = {Supersedes MIL-HDBK-5J}\n}",
+    "bibtex": null,
     "url": null
   },
-  "matweb-al6061-t6": {
-    "short_label": "MatWeb: Aluminum 6061-T6",
+  "anderson-fracture-mechanics": {
+    "short_label": "Anderson 2017",
     "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=b8d536e0b9b54bd7b69e4124d8f1d20a"
+    "bibtex": "@book{anderson-fracture-mechanics,\n  author    = {Anderson, T. L.},\n  title     = {{Fracture Mechanics: Fundamentals and Applications}},\n  edition   = {4},\n  publisher = {CRC Press},\n  year      = {2017},\n  isbn      = {978-1-4987-2813-3}\n}",
+    "url": "https://www.worldcat.org/isbn/9781498728133"
   },
-  "matweb-aluminum-1100": {
-    "short_label": "MatWeb: Aluminum 1100-O",
+  "ashby-materials-selection": {
+    "short_label": "Ashby 2011",
     "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/datasheet_print.aspx?matguid=db0307742df14c8f817bd8d62207368e"
+    "bibtex": "@book{ashby-materials-selection,\n  author    = {Ashby, Michael F.},\n  title     = {{Materials Selection in Mechanical Design}},\n  edition   = {4},\n  publisher = {Butterworth-Heinemann},\n  year      = {2011},\n  isbn      = {978-1-85617-663-7}\n}",
+    "url": "https://www.worldcat.org/isbn/9781856176637"
   },
-  "matweb-gar-dur-uhmwpe": {
-    "short_label": "MatWeb: Garland GAR-DUR® UHMW-PE",
+  "asm-handbook-v1-1990": {
+    "short_label": "ASM Handbook V1 1990",
     "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=dc4013a8f95b49018080ce9683501d6f"
+    "bibtex": "@book{asm-handbook-v1-1990,\n  title     = {{ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-377-4}\n}"
   },
-  "victrex-peek-450g": {
-    "short_label": "Victrex PEEK 450G Datasheet",
+  "asm-handbook-v2-1990": {
+    "short_label": "ASM Handbook V2 1990",
     "doi": null,
-    "bibtex": null,
-    "url": "https://www.victrex.com/en/products/peek-polymers/victrex-peek-450g"
+    "bibtex": "@book{asm-handbook-v2-1990,\n  title     = {{ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-378-1}\n}"
   },
-  "pgo-online-nbk7": {
-    "short_label": "PGO: SCHOTT N-BK7 Optical Glass Data",
+  "asm-matweb-6063-t5": {
+    "short_label": "ASM MatWeb: Aluminum 6063-T5",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.pgo-online.com/intl/BK7.html"
+    "url": "https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma6063t5"
   },
-  "pgo-online-ule": {
-    "short_label": "PGO: Corning ULE 7972 Glass Data",
+  "asm-matweb-ti64": {
+    "short_label": "ASM MatWeb: Ti-6Al-4V (Grade 5)",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.pgo-online.com/intl/ule.html"
+    "url": "https://asm.matweb.com/search/SpecificMaterial.asp?bassnum=mtp641"
   },
-  "pgo-online-borofloat": {
-    "short_label": "PGO: SCHOTT BOROFLOAT 33 Glass Data",
+  "asm-metals-handbook-desk-1984": {
+    "short_label": "ASM Desk Edition 1984",
     "doi": null,
-    "bibtex": null,
-    "url": "https://www.pgo-online.com/intl/borofloat.html"
+    "bibtex": "@book{asm-metals-handbook-desk-1984,\n  title     = {{ASM Metals Handbook, Desk Edition}},\n  editor    = {Boyer, Howard E. and Gall, Timothy L.},\n  publisher = {American Society for Metals},\n  year      = {1984},\n  note      = {3rd printing, June 1986},\n  isbn      = {0-87170-188-X}\n}",
+    "url": "https://www.worldcat.org/isbn/087170188X"
   },
-  "usda-wood-handbook": {
-    "short_label": "USDA Forest Products Laboratory Wood Handbook (FPL-GTR-282)",
+  "azom-1018": {
+    "short_label": "AZoM: AISI 1018 Mild/Low Carbon Steel",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr282.pdf"
+    "url": "https://www.azom.com/article.aspx?ArticleID=6115"
   },
-  "makeitfrom-acrylic": {
-    "short_label": "MakeItFrom: Cast PMMA (Acrylic) Properties",
+  "azom-17-4ph": {
+    "short_label": "AZoM: Stainless Steel Grade 17-4 (UNS S17400)",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/Polymethylmethacrylate-PMMA-Acrylic"
+    "url": "https://www.azom.com/article.aspx?ArticleID=6778"
   },
-  "parker-oring-materials": {
-    "short_label": "Parker O-Ring Material Selection Guide",
+  "azom-4340": {
+    "short_label": "AZoM: AISI 4340 Steel",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.parker.com/us/en/divisions/o-ring-and-engineered-seals-division/resources/oring-ehandbook/oring-elastomers/material-selection-guide.html"
+    "url": "https://www.azom.com/article.aspx?ArticleID=6772"
   },
-  "schott-zerodur": {
-    "short_label": "Schott: ZERODUR Technical Details",
+  "azom-5160": {
+    "short_label": "AZoM: AISI 5160 Alloy Steel",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.schott.com/en-gb/products/zerodur-p1000269/technical-details"
-  },
-  "onlinemetals-a2": {
-    "short_label": "Online Metals: A2 Tool Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.onlinemetals.com/en/product-guide/alloy/a2"
+    "url": "https://www.azom.com/article.aspx?ArticleID=6743"
   },
   "azom-a2-tool-steel": {
     "short_label": "AZoM: A2 Tool Steel",
@@ -88,30 +85,6 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.azom.com/article.aspx?ArticleID=6117"
-  },
-  "steel-grades-com-a36": {
-    "short_label": "Steel-Grades.com: ASTM A36",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://steel-grades.com/Steel-Grades/Carbon-Steel/18/23/_ASTM_A36.pdf"
-  },
-  "metalzenith-a36": {
-    "short_label": "Metal Zenith: A36 Steel Properties",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://metalzenith.com/blogs/steel-properties/a36-steel-properties-and-key-applications-explained"
-  },
-  "theworldmaterial-303": {
-    "short_label": "TheWorldMaterial: AISI 303 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.theworldmaterial.com/aisi-303-stainless-steel-uns-s30300/"
-  },
-  "theworldmaterial-316": {
-    "short_label": "TheWorldMaterial: AISI 316 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.theworldmaterial.com/316-stainless-steel/"
   },
   "azom-abs": {
     "short_label": "AZoM: ABS Medium Impact",
@@ -143,283 +116,11 @@
     "bibtex": null,
     "url": "https://www.azom.com/article.aspx?ArticleID=6636"
   },
-  "azom-stainless-304": {
-    "short_label": "AZoM: Grade 304 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=965"
-  },
-  "theworldmaterial-304": {
-    "short_label": "TheWorldMaterial: AISI 304 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.theworldmaterial.com/type-304-grade-stainless-steel/"
-  },
-  "azom-stainless-303": {
-    "short_label": "AZoM: Grade 303 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=2866"
-  },
-  "azom-stainless-316": {
-    "short_label": "AZoM: Grade 316 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=2868"
-  },
-  "efunda-aluminum-7075": {
-    "short_label": "eFunda: Aluminium 7075",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.efunda.com/Materials/alloys/aluminum/show_aluminum.cfm?ID=AA_7075&show_prop=all"
-  },
-  "simplify3d-materials-guide": {
-    "short_label": "Simplify3D Materials Guide",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.simplify3d.com/resources/materials-guide/properties-table/"
-  },
-  "asm-handbook-v1-1990": {
-    "short_label": "ASM Handbook V1 1990",
-    "doi": null,
-    "bibtex": "@book{asm-handbook-v1-1990,\n  title     = {{ASM Handbook, Volume 1: Properties and Selection: Irons, Steels, and High-Performance Alloys}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-377-4}\n}"
-  },
-  "10.1117/12.279804": {
-    "short_label": "Paquin 1997",
-    "doi": "10.1117/12.279804",
-    "bibtex": "@inproceedings{10.1117/12.279804,\n  author       = {Roger A. Paquin},\n  title        = {{Advanced materials: an overview}},\n  volume       = {10289},\n  booktitle    = {Advanced Materials for Optics and Precision Structures: A Critical Review},\n  editor       = {Mark A. Ealey and Roger A. Paquin and Thomas B. Parsonage},\n  organization = {International Society for Optics and Photonics},\n  publisher    = {SPIE},\n  pages        = {1028902},\n  year         = {1997},\n  doi          = {10.1117/12.279804},\n  url          = {https://doi.org/10.1117/12.279804}\n}"
-  },
-  "asm-handbook-v2-1990": {
-    "short_label": "ASM Handbook V2 1990",
-    "doi": null,
-    "bibtex": "@book{asm-handbook-v2-1990,\n  title     = {{ASM Handbook, Volume 2: Properties and Selection: Nonferrous Alloys and Special-Purpose Materials}},\n  publisher = {ASM International},\n  year      = {1990},\n  isbn      = {978-0-87170-378-1}\n}"
-  },
-  "callister2020": {
-    "short_label": "Callister 2020",
-    "doi": null,
-    "bibtex": "@book{callister2020,\n  author    = {Callister, William D. and Rethwisch, David G.},\n  title     = {Materials Science and Engineering: An Introduction},\n  edition   = {10},\n  publisher = {Wiley},\n  year      = {2020},\n  isbn      = {978-1-119-40549-8}\n}"
-  },
-  "mil-hdbk-5j-2003": {
-    "short_label": "MIL-HDBK-5J 2003",
-    "doi": null,
-    "bibtex": "@techreport{mil-hdbk-5j-2003,\n  title       = {{MIL-HDBK-5J: Metallic Materials and Elements for Aerospace Vehicle Structures}},\n  institution = {U.S. Department of Defense},\n  year        = {2003},\n  number      = {MIL-HDBK-5J}\n}",
-    "url": "https://everyspec.com/MIL-HDBK/MIL-HDBK-0001-0099/MIL_HDBK_5J_139/"
-  },
-  "matweb_carpenter_invar36_coldrawn": {
-    "short_label": "MatWeb: Carpenter Invar 36 (Cold Drawn)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=b6fb00b235f0442da4d31a0cd04671c9"
-  },
-  "spacematdb-316": {
-    "short_label": "SpaceMatDB: AISI 316 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=AISI%20316"
-  },
-  "spacematdb_invar36": {
-    "short_label": "SpaceMatDB: Invar 36",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=Invar%2036"
-  },
-  "ashby-materials-selection": {
-    "short_label": "Ashby 2011",
-    "doi": null,
-    "bibtex": "@book{ashby-materials-selection,\n  author    = {Ashby, Michael F.},\n  title     = {{Materials Selection in Mechanical Design}},\n  edition   = {4},\n  publisher = {Butterworth-Heinemann},\n  year      = {2011},\n  isbn      = {978-1-85617-663-7}\n}",
-    "url": "https://www.worldcat.org/isbn/9781856176637"
-  },
-  "anderson-fracture-mechanics": {
-    "short_label": "Anderson 2017",
-    "doi": null,
-    "bibtex": "@book{anderson-fracture-mechanics,\n  author    = {Anderson, T. L.},\n  title     = {{Fracture Mechanics: Fundamentals and Applications}},\n  edition   = {4},\n  publisher = {CRC Press},\n  year      = {2017},\n  isbn      = {978-1-4987-2813-3}\n}",
-    "url": "https://www.worldcat.org/isbn/9781498728133"
-  },
-  "incropera-heat-transfer": {
-    "short_label": "Incropera 2006",
-    "doi": null,
-    "bibtex": "@book{incropera-heat-transfer,\n  author    = {Incropera, Frank P. and DeWitt, David P.},\n  title     = {{Fundamentals of Heat and Mass Transfer}},\n  edition   = {6},\n  publisher = {Wiley},\n  year      = {2006},\n  isbn      = {978-0-471-45728-2}\n}",
-    "url": "https://www.worldcat.org/isbn/9780471457282"
-  },
-  "asm-metals-handbook-desk-1984": {
-    "short_label": "ASM Desk Edition 1984",
-    "doi": null,
-    "bibtex": "@book{asm-metals-handbook-desk-1984,\n  title     = {{ASM Metals Handbook, Desk Edition}},\n  editor    = {Boyer, Howard E. and Gall, Timothy L.},\n  publisher = {American Society for Metals},\n  year      = {1984},\n  note      = {3rd printing, June 1986},\n  isbn      = {0-87170-188-X}\n}",
-    "url": "https://www.worldcat.org/isbn/087170188X"
-  },
-  "makeitfrom-4340": {
-    "short_label": "MakeItFrom: SAE-AISI 4340 Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-4340-SNCM439-G43400-Ni-Cr-Mo-Steel"
-  },
-  "azom-4340": {
-    "short_label": "AZoM: AISI 4340 Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=6772"
-  },
-  "makeitfrom-g10": {
-    "short_label": "MakeItFrom: NEMA Grade G-10 Glass/Epoxy Laminate",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/NEMA-Grade-G-10-GEE-Glass-Epoxy-Laminate"
-  },
-  "azom-sic": {
-    "short_label": "AZoM: Silicon Carbide Properties",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/properties.aspx?ArticleID=15"
-  },
-  "makeitfrom-sic": {
-    "short_label": "MakeItFrom: Silicon Carbide",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/Silicon-Carbide-SiC"
-  },
   "azom-beryllium": {
     "short_label": "AZoM: Beryllium Properties",
     "doi": null,
     "bibtex": null,
     "url": "https://www.azom.com/properties.aspx?ArticleID=591"
-  },
-  "asm-matweb-ti64": {
-    "short_label": "ASM MatWeb: Ti-6Al-4V (Grade 5)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://asm.matweb.com/search/SpecificMaterial.asp?bassnum=mtp641"
-  },
-  "makeitfrom-c11000": {
-    "short_label": "MakeItFrom: Annealed C11000 ETP Copper",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/Annealed-OS050-C11000-Copper"
-  },
-  "azom-5160": {
-    "short_label": "AZoM: AISI 5160 Alloy Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=6743"
-  },
-  "makeitfrom-5160": {
-    "short_label": "MakeItFrom: SAE-AISI 5160 Chromium Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-5160-G51600-Chromium-Steel"
-  },
-  "makeitfrom-pom": {
-    "short_label": "MakeItFrom: POM Acetal Homopolymer (Delrin)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/Polyoxymethylene-POM-Acetal-Homopolymer"
-  },
-  "makeitfrom-abs": {
-    "short_label": "MakeItFrom: ABS",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/Acrylonitrile-Butadiene-Styrene-ABS"
-  },
-  "nist-cryo-al": {
-    "short_label": "NIST Cryogenic Materials Database: Aluminium",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/6061%20Aluminum/6061_T6Aluminum_rev.htm"
-  },
-  "sandmeyer-invar36": {
-    "short_label": "Sandmeyer Steel: SSC Invar 36 Data Sheet",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.sandmeyersteel.com/ssc-invar-36/"
-  },
-  "nist-cryo-ss304": {
-    "short_label": "NIST Cryo DB: 304 Stainless Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/304Stainless/304Stainless_rev.htm"
-  },
-  "nist-cryo-copper": {
-    "short_label": "NIST Cryo DB: OFHC Copper",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm"
-  },
-  "nist-cryo-ti64": {
-    "short_label": "NIST Cryo DB: Ti-6Al-4V",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/Ti6Al4V/Ti6Al4V_rev.htm"
-  },
-  "nist-cryo-be": {
-    "short_label": "NIST Cryo DB: Beryllium",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/Beryllium/Beryllium_rev.htm"
-  },
-  "nist-cryo-invar": {
-    "short_label": "NIST Cryo DB: Invar (Fe-36Ni)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://trc.nist.gov/cryogenics/materials/Invar(Fe-36Ni)/Invar_rev.htm"
-  },
-  "trevisan-alsi10mg-2017": {
-    "short_label": "Trevisan et al. 2017: AlSi10Mg by SLM (Materials, MDPI)",
-    "doi": "10.3390/ma10010076",
-    "bibtex": "@article{Trevisan2017,\n  author = {Trevisan, F. and Calignano, F. and Lorusso, M. and Pakkanen, J. and Aversa, A. and Ambrosio, E. P. and Lombardi, M. and Fino, P. and Manfredi, D.},\n  title = {On the Selective Laser Melting ({SLM}) of the {AlSi10Mg} Alloy: Process, Microstructure, and Mechanical Properties},\n  journal = {Materials},\n  volume = {10},\n  number = {1},\n  pages = {76},\n  year = {2017},\n  doi = {10.3390/ma10010076}\n}",
-    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5344617/"
-  },
-  "azom-inconel-718": {
-    "short_label": "AZoM: Nickel Alloy Inconel 718",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=4459"
-  },
-  "espi-inconel-718": {
-    "short_label": "ESPI Metals: Inconel 718 Technical Data",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.espimetals.com/index.php/technical-data/91-inconel-718"
-  },
-  "engineersedge-inconel-718": {
-    "short_label": "Engineers Edge: Inconel 718 Modulus of Elasticity",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.engineersedge.com/materials/inconel_718_modulus_of_elasticity_table_13562.htm"
-  },
-  "hightempmetals-inconel-718": {
-    "short_label": "High Temp Metals: Inconel 718 Technical Data",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.hightempmetals.com/techdata/hitempInconel718data.php"
-  },
-  "espi-inconel-625": {
-    "short_label": "ESPI Metals: Inconel 625 Technical Data",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.espimetals.com/index.php/technical-data/89-inconel-625"
-  },
-  "hightempmetals-inconel-625": {
-    "short_label": "High Temp Metals: Inconel 625 Technical Data",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.hightempmetals.com/techdata/hitempInconel625data.php"
-  },
-  "californiametal-inconel-625": {
-    "short_label": "California Metal: Inconel 625 Technical Data (Special Metals)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.californiametal.com/Inconel_625_Sheet_Plate_Pipe_Tube_Rod_Bar_Tech_Data.htm"
-  },
-  "sandmeyer-inconel-625": {
-    "short_label": "Sandmeyer Steel: Inconel Alloy 625 Plate",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.sandmeyersteel.com/inconel-alloy-625/"
-  },
-  "matweb-stainless-316": {
-    "short_label": "MatWeb: 316 Stainless Steel, annealed bar",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=dfced4f11d63459e8ef8733d1c7c1ad2"
   },
   "azom-h13-tool-steel": {
     "short_label": "AZoM: H13 Hot Work Tool Steel",
@@ -427,59 +128,11 @@
     "bibtex": null,
     "url": "https://www.azom.com/article.aspx?ArticleID=9107"
   },
-  "uddeholm-orvar-h13": {
-    "short_label": "Uddeholm ORVAR Supreme (AISI H13) via MatWeb",
+  "azom-inconel-718": {
+    "short_label": "AZoM: Nickel Alloy Inconel 718",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.lookpolymers.com/polymer_Bohler-Uddeholm-UDDEHOLM-ORVAR-SUPREME-Premium-AISI-H13-Hot-Work-Tool-Steel.php"
-  },
-  "makeitfrom-h13": {
-    "short_label": "MakeItFrom: SAE-AISI H13 Tool Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-H13-T20813-Chromium-Hot-Work-Steel"
-  },
-  "matweb-brass-astm-b16-h02": {
-    "short_label": "MatWeb: Brass ASTM B16 H02",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/datasheet.aspx?matguid=9b82636b70e7489eadf4610fbcdedbc2&n=1"
-  },
-  "engineers-edge-thermal-diffusivity": {
-    "short_label": "Engineers Edge: Thermal Diffusivity Table",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.engineersedge.com/heat_transfer/thermal_diffusivity_table_13953.htm"
-  },
-  "azom-1018": {
-    "short_label": "AZoM: AISI 1018 Mild/Low Carbon Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=6115"
-  },
-  "matweb-1018": {
-    "short_label": "MatWeb: AISI 1018 Mild/Low Carbon Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=c45dcf3c46b34bcf82cd0999fafba237"
-  },
-  "theworldmaterial-1018": {
-    "short_label": "TheWorldMaterial: ASTM SAE AISI 1018 Carbon Steel",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.theworldmaterial.com/astm-sae-aisi-1018-carbon-steel/"
-  },
-  "asm-matweb-6063-t5": {
-    "short_label": "ASM MatWeb: Aluminum 6063-T5",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://asm.matweb.com/search/specificmaterial.asp?bassnum=ma6063t5"
-  },
-  "azom-pa6": {
-    "short_label": "AZoM: Polyamide 6 (Nylon 6, PA 6)",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=442"
+    "url": "https://www.azom.com/article.aspx?ArticleID=4459"
   },
   "azom-pa12": {
     "short_label": "AZoM: Polyamide 12 (Nylon 12, PA 12)",
@@ -487,62 +140,67 @@
     "bibtex": null,
     "url": "https://www.azom.com/properties.aspx?ArticleID=753"
   },
-  "nylonplastic-pa6-vs-pa12": {
-    "short_label": "NylonPlastic.com: PA6 vs PA12 Comparison Guide",
+  "azom-pa6": {
+    "short_label": "AZoM: Polyamide 6 (Nylon 6, PA 6)",
     "doi": null,
     "bibtex": null,
-    "url": "https://nylonplastic.com/pa6-vs-pa12-comparison-guide/"
+    "url": "https://www.azom.com/article.aspx?ArticleID=442"
   },
-  "matweb-nylon6-overview": {
-    "short_label": "MatWeb: Overview of Materials for Nylon 6, Unreinforced",
+  "azom-sic": {
+    "short_label": "AZoM: Silicon Carbide Properties",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=fb48404b7e04433bb3ee3d2a0af922ff"
+    "url": "https://www.azom.com/properties.aspx?ArticleID=15"
   },
-  "smithmetal-pa12": {
-    "short_label": "Smiths Metal Centres: Extruded Nylon 12 (PA12) Datasheet",
+  "azom-stainless-303": {
+    "short_label": "AZoM: Grade 303 Stainless Steel",
     "doi": null,
     "bibtex": null,
-    "url": null
+    "url": "https://www.azom.com/article.aspx?ArticleID=2866"
   },
-  "matweb-polycarbonate-extruded-overview": {
-    "short_label": "MatWeb: Overview of Materials for Polycarbonate, Extruded",
+  "azom-stainless-304": {
+    "short_label": "AZoM: Grade 304 Stainless Steel",
     "doi": null,
     "bibtex": null,
-    "url": null
+    "url": "https://www.azom.com/article.aspx?ArticleID=965"
   },
-  "azom-17-4ph": {
-    "short_label": "AZoM: Stainless Steel Grade 17-4 (UNS S17400)",
+  "azom-stainless-316": {
+    "short_label": "AZoM: Grade 316 Stainless Steel",
     "doi": null,
     "bibtex": null,
-    "url": "https://www.azom.com/article.aspx?ArticleID=6778"
+    "url": "https://www.azom.com/article.aspx?ArticleID=2868"
   },
-  "wikipedia-17-4-stainless-steel": {
-    "short_label": "Wikipedia: 17-4 Stainless Steel",
+  "californiametal-inconel-625": {
+    "short_label": "California Metal: Inconel 625 Technical Data (Special Metals)",
     "doi": null,
     "bibtex": null,
-    "url": "https://en.wikipedia.org/wiki/17-4_stainless_steel"
+    "url": "https://www.californiametal.com/Inconel_625_Sheet_Plate_Pipe_Tube_Rod_Bar_Tech_Data.htm"
   },
-  "aksteel-17-4ph-h1025": {
-    "short_label": "AK Steel: 17-4 PH Precipitation Hardening Stainless Steel, Condition H 1025",
+  "callister2020": {
+    "short_label": "Callister 2020",
     "doi": null,
-    "bibtex": null,
-    "url": null
+    "bibtex": "@book{callister2020,\n  author    = {Callister, William D. and Rethwisch, David G.},\n  title     = {Materials Science and Engineering: An Introduction},\n  edition   = {10},\n  publisher = {Wiley},\n  year      = {2020},\n  isbn      = {978-1-119-40549-8}\n}"
   },
-  "matweb-aluminum-2024-t3": {
-    "short_label": "MatWeb: Aluminum 2024-T3",
+  "efunda-aluminum-7075": {
+    "short_label": "eFunda: Aluminium 7075",
     "doi": null,
     "bibtex": null,
-    "url": null
+    "url": "https://www.efunda.com/Materials/alloys/aluminum/show_aluminum.cfm?ID=AA_7075&show_prop=all"
+  },
+  "engineers-edge-thermal-diffusivity": {
+    "short_label": "Engineers Edge: Thermal Diffusivity Table",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.engineersedge.com/heat_transfer/thermal_diffusivity_table_13953.htm"
+  },
+  "engineersedge-inconel-718": {
+    "short_label": "Engineers Edge: Inconel 718 Modulus of Elasticity",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.engineersedge.com/materials/inconel_718_modulus_of_elasticity_table_13562.htm"
   },
   "eos-maragingsteel-ms1-dmls": {
     "short_label": "MatWeb: EOS MaragingSteel MS1 DMLS on EOS M 300-4",
-    "doi": null,
-    "bibtex": null,
-    "url": null
-  },
-  "matweb-maraging-300-annealed": {
-    "short_label": "MatWeb: AISI Grade 18Ni (300) Maraging Steel, Nominal Annealed Properties",
     "doi": null,
     "bibtex": null,
     "url": null
@@ -553,47 +211,23 @@
     "bibtex": null,
     "url": "https://www.eos.info/05-datasheet-images/Assets_MDS_Metal/EOS_MargingSteel_MS1/Material_DataSheet_EOS_MaragingSteel_MS1_en.pdf"
   },
-  "protolabs-316l-dmls": {
-    "short_label": "MatWeb: Proto Labs 316L Stainless Steel - DMLS",
-    "doi": null,
-    "bibtex": null,
-    "url": null
-  },
   "eos-titanium-ti64-grade5-official-mds": {
     "short_label": "EOS: Titanium Ti64 Grade 5 Official Material Data Sheet",
     "doi": null,
     "bibtex": null,
     "url": "https://www.eos.info/var/assets/03_system-related-assets/material-related-contents/metal-materials-and-examples/metal-material-datasheet/titan/ti64/material_datasheet_eos_titanium_ti64_grade5_en_web.pdf"
   },
-  "mdpi-maraging-haz-embrittlement-2024": {
-    "short_label": "MDPI/PMC: Embrittlement Fracture Behavior and Mechanical Properties in HAZ of Welded Maraging Steel",
-    "doi": "10.3390/ma17020440",
-    "bibtex": null,
-    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10817506/"
-  },
-  "matweb-az31b-h24": {
-    "short_label": "MatWeb: Magnesium AZ31B-H24, Hard Rolled Sheet",
+  "espi-inconel-625": {
+    "short_label": "ESPI Metals: Inconel 625 Technical Data",
     "doi": null,
     "bibtex": null,
-    "url": null
+    "url": "https://www.espimetals.com/index.php/technical-data/89-inconel-625"
   },
-  "matweb-coorstek-aci-co6-wc": {
-    "short_label": "MatWeb: CoorsTek ACI-Co6 Tungsten Carbide",
+  "espi-inconel-718": {
+    "short_label": "ESPI Metals: Inconel 718 Technical Data",
     "doi": null,
     "bibtex": null,
-    "url": null
-  },
-  "specialmetals-nitinol-shape-memory": {
-    "short_label": "MatWeb: Special Metals Nitinol High-Temperature Shape Memory Ni-Ti Alloy",
-    "doi": null,
-    "bibtex": null,
-    "url": null
-  },
-  "specialmetals-nitinol-superelastic": {
-    "short_label": "MatWeb: Special Metals Nitinol Superelastic Ni-Ti Alloy",
-    "doi": null,
-    "bibtex": null,
-    "url": null
+    "url": "https://www.espimetals.com/index.php/technical-data/91-inconel-718"
   },
   "goodfellow-nitinol-overview": {
     "short_label": "Goodfellow: Nitinol - The Shape-Memory Alloy Explained",
@@ -601,47 +235,17 @@
     "bibtex": null,
     "url": "https://www.goodfellow.com/usa/resources/nitinol-where-motion-meets-memory/"
   },
-  "matweb-17-7ph-th1050": {
-    "short_label": "MatWeb: 17-7 PH Stainless Steel, TH1050, Plate, Sheet, and Strip",
+  "hightempmetals-inconel-625": {
+    "short_label": "High Temp Metals: Inconel 625 Technical Data",
     "doi": null,
     "bibtex": null,
-    "url": null
+    "url": "https://www.hightempmetals.com/techdata/hitempInconel625data.php"
   },
-  "matweb-cycom985-kevlar49": {
-    "short_label": "MatWeb: Solvay CYCOM 985 Epoxy + Kevlar 49 Fiber Laminate",
+  "hightempmetals-inconel-718": {
+    "short_label": "High Temp Metals: Inconel 718 Technical Data",
     "doi": null,
     "bibtex": null,
-    "url": null
-  },
-  "matweb-synfoam-sw9": {
-    "short_label": "MatWeb: Synfoam SW-9 Syntactic Foam",
-    "doi": null,
-    "bibtex": null,
-    "url": null
-  },
-  "synfoam-official-sw-product-page": {
-    "short_label": "SynFoam (Division of UDC): SynFoam SW Product Page and Standard Properties Table",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://synfoam.com/Products/SynFoam_SW"
-  },
-  "matweb-mirel-p1004": {
-    "short_label": "MatWeb: Telles Mirel™ P1004 Injection Molding Grade PHA Bioplastic",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=9a8bbca39deb4e45be0710940d33448d"
-  },
-  "salesplastics-pha-filament": {
-    "short_label": "Sales Plastics: PHA Filament Technical Guide",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://salesplastics.com/pha-filament/"
-  },
-  "wikipedia-polyhydroxyalkanoates": {
-    "short_label": "Wikipedia: Polyhydroxyalkanoates",
-    "doi": null,
-    "bibtex": null,
-    "url": "https://en.wikipedia.org/wiki/Polyhydroxyalkanoates"
+    "url": "https://www.hightempmetals.com/techdata/hitempInconel718data.php"
   },
   "hodzic2020-pla-fdm": {
     "short_label": "Hodžić et al. 2020: Strength Comparison of FDM 3D Printed PLA (TEM Journal)",
@@ -649,11 +253,77 @@
     "bibtex": "@article{Hodzic2020,\n  author  = {Hodžić, Damir and Pandžić, Adi and Hajro, Ismar and Tasić, Petar},\n  title   = {Strength Comparison of {FDM} 3D Printed {PLA} Made by Different Manufacturers},\n  journal = {TEM Journal},\n  volume  = {9},\n  number  = {3},\n  pages   = {966--970},\n  year    = {2020},\n  doi     = {10.18421/TEM93-18}\n}",
     "url": "https://doi.org/10.18421/TEM93-18"
   },
-  "pandzic2022-petg-fdm": {
-    "short_label": "Pandžić & Hodžić 2022: Tensile Properties of FDM PETG, ASA, and PLA-Strongman (33rd DAAAM Intl. Symposium)",
-    "doi": "10.2507/33rd.daaam.proceedings.031",
-    "bibtex": "@inproceedings{Pandzic2022,\n  author    = {Pandžić, Adi and Hodžić, Damir},\n  title     = {Tensile Mechanical Properties Comparation of {PETG}, {ASA} and {PLA}-Strongman {FDM} Printed Materials With and Without Infill Structure},\n  booktitle = {Proceedings of the 33rd DAAAM International Symposium},\n  editor    = {Katalinic, B.},\n  publisher = {DAAAM International},\n  address   = {Vienna, Austria},\n  pages     = {221--230},\n  year      = {2022},\n  isbn      = {978-3-902734-36-5},\n  issn      = {1726-9679},\n  doi       = {10.2507/33rd.daaam.proceedings.031}\n}",
-    "url": "https://doi.org/10.2507/33rd.daaam.proceedings.031"
+  "incropera-heat-transfer": {
+    "short_label": "Incropera 2006",
+    "doi": null,
+    "bibtex": "@book{incropera-heat-transfer,\n  author    = {Incropera, Frank P. and DeWitt, David P.},\n  title     = {{Fundamentals of Heat and Mass Transfer}},\n  edition   = {6},\n  publisher = {Wiley},\n  year      = {2006},\n  isbn      = {978-0-471-45728-2}\n}",
+    "url": "https://www.worldcat.org/isbn/9780471457282"
+  },
+  "makeitfrom-4340": {
+    "short_label": "MakeItFrom: SAE-AISI 4340 Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-4340-SNCM439-G43400-Ni-Cr-Mo-Steel"
+  },
+  "makeitfrom-5160": {
+    "short_label": "MakeItFrom: SAE-AISI 5160 Chromium Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-5160-G51600-Chromium-Steel"
+  },
+  "makeitfrom-abs": {
+    "short_label": "MakeItFrom: ABS",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Acrylonitrile-Butadiene-Styrene-ABS"
+  },
+  "makeitfrom-acrylic": {
+    "short_label": "MakeItFrom: Cast PMMA (Acrylic) Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Polymethylmethacrylate-PMMA-Acrylic"
+  },
+  "makeitfrom-c11000": {
+    "short_label": "MakeItFrom: Annealed C11000 ETP Copper",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Annealed-OS050-C11000-Copper"
+  },
+  "makeitfrom-g10": {
+    "short_label": "MakeItFrom: NEMA Grade G-10 Glass/Epoxy Laminate",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/NEMA-Grade-G-10-GEE-Glass-Epoxy-Laminate"
+  },
+  "makeitfrom-h13": {
+    "short_label": "MakeItFrom: SAE-AISI H13 Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/SAE-AISI-H13-T20813-Chromium-Hot-Work-Steel"
+  },
+  "makeitfrom-pom": {
+    "short_label": "MakeItFrom: POM Acetal Homopolymer (Delrin)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Polyoxymethylene-POM-Acetal-Homopolymer"
+  },
+  "makeitfrom-sic": {
+    "short_label": "MakeItFrom: Silicon Carbide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.makeitfrom.com/material-properties/Silicon-Carbide-SiC"
+  },
+  "matweb-1018": {
+    "short_label": "MatWeb: AISI 1018 Mild/Low Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=c45dcf3c46b34bcf82cd0999fafba237"
+  },
+  "matweb-17-7ph-th1050": {
+    "short_label": "MatWeb: 17-7 PH Stainless Steel, TH1050, Plate, Sheet, and Strip",
+    "doi": null,
+    "bibtex": null,
+    "url": null
   },
   "matweb-4130-normalized": {
     "short_label": "MatWeb: AISI 4130 Steel, normalized at 870C (1600F)",
@@ -667,16 +337,352 @@
     "bibtex": null,
     "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=7eb7e2c6eab3433c9fb96eaa9f0312fb"
   },
-  "yahr1993-6061t6-fatigue": {
-    "short_label": "Yahr 1993: Fatigue Design Curves for 6061-T6 Aluminum",
+  "matweb-al6061-t6": {
+    "short_label": "MatWeb: Aluminum 6061-T6",
     "doi": null,
-    "bibtex": "@inproceedings{yahr1993-6061t6-fatigue,\n  title       = {{Fatigue Design Curves for 6061-T6 Aluminum}},\n  author      = {Yahr, G. T.},\n  booktitle   = {ASME Pressure Vessel and Piping Conference},\n  year        = {1993},\n  month       = jul,\n  address     = {Denver, CO},\n  institution = {Oak Ridge National Laboratory},\n  note        = {CONF-930702--14, OSTI ID 10157028}\n}",
-    "url": "https://www.osti.gov/biblio/10157028"
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=b8d536e0b9b54bd7b69e4124d8f1d20a"
+  },
+  "matweb-aluminum-1100": {
+    "short_label": "MatWeb: Aluminum 1100-O",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet_print.aspx?matguid=db0307742df14c8f817bd8d62207368e"
+  },
+  "matweb-aluminum-2024-t3": {
+    "short_label": "MatWeb: Aluminum 2024-T3",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-az31b-h24": {
+    "short_label": "MatWeb: Magnesium AZ31B-H24, Hard Rolled Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-brass-astm-b16-h02": {
+    "short_label": "MatWeb: Brass ASTM B16 H02",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?matguid=9b82636b70e7489eadf4610fbcdedbc2&n=1"
+  },
+  "matweb-coorstek-aci-co6-wc": {
+    "short_label": "MatWeb: CoorsTek ACI-Co6 Tungsten Carbide",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-cycom985-kevlar49": {
+    "short_label": "MatWeb: Solvay CYCOM 985 Epoxy + Kevlar 49 Fiber Laminate",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-gar-dur-uhmwpe": {
+    "short_label": "MatWeb: Garland GAR-DUR® UHMW-PE",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=dc4013a8f95b49018080ce9683501d6f"
+  },
+  "matweb-maraging-300-annealed": {
+    "short_label": "MatWeb: AISI Grade 18Ni (300) Maraging Steel, Nominal Annealed Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-mirel-p1004": {
+    "short_label": "MatWeb: Telles Mirel™ P1004 Injection Molding Grade PHA Bioplastic",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=9a8bbca39deb4e45be0710940d33448d"
+  },
+  "matweb-nylon6-overview": {
+    "short_label": "MatWeb: Overview of Materials for Nylon 6, Unreinforced",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=fb48404b7e04433bb3ee3d2a0af922ff"
+  },
+  "matweb-polycarbonate-extruded-overview": {
+    "short_label": "MatWeb: Overview of Materials for Polycarbonate, Extruded",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb-stainless-316": {
+    "short_label": "MatWeb: 316 Stainless Steel, annealed bar",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=dfced4f11d63459e8ef8733d1c7c1ad2"
+  },
+  "matweb-synfoam-sw9": {
+    "short_label": "MatWeb: Synfoam SW-9 Syntactic Foam",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "matweb_carpenter_invar36_coldrawn": {
+    "short_label": "MatWeb: Carpenter Invar 36 (Cold Drawn)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=b6fb00b235f0442da4d31a0cd04671c9"
+  },
+  "mdpi-maraging-haz-embrittlement-2024": {
+    "short_label": "MDPI/PMC: Embrittlement Fracture Behavior and Mechanical Properties in HAZ of Welded Maraging Steel",
+    "doi": "10.3390/ma17020440",
+    "bibtex": null,
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10817506/"
+  },
+  "metalzenith-a36": {
+    "short_label": "Metal Zenith: A36 Steel Properties",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://metalzenith.com/blogs/steel-properties/a36-steel-properties-and-key-applications-explained"
+  },
+  "mil-hdbk-5j-2003": {
+    "short_label": "MIL-HDBK-5J 2003",
+    "doi": null,
+    "bibtex": "@techreport{mil-hdbk-5j-2003,\n  title       = {{MIL-HDBK-5J: Metallic Materials and Elements for Aerospace Vehicle Structures}},\n  institution = {U.S. Department of Defense},\n  year        = {2003},\n  number      = {MIL-HDBK-5J}\n}",
+    "url": "https://everyspec.com/MIL-HDBK/MIL-HDBK-0001-0099/MIL_HDBK_5J_139/"
+  },
+  "mmpds01_2003": {
+    "short_label": "MMPDS-01 2003",
+    "doi": null,
+    "bibtex": "@techreport{mmpds01_2003,\n  title       = {Metallic Materials Properties Development and Standardization (MMPDS)},\n  number      = {MMPDS-01},\n  institution = {Federal Aviation Administration (FAA) and Battelle Memorial Institute},\n  year        = {2003},\n  month       = jan,\n  note        = {Supersedes MIL-HDBK-5J}\n}",
+    "url": null
   },
   "naca-tn-2324": {
     "short_label": "NACA TN 2324 (1951): Fatigue Strengths of Aircraft Materials, Unnotched",
     "doi": null,
     "bibtex": "@techreport{naca-tn-2324,\n  title       = {{Fatigue Strengths of Aircraft Materials: Axial-Load Fatigue Tests on Unnotched Sheet Specimens of 24S-T3 and 75S-T6 Aluminum Alloys and of SAE 4130 Steel}},\n  author      = {Grover, H. J. and Bishop, S. M. and Jackson, L. R.},\n  institution = {NACA / Battelle Memorial Institute},\n  number      = {NACA TN 2324},\n  year        = {1951},\n  month       = mar\n}",
     "url": "https://ntrs.nasa.gov/citations/19930083007"
+  },
+  "nist-cryo-al": {
+    "short_label": "NIST Cryogenic Materials Database: Aluminium",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/6061%20Aluminum/6061_T6Aluminum_rev.htm"
+  },
+  "nist-cryo-be": {
+    "short_label": "NIST Cryo DB: Beryllium",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Beryllium/Beryllium_rev.htm"
+  },
+  "nist-cryo-copper": {
+    "short_label": "NIST Cryo DB: OFHC Copper",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/OFHC%20Copper/OFHC_Copper_rev1.htm"
+  },
+  "nist-cryo-invar": {
+    "short_label": "NIST Cryo DB: Invar (Fe-36Ni)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Invar(Fe-36Ni)/Invar_rev.htm"
+  },
+  "nist-cryo-ss304": {
+    "short_label": "NIST Cryo DB: 304 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/304Stainless/304Stainless_rev.htm"
+  },
+  "nist-cryo-ti64": {
+    "short_label": "NIST Cryo DB: Ti-6Al-4V",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://trc.nist.gov/cryogenics/materials/Ti6Al4V/Ti6Al4V_rev.htm"
+  },
+  "nylonplastic-pa6-vs-pa12": {
+    "short_label": "NylonPlastic.com: PA6 vs PA12 Comparison Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://nylonplastic.com/pa6-vs-pa12-comparison-guide/"
+  },
+  "onlinemetals-a2": {
+    "short_label": "Online Metals: A2 Tool Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.onlinemetals.com/en/product-guide/alloy/a2"
+  },
+  "pandzic2022-petg-fdm": {
+    "short_label": "Pandžić & Hodžić 2022: Tensile Properties of FDM PETG, ASA, and PLA-Strongman (33rd DAAAM Intl. Symposium)",
+    "doi": "10.2507/33rd.daaam.proceedings.031",
+    "bibtex": "@inproceedings{Pandzic2022,\n  author    = {Pandžić, Adi and Hodžić, Damir},\n  title     = {Tensile Mechanical Properties Comparation of {PETG}, {ASA} and {PLA}-Strongman {FDM} Printed Materials With and Without Infill Structure},\n  booktitle = {Proceedings of the 33rd DAAAM International Symposium},\n  editor    = {Katalinic, B.},\n  publisher = {DAAAM International},\n  address   = {Vienna, Austria},\n  pages     = {221--230},\n  year      = {2022},\n  isbn      = {978-3-902734-36-5},\n  issn      = {1726-9679},\n  doi       = {10.2507/33rd.daaam.proceedings.031}\n}",
+    "url": "https://doi.org/10.2507/33rd.daaam.proceedings.031"
+  },
+  "parker-oring-materials": {
+    "short_label": "Parker O-Ring Material Selection Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.parker.com/us/en/divisions/o-ring-and-engineered-seals-division/resources/oring-ehandbook/oring-elastomers/material-selection-guide.html"
+  },
+  "pgo-online-borofloat": {
+    "short_label": "PGO: SCHOTT BOROFLOAT 33 Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/borofloat.html"
+  },
+  "pgo-online-nbk7": {
+    "short_label": "PGO: SCHOTT N-BK7 Optical Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/BK7.html"
+  },
+  "pgo-online-ule": {
+    "short_label": "PGO: Corning ULE 7972 Glass Data",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.pgo-online.com/intl/ule.html"
+  },
+  "protolabs-316l-dmls": {
+    "short_label": "MatWeb: Proto Labs 316L Stainless Steel - DMLS",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "salesplastics-pha-filament": {
+    "short_label": "Sales Plastics: PHA Filament Technical Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://salesplastics.com/pha-filament/"
+  },
+  "sandmeyer-inconel-625": {
+    "short_label": "Sandmeyer Steel: Inconel Alloy 625 Plate",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.sandmeyersteel.com/inconel-alloy-625/"
+  },
+  "sandmeyer-invar36": {
+    "short_label": "Sandmeyer Steel: SSC Invar 36 Data Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.sandmeyersteel.com/ssc-invar-36/"
+  },
+  "schott-zerodur": {
+    "short_label": "Schott: ZERODUR Technical Details",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.schott.com/en-gb/products/zerodur-p1000269/technical-details"
+  },
+  "simplify3d-materials-guide": {
+    "short_label": "Simplify3D Materials Guide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.simplify3d.com/resources/materials-guide/properties-table/"
+  },
+  "smithmetal-pa12": {
+    "short_label": "Smiths Metal Centres: Extruded Nylon 12 (PA12) Datasheet",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "spacematdb-316": {
+    "short_label": "SpaceMatDB: AISI 316 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=AISI%20316"
+  },
+  "spacematdb_invar36": {
+    "short_label": "SpaceMatDB: Invar 36",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.spacematdb.com/spacemat/datasearch.php?name=Invar%2036"
+  },
+  "specialmetals-nitinol-shape-memory": {
+    "short_label": "MatWeb: Special Metals Nitinol High-Temperature Shape Memory Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "specialmetals-nitinol-superelastic": {
+    "short_label": "MatWeb: Special Metals Nitinol Superelastic Ni-Ti Alloy",
+    "doi": null,
+    "bibtex": null,
+    "url": null
+  },
+  "steel-grades-com-a36": {
+    "short_label": "Steel-Grades.com: ASTM A36",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://steel-grades.com/Steel-Grades/Carbon-Steel/18/23/_ASTM_A36.pdf"
+  },
+  "synfoam-official-sw-product-page": {
+    "short_label": "SynFoam (Division of UDC): SynFoam SW Product Page and Standard Properties Table",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://synfoam.com/Products/SynFoam_SW"
+  },
+  "theworldmaterial-1018": {
+    "short_label": "TheWorldMaterial: ASTM SAE AISI 1018 Carbon Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/astm-sae-aisi-1018-carbon-steel/"
+  },
+  "theworldmaterial-303": {
+    "short_label": "TheWorldMaterial: AISI 303 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/aisi-303-stainless-steel-uns-s30300/"
+  },
+  "theworldmaterial-304": {
+    "short_label": "TheWorldMaterial: AISI 304 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/type-304-grade-stainless-steel/"
+  },
+  "theworldmaterial-316": {
+    "short_label": "TheWorldMaterial: AISI 316 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.theworldmaterial.com/316-stainless-steel/"
+  },
+  "titanium-ti-6al-4v-grade-5-sta-html-source-file": {
+    "short_label": "MatWeb: Titanium Ti-6Al-4V (Grade 5), STA",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/datasheet.aspx?MatGUID=b350a789eda946c6b86a3e4d3c577b39"
+  },
+  "trevisan-alsi10mg-2017": {
+    "short_label": "Trevisan et al. 2017: AlSi10Mg by SLM (Materials, MDPI)",
+    "doi": "10.3390/ma10010076",
+    "bibtex": "@article{Trevisan2017,\n  author = {Trevisan, F. and Calignano, F. and Lorusso, M. and Pakkanen, J. and Aversa, A. and Ambrosio, E. P. and Lombardi, M. and Fino, P. and Manfredi, D.},\n  title = {On the Selective Laser Melting ({SLM}) of the {AlSi10Mg} Alloy: Process, Microstructure, and Mechanical Properties},\n  journal = {Materials},\n  volume = {10},\n  number = {1},\n  pages = {76},\n  year = {2017},\n  doi = {10.3390/ma10010076}\n}",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5344617/"
+  },
+  "uddeholm-orvar-h13": {
+    "short_label": "Uddeholm ORVAR Supreme (AISI H13) via MatWeb",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.lookpolymers.com/polymer_Bohler-Uddeholm-UDDEHOLM-ORVAR-SUPREME-Premium-AISI-H13-Hot-Work-Tool-Steel.php"
+  },
+  "usda-wood-handbook": {
+    "short_label": "USDA Forest Products Laboratory Wood Handbook (FPL-GTR-282)",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.fpl.fs.usda.gov/documnts/fplgtr/fplgtr282.pdf"
+  },
+  "victrex-peek-450g": {
+    "short_label": "Victrex PEEK 450G Datasheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.victrex.com/en/products/peek-polymers/victrex-peek-450g"
+  },
+  "wikipedia-17-4-stainless-steel": {
+    "short_label": "Wikipedia: 17-4 Stainless Steel",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://en.wikipedia.org/wiki/17-4_stainless_steel"
+  },
+  "wikipedia-polyhydroxyalkanoates": {
+    "short_label": "Wikipedia: Polyhydroxyalkanoates",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://en.wikipedia.org/wiki/Polyhydroxyalkanoates"
+  },
+  "yahr1993-6061t6-fatigue": {
+    "short_label": "Yahr 1993: Fatigue Design Curves for 6061-T6 Aluminum",
+    "doi": null,
+    "bibtex": "@inproceedings{yahr1993-6061t6-fatigue,\n  title       = {{Fatigue Design Curves for 6061-T6 Aluminum}},\n  author      = {Yahr, G. T.},\n  booktitle   = {ASME Pressure Vessel and Piping Conference},\n  year        = {1993},\n  month       = jul,\n  address     = {Denver, CO},\n  institution = {Oak Ridge National Laboratory},\n  note        = {CONF-930702--14, OSTI ID 10157028}\n}",
+    "url": "https://www.osti.gov/biblio/10157028"
   }
 }

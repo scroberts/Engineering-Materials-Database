@@ -31,3 +31,29 @@ jobs:
       - run: pip install -r tools/requirements.txt
 
       - run: python tools/validate.py
+
+      # new_references blocks are legitimate on PR branches (the submit-form
+      # workflow embeds them), but must not linger on main — an unpromoted key
+      # breaks that material's citation links on the live site. Fix: run
+      # `python tools/import_new_refs.py --write`, then delete the
+      # new_references block from the listed file(s).
+      - name: No lingering new_references on main
+        if: github.event_name == 'push'
+        run: |
+          python - <<'EOF'
+          import json, glob, sys
+          offenders = []
+          for f in glob.glob('materials/**/*.json', recursive=True):
+              if f.endswith('index.json'):
+                  continue
+              with open(f, encoding='utf-8') as fh:
+                  if 'new_references' in json.load(fh):
+                      offenders.append(f)
+          if offenders:
+              print('new_references block(s) still present on main:')
+              for f in offenders:
+                  print('  ', f)
+              print('Run: python tools/import_new_refs.py --write, then remove the block(s).')
+              sys.exit(1)
+          print('OK: no lingering new_references')
+          EOF
