@@ -672,5 +672,11 @@
     "doi": null,
     "bibtex": "@inproceedings{yahr1993-6061t6-fatigue,\n  title       = {{Fatigue Design Curves for 6061-T6 Aluminum}},\n  author      = {Yahr, G. T.},\n  booktitle   = {ASME Pressure Vessel and Piping Conference},\n  year        = {1993},\n  month       = jul,\n  address     = {Denver, CO},\n  institution = {Oak Ridge National Laboratory},\n  note        = {CONF-930702--14, OSTI ID 10157028}\n}",
     "url": "https://www.osti.gov/biblio/10157028"
+  },
+  "naca-tn-2324": {
+    "short_label": "NACA TN 2324 (1951): Fatigue Strengths of Aircraft Materials, Unnotched",
+    "doi": null,
+    "bibtex": "@techreport{naca-tn-2324,\n  title       = {{Fatigue Strengths of Aircraft Materials: Axial-Load Fatigue Tests on Unnotched Sheet Specimens of 24S-T3 and 75S-T6 Aluminum Alloys and of SAE 4130 Steel}},\n  author      = {Grover, H. J. and Bishop, S. M. and Jackson, L. R.},\n  institution = {NACA / Battelle Memorial Institute},\n  number      = {NACA TN 2324},\n  year        = {1951},\n  month       = mar\n}",
+    "url": "https://ntrs.nasa.gov/citations/19930083007"
   }
 }

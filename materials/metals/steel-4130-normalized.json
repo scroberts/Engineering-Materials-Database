@@ -8,7 +8,7 @@
     "common_forms": ["Round Bar", "Sheet", "Plate", "Tube"],
     "common_form_notes": "Widely stocked as seamless tube (\"4130 chromoly\") for aircraft engine mounts, roll cages, and tube-frame chassis, as well as round bar, sheet, and plate. The normalized condition shown here is a lower-strength baseline/as-received state; quenched-and-tempered variants (see MatWeb's water-quenched + temper conditions) are more commonly specified where higher strength is needed.",
     "usage_frequency": "Common",
-    "notes": "Normalized condition (870°C/1600°F austenitized, air cooled) — chosen specifically to match the material tested in NACA TN 2324 and NASA TN D-111 (Grover, Bishop, Hyler, and Jackson; Battelle Memorial Institute, 1951/1959), used elsewhere in this database for aluminum fatigue-strength comparisons. This is NOT the quenched-and-tempered condition most commonly specified for chromoly tubing/roll-cage applications (which reaches substantially higher strength at some cost to ductility). Values were cross-checked between MatWeb's two \"normalized\" page variants (no size specified vs. 25 mm/1 in round); only reduction of area differed marginally (60% vs 59.5%), so this entry uses the no-size-specified page as primary. Shear strength (387 MPa) derived via von Mises criterion (UTS (ultimate tensile strength)/√3) since no directly-reported value was available and this condition is ductile (25.5% elongation). Electrical conductivity (7.7% IACS (International Annealed Copper Standard)) derived from the source's stated electrical resistivity (22.3 µΩ·cm at 20°C) via %IACS = (1.7241/22.3)×100; the source annotates that resistivity figure as measured on a \"hardened and tempered\" specimen even on this normalized-condition page, suggesting MatWeb reuses one generic resistivity table across several 4130 heat-treatment pages rather than measuring it per-condition — treat this figure as approximate. Specific heat and thermal conductivity are MatWeb's banded generic-4130 figures, not precise single-temperature measurements: specific heat is reported for the >=100°C, 150–200°C, and 750–800°C bands (stored here at 100/175/775°C); thermal conductivity is reported at 100°C, 300°C, and 1200°C. Hardness values other than Brinell (Vickers, Rockwell B/C, Knoop) are MatWeb-converted from the directly-measured Brinell value, not independently measured. No melting point, fracture toughness, coefficient of thermal expansion, or fatigue data was available from these source pages."
+    "notes": "Normalized condition (870°C/1600°F austenitized, air cooled) — chosen specifically to match the material tested in NACA TN 2324 and NASA TN D-111 (Grover, Bishop, Hyler, and Jackson; Battelle Memorial Institute, 1951/1959), used elsewhere in this database for aluminum fatigue-strength comparisons. This is NOT the quenched-and-tempered condition most commonly specified for chromoly tubing/roll-cage applications (which reaches substantially higher strength at some cost to ductility). Values were cross-checked between MatWeb's two \"normalized\" page variants (no size specified vs. 25 mm/1 in round); only reduction of area differed marginally (60% vs 59.5%), so this entry uses the no-size-specified page as primary. Shear strength (387 MPa) derived via von Mises criterion (UTS (ultimate tensile strength)/√3) since no directly-reported value was available and this condition is ductile (25.5% elongation). Electrical conductivity (7.7% IACS (International Annealed Copper Standard)) derived from the source's stated electrical resistivity (22.3 µΩ·cm at 20°C) via %IACS = (1.7241/22.3)×100; the source annotates that resistivity figure as measured on a \"hardened and tempered\" specimen even on this normalized-condition page, suggesting MatWeb reuses one generic resistivity table across several 4130 heat-treatment pages rather than measuring it per-condition — treat this figure as approximate. Specific heat and thermal conductivity are MatWeb's banded generic-4130 figures, not precise single-temperature measurements: specific heat is reported for the >=100°C, 150–200°C, and 750–800°C bands (stored here at 100/175/775°C); thermal conductivity is reported at 100°C, 300°C, and 1200°C. Hardness values other than Brinell (Vickers, Rockwell B/C, Knoop) are MatWeb-converted from the directly-measured Brinell value, not independently measured. No melting point, fracture toughness, or coefficient of thermal expansion was available from these source pages. Fatigue S-N curve (6 points, R=−1 fully reversed, axial loading) is raw specimen data from NACA TN 2324 (Grover, Bishop & Jackson, 1951) Table 4 — the same axial-load fatigue test program on normalized SAE 4130 sheet referenced in this material's identification notes, and the companion unnotched study behind NASA TN D-111's notched-fatigue work. All 6 specimens at this test ratio failed within the gage's critical section (satisfying the report's own plotting criterion), including one run-out (45,000 psi/310 MPa, did not fail by 13,657,000 cycles) — stored as the longest-life point though it represents a surviving specimen, not a failure, consistent with how this database's other long-life fatigue points are typically the approach toward an endurance limit rather than a literal fracture at that exact cycle count."
   },
   "typical_usage": "Aircraft engine mounts and landing gear components, roll cages and tube-frame chassis in motorsport, high-pressure gas cylinders, gears, and machine parts requiring good weldability combined with moderate strength. The normalized condition serves as a common baseline/as-received state; quenched-and-tempered variants are used where higher strength is required.",
   "mechanical_common": {
@@ -23,7 +23,19 @@
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength": { "value": null, "ref": null },
-    "fatigue_sn_curve": { "points": [], "ref": null, "stress_ratio": null, "test_method": null },
+    "fatigue_sn_curve": {
+      "points": [
+        { "stress": 0.5171, "cycles": 8400 },
+        { "stress": 0.4482, "cycles": 98800 },
+        { "stress": 0.3792, "cycles": 246000 },
+        { "stress": 0.3447, "cycles": 1530800 },
+        { "stress": 0.3275, "cycles": 3874800 },
+        { "stress": 0.3103, "cycles": 13657000 }
+      ],
+      "ref": "naca-tn-2324",
+      "stress_ratio": -1,
+      "test_method": "Axial"
+    },
     "fracture_toughness": { "value": null, "ref": null },
     "hardness_vickers": { "value": 207, "ref": "matweb-4130-normalized" },
     "hardness_brinell": { "value": 197, "ref": "matweb-4130-normalized" },
@@ -60,7 +72,7 @@
     "glass_transition_tg": { "value": null, "ref": null },
     "magnetic_classification": { "value": "Ferromagnetic", "ref": null }
   },
-  "references": ["matweb-4130-normalized", "matweb-4130-normalized-25mm-round"],
+  "references": ["matweb-4130-normalized", "matweb-4130-normalized-25mm-round", "naca-tn-2324"],
   "metadata": {
     "submitted_by": null,
     "submitted_date": "2026-08-20",
