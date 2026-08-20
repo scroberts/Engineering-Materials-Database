@@ -130,8 +130,18 @@ Reference HTML/PDF storage (outside the repo, gitignored):
       the same `<stub>.html`/`.pdf` naming convention as a manual download, so it's a
       permanent citable snapshot usable by `parse_refs.py`/`compare_refs.py` later.
 
+tests/
+  units.test.js        Node built-in test runner (node:test) — conversion factors in js/core/units.js
+  derived.test.js       Same — merit indices and shear/stiffness formulas in js/core/derived.js
+  Run: `node --test tests/` (or `npm test`). Requires Node — not part of the
+  site's own runtime (still no build step, no bundler, no dependencies), only
+  a dev-time check. package.json exists solely to set "type": "module" so
+  Node parses js/core/*.js as ES modules; it has no dependencies and no
+  build/serve script.
+
 .github/
-  workflows/validate-schema.yml   CI: runs validate.py on PRs touching materials/
+  workflows/validate-schema.yml   CI: runs validate.py (+ new_references check) on materials/schema/references changes
+  workflows/js-tests.yml          CI: runs `node --test tests/` on js/core/ or tests/ changes
   PULL_REQUEST_TEMPLATE.md        Checklist for material submissions
 ```
 
@@ -236,9 +246,9 @@ Three values: `"Ferromagnetic"` (incl. ferrimagnetic — strongly magnetic, caut
    - Denser Synfoam grades (SW-12/15/18) or other depth-rated lines (MW/DW/HP) if a deeper-water comparison point is wanted alongside the shallow-water SW-9 entry
    - **Ti-6Al-4V AM as-built** condition specifically — not currently represented (EOS's own datasheet doesn't report it and recommends against using it unheat-treated); worth adding only if a source with genuine as-built mechanical data turns up
 5. **Repo review follow-ups (2026-08-20).** A full review pass found and fixed several defects same-day (S-N axis mislabel on detail page, doc counts 61→62, stale punch-list claim about CI ref-checking, lingering `new_references` + new CI check for it, stray `Beam_Design_Stiffness.xlsx`, `validate.py` relative-path crash, `parse_refs.py` cp1252 console crash — commits `df795fa`/`fe248fb`). Remaining items, in recommended order:
-   - **JS tests for `units.js` and `derived.js`** — highest-value gap. Both are pure-function modules doing math every displayed number flows through, with zero tests. A dev-only Node test file (`node --test`, no build step, no dependencies) asserting a dozen known conversions (e.g. 1 GPa = 145.038 ksi, 1 MPa·m^0.5 = 0.9099 ksi·in^0.5 — factors were spot-verified correct during the review) and known merit-index values would catch the most damaging class of silent regression this site could have. Put it in `tools/` or a new `tests/` dir; add a CI step (`node --test` on a Node setup action).
+   - ~~**JS tests for `units.js` and `derived.js`**~~ — **done** (2026-08-20): `tests/units.test.js` and `tests/derived.test.js` (Node's built-in `node:test`, no dependencies), CI at `.github/workflows/js-tests.yml`. Written and hand-verified (constants cross-checked against source, special-Unicode-character output checked codepoint-by-codepoint) but **not locally executed — no Node install on the machine that wrote them.** Next session with Node available: run `node --test tests/` once and fix anything that doesn't pass before trusting it further.
    - **Physical-plausibility linter** — schema validates shape, not physics; the 2026-08-20 fatigue audit proved values can be wrong-but-schema-valid for months. A warnings-only pass (in `validate.py` or a sibling `tools/lint_physics.py`): solidus < liquidus (notes vs. `melting_point_tm`), ductility 0–100%, yield ≤ UTS, Poisson 0–0.5, S-N stress monotonically decreasing with cycles, density sane per category, `usable_temp_range.min < max`. Warnings, not CI failures — some legitimate materials will trip naive rules.
    - **Manifest-freshness CI step** — run `tools/update_manifest.py` in CI and fail if `git diff --exit-code materials/index.json` shows drift (cheaper than bot-commits, same guarantee; supersedes the older "auto-regenerate and commit" idea in item 2).
    - **`loader.js` cache-policy inconsistency** — manifest and references fetch with `cache: 'no-store'` but material JSONs use default HTTP caching (`loader.js:40`), so a returning visitor can mix a fresh manifest with stale material files. Pick one policy (probably `no-store` everywhere, or drop it everywhere and trust GH Pages' 10-min max-age).
    - Smaller/optional, from the same review: generate the README/SPEC material tables + counts from `materials/index.json` instead of hand-syncing four docs (they drifted twice already); split the 1,954-line `submit.js` into ES modules (no-build constraint forbids a bundler, not multiple files); `aria-label`s on chart canvases (Chart.js canvases are opaque to screen readers; CSV export partially mitigates); tidy `derived.js` (redundant alpha double-read at `derived.js:26-28`, truthiness `E && rho` vs `!= null` inconsistency in merit `fn`s — benign today, a trap if copied for a property that can legitimately be 0).
-   - **Loose thread:** the new lingering-`new_references` CI step's first run (push of `df795fa`) was never confirmed green — it passed locally, but glance at the Actions tab once before trusting it.
+   - ~~Loose thread: confirm the new lingering-`new_references` CI step's first run was green~~ — **confirmed** (2026-08-20): GitHub Actions run for `fe248fb` (head commit at that push, includes `df795fa`'s check) completed with conclusion `success`.

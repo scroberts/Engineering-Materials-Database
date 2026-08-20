@@ -1,0 +1,9 @@
+{
+  "name": "uvic-materials-database",
+  "private": true,
+  "type": "module",
+  "description": "No build step, no runtime dependencies. This file exists only so Node's test runner treats js/**/*.js as ES modules and so `npm test` has somewhere to live.",
+  "scripts": {
+    "test": "node --test tests/"
+  }
+}
