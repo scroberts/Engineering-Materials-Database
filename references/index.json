@@ -666,5 +666,11 @@
     "doi": null,
     "bibtex": null,
     "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=7eb7e2c6eab3433c9fb96eaa9f0312fb"
+  },
+  "yahr1993-6061t6-fatigue": {
+    "short_label": "Yahr 1993: Fatigue Design Curves for 6061-T6 Aluminum",
+    "doi": null,
+    "bibtex": "@inproceedings{yahr1993-6061t6-fatigue,\n  title       = {{Fatigue Design Curves for 6061-T6 Aluminum}},\n  author      = {Yahr, G. T.},\n  booktitle   = {ASME Pressure Vessel and Piping Conference},\n  year        = {1993},\n  month       = jul,\n  address     = {Denver, CO},\n  institution = {Oak Ridge National Laboratory},\n  note        = {CONF-930702--14, OSTI ID 10157028}\n}",
+    "url": "https://www.osti.gov/biblio/10157028"
   }
 }

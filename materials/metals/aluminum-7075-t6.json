@@ -8,7 +8,7 @@
     "common_forms": ["Sheet", "Plate", "Round Bar", "Tube"],
     "common_form_notes": "Widely stocked as plate, sheet, and bar. Typically purchased in T6 or T651 temper (stress-relieved plate). Not recommended for welding in most applications.",
     "usage_frequency": "Specialty",
-    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (U.S. Military Handbook 5J, freely available); eFunda linked for cross-reference. Cryogenic CTE (coefficient of thermal expansion) table entries (−196 to −100 °C) are instantaneous values from the NIST (National Institute of Standards and Technology) Cryogenic Materials Database polynomial for wrought aluminium alloys (6061-T6 polynomial used as proxy; dedicated 7075 polynomial not published — all wrought Al alloys agree within ±4%). Above-RT CTE from MIL-HDBK-5J. Melting point is solidus (477°C); liquidus 635°C (MIL-HDBK-5J)."
+    "notes": "Al-Zn-Mg-Cu alloy (7xxx series). T6 temper: solution heat-treated and artificially aged. The highest-strength commonly available aluminum alloy. Susceptible to stress-corrosion cracking (SCC) in sustained tensile loading — T73 or T7351 tempers provide better SCC resistance at the cost of ~15% strength reduction. Not recommended for fusion welding. All mechanical properties from MIL-HDBK-5J (U.S. Military Handbook 5J, freely available); eFunda linked for cross-reference. Cryogenic CTE (coefficient of thermal expansion) table entries (−196 to −100 °C) are instantaneous values from the NIST (National Institute of Standards and Technology) Cryogenic Materials Database polynomial for wrought aluminium alloys (6061-T6 polynomial used as proxy; dedicated 7075 polynomial not published — all wrought Al alloys agree within ±4%). Above-RT CTE from MIL-HDBK-5J. Melting point is solidus (477°C); liquidus 635°C (MIL-HDBK-5J). Fatigue S-N curve (4 points, R=−1 fully reversed) is computed from MIL-HDBK-5J's best-fit equivalent-stress equation for unnotched 7075-T6 bare sheet, 0.090 in., electropolished, axial loading (Figure 3.7.6.1.8(d); sample size 176, R²=80%): Log Nf = 14.86 − 5.80·log(Seq), Seq = Smax·(1−R)^0.49. Solved at R=−1 for Smax at 1e5/1e6/1e7/5e8 cycles — same product form, methodology, and life points as aluminum-2024-t3's curve, for direct comparability. Replaces a previously stored curve (310/230/165/152 MPa) that did not reproduce this same-cited-source equation at any consistent R when back-solved (implied R ranged from −0.61 to −1.10 against the rod/bar equation and −0.25 to +0.73 against this sheet equation) — its actual origin is unknown, so it was discarded rather than kept alongside a properly verified curve. The 5×10⁸-cycle point extrapolates beyond the equation's directly-tested life range; treat it as approximate per MIL-HDBK-5J's own caution note on equivalent-stress extrapolation."
   },
 
   "typical_usage": "Aerospace structural members, aircraft fittings and bulkheads, high-performance bicycle frames, rock climbing equipment, competitive cycling components, and any application requiring maximum specific strength in aluminum.",
@@ -28,14 +28,14 @@
     "creep_strength":      { "value": null, "ref": null },
     "fatigue_sn_curve": {
       "points": [
-        { "stress": 0.310, "cycles": 100000 },
-        { "stress": 0.230, "cycles": 1000000 },
-        { "stress": 0.165, "cycles": 10000000 },
-        { "stress": 0.152, "cycles": 500000000 }
+        { "stress": 0.246, "cycles": 100000 },
+        { "stress": 0.165, "cycles": 1000000 },
+        { "stress": 0.111, "cycles": 10000000 },
+        { "stress": 0.057, "cycles": 500000000 }
       ],
       "ref": "mil-hdbk-5j-2003",
-      "stress_ratio": null,
-      "test_method": null
+      "stress_ratio": -1,
+      "test_method": "Axial"
     },
     "fracture_toughness":  { "value": 27,   "ref": "mil-hdbk-5j-2003" },
     "hardness_vickers":    { "value": 175,  "ref": "mil-hdbk-5j-2003" },
