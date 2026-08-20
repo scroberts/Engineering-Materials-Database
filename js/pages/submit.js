@@ -522,7 +522,7 @@ const FORM_SECTIONS = [
         hint: 'Stress producing 0.1% creep in 1000 h',
         canonicalUnit: 'GPa', displayUnits: PRESSURE_UNITS },
       { id: 'fatigue_sn_curve',    label: 'Fatigue S-N Curve',         type: 'sn',
-        hint: 'Stress amplitude (GPa) vs. cycles to failure' },
+        hint: 'Maximum stress in cycle (GPa) vs. cycles to failure. All points must share the same stress ratio (R) and test method — fill those in below; do not mix data from different R values, loading types, or notched/unnotched conditions in one curve.' },
       { id: 'fracture_toughness',  label: 'Fracture Toughness (K_IC)', type: 'number',
         hint: 'Critical stress intensity factor',
         canonicalUnit: 'MPa·m^0.5', displayUnits: FRACTURE_UNITS },
@@ -909,6 +909,39 @@ function buildSN(f) {
   }
   unitRow.append(unitLbl, unitSel);
   wrap.appendChild(unitRow);
+
+  // Stress ratio (R) + test method — required context so curves from
+  // different materials aren't compared apples-to-oranges (see CLAUDE.md).
+  const conditionRow = document.createElement('div');
+  conditionRow.style.cssText = 'display:flex;align-items:center;gap:0.6rem;margin-bottom:0.4rem;font-size:0.8rem;color:var(--color-muted);flex-wrap:wrap;';
+
+  const ratioLbl = document.createElement('span');
+  ratioLbl.textContent = 'Stress ratio R (σ_min/σ_max):';
+  const ratioIn = document.createElement('input');
+  ratioIn.type = 'number'; ratioIn.step = 'any'; ratioIn.placeholder = 'e.g. -1';
+  ratioIn.className = 'form-control'; ratioIn.style.maxWidth = '6rem';
+  ratioIn.id = 'field-fatigue_sn_curve_stress_ratio';
+  ratioIn.title = 'R = -1 is fully reversed; leave blank if the source does not document it — do not guess.';
+
+  const methodLbl = document.createElement('span');
+  methodLbl.textContent = 'Test method:';
+  const methodSel = document.createElement('select');
+  methodSel.className = 'form-unit-select';
+  methodSel.id = 'field-fatigue_sn_curve_test_method';
+  methodSel.title = 'Leave blank if the source does not document it — do not guess.';
+  for (const m of ['', 'Axial', 'Rotating Beam', 'Plane Bending', 'Torsion']) {
+    const opt = document.createElement('option');
+    opt.value = m; opt.textContent = m || '— unknown —';
+    methodSel.appendChild(opt);
+  }
+
+  conditionRow.append(ratioLbl, ratioIn, methodLbl, methodSel);
+  wrap.appendChild(conditionRow);
+
+  const conditionNote = document.createElement('p');
+  conditionNote.style.cssText = 'font-size:0.75rem;color:var(--color-muted);margin:0 0 0.5rem;';
+  conditionNote.textContent = 'All data points below must share this same R and test method. If the source mixes conditions, split them into separate materials/curves rather than combining.';
+  wrap.appendChild(conditionNote);
 
   const rows = document.createElement('div');
   rows.className = 'sn-rows';
@@ -1447,6 +1480,10 @@ function prefillSN(snData) {
   // Reset stress unit to GPa (canonical) so pre-filled values display correctly
   const stressUnitEl = document.getElementById('field-fatigue_sn_curve_stress_unit');
   if (stressUnitEl) stressUnitEl.value = 'GPa';
+  const ratioEl = document.getElementById('field-fatigue_sn_curve_stress_ratio');
+  if (ratioEl) ratioEl.value = snData.stress_ratio ?? '';
+  const methodEl = document.getElementById('field-fatigue_sn_curve_test_method');
+  if (methodEl) methodEl.value = snData.test_method ?? '';
   container.innerHTML = '';
   for (const pt of snData.points) {
     addSNRow(container);
@@ -1801,7 +1838,10 @@ function getSNData() {
       points.push({ stress: toCanonical(stress, null, 'GPa', stressUnit), cycles });
     }
   }
-  return { points, ref: getRefKey('fatigue_sn_curve') };
+  const ratioRaw = parseFloat(document.getElementById('field-fatigue_sn_curve_stress_ratio')?.value);
+  const stressRatio = isNaN(ratioRaw) ? null : ratioRaw;
+  const testMethod = document.getElementById('field-fatigue_sn_curve_test_method')?.value || null;
+  return { points, stress_ratio: stressRatio, test_method: testMethod, ref: getRefKey('fatigue_sn_curve') };
 }
 
 function getThermalTable(fieldId, valueKey, canonicalUnit) {

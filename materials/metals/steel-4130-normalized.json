@@ -23,7 +23,7 @@
   "mechanical_other": {
     "microyield_strength": { "value": null, "ref": null },
     "creep_strength": { "value": null, "ref": null },
-    "fatigue_sn_curve": { "points": [], "ref": null },
+    "fatigue_sn_curve": { "points": [], "ref": null, "stress_ratio": null, "test_method": null },
     "fracture_toughness": { "value": null, "ref": null },
     "hardness_vickers": { "value": 207, "ref": "matweb-4130-normalized" },
     "hardness_brinell": { "value": 197, "ref": "matweb-4130-normalized" },

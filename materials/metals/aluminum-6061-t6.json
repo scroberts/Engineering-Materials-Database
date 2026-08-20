@@ -33,7 +33,9 @@
         { "stress": 0.110, "cycles": 1000000 },
         { "stress": 0.097, "cycles": 500000000 }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "mil-hdbk-5j-2003",
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness":  { "value": 29.0, "ref": "mil-hdbk-5j-2003" },
     "hardness_vickers":    { "value": 107,  "ref": "azom-aluminum-6061" },

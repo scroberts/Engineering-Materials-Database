@@ -99,7 +99,9 @@
           "cycles": 500000000
         }
       ],
-      "ref": "asm-metals-handbook-desk-1984"
+      "ref": "asm-metals-handbook-desk-1984",
+      "stress_ratio": null,
+      "test_method": null
     }
   },
   "physical": {

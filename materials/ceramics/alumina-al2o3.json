@@ -28,7 +28,9 @@
     "creep_strength":      { "value": null, "ref": null },
     "fatigue_sn_curve": {
       "points": [],
-      "ref": null
+      "ref": null,
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness":  { "value": 4.0,  "ref": "azom-alumina" },
     "hardness_vickers":    { "value": 2000, "ref": "azom-alumina" },

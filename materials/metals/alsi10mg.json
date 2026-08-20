@@ -27,7 +27,7 @@
   "mechanical_other": {
     "microyield_strength":  { "value": null, "ref": null },
     "creep_strength":       { "value": null, "ref": null },
-    "fatigue_sn_curve":     { "points": [], "ref": null },
+    "fatigue_sn_curve":     { "points": [], "ref": null, "stress_ratio": null, "test_method": null },
     "fracture_toughness":   { "value": null, "ref": null },
     "hardness_vickers":     { "value": 127,  "ref": "trevisan-alsi10mg-2017" },
     "hardness_brinell":     { "value": null, "ref": null },

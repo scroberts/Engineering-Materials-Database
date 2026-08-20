@@ -496,6 +496,16 @@ td.merit-best {
 .merit-note a { color: var(--color-muted); }
 .merit-note a:hover { color: var(--color-text); }
 
+.sn-caveat {
+  font-size: 0.85rem;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.sn-caveat[hidden] { display: none; }
+
 .merit-footnotes {
   margin-top: 0.75rem;
   padding-left: 1.5rem;

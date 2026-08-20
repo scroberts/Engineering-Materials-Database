@@ -28,7 +28,11 @@ export const TOOLTIPS = {
   creep_strength:
     "Creep Strength: Stress to produce a specified creep strain (often 0.1 % or 0.2 %) at a given temperature over a specified time (often 1000 h). Relevant at elevated temperatures.",
   fatigue_sn_curve:
-    "Fatigue S–N Curve: Applied stress amplitude vs. number of cycles to failure (Wöhler curve). Points define the curve; log-linear interpolation is used between points.",
+    "Fatigue S–N Curve: Maximum stress in the loading cycle vs. number of cycles to failure (Wöhler curve) — not stress amplitude, except when the stress ratio R = −1. Points define the curve; log-linear interpolation is used between points. All points in one curve share a single stress ratio (R) and test method, shown alongside the curve — curves from different R values or test methods (e.g. axial vs. rotating-beam) are not directly comparable even for the same material.",
+  fatigue_stress_ratio:
+    "Stress Ratio (R): σ_min / σ_max for the loading cycle. R = −1 is fully reversed (equal tension/compression); R = 0 is zero-to-tension. Lower/more-negative R is generally a more severe test condition, so curves at different R values shouldn't be compared directly.",
+  fatigue_test_method:
+    "Fatigue Test Method: How the specimen was loaded to generate this curve (axial, rotating-beam, plane-bending, or torsion). Different methods can give different apparent fatigue strength for the same material and R value, so curves from different methods shouldn't be compared directly.",
   fracture_toughness:
     "Fracture Toughness (K_IC): Critical stress intensity factor for mode-I (opening) crack propagation. Higher values indicate greater resistance to brittle fracture.",
   hardness_vickers:

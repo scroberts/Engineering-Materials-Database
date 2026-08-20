@@ -432,6 +432,14 @@ function renderMechanicalOther(mat) {
   let snHtml = '';
   if (snPoints.length > 0) {
     const snRef  = refBadge(mo.fatigue_sn_curve?.ref);
+    const snRatio  = mo.fatigue_sn_curve?.stress_ratio;
+    const snMethod = mo.fatigue_sn_curve?.test_method;
+    const snConditionParts = [];
+    if (snRatio !== null && snRatio !== undefined) snConditionParts.push(`R = ${snRatio}`);
+    if (snMethod) snConditionParts.push(escHtml(snMethod));
+    const snCondition = snConditionParts.length
+      ? `<span class="sn-condition" title="${escHtml(TOOLTIPS.fatigue_stress_ratio + ' ' + TOOLTIPS.fatigue_test_method)}">${snConditionParts.join(', ')}</span>`
+      : `<span class="sn-condition sn-condition-unknown" title="Test conditions not documented by the source — do not assume this matches other materials' curves.">conditions undocumented</span>`;
     const snRows = snPoints.map(pt =>
       `<tr>
         <td data-canonical="${pt.stress}" data-canonical-unit="GPa">
@@ -443,10 +451,11 @@ function renderMechanicalOther(mat) {
     snHtml = `
       <div class="detail-section-header" style="cursor:default;">
         <h3 class="detail-section-title">Fatigue S–N Data ${snRef}</h3>
+        ${snCondition}
       </div>
       <div class="sn-table-wrap">
         <table class="sn-table">
-          <thead><tr><th>Stress Amplitude</th><th>Cycles to Failure</th></tr></thead>
+          <thead><tr><th>Max Stress</th><th>Cycles to Failure</th></tr></thead>
           <tbody>${snRows}</tbody>
         </table>
       </div>

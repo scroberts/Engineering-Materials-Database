@@ -330,6 +330,20 @@
 
 /* ── S-N curve table ─────────────────────────────────────────────────────── */
 
+.sn-condition {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.sn-condition-unknown {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+}
+
 .sn-table-wrap {
   overflow-x: auto;
   padding: 0 1rem 0.75rem;

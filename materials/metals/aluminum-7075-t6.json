@@ -33,7 +33,9 @@
         { "stress": 0.165, "cycles": 10000000 },
         { "stress": 0.152, "cycles": 500000000 }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "mil-hdbk-5j-2003",
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness":  { "value": 27,   "ref": "mil-hdbk-5j-2003" },
     "hardness_vickers":    { "value": 175,  "ref": "mil-hdbk-5j-2003" },

@@ -267,12 +267,43 @@ function renderSNChart() {
     return unitSystem === 'imperial' ? mpa * 0.145038 : mpa;
   };
 
+  const conditionLabel = (sn) => {
+    const parts = [];
+    if (sn.stress_ratio !== null && sn.stress_ratio !== undefined) parts.push(`R=${sn.stress_ratio}`);
+    if (sn.test_method) parts.push(sn.test_method);
+    return parts.length ? parts.join(', ') : 'conditions undocumented';
+  };
+
+  // Caveat banner: warn whenever the compared curves don't share one
+  // documented (R, test method) basis — mixing those makes the overlay
+  // read as a direct ranking when it may not be one. See CLAUDE.md.
+  const caveatEl = document.getElementById('sn-caveat');
+  if (caveatEl) {
+    const conditions = matsWithSN.map(m => {
+      const sn = m.mechanical_other.fatigue_sn_curve;
+      return (sn.stress_ratio !== null && sn.stress_ratio !== undefined && sn.test_method)
+        ? `${sn.stress_ratio}|${sn.test_method}`
+        : null; // null = undocumented, always treated as "can't confirm comparable"
+    });
+    const allDocumented = conditions.every(c => c !== null);
+    const allSame = allDocumented && conditions.every(c => c === conditions[0]);
+    if (matsWithSN.length > 1 && !allSame) {
+      caveatEl.textContent = allDocumented
+        ? '⚠ These materials were fatigue-tested at different stress ratios (R) and/or by different test methods (see legend) — the curves are not on equal footing and should not be read as a direct ranking.'
+        : '⚠ At least one of these fatigue curves has an undocumented stress ratio (R) or test method (see legend) — these curves may not be comparable and should not be read as a direct ranking.';
+      caveatEl.hidden = false;
+    } else {
+      caveatEl.hidden = true;
+    }
+  }
+
   const datasets = matsWithSN.map(mat => {
     const i      = materials.indexOf(mat);
     const color  = PALETTE[i % PALETTE.length];
-    const points = mat.mechanical_other.fatigue_sn_curve.points;
+    const sn     = mat.mechanical_other.fatigue_sn_curve;
+    const points = sn.points;
     return {
-      label: shortName(mat),
+      label: `${shortName(mat)} (${conditionLabel(sn)})`,
       data: points.map(pt => ({ x: pt.cycles, y: toStress(pt.stress) })),
       borderColor: color,
       backgroundColor: color + '33',
@@ -312,7 +343,7 @@ function renderSNChart() {
           ticks: { font: { size: 11 } },
         },
         y: {
-          title: { display: true, text: `Stress Amplitude (${sUnit})`, color: '#64748b', font: { size: 11 } },
+          title: { display: true, text: `Max Stress (${sUnit})`, color: '#64748b', font: { size: 11 } },
           ticks: { font: { size: 11 } },
         },
       },
@@ -958,6 +989,7 @@ function renderPage() {
 
       <section class="compare-section" id="sn-section">
         <h2 class="compare-section-title">Fatigue S–N Curve</h2>
+        <p class="sn-caveat" id="sn-caveat" hidden></p>
         <div class="chart-card chart-wide">
           <canvas id="chart-sn"></canvas>
         </div>

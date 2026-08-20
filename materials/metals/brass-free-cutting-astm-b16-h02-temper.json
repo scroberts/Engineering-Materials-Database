@@ -63,7 +63,9 @@
           "cycles": 100000000
         }
       ],
-      "ref": "matweb-brass-astm-b16-h02"
+      "ref": "matweb-brass-astm-b16-h02",
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness": {
       "value": null,

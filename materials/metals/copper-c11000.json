@@ -67,7 +67,9 @@
     },
     "fatigue_sn_curve": {
       "points": [],
-      "ref": null
+      "ref": null,
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness": {
       "value": null,

@@ -194,8 +194,9 @@
         "creep_strength":      { "$ref": "#/definitions/valued_property", "description": "GPa" },
         "fatigue_sn_curve": {
           "type": "object",
-          "required": ["points", "ref"],
+          "required": ["points", "stress_ratio", "test_method", "ref"],
           "additionalProperties": false,
+          "description": "All points in a single curve must share one stress ratio (R) and one test method — never mix data from different R values, loading types, or notched/unnotched conditions in one curve/one ref.",
           "properties": {
             "points": {
               "type": "array",
@@ -206,10 +207,19 @@
                 "required": ["stress", "cycles"],
                 "additionalProperties": false,
                 "properties": {
-                  "stress": { "type": "number", "exclusiveMinimum": 0, "description": "Stress amplitude in GPa" },
+                  "stress": { "type": "number", "exclusiveMinimum": 0, "description": "Maximum stress in the cycle, GPa (not stress amplitude — equals amplitude only when stress_ratio = -1)" },
                   "cycles": { "type": "number", "exclusiveMinimum": 0, "description": "Cycle count" }
                 }
               }
+            },
+            "stress_ratio": {
+              "type": ["number", "null"],
+              "description": "R = sigma_min / sigma_max for the loading cycle used to generate every point in this curve. Common values: -1 (fully reversed), 0 to 0.02 (zero-to-tension). Null if the source doesn't document it — do not guess."
+            },
+            "test_method": {
+              "type": ["string", "null"],
+              "enum": ["Axial", "Rotating Beam", "Plane Bending", "Torsion", null],
+              "description": "Loading/specimen method used to generate every point in this curve. Null if the source doesn't document it — do not guess."
             },
             "ref": { "$ref": "#/definitions/ref_key" }
           }

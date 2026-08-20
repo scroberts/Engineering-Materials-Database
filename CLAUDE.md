@@ -188,6 +188,15 @@ Every page that interpolates material-derived strings (`name`, `category`, etc.)
 When no sourced shear strength value is available **and the material is ductile** (metals that yield via dislocation slip), derive using von Mises criterion: `τ = UTS / √3`. Store the computed value with `"ref": null` and note the derivation method in the material's `notes` field. Do not use the 0.6×UTS empirical approximation.
 **Do not apply von Mises to brittle materials** (ceramics, cemented carbides/cermets, most fibre composites) — they fail by brittle fracture, not plastic yielding, so the criterion doesn't physically apply. Leave `shear_strength` null for these and say why in `notes` (see `tungsten-carbide-wc-6co.json`, `kevlar49-epoxy-ud.json`) rather than compute a physically meaningless number.
 
+### Fatigue S-N curve
+`mechanical_other.fatigue_sn_curve` stores `points` (max stress in GPa vs. cycles — **not** stress amplitude, except when `stress_ratio` = -1, where they're numerically equal), plus `stress_ratio` (R = σ_min/σ_max) and `test_method` (`"Axial"`, `"Rotating Beam"`, `"Plane Bending"`, `"Torsion"`, or `null`).
+- **Every point in one curve must share the same R and test method.** Never combine data from different stress ratios, loading types, or notched/unnotched conditions into one curve — if a source gives multiple conditions, either pick one consistent condition or (if genuinely useful) treat it as a separate entry, not extra points on the same curve.
+- Leave `stress_ratio`/`test_method` `null` if the source doesn't document them — **do not guess.** An undocumented curve is still useful data, but `compare.js` and `detail.js` will flag it as "conditions undocumented" so students know not to treat it as directly comparable to other materials.
+- When a choice of R is available, prefer **R = -1 (fully reversed), Axial** for new entries — this is what `aluminum-2024-t3.json` and (probably, unverified — see punch list) `aluminum-7075-t6.json` use, keeping fatigue comparisons on the compare page meaningful across materials rather than incidentally apples-to-oranges.
+- Document the derivation in `notes` the way `aluminum-2024-t3.json` does: cite the source equation/figure, sample size, R² if given, and flag any point that extrapolates beyond the source's directly-tested life range.
+- Do **not** add notch-geometry fields (Kt, root radius) to this schema — notched-specimen fatigue data (e.g. NASA TN D-111) is out of scope for this database; store only unnotched curves here.
+- Comparing curves with different R/test method isn't fixed by labeling alone — `compare.js` shows a caveat banner (`#sn-caveat`) whenever the selected materials' curves don't share one fully-documented (R, test method) basis. Don't remove this without an equivalent safeguard; normalizing curves across different R values (e.g. a Walker equivalent-stress transform) was considered and rejected as a default behavior since it needs a per-material fitted exponent most sources don't provide — silently estimating one would fabricate precision this database doesn't actually have.
+
 ### Adding a new property
 1. Add to `schema/v1.json`
 2. Add to seed material JSON files
@@ -203,6 +212,7 @@ Three values: `"Ferromagnetic"` (incl. ferrimagnetic — strongly magnetic, caut
 
 ## What's Next
 1. Reference punch list — remaining materials with ref gaps: **Alumina Al₂O₃** (specific_heat, thermal_diffusivity, melting_point_tm)
+1b. **Fatigue curve audit (added 2026-08-20):** `stress_ratio`/`test_method` were added to the schema and migrated to `null` on every existing curve except `aluminum-2024-t3` (R=-1, Axial — verified this session against MIL-HDBK-5J's own equivalent-stress equation). The other MIL-HDBK-5J-sourced curves (`aluminum-6061-t6`, `aluminum-7075-t6`, `aluminum-5052-h32`, `aluminum-1100-o`) likely also use R=-1 axial data, but a spot-check of `aluminum-6061-t6` against its MIL-HDBK-5J rod/bar equation didn't match closely (~20-30% off at short/mid life) — don't assume R=-1 for these without re-verifying against the actual source figure each one came from. `brass-free-cutting-astm-b16-h02-temper` (1 point, MatWeb) is also undocumented. Worth a dedicated pass to track down each curve's actual source figure and fill in the real values.
 2. CI / merge-process gaps:
    - Manifest (`materials/index.json`) is regenerated manually after merge — consider a CI step that auto-regenerates and commits it
    - No CI check that all `ref` keys in a submitted material JSON exist in `references/index.json`

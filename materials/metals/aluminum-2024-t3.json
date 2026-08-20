@@ -58,7 +58,9 @@
         { "stress": 0.124, "cycles": 10000000 },
         { "stress": 0.093, "cycles": 500000000 }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "mil-hdbk-5j-2003",
+      "stress_ratio": -1,
+      "test_method": "Axial"
     },
     "fracture_toughness": {
       "value": null,

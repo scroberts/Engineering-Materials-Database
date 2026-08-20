@@ -74,7 +74,9 @@
           "cycles": 500000000
         }
       ],
-      "ref": "mil-hdbk-5j-2003"
+      "ref": "mil-hdbk-5j-2003",
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness": {
       "value": null,

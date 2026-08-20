@@ -28,7 +28,9 @@
     "creep_strength":      { "value": null, "ref": null },
     "fatigue_sn_curve": {
       "points": [],
-      "ref": null
+      "ref": null,
+      "stress_ratio": null,
+      "test_method": null
     },
     "fracture_toughness":  { "value": 2.0,  "ref": "callister2020" },
     "hardness_vickers":    { "value": null, "ref": null },

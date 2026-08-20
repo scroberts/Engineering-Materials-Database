@@ -290,6 +290,16 @@ export function buildRows(materials, unitSystem) {
     )].sort((a, b) => a - b);
 
     pushSection('FATIGUE S-N CURVE');
+    pushRow('Stress Ratio (R)', '', materials.map(m => {
+      const sn = m.mechanical_other?.fatigue_sn_curve;
+      if (!sn?.points?.length) return null;
+      return sn.stress_ratio !== null && sn.stress_ratio !== undefined ? sn.stress_ratio : 'undocumented';
+    }));
+    pushRow('Test Method', '', materials.map(m => {
+      const sn = m.mechanical_other?.fatigue_sn_curve;
+      if (!sn?.points?.length) return null;
+      return sn.test_method ?? 'undocumented';
+    }));
     for (const cycles of allCycles) {
       pushRow(`Stress at ${fmtCyclesExport(cycles)} cycles`, su, materials.map(m => {
         const pts = m.mechanical_other?.fatigue_sn_curve?.points ?? [];
