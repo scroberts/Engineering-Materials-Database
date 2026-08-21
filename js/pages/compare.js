@@ -142,6 +142,8 @@ function makeBarChart(id, title, labels, values, yLabel, decimals = 2, yAxisTitl
   destroyChart(id);
   const canvas = document.getElementById(id);
   if (!canvas) return;
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', `${title} bar chart comparing selected materials`);
 
   const datasets = materials.map((mat, i) =>
     makeDataset(mat, i, values[i] ?? [])
@@ -260,6 +262,8 @@ function renderSNChart() {
   destroyChart('chart-sn');
   const canvas = document.getElementById('chart-sn');
   if (!canvas) return;
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', 'Fatigue S-N curve comparing selected materials — use the Download button above for exact data values');
 
   const sUnit    = strengthUnit();
   const toStress = (gpa) => {
@@ -420,6 +424,8 @@ function renderCTETempChart() {
 
   const canvas = document.getElementById('chart-cte-temp');
   if (!canvas) return;
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', 'Coefficient of thermal expansion vs. temperature, comparing selected materials');
 
   const datasets = matsWithTable.map(mat => {
     const i     = materials.indexOf(mat);

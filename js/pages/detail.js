@@ -776,6 +776,8 @@ function renderDetailCharts(mat) {
   // ── CTE vs Temperature ──────────────────────────────────────────────────
   const cteCanvas = document.getElementById('detail-chart-cte');
   if (cteCanvas) {
+    cteCanvas.setAttribute('role', 'img');
+    cteCanvas.setAttribute('aria-label', `Coefficient of thermal expansion vs. temperature for ${mat.identification?.name ?? 'this material'}`);
     const table     = mat.physical?.thermal_expansion?.table ?? [];
     const cteScalar = mat.physical?.thermal_expansion?.value ?? null;
     if (table.length > 1) {
@@ -846,6 +848,8 @@ function renderDetailCharts(mat) {
   // ── S–N curve ───────────────────────────────────────────────────────────
   const snCanvas = document.getElementById('detail-chart-sn');
   if (snCanvas) {
+    snCanvas.setAttribute('role', 'img');
+    snCanvas.setAttribute('aria-label', `Fatigue S-N curve for ${mat.identification?.name ?? 'this material'} — see the table above for exact values`);
     const points = mat.mechanical_other?.fatigue_sn_curve?.points ?? [];
     if (points.length > 0) {
       _snChart = new window.Chart(snCanvas, {
