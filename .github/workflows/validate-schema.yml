@@ -9,6 +9,9 @@ on:
       - 'tools/validate.py'
       - 'tools/update_manifest.py'
       - 'tools/lint_physics.py'
+      - 'tools/check_docs.py'
+      - 'README.md'
+      - 'SPEC.md'
   push:
     branches: [main]
     paths:
@@ -18,6 +21,9 @@ on:
       - 'tools/validate.py'
       - 'tools/update_manifest.py'
       - 'tools/lint_physics.py'
+      - 'tools/check_docs.py'
+      - 'README.md'
+      - 'SPEC.md'
   workflow_dispatch:
 
 jobs:
@@ -58,6 +64,14 @@ jobs:
               sys.exit(1)
           print('OK: manifest matches the current materials/ content')
           EOF
+
+      # README.md's material table is deliberately hand-curated prose (see
+      # tools/check_docs.py's docstring for why it isn't auto-generated) —
+      # this only checks the counts, which drifted twice already and are
+      # cheap to verify precisely, unlike checking that every material name
+      # is mentioned somewhere in the prose.
+      - name: Doc material counts are up to date
+        run: python tools/check_docs.py
 
       # Advisory only, by design: schema validation checks shape, not physics
       # (the 2026-08-20 fatigue audit found schema-valid data that was wrong
