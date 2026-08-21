@@ -188,7 +188,15 @@ js/
     browse.js           Browse page logic
     detail.js           Detail page — property tables, unit pickers
     compare.js          Compare page — charts, merit index table
-    submit.js           Submission form logic
+    submit.js           Submission form — thin orchestrator (see submit/)
+    submit/             Submission form logic, split into modules
+      state.js          Edit-mode flags derived from the URL
+      utils.js          esc()
+      formSchema.js     FORM_SECTIONS field definitions
+      refsStore.js      Reference database state, side panel, add/edit-ref form
+      formBuilder.js    Renders FORM_SECTIONS into DOM controls
+      prefill.js        Populates the form from a material JSON or HTML import
+      exportJson.js     Reads the form back into canonical JSON + downloads it
     select.js           Advanced Selection logic
 
 materials/
