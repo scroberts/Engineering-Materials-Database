@@ -1,5 +1,14 @@
 # UVIC Design Engineering Materials Database — Development Plan
 
+> **Historical planning snapshot, not a living doc.** Everything below was
+> written before/during the initial build and the "Build Order" checklist is
+> long since fully checked off. It's kept for the project history, but it's
+> stale in places (schema fields, repo structure, tool list) and isn't
+> updated as the project evolves. For current, maintained documentation see
+> [CLAUDE.md](CLAUDE.md) (architecture, conventions, punch list),
+> [README.md](README.md) (setup, structure), and
+> [SPEC.md](SPEC.md)/[schema/v1.json](schema/v1.json) (schema).
+
 ## Overview
 
 Build a static materials database website for UVIC Design Engineering students, hosted on GitHub Pages. Students browse, search, compare, and reference common engineering materials. They can also propose new entries via a form that exports a JSON file, submitted for admin review via GitHub Pull Request.

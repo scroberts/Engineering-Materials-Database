@@ -48,10 +48,20 @@ export function specificStiffness(mat) {
 }
 
 /**
+ * Categories that fail by brittle fracture, not plastic yielding — von Mises
+ * doesn't physically apply to them even if a yield-like stress is entered.
+ * See CLAUDE.md's "Shear strength derivation" section.
+ */
+const BRITTLE_CATEGORIES = new Set(['Ceramic', 'Composite', 'Glass']);
+
+/**
  * Shear Strength via von Mises: τ = σ_y / √3
  * Only used when shear_strength is not directly entered.  [GPa]
+ * Returns null for brittle-category materials regardless of yield_strength —
+ * this must stay a code-level gate, not just a data-entry convention.
  */
 export function shearStrengthVonMises(mat) {
+  if (BRITTLE_CATEGORIES.has(mat.identification?.category)) return null;
   const { sig_y } = get(mat);
   return sig_y != null ? sig_y / Math.sqrt(3) : null;
 }

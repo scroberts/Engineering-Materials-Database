@@ -20,7 +20,7 @@ import re
 import sys
 import time
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 try:
     import requests
@@ -40,6 +40,15 @@ HEADERS = {
 }
 
 TIMEOUT = 25  # seconds
+
+# MatWeb's terms of service prohibit automated scraping — see CLAUDE.md's
+# "Typical workflow" section. Always ask for a manually-downloaded HTML file
+# for these instead of fetching them here.
+BLOCKED_DOMAINS = {"matweb.com", "www.matweb.com"}
+
+
+def is_blocked(url: str) -> bool:
+    return urlparse(url).netloc.lower() in BLOCKED_DOMAINS
 
 
 def safe_filename(stub: str) -> str:
@@ -86,6 +95,10 @@ def download_one(stub: str, entry: dict, output_dir: Path, delay: float, force: 
     if not url:
         print(f"  SKIP  {stub:40s}  no URL")
         return {"status": "no_url", "url": None, "reason": "No URL available"}
+
+    if is_blocked(url):
+        print(f"  SKIP  {stub:40s}  blocked domain (ToS) — download this one manually")
+        return {"status": "blocked", "url": url, "reason": "Blocked domain — download manually (see CLAUDE.md)"}
 
     if not force and already_downloaded(stub, output_dir):
         print(f"  SKIP  {stub:40s}  already downloaded")
@@ -161,7 +174,7 @@ def main() -> None:
 
     for stub, entry in sorted(refs.items()):
         result = download_one(stub, entry, output_dir, args.delay, args.force)
-        if result["status"] in ("fail", "no_url"):
+        if result["status"] in ("fail", "no_url", "blocked"):
             failures.append((stub, result["url"], result["reason"]))
 
     # ── Write failure log ────────────────────────────────────────────────────

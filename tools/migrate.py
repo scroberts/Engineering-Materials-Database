@@ -15,6 +15,13 @@ To add a migration when bumping the schema to v2:
            {"from": 1, "migrate": migrate_v1_to_v2}
     3. Define the migration function below.
     4. Make the same change in js/core/schema.js.
+
+WARNING: --write re-serializes each touched file with json.dump(), which
+does NOT preserve materials/'s hand-formatted compact style (single-line
+valued_property objects, blank-line grouping, etc.) — unlike
+tools/compare_refs.py's patch_material(), a structural migration can't be
+applied as a narrow text patch. Review `git diff` and reformat touched
+files to match their siblings before committing.
 """
 
 import json
@@ -51,10 +58,20 @@ def migrate_to_latest(data):
     obj = copy.deepcopy(data)
     version = obj.get("schema_version", 1)
 
-    for step in MIGRATIONS:
-        if version == step["from"]:
-            obj = step["migrate"](obj)
-            version = obj.get("schema_version", version)
+    # Loop to a fixed point rather than a single pass over MIGRATIONS, so a
+    # multi-step chain (v1->v2->v3->...) applies fully regardless of the
+    # order migrations were appended. Capped at len(MIGRATIONS) iterations —
+    # each migration must advance schema_version at least once, so that's a
+    # safe upper bound and guards against an infinite loop if one doesn't.
+    # Keep this in sync with js/core/schema.js's migrateToLatest().
+    for _ in range(len(MIGRATIONS)):
+        if version >= CURRENT_VERSION:
+            break
+        step = next((s for s in MIGRATIONS if s["from"] == version), None)
+        if step is None:
+            break
+        obj = step["migrate"](obj)
+        version = obj.get("schema_version", version)
 
     return obj
 
@@ -83,10 +100,17 @@ def process_file(path, write=False):
     new_version = migrated.get("schema_version", version)
 
     if write:
+        # NOTE: this is a full json.dump() round-trip, which does NOT preserve
+        # the hand-formatted compact style used throughout materials/ (single-
+        # line valued_property objects, deliberate blank lines, etc.) — a real
+        # migration (structural add/rename/remove) can't be applied as a
+        # narrow text patch the way compare_refs.py's single-value patcher
+        # can. Every file this touches WILL need a manual formatting pass
+        # (`git diff` + reformat to match sibling files) before committing.
         with open(path, "w", encoding="utf-8") as f:
             json.dump(migrated, f, indent=2, ensure_ascii=False)
             f.write("\n")
-        return "migrated", f"v{version} → v{new_version} (written)"
+        return "migrated", f"v{version} → v{new_version} (written — formatting NOT preserved, review git diff before committing)"
     else:
         return "migrated", f"v{version} → v{new_version} (dry-run, use --write to apply)"
 

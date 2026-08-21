@@ -148,6 +148,7 @@ def main():
 
     if write:
         index.update(pending)
+        index = dict(sorted(index.items()))
         with open(REFERENCES_PATH, "w", encoding="utf-8") as f:
             json.dump(index, f, indent=2, ensure_ascii=False)
             f.write("\n")

@@ -87,6 +87,21 @@ describe('shearStrengthVonMises: τ = σ_y / √3', () => {
   test('null when yield_strength missing', () => {
     assert.equal(shearStrengthVonMises(EMPTY), null);
   });
+  test('null for brittle categories even when yield_strength is present', () => {
+    // CLAUDE.md's "Shear strength derivation": von Mises doesn't physically
+    // apply to materials that fail by brittle fracture, not plastic yield.
+    // This must be a code-level gate, not just a data-entry convention — a
+    // future brittle submission could otherwise get a physically-invalid
+    // "(von Mises estimate)" badge just by having a yield-like stress entered.
+    for (const category of ['Ceramic', 'Composite', 'Glass']) {
+      const brittle = { ...FIXTURE, identification: { category } };
+      assert.equal(shearStrengthVonMises(brittle), null, `${category} should be gated`);
+    }
+    // Ductile categories (and materials with no category field, e.g. the
+    // bare FIXTURE above) are unaffected.
+    const ductile = { ...FIXTURE, identification: { category: 'Metal' } };
+    approx(shearStrengthVonMises(ductile), 0.5 / Math.sqrt(3), 'Metal should still compute');
+  });
 });
 
 describe('merit indices — stiffness-limited design', () => {

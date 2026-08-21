@@ -387,7 +387,7 @@ function renderMechanicalOther(mat) {
   const ducObj = mo.ductility ?? {};
   const ducTypical = ducObj.typical
     ?? ((ducObj.min != null && ducObj.max != null) ? (ducObj.min + ducObj.max) / 2 : null);
-  const ducCalcNote = !ducObj.typical && ducTypical != null
+  const ducCalcNote = ducObj.typical == null && ducTypical != null
     ? `<span class="prop-note">(avg of range)</span>` : '';
   const ducRange = (ducObj.min != null && ducObj.max != null)
     ? `<span class="ductility-range">(${ducObj.min} – ${ducObj.max} %)</span>` : '';

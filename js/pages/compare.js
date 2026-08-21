@@ -523,10 +523,17 @@ function renderMeritTable() {
         ? val === maxVal
         : val === minVal;
 
-      // Bar width: ratio to best (best = 100%, others show fraction of winner's score)
-      const pct = idx.higherIsBetter
+      // Bar width: ratio to best (best = 100%, others show fraction of winner's score).
+      // Floored at MIN_BAR_PCT so a material with real data never renders a
+      // 0%-width bar that's visually indistinguishable from the "—" missing-
+      // data case above — this happens whenever the winning (lower-is-better)
+      // value is exactly 0, e.g. M9/M10 for zerodur-grade-0/ule-glass (α = 0):
+      // every other material's ratio-to-best (minVal / val) is then 0/val = 0.
+      const MIN_BAR_PCT = 3;
+      const rawPct = idx.higherIsBetter
         ? (maxVal > 0 ? (val / maxVal) * 100 : 100)
         : (val  > 0 ? (minVal / val)  * 100 : 100);
+      const pct = Math.max(rawPct, MIN_BAR_PCT);
 
       const color  = PALETTE[i % PALETTE.length];
       const digits = Math.abs(val) >= 100 ? 1 : Math.abs(val) >= 1 ? 3 : 5;

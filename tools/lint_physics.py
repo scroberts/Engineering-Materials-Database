@@ -25,6 +25,17 @@ Checks (see WARN prefix for which; nothing here fails the build):
   - density within a generous per-category range (catches unit mixups like
     kg/m3 entered where g/cm3 was expected, not exotic-but-real materials)
 
+Deliberately NOT checked: a generic "value present, ref: null" scan was
+tried and dropped (2026-08-21) — CONTRIBUTING.md's documented exceptions
+(von Mises shear_strength, electrical_conductivity = 0 for insulators) turn
+out to be a small subset of an existing, wider, legitimate convention
+("well-established"/derived values explained in notes instead of a per-field
+citation — alumina's melting point, 2024-T3's %IACS computed from resistivity,
+etc.). A blanket check flagged 47 warnings across 32 correct files on first
+run. Telling a real gap from an intentional one here needs judgment a static
+check can't safely automate without constant false positives — see
+CONTRIBUTING.md's "Data quality expectations" for the human-reviewed rule.
+
 Usage:
     python tools/lint_physics.py                  # lint all materials
     python tools/lint_physics.py path/to/file.json  # lint a single file

@@ -10,6 +10,12 @@
  * changes, both files need updating. See CLAUDE.md for the reasoning behind
  * accepting this duplication. Each parser below cites its Python counterpart
  * (function/class + line range) to make that easier.
+ *
+ * The pure value/unit/mapping helpers (num, splitValUnit, nu, the
+ * convert*() functions, mapProperty, applyRows, detectSite,
+ * extractRockwellScale) are exported solely so tests/htmlImport.test.js can
+ * cover them without a DOM — they have no external callers outside this
+ * file otherwise.
  */
 
 // ── Text/DOM helpers (no BeautifulSoup equivalent needed — replicate get_text) ──
@@ -61,7 +67,7 @@ function findPrevious(el, selector, doc) {
 
 // ── Value/unit helpers (ported from tools/parse_refs.py:34-79) ──
 
-function num(s) {
+export function num(s) {
   if (!s) return null;
   s = s.replace(/−/g, '-').replace(/–/g, '-').replace(/,/g, '');
   s = s.replace(/([-+]?\d+\.?\d*)\s*[x×]\s*10\^([+-]?\d+)/g, '$1e$2');
@@ -71,7 +77,7 @@ function num(s) {
 
 const SCI_X_RE = /([-+]?\d[\d,]*\.?\d*)\s*[x×]\s*10\^([+-]?\d+)/g;
 
-function splitValUnit(cell) {
+export function splitValUnit(cell) {
   if (!cell) return null;
   const c = cell.trim().replace(SCI_X_RE, '$1e$2');
   const m = c.match(/^\s*([-+]?\d[\d,]*\.?\d*(?:[eE][-+]?\d+)?)\s*([\s\S]*)/);
@@ -79,7 +85,7 @@ function splitValUnit(cell) {
 }
 
 /** Normalise a unit string for comparison (lowercase, no spaces/symbols). */
-function nu(s) {
+export function nu(s) {
   s = s.toLowerCase();
   const subs = [
     ['°', ''], ['°', ''], ['µ', 'u'], ['μ', 'u'],
@@ -97,7 +103,7 @@ function vp(value, ref = null) {
 
 // ── Unit converters (ported from tools/parse_refs.py:82-205) ──
 
-function convertPressureToGPa(value, unit) {
+export function convertPressureToGPa(value, unit) {
   const u = nu(unit);
   if (u.includes('gpa') || u.includes('kn/mm2')) return value;
   if (u.includes('mpa') || u.includes('n/mm2')) return value / 1000.0;
@@ -107,7 +113,7 @@ function convertPressureToGPa(value, unit) {
   return null;
 }
 
-function convertPressureToMPa(value, unit) {
+export function convertPressureToMPa(value, unit) {
   const u = nu(unit);
   if (u.includes('mpa') || u.includes('n/mm2')) return value;
   if (u.includes('gpa') || u.includes('kn/mm2')) return value * 1000.0;
@@ -116,7 +122,7 @@ function convertPressureToMPa(value, unit) {
   return null;
 }
 
-function convertDensity(value, unit) {
+export function convertDensity(value, unit) {
   const u = nu(unit);
   if (u.includes('g/cm') || u.includes('g/cc')) return value;
   if (u.includes('kg/m3')) return value / 1000.0;
@@ -125,7 +131,7 @@ function convertDensity(value, unit) {
   return null;
 }
 
-function convertCTE(value, unit) {
+export function convertCTE(value, unit) {
   const u = nu(unit);
   if (u.includes('ppm') || u.includes('um/m') || u.includes('ue/')) {
     if (u.includes('/f') || u.includes('perf')) return value * 1.8;
@@ -136,7 +142,7 @@ function convertCTE(value, unit) {
   return null;
 }
 
-function convertConductivity(value, unit) {
+export function convertConductivity(value, unit) {
   const u = nu(unit);
   if (u.includes('w/m')) return value;
   if (u.includes('btu') && u.includes('in') && u.includes('hr')) return value * 0.14423;
@@ -147,7 +153,7 @@ function convertConductivity(value, unit) {
   return null;
 }
 
-function convertSpecificHeat(value, unit) {
+export function convertSpecificHeat(value, unit) {
   const u = nu(unit);
   if (u.includes('kj/kg')) return value * 1000.0;
   if (u.includes('j/kgk') || u.includes('j/kg')) return value;
@@ -157,21 +163,21 @@ function convertSpecificHeat(value, unit) {
   return null;
 }
 
-function convertTemp(value, unit) {
+export function convertTemp(value, unit) {
   const u = nu(unit);
   if (u.includes('f') && !u.includes('c') && !u.includes('k')) return (value - 32) * 5.0 / 9.0;
   if (u.includes('k') && !u.includes('c')) return value - 273.15;
   return value; // assume °C
 }
 
-function convertFractureToughness(value, unit) {
+export function convertFractureToughness(value, unit) {
   const u = nu(unit);
   if (u.includes('mpa')) return value;
   if (u.includes('ksi')) return value * 1.0988;
   return null;
 }
 
-function convertThermalDiffusivity(value, unit) {
+export function convertThermalDiffusivity(value, unit) {
   const u = nu(unit);
   if (u.includes('cm2/s') || u.includes('cm2s')) return value;
   if (u.includes('mm2/s') || u.includes('mm2s')) return value * 0.01;
@@ -229,7 +235,7 @@ const PROP_MAP = [
 ];
 
 /** Ported from tools/parse_refs.py:257-278 (_map_property). */
-function mapProperty(name, valueStr, unit) {
+export function mapProperty(name, valueStr, unit) {
   const n = name.toLowerCase().trim();
   const v = num(valueStr);
   if (v === null) return null;
@@ -261,7 +267,7 @@ function mapProperty(name, valueStr, unit) {
  * before parenthetical cross-references to it in every site sampled, so
  * first-wins fixes this without needing per-site exclusion rules.
  */
-function applyRows(rows) {
+export function applyRows(rows) {
   const parsed = {};
   const raw = {};
   for (const [name, valueStr, unitStr] of rows) {
@@ -303,7 +309,7 @@ function emptyResult(stub, site, sourceUrl) {
 const ROCKWELL_SCALE_PATH = 'mechanical_other.hardness_rockwell';
 
 /** Rockwell scale letter from a property name, e.g. "Hardness, Rockwell C" → "C". */
-function extractRockwellScale(name) {
+export function extractRockwellScale(name) {
   const m = name.match(/rockwell\s*([a-z])\b/i);
   return m ? m[1].toUpperCase() : null;
 }
@@ -677,7 +683,7 @@ const SITE_LABELS = {
   generic: 'source file',
 };
 
-function detectSite(stem) {
+export function detectSite(stem) {
   const prefixes = Object.keys(PARSERS).sort((a, b) => b.length - a.length);
   for (const prefix of prefixes) {
     if (stem.startsWith(prefix)) return prefix;

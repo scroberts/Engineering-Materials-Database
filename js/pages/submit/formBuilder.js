@@ -7,6 +7,19 @@ import { esc } from './utils.js';
 import { buildRefSelect } from './refsStore.js';
 import { FORM_SECTIONS } from './formSchema.js';
 
+// Schema maxItems (schema/v1.json) for the row-based editors below. Enforced
+// here too so a user can't build an over-limit table that only fails at CI.
+const SN_MAX_POINTS = 10;
+const CTE_MAX_ROWS = 10;
+const THERMAL_TABLE_MAX_ROWS = 12;
+
+/** Disable `addBtn` once `container` holds `limit` rows matching `rowSelector`. */
+function syncAddButtonState(container, addBtn, rowSelector, limit) {
+  const atLimit = container.querySelectorAll(rowSelector).length >= limit;
+  addBtn.disabled = atLimit;
+  addBtn.title = atLimit ? `Maximum ${limit} rows` : '';
+}
+
 export function buildForm() {
   const form = document.getElementById('submit-form');
   form.innerHTML = '';
@@ -394,8 +407,12 @@ function buildSN(f) {
   const refSel = buildRefSelect(); refSel.dataset.fieldId = f.id;
   refRow.append(refLbl, refSel);
 
-  addBtn.addEventListener('click', () => addSNRow(rows));
+  addBtn.addEventListener('click', () => {
+    addSNRow(rows);
+    syncAddButtonState(rows, addBtn, '.sn-row', SN_MAX_POINTS);
+  });
   addSNRow(rows); // start with one row
+  syncAddButtonState(rows, addBtn, '.sn-row', SN_MAX_POINTS);
 
   wrap.append(rows, addBtn, refRow);
   return wrap;
@@ -419,7 +436,11 @@ export function addSNRow(container) {
 
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button'; removeBtn.className = 'sn-remove-btn'; removeBtn.textContent = '×';
-  removeBtn.addEventListener('click', () => row.remove());
+  removeBtn.addEventListener('click', () => {
+    row.remove();
+    const addBtn = container.parentElement?.querySelector('.sn-add-btn');
+    if (addBtn) syncAddButtonState(container, addBtn, '.sn-row', SN_MAX_POINTS);
+  });
 
   row.append(stressLbl, stressIn, cyclesLbl, cyclesIn, removeBtn);
   container.appendChild(row);
@@ -487,7 +508,10 @@ function buildCTE(f) {
   const addBtn = document.createElement('button');
   addBtn.type = 'button'; addBtn.className = 'sn-add-btn';
   addBtn.textContent = '+ Add temperature point';
-  addBtn.addEventListener('click', () => addCTERow(tableRows));
+  addBtn.addEventListener('click', () => {
+    addCTERow(tableRows);
+    syncAddButtonState(tableRows, addBtn, '.cte-row', CTE_MAX_ROWS);
+  });
 
   wrap.append(tableHeader, tableRows, addBtn);
   return wrap;
@@ -507,7 +531,11 @@ export function addCTERow(container) {
 
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button'; removeBtn.className = 'sn-remove-btn'; removeBtn.textContent = '×';
-  removeBtn.addEventListener('click', () => row.remove());
+  removeBtn.addEventListener('click', () => {
+    row.remove();
+    const addBtn = container.parentElement?.querySelector('.sn-add-btn');
+    if (addBtn) syncAddButtonState(container, addBtn, '.cte-row', CTE_MAX_ROWS);
+  });
 
   row.append(tempLbl, tempIn, cteLbl, cteIn, removeBtn);
   container.appendChild(row);
@@ -574,7 +602,10 @@ function buildThermalTable(f) {
   const addBtn = document.createElement('button');
   addBtn.type = 'button'; addBtn.className = 'sn-add-btn';
   addBtn.textContent = '+ Add temperature point';
-  addBtn.addEventListener('click', () => addThermalTableRow(tableRows, f.valueLabel));
+  addBtn.addEventListener('click', () => {
+    addThermalTableRow(tableRows, f.valueLabel);
+    syncAddButtonState(tableRows, addBtn, '.cte-row', THERMAL_TABLE_MAX_ROWS);
+  });
 
   wrap.append(tableHeader, tableRows, addBtn);
   return wrap;
@@ -594,7 +625,11 @@ export function addThermalTableRow(container, valueLabel) {
 
   const removeBtn = document.createElement('button');
   removeBtn.type = 'button'; removeBtn.className = 'sn-remove-btn'; removeBtn.textContent = '×';
-  removeBtn.addEventListener('click', () => row.remove());
+  removeBtn.addEventListener('click', () => {
+    row.remove();
+    const addBtn = container.parentElement?.querySelector('.sn-add-btn');
+    if (addBtn) syncAddButtonState(container, addBtn, '.cte-row', THERMAL_TABLE_MAX_ROWS);
+  });
 
   row.append(tempLbl, tempIn, valLbl, valIn, removeBtn);
   container.appendChild(row);

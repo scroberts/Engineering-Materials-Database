@@ -26,11 +26,17 @@ export function migrateToLatest(data) {
   let obj = structuredClone ? structuredClone(data) : JSON.parse(JSON.stringify(data));
   let version = obj.schema_version ?? 1;
 
-  for (const step of MIGRATIONS) {
-    if (version === step.from) {
-      obj = step.migrate(obj);
-      version = obj.schema_version;
-    }
+  // Loop to a fixed point rather than a single pass over MIGRATIONS, so a
+  // multi-step chain (v1->v2->v3->...) applies fully regardless of the
+  // order migrations were pushed onto the array. Capped at MIGRATIONS.length
+  // iterations — each migration must advance schema_version at least once,
+  // so that's a safe upper bound and guards against an infinite loop if one
+  // doesn't.
+  for (let i = 0; i < MIGRATIONS.length && version < CURRENT_VERSION; i++) {
+    const step = MIGRATIONS.find(s => s.from === version);
+    if (!step) break;
+    obj = step.migrate(obj);
+    version = obj.schema_version;
   }
 
   return obj;

@@ -170,33 +170,90 @@ def values_differ(a, b, tolerance: float) -> bool:
 
 
 # ── In-place JSON patching ────────────────────────────────────────────────────
+#
+# patch_material() edits the file's own text surgically — locating just the
+# one leaf number being updated and replacing it in place — rather than
+# re-serializing the whole parsed dict. A full json.dumps() round-trip
+# destroys the hand-formatted compact style used throughout materials/
+# (single-line valued_property objects, deliberate blank lines, etc.); see
+# CLAUDE.md/memory "Surgical JSON Edits" for the incident that established
+# this rule the first time. Keep patches this narrow — don't go back to a
+# full re-dump even for convenience.
 
-def _compact_arrays(text: str) -> str:
-    """Collapse short arrays of primitives to one line (preserves file style)."""
-    PRIM = r'(?:"[^"\\]*(?:\\.[^"\\]*)*"|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?|true|false|null)'
-    pattern = re.compile(
-        r'\[\s*(?:' + PRIM + r'(?:\s*,\s*' + PRIM + r')*)?\s*\]',
-        re.DOTALL,
-    )
-    def collapse(m):
-        compact = re.sub(r'\s+', ' ', m.group(0))
-        return compact if len(compact) <= 120 else m.group(0)
-    return pattern.sub(collapse, text)
+
+def _find_matching_brace(text: str, open_idx: int) -> int:
+    """Return the index of the '}' that closes the '{' at text[open_idx]."""
+    depth = 0
+    in_string = False
+    escape = False
+    for i in range(open_idx, len(text)):
+        c = text[i]
+        if in_string:
+            if escape:
+                escape = False
+            elif c == "\\":
+                escape = True
+            elif c == '"':
+                in_string = False
+        else:
+            if c == '"':
+                in_string = True
+            elif c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    return i
+    raise ValueError("unbalanced braces")
+
+
+def _find_object_span(text: str, key: str, start: int = 0) -> tuple[int, int]:
+    """Find `"key": {` at or after `start` and return (open_brace_idx, close_brace_idx)."""
+    m = re.compile(r'"' + re.escape(key) + r'"\s*:\s*\{').search(text, start)
+    if not m:
+        raise ValueError(f"key {key!r} not found in file text")
+    open_idx = m.end() - 1
+    return open_idx, _find_matching_brace(text, open_idx)
+
+
+def _format_number(value: float) -> str:
+    if value == int(value):
+        return str(int(value))
+    return repr(float(value))
 
 
 def patch_material(mat_path: Path, mat: dict, path: str, new_value: float) -> None:
-    """Write new_value into mat at path and save to disk."""
+    """Replace one leaf number at `path` directly in the file's text, leaving
+    every other byte (formatting, key order, blank lines) untouched."""
     parts = path.split(".")
+    section, prop = parts[0], parts[1]
+
     obj = mat
     for p in parts[:-1]:
         obj = obj[p]
     leaf = obj[parts[-1]]
-    if "value" in leaf:
-        leaf["value"] = new_value
-    elif "typical" in leaf:
-        leaf["typical"] = new_value
-    text = _compact_arrays(json.dumps(mat, indent=2, ensure_ascii=False)) + "\n"
-    mat_path.write_text(text, encoding="utf-8")
+    leaf_key = "value" if "value" in leaf else "typical"
+
+    text = mat_path.read_text(encoding="utf-8")
+    sec_open, sec_close = _find_object_span(text, section)
+    prop_open, prop_close = _find_object_span(text, prop, start=sec_open)
+    if prop_close > sec_close:
+        raise ValueError(f"{prop!r} not found inside {section!r} — refusing to patch")
+
+    prop_text = text[prop_open:prop_close + 1]
+    num_re = re.compile(r'("' + re.escape(leaf_key) + r'"\s*:\s*)(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)')
+    patched_prop_text, n = num_re.subn(
+        lambda m: f"{m.group(1)}{_format_number(new_value)}", prop_text, count=1
+    )
+    if n != 1:
+        raise ValueError(f"couldn't locate {leaf_key!r} inside {section}.{prop} — refusing to patch")
+
+    new_text = text[:prop_open] + patched_prop_text + text[prop_close + 1:]
+    mat_path.write_text(new_text, encoding="utf-8")
+
+    # Keep the in-memory dict in sync — compare_material() keeps using `mat`
+    # for the rest of this file's run.
+    leaf[leaf_key] = new_value
 
 
 # ── File finding ──────────────────────────────────────────────────────────────
