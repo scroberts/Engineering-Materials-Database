@@ -32,6 +32,13 @@ jobs:
 
       - run: python tools/validate.py
 
+      # Advisory only, by design: schema validation checks shape, not physics
+      # (the 2026-08-20 fatigue audit found schema-valid data that was wrong
+      # for months). This is a sanity net, not a gate — always exits 0, so
+      # `|| true` isn't needed, but shown in the workflow log either way.
+      - name: Physical plausibility lint (advisory, non-blocking)
+        run: python tools/lint_physics.py
+
       # new_references blocks are legitimate on PR branches (the submit-form
       # workflow embeds them), but must not linger on main — an unpromoted key
       # breaks that material's citation links on the live site. Fix: run
