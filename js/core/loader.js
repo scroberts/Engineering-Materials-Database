@@ -4,6 +4,15 @@
  * The manifest (materials/index.json) is fetched once and cached.
  * Individual material files are lazy-loaded on first access and cached.
  * All functions return Promises.
+ *
+ * All three fetches use `cache: 'no-store'`, deliberately and consistently —
+ * this is a reference site where material data gets corrected after
+ * publication, and a manifest that's fresh while an individual material file
+ * is served stale from the browser's HTTP cache is a real, observed failure
+ * mode, not a hypothetical one. GitHub Pages already sits behind a CDN, and
+ * store.js's in-memory cache below still avoids refetching within a single
+ * page load, so this doesn't disable caching so much as move it to the layer
+ * where staleness can't silently outlive a data correction.
  */
 
 import * as store from './store.js';
@@ -37,7 +46,7 @@ export async function loadMaterial(slug) {
   const entry = manifest.materials.find(m => m.slug === slug);
   if (!entry) throw new Error(`Unknown material slug: "${slug}"`);
 
-  const res = await fetch(entry.path);
+  const res = await fetch(entry.path, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to fetch ${entry.path} (${res.status})`);
 
   const data = await res.json();
