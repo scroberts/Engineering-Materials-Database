@@ -7,6 +7,8 @@ on:
       - 'schema/**'
       - 'references/index.json'
       - 'tools/validate.py'
+      - 'tools/update_manifest.py'
+      - 'tools/lint_physics.py'
   push:
     branches: [main]
     paths:
@@ -14,6 +16,8 @@ on:
       - 'schema/**'
       - 'references/index.json'
       - 'tools/validate.py'
+      - 'tools/update_manifest.py'
+      - 'tools/lint_physics.py'
   workflow_dispatch:
 
 jobs:
@@ -31,6 +35,29 @@ jobs:
       - run: pip install -r tools/requirements.txt
 
       - run: python tools/validate.py
+
+      # Catches a contributor who forgot CONTRIBUTING.md step 7 (regenerate
+      # the manifest before opening the PR) as well as merge-commit drift on
+      # main. The comparison ignores the "generated" timestamp field —
+      # update_manifest.py stamps that with the current time on every run,
+      # so a raw `git diff`/`diff -q` here would fail on every single CI run
+      # regardless of whether the material data actually changed.
+      - name: Manifest is up to date
+        run: |
+          cp materials/index.json /tmp/manifest_before.json
+          python tools/update_manifest.py > /dev/null
+          python - <<'EOF'
+          import json, sys
+          with open('/tmp/manifest_before.json', encoding='utf-8') as f:
+              before = json.load(f)['materials']
+          with open('materials/index.json', encoding='utf-8') as f:
+              after = json.load(f)['materials']
+          if before != after:
+              print('materials/index.json is out of date (ignoring the generated timestamp).')
+              print('Run: python tools/update_manifest.py, then commit the result.')
+              sys.exit(1)
+          print('OK: manifest matches the current materials/ content')
+          EOF
 
       # Advisory only, by design: schema validation checks shape, not physics
       # (the 2026-08-20 fatigue audit found schema-valid data that was wrong
