@@ -23,9 +23,7 @@ function get(mat) {
     sig_y:val(mc, 'yield_strength'),      // GPa
     K_IC: val(mo, 'fracture_toughness'), // MPa·m^0.5
     rho:  val(ph, 'density'),            // g/cm³
-    alpha:val(ph, 'thermal_expansion') != null
-            ? (ph.thermal_expansion?.value ?? null)
-            : null,                       // µm/m·°C
+    alpha:val(ph, 'thermal_expansion'),   // µm/m·°C
     k:    val(ph, 'thermal_conductivity'),// W/m·K
     D:    val(ph, 'thermal_diffusivity'), // cm²/s
     Cp:   val(ph, 'specific_heat'),       // J/kg·K
@@ -71,7 +69,7 @@ export const MERIT_INDICES = [
     label: 'E / ρ',
     description: 'Specific stiffness — compares how stiff a material is relative to its weight for a rod or beam of fixed geometry. Higher is better: a material with high E/ρ gives you the same stiffness for less mass.',
     higherIsBetter: true,
-    fn: mat => { const { E, rho } = get(mat); return E && rho ? E / rho : null; },
+    fn: mat => { const { E, rho } = get(mat); return E != null && rho != null ? E / rho : null; },
   },
   {
     id: 'M2', group: 'Stiffness',
@@ -80,7 +78,7 @@ export const MERIT_INDICES = [
     label: 'E^½ / ρ',
     description: 'E^½ / ρ — (a) Stiffness-limited design, minimum mass: beam in bending, length and shape fixed; section area free. (b) Stiffness-limited design, minimum mass: column in compression, buckling stiffness limited, length and shape fixed; section area free. (c) Vibration-limited design, maximum resonant frequency: beam in bending, length and section shape fixed; section area free. Higher is better.',
     higherIsBetter: true,
-    fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 0.5) / rho : null; },
+    fn: mat => { const { E, rho } = get(mat); return E != null && rho != null ? Math.pow(E, 0.5) / rho : null; },
   },
   {
     id: 'M3', group: 'Stiffness',
@@ -89,7 +87,7 @@ export const MERIT_INDICES = [
     label: 'E^⅓ / ρ',
     description: 'E^⅓ / ρ — (a) Stiffness-limited design, minimum mass: panel in bending, length and width fixed; thickness free. (b) Stiffness-limited design, minimum mass: single-curvature shell under linear load, radius fixed; wall-thickness free. (c) Vibration-limited design, maximum resonant frequency: beam in bending, length, width and section shape fixed; thickness free. Higher is better.',
     higherIsBetter: true,
-    fn: mat => { const { E, rho } = get(mat); return E && rho ? Math.pow(E, 1/3) / rho : null; },
+    fn: mat => { const { E, rho } = get(mat); return E != null && rho != null ? Math.pow(E, 1/3) / rho : null; },
   },
 
   // Strength-limited design
@@ -100,7 +98,7 @@ export const MERIT_INDICES = [
     label: 'σ_y / ρ',
     description: 'Specific strength — compares how strong a material is relative to its weight for a rod or beam of fixed geometry. Higher is better: a high σ_y/ρ material supports more load per unit mass.',
     higherIsBetter: true,
-    fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? sig_y / rho : null; },
+    fn: mat => { const { sig_y, rho } = get(mat); return sig_y != null && rho != null ? sig_y / rho : null; },
   },
   {
     id: 'M5', group: 'Strength',
@@ -109,7 +107,7 @@ export const MERIT_INDICES = [
     label: 'σ_y^⅔ / ρ',
     description: 'Beam strength at minimum mass — if you redesign a beam in each material to carry the same load before yielding, which material gives the lightest result? Higher is better.',
     higherIsBetter: true,
-    fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 2/3) / rho : null; },
+    fn: mat => { const { sig_y, rho } = get(mat); return sig_y != null && rho != null ? Math.pow(sig_y, 2/3) / rho : null; },
   },
   {
     id: 'M6', group: 'Strength',
@@ -118,7 +116,7 @@ export const MERIT_INDICES = [
     label: 'σ_y^½ / ρ',
     description: 'Plate strength at minimum mass — same concept as M5 but for a flat plate. The exponent changes because plates carry load differently than beams. Higher is better.',
     higherIsBetter: true,
-    fn: mat => { const { sig_y, rho } = get(mat); return sig_y && rho ? Math.pow(sig_y, 0.5) / rho : null; },
+    fn: mat => { const { sig_y, rho } = get(mat); return sig_y != null && rho != null ? Math.pow(sig_y, 0.5) / rho : null; },
   },
 
   // Fracture and damage tolerance
@@ -132,7 +130,7 @@ export const MERIT_INDICES = [
     fn: mat => {
       const { K_IC, sig_y } = get(mat);
       // K_IC in MPa·m^0.5, sig_y in GPa → convert sig_y to MPa
-      return (K_IC && sig_y) ? K_IC / (sig_y * 1000) : null;
+      return (K_IC != null && sig_y != null) ? K_IC / (sig_y * 1000) : null;
     },
   },
   {
@@ -144,7 +142,7 @@ export const MERIT_INDICES = [
     higherIsBetter: true,
     fn: mat => {
       const { K_IC, rho } = get(mat);
-      return (K_IC && rho) ? K_IC / rho : null;
+      return (K_IC != null && rho != null) ? K_IC / rho : null;
     },
   },
 
@@ -158,7 +156,7 @@ export const MERIT_INDICES = [
     higherIsBetter: false,
     fn: mat => {
       const { alpha, k } = get(mat);
-      return (alpha != null && k) ? alpha / k : null;
+      return (alpha != null && k != null) ? alpha / k : null;
     },
   },
   {
@@ -174,11 +172,11 @@ export const MERIT_INDICES = [
       let diffusivity = D;
       if (diffusivity == null) {
         const { k, rho, Cp } = get(mat);
-        diffusivity = (k && rho && Cp)
+        diffusivity = (k != null && rho != null && Cp != null)
           ? (k / (rho * 1000 * Cp)) * 1e4   // m²/s → cm²/s
           : null;
       }
-      return (alpha != null && diffusivity) ? alpha / diffusivity : null;
+      return (alpha != null && diffusivity != null) ? alpha / diffusivity : null;
     },
   },
   {
@@ -191,7 +189,7 @@ export const MERIT_INDICES = [
     fn: mat => {
       const { D, k, rho, Cp } = get(mat);
       if (D != null) return D;   // use directly-entered value
-      return (k && rho && Cp)
+      return (k != null && rho != null && Cp != null)
         ? (k / (rho * 1000 * Cp)) * 1e4   // m²/s → cm²/s
         : null;
     },

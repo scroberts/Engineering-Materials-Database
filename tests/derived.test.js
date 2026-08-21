@@ -127,6 +127,18 @@ describe('merit indices — thermal design', () => {
   test('M9 = α/k', () => {
     assert.equal(meritFn('M9')(FIXTURE), 0.5); // 10/20
   });
+  test('M9/M10 treat alpha = 0 as a real value, not missing data', () => {
+    // Not hypothetical: zerodur-grade-0.json and ule-glass.json both store
+    // thermal_expansion.value: 0 in this database right now — these are the
+    // two materials M9's own tooltip calls out as ranking best ("Materials
+    // like SiC and ULE glass rank best"). A truthy check here (`alpha && k`
+    // instead of `alpha != null && k`) would silently return null for both
+    // of them instead of the correct answer, 0 (the best possible score for
+    // a "lower is better" index).
+    const zeroAlpha = { ...FIXTURE, physical: { ...FIXTURE.physical, thermal_expansion: { value: 0, table: [], ref: null } } };
+    assert.equal(meritFn('M9')(zeroAlpha), 0);
+    assert.equal(meritFn('M10')(zeroAlpha), 0);
+  });
   test('M11 = k/(ρ·Cp), unit-converted m²/s -> cm²/s, derived when not directly entered', () => {
     // k/(ρ_kg_per_m3 * Cp) in m²/s, then *1e4 for cm²/s:
     // ρ must be converted g/cm³ -> kg/m³ (×1000) to make the SI diffusivity formula dimensionally correct
