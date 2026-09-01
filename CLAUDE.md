@@ -79,7 +79,7 @@ materials/
   plastics/         abs.json, acrylic-pmma.json, pa6-nylon6.json,
                     pa12-nylon12.json, peek.json, petg-fdm.json,
                     pha-fdm.json, pla-fdm.json, polycarbonate.json,
-                    pom-delrin.json, uhmw-pe.json
+                    pom-delrin.json, uhmw-pe.json, vespel-sp1.json
   ceramics/         alumina-al2o3.json, silicon-carbide.json,
                     tungsten-carbide-wc-6co.json
   composites/       c-sic-woven.json, cfrp-ud.json, gfrp-woven.json,
