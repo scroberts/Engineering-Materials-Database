@@ -181,6 +181,12 @@
     "doi": null,
     "bibtex": "@book{callister2020,\n  author    = {Callister, William D. and Rethwisch, David G.},\n  title     = {Materials Science and Engineering: An Introduction},\n  edition   = {10},\n  publisher = {Wiley},\n  year      = {2020},\n  isbn      = {978-1-119-40549-8}\n}"
   },
+  "dupont-vespel-s-handbook": {
+    "short_label": "DuPont Vespel S Line Design Handbook",
+    "doi": null,
+    "bibtex": "@techreport{dupont-vespel-s-handbook,\n  title       = {{DuPont Vespel S Line Design Handbook}},\n  institution = {DuPont de Nemours, Inc.},\n  number      = {H-53668-2},\n  year        = {2022}\n}",
+    "url": "https://www.dupont.com/content/dam/dupont/amer/us/en/vespel/public/documents/en/DuPont%20Vespel%C2%AE%20S%20Line%20Design%20Handbook.pdf"
+  },
   "efunda-aluminum-7075": {
     "short_label": "eFunda: Aluminium 7075",
     "doi": null,
@@ -420,6 +426,12 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "matweb-vespel-sp1": {
+    "short_label": "MatWeb: DuPont Vespel SP-1 ISO Polyimide",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=d6b6682e672f48ccaa2edc0ed43ff6c6"
   },
   "matweb_carpenter_invar36_coldrawn": {
     "short_label": "MatWeb: Carpenter Invar 36 (Cold Drawn)",

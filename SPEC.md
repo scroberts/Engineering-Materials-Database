@@ -499,7 +499,7 @@ h1: Advanced Material Selection
 │  Category: Metal                                                         │
 │  Fabrication: Machining, Welding                                         │
 │  32 materials in starting set                                            │
-│  (or "All 62 materials — no pre-filters applied")                        │
+│  (or "All 63 materials — no pre-filters applied")                        │
 └──────────────────────────────────────────────────────────────────────────┘
 
 Max results: [10]    Units: [Metric ▼]    Temperature: [°C ▼]
@@ -690,7 +690,7 @@ async function findMaterials():
 | Browse: "Compare All Filtered" with >10 visible | Button disabled |
 | Browse: "Advanced Selection →" with Metal filter active | Navigates to `select.html?cat=Metal` |
 | Select: open with `?cat=Metal` | Pre-selection shows "Category: Metal · 32 materials in starting set" |
-| Select: open with no params | Shows "All 62 materials — no pre-filters applied" |
+| Select: open with no params | Shows "All 63 materials — no pre-filters applied" |
 | Select: yield ≥ 500 MPa (Metric) | Only materials with σ_y ≥ 0.5 GPa canonical |
 | Select: yield ≥ 72.5 ksi (Imperial) | Same result as above (72.5 ksi ≈ 500 MPa) |
 | Select: `between` operator | Two value inputs appear |
