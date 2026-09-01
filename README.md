@@ -21,12 +21,12 @@ A static reference database of engineering material properties for Design Engine
 
 ---
 
-## Material Coverage (62 materials)
+## Material Coverage (63 materials)
 
 | Category | Materials |
 |---|---|
 | Metals (33) | Aluminium alloys (1100-O, 2024-T3, 5052-H32, 6061-T6, 6063-T5, 7075-T6), AlSi10Mg, Beryllium S65, Brass (Free-Cutting ASTM B16), Copper C11000, Inconel 625, Inconel 718, Invar 36, Magnesium AZ31B-H24, Maraging Steel 300 (DMLS, Aged), Nitinol (shape memory & superelastic), Stainless 17-4 PH, 17-7 PH, 303/304/316, 316L (DMLS), Steel 1018 (Cold-Drawn)/4130 (Normalized)/4340/A2/H13/Mild A36/Spring 5160, Ti-6Al-4V (annealed, Grade 5 STA, and DMLS heat-treated) |
-| Plastics (11) | ABS, Acrylic (PMMA), Nylon 6 (PA6), Nylon 12 (PA12), PEEK, PETG-FDM, PHA-FDM, PLA-FDM, Polycarbonate (PC), POM (Delrin), UHMW-PE |
+| Plastics (12) | ABS, Acrylic (PMMA), Nylon 6 (PA6), Nylon 12 (PA12), PEEK, PETG-FDM, PHA-FDM, PLA-FDM, Polycarbonate (PC), POM (Delrin), UHMW-PE, Vespel SP-1 (Polyimide) |
 | Ceramics (3) | Alumina Al₂O₃, Silicon Carbide, Tungsten Carbide-Cobalt (WC-6Co) |
 | Composites (5) | CFRP-UD, C-SiC Woven, GFRP Woven, Kevlar 49/Epoxy UD, Synfoam SW-9 Syntactic Foam |
 | Elastomers (4) | EPDM, Fluorocarbon (Viton), Nitrile (NBR), Silicone (VMQ) |

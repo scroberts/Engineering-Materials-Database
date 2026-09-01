@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Vespel SP-1 Polyimide",
+    "slug":       "vespel-sp1",
+    "category":   "Plastic",
+    "fabrication_processes": ["Machining", "Sintering"],
+    "common_forms": ["Round Bar", "Plate", "Tube"],
+    "common_form_notes": "Machined from isostatic (ISO) stock shapes: rod (OD 3-83 mm, to 965 mm long), tube, and square/disc/ring plaque. Rod and square plaque are sold through distribution (e.g. McMaster-Carr 'High-Strength Vespel Polyimide'). Production quantities are direct-formed (pressed and sintered from powder) by DuPont.",
+    "usage_frequency": "Specialty",
+    "notes": "Unfilled (natural) polyimide, DuPont Vespel SP-1 - the base resin of the Vespel SP family; the graphite/MoS2-filled grades (SP-21, SP-22, SP-3, SP-211) trade strength and elongation for wear resistance, low friction, or lower CTE. Values are for ISO material (machined from isostatic stock shapes), which is what is sold through distribution; DuPont's direct-formed (DF, pressed-and-sintered) material is slightly less dense and roughly 10-20% lower in strength and modulus. Vespel SP is a thermoset-like condensation polyimide (PMDA + ODA): it does NOT melt and has NO observable glass transition below its decomposition temperature (well above 400 C), so melting_point_tm and glass_transition_tg are intentionally null (DuPont S Line Design Handbook, p.3). The ~360 C figure sometimes quoted is the deflection temperature under 1.8 MPa load (ASTM D648), not a Tg. The upper service temperature (300 C continuous in air, short excursions to ~500 C) is set by oxidative degradation rate, not by softening; MatWeb's SP-1 sheet lists a more conservative 260 C continuous. The lower limit is cryogenic - Vespel is documented in service down to liquid-hydrogen temperature; the -240 C stored is nominal, not a single published rating. youngs_modulus stores the 23 C ISO FLEXURAL modulus (3.10 GPa, ASTM D790): DuPont publishes no separate tensile/Young's modulus for SP-1 and designates flexural modulus as the modulus of elasticity for this grade (Handbook Figs 4-5); the 2.48 GPa / 360 ksi value seen elsewhere is the direct-formed flexural modulus. No tensile yield point is published for SP-1 (it breaks at ~7.5% elongation, ~86 MPa UTS), so yield_strength and the yield-based merit indices (M4-M6) are null. compressive_strength is the stress at 10% strain (ASTM D695); the material does not fracture in compression. shear_strength (89.6 MPa, ASTM D732) is a measured value, not a von Mises estimate. CTE stored is the 23-300 C mean (54 um/m.K); the -62 to 23 C mean is 45 um/m.K (Handbook Table 1). thermal_diffusivity is computed from k/(rho.Cp), not independently measured. Hardness is Rockwell E 45-60 (ASTM D785, midpoint 52 stored); no Vickers or Brinell is published and Rockwell E does not convert reliably to HV. electrical_conductivity is nominally 0% IACS - polyimide is an electrical insulator (volume resistivity ~1e14-1e15 ohm.m), not a specific sourced measurement. Fatigue S-N curve: DuPont S Line Design Handbook Table 1 (axial fatigue endurance limit, 23 C) with loading per Fig 29 (fully-reversed alternating tension-compression, R = -1, 1800 cpm / 30 Hz); only the 1e3-cycle (55.8 MPa) and 1e7-cycle (42.1 MPa) points are tabulated, so the stored curve is a 2-point log-linear segment. The 260 C data (26.2 MPa at 1e3, 16.5 MPa at 1e7) is not stored."
+  },
+
+  "typical_usage": "High-temperature electrical and mechanical parts where thermoplastics soften: valve seats, seals and seal rings, electrical insulators and standoffs, unlubricated bushings and bearings, semiconductor process fixtures, and aerospace parts needing dimensional stability and low outgassing from cryogenic temperatures to 300 C continuous (short excursions to ~500 C).",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 3.10,   "ref": "dupont-vespel-s-handbook" },
+    "poissons_ratio":       { "value": 0.41,   "ref": "dupont-vespel-s-handbook" },
+    "yield_strength":       { "value": null,   "ref": null },
+    "tensile_strength":     { "value": 0.0862, "ref": "dupont-vespel-s-handbook" },
+    "compressive_modulus":  { "value": 2.41,   "ref": "dupont-vespel-s-handbook" },
+    "compressive_strength": { "value": 133,    "ref": "dupont-vespel-s-handbook" },
+    "usable_temp_range":    { "min": -240, "max": 300, "ref": "dupont-vespel-s-handbook" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [
+        { "stress": 0.0558, "cycles": 1000 },
+        { "stress": 0.0421, "cycles": 10000000 }
+      ],
+      "ref": "dupont-vespel-s-handbook",
+      "stress_ratio": -1,
+      "test_method": "Axial"
+    },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": 52, "scale": "E", "ref": "matweb-vespel-sp1" },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": 7.5, "ref": "dupont-vespel-s-handbook" },
+    "shear_strength":       { "value": 0.0896, "ref": "dupont-vespel-s-handbook" }
+  },
+
+  "physical": {
+    "density":                { "value": 1.43, "ref": "dupont-vespel-s-handbook" },
+    "electrical_conductivity":{ "value": 0,    "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 54,
+      "table": [],
+      "ref": "dupont-vespel-s-handbook"
+    },
+    "thermal_conductivity": {
+      "value": 0.35,
+      "table": [],
+      "ref": "dupont-vespel-s-handbook"
+    },
+    "specific_heat": {
+      "value": 1130,
+      "table": [],
+      "ref": "dupont-vespel-s-handbook"
+    },
+    "thermal_diffusivity":    { "value": 0.0022, "ref": null },
+    "melting_point_tm":       { "value": null,   "ref": null },
+    "glass_transition_tg":    { "value": null,   "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["dupont-vespel-s-handbook", "matweb-vespel-sp1"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-09-01",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-09-01"
+  }
+}
