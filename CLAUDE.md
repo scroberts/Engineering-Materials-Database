@@ -188,6 +188,9 @@ All values stored in canonical units in JSON. Convert only at display time.
 - All ref keys must exist in `references/index.json`
 - Reference entries have: `short_label`, `doi`, `bibtex`, optionally `url`
 
+### Adding a material (maintainer git workflow)
+When Claude is adding a new material for the repo owner (the common case — not an outside contributor following CONTRIBUTING.md), **commit straight to `main` and push; do not create a branch or open a PR.** This overrides the usual "branch off the default branch first" default — for routine data adds the PR round-trip (branch → `gh pr create` → watch CI → `gh pr merge` → cleanup) adds ceremony with no review value, since the owner reviews the diff before saying "push". Steps: edit on `main` → `python tools/update_manifest.py` → `validate.py` / `lint_physics.py` / `check_docs.py` → show the diff → on approval `git commit` + `git push origin main`. New reference entries go directly into `references/index.json` (no `new_references` block — that's the submit-form path). Reserve branches/PRs for code, schema, or tooling changes, or when the owner explicitly asks for one. (PRs #1 and #2 used branches; the owner asked to stop doing that on 2026-09-02.)
+
 ### innerHTML escaping
 Every page that interpolates material-derived strings (`name`, `category`, etc.) or URL-derived values (query params) into `innerHTML` must run them through a local `escHtml()` helper first (duplicated per-file: `browse.js`, `detail.js`, `compare.js`, `select.js`). Only `name` is schema-unconstrained free text (`slug`, `category`, `usage_frequency` are pattern/enum-constrained) — but escape all of them for consistency and to survive future schema changes.
 
