@@ -8,43 +8,49 @@
     "common_forms": ["Sheet", "Plate", "Tube"],
     "common_form_notes": "Available as FR-4 (a flame-retardant grade designation) / NEMA (National Electrical Manufacturers Association) G-10 laminate sheet from electrical/insulation suppliers. Machines well with carbide tooling; avoid excessive heat during cutting to prevent delamination.",
     "usage_frequency": "Common",
-    "notes": "Woven E-glass fabric / epoxy laminate per NEMA (National Electrical Manufacturers Association) Grade G-10 standard. Properties are for the in-plane (warp/fill) directions; a balanced weave makes properties approximately equal in both directions. Through-thickness tensile strength and interlaminar shear strength are much lower than in-plane values (typically 30–50 MPa) — design against delamination in peel or through-thickness loading. Shear strength is the in-plane measured value from NEMA G-10 data; von Mises derivation does not apply to composite materials. The epoxy matrix is a thermoset: no melting point; maximum service temperature is controlled by the matrix glass transition temperature, Tg (~130 °C for standard FR-4, a common flame-retardant fibreglass-epoxy grade). Not suitable for sustained loads at elevated temperature without specific creep data. Ductility values represent strain to fracture (brittle failure); there is no plastic yield."
+    "notes": "Woven E-glass fabric / epoxy laminate to NEMA Grade G-10 (equivalently MIL-I-24768/2 Type GEE). Properties are in-plane (warp/fill); a balanced weave makes the two directions similar but not identical - where a source distinguishes them: tensile strength 262 MPa crosswise / 310 MPa lengthwise (MatWeb/Boedeker, ASTM D638) vs. a single 275 MPa MIL-spec value (Atlas Fibre); flexural modulus 16.5 GPa crosswise / 18.6 GPa lengthwise (ASTM D790); CTE 9.9 um/m.K lengthwise / 11.9 crosswise (ASTM D696, 20 C). youngs_modulus stores the crosswise (more conservative) flexural modulus - these datasheets publish no tensile modulus for G-10, so the ASTM D790 flexural value is used as the modulus of elasticity. tensile_strength, compressive_strength (448 MPa - corrected from an earlier 300 MPa estimate; Atlas Fibre and MatWeb agree), shear_strength (131 MPa in-plane, ASTM D732) and Rockwell M 110 hardness are from the Atlas Fibre MIL-I-24768/2 data sheet. Through-thickness tensile and interlaminar shear strengths are much lower than in-plane values (typically 30-50 MPa) - design against delamination in peel or through-thickness loading. von Mises shear derivation does not apply to a composite; the stored shear_strength is the measured in-plane value. The epoxy matrix is a thermoset: no melting point. usable_temp_range upper bound (140 C) is Atlas Fibre's stated maximum operating temperature (MatWeb agrees); the published matrix glass transition is ~130 C (makeitfrom.com). The -60 C lower bound is a conservative service figure retained from the earlier makeitfrom.com data - G-10 is used structurally to cryogenic temperatures, but none of these datasheets give a low-temperature rating. Not suitable for sustained loads at elevated temperature without specific creep data. Ductility values are strain to fracture (brittle failure); there is no plastic yield. electrical_conductivity is nominally 0% IACS - G-10 is a high-performance electrical insulator (dielectric strength ~31.5 kV/mm, dielectric constant ~5.0 at 1 MHz), not a specific sourced measurement. specific_heat (1000 J/kg.K) is a rough estimate and remains unsourced; thermal_conductivity (0.288 W/m.K, ASTM C177) and the other values above are sourced to the Atlas Fibre and MatWeb datasheets."
   },
 
   "typical_usage": "Electrical insulation panels and PCB (printed circuit board) substrates (FR-4), structural laminates in moisture-sensitive environments, jigs and fixtures, tooling plates, machine guards, and general-purpose composite sheet where moderate stiffness, electrical insulation, and low cost are required.",
 
   "mechanical_common": {
-    "youngs_modulus":      { "value": 20.0,  "ref": "makeitfrom-g10" },
+    "youngs_modulus":      { "value": 16.5,  "ref": "matweb-g10" },
     "poissons_ratio":      { "value": 0.25,  "ref": "makeitfrom-g10" },
     "yield_strength":      { "value": null,  "ref": null },
-    "tensile_strength":    { "value": 0.270, "ref": "makeitfrom-g10" },
+    "tensile_strength":    { "value": 0.275, "ref": "atlasfibre-g10" },
     "compressive_modulus": { "value": null,  "ref": null },
-    "compressive_strength":{ "value": 300,   "ref": "makeitfrom-g10" },
-    "usable_temp_range":   { "min": -60, "max": 130, "ref": "makeitfrom-g10" }
+    "compressive_strength":{ "value": 448,   "ref": "atlasfibre-g10" },
+    "usable_temp_range":   { "min": -60, "max": 140, "ref": "atlasfibre-g10" }
   },
 
   "mechanical_other": {
     "microyield_strength": { "value": null,  "ref": null },
     "creep_strength":      { "value": null,  "ref": null },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null,
+      "stress_ratio": null,
+      "test_method": null
+    },
     "fracture_toughness":  { "value": null,  "ref": null },
     "hardness_vickers":    { "value": null,  "ref": null },
     "hardness_brinell":    { "value": null,  "ref": null },
-    "hardness_rockwell":   { "value": null,  "scale": null, "ref": null },
+    "hardness_rockwell":   { "value": 110,   "scale": "M", "ref": "atlasfibre-g10" },
     "hardness_shore":    { "value": null, "scale": null, "ref": null },
     "ductility":           { "min": 0, "max": 2, "typical": null, "ref": "makeitfrom-g10" },
-    "shear_strength":      { "value": 0.130, "ref": "makeitfrom-g10" }
+    "shear_strength":      { "value": 0.131, "ref": "atlasfibre-g10" }
   },
 
   "physical": {
-    "density":                { "value": 1.8,  "ref": "makeitfrom-g10" },
-    "electrical_conductivity":{ "value": null,  "ref": null },
+    "density":                { "value": 1.8,  "ref": "atlasfibre-g10" },
+    "electrical_conductivity":{ "value": 0,    "ref": null },
     "vapour_pressure":        { "value": null,  "ref": null },
     "thermal_expansion": {
-      "value": 9.0,
+      "value": 9.9,
       "table": [],
-      "ref": "makeitfrom-g10"
+      "ref": "matweb-g10"
     },
-    "thermal_conductivity":   { "value": 0.35, "table": [], "ref": null },
+    "thermal_conductivity":   { "value": 0.288, "table": [], "ref": "matweb-g10" },
     "specific_heat":          { "value": 1000, "table": [], "ref": null },
     "thermal_diffusivity":    { "value": null,  "ref": null },
     "melting_point_tm":       { "value": null,  "ref": null },
@@ -52,12 +58,12 @@
     "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
   },
 
-  "references": ["makeitfrom-g10"],
+  "references": ["atlasfibre-g10", "matweb-g10", "makeitfrom-g10"],
 
   "metadata": {
     "submitted_by": "admin",
     "submitted_date": "2026-05-15",
-    "approved_by": "admin",
-    "approved_date": "2026-05-15"
+    "approved_by": "scroberts",
+    "approved_date": "2026-09-02"
   }
 }

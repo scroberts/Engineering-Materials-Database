@@ -50,6 +50,12 @@
     "bibtex": "@book{asm-metals-handbook-desk-1984,\n  title     = {{ASM Metals Handbook, Desk Edition}},\n  editor    = {Boyer, Howard E. and Gall, Timothy L.},\n  publisher = {American Society for Metals},\n  year      = {1984},\n  note      = {3rd printing, June 1986},\n  isbn      = {0-87170-188-X}\n}",
     "url": "https://www.worldcat.org/isbn/087170188X"
   },
+  "atlasfibre-g10": {
+    "short_label": "Atlas Fibre: G-10 Glass Epoxy Data Sheet (MIL-I-24768/2 Type GEE / NEMA G-10)",
+    "doi": null,
+    "bibtex": "@techreport{atlasfibre-g10,\n  title       = {{G-10 Glass Epoxy Data Sheet --- MIL-I-24768/2 Type GEE / NEMA G-10}},\n  institution = {Atlas Fibre Company},\n  number      = {AF-DS-G10, Rev. 2026-01},\n  year        = {2026}\n}",
+    "url": "https://www.atlasfibre.com/material/g-10/"
+  },
   "azom-1018": {
     "short_label": "AZoM: AISI 1018 Mild/Low Carbon Steel",
     "doi": null,
@@ -390,6 +396,12 @@
     "doi": null,
     "bibtex": null,
     "url": null
+  },
+  "matweb-g10": {
+    "short_label": "MatWeb: G-10 Fiberglass Epoxy Laminate Sheet",
+    "doi": null,
+    "bibtex": null,
+    "url": "https://www.matweb.com/search/DataSheet.aspx?MatGUID=8337b2d050d44da1b8a9a5e61b0d5f85"
   },
   "matweb-gar-dur-uhmwpe": {
     "short_label": "MatWeb: Garland GAR-DUR® UHMW-PE",
