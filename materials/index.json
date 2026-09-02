@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-02T19:54:58Z",
+  "generated": "2026-09-02T23:30:59Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -127,7 +127,7 @@
         "Tube"
       ],
       "usage_frequency": "Common",
-      "youngs_modulus": 16.5,
+      "youngs_modulus": 20.0,
       "yield_strength": null,
       "tensile_strength": 0.275,
       "density": 1.8,
