@@ -187,6 +187,12 @@
     "bibtex": "@techreport{dupont-vespel-s-handbook,\n  title       = {{DuPont Vespel S Line Design Handbook}},\n  institution = {DuPont de Nemours, Inc.},\n  number      = {H-53668-2},\n  year        = {2022}\n}",
     "url": "https://www.dupont.com/content/dam/dupont/amer/us/en/vespel/public/documents/en/DuPont%20Vespel%C2%AE%20S%20Line%20Design%20Handbook.pdf"
   },
+  "dupont-vespel-sp3-datasheet": {
+    "short_label": "DuPont Vespel SP-3 Data Sheet (Typical ISO Properties)",
+    "doi": null,
+    "bibtex": "@techreport{dupont-vespel-sp3-datasheet,\n  title       = {{DuPont Vespel SP-3 Polyimide Isostatic Shapes --- Typical ISO Properties}},\n  institution = {DuPont de Nemours, Inc.},\n  number      = {VPE-A10869-00-B0614},\n  year        = {2014}\n}",
+    "url": "http://www.dupont.com/content/dam/dupont/products-and-services/plastics-polymers-and-resins/parts-and-shapes/vespel/documents/VPE-A10869-00-B0614.pdf"
+  },
   "efunda-aluminum-7075": {
     "short_label": "eFunda: Aluminium 7075",
     "doi": null,

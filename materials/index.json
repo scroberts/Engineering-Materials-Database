@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-01T23:23:20Z",
+  "generated": "2026-09-02T18:54:07Z",
   "materials": [
     {
       "slug": "alumina-al2o3",
@@ -1352,6 +1352,27 @@
       "yield_strength": null,
       "tensile_strength": 0.0862,
       "density": 1.43,
+      "magnetic_classification": "Diamagnetic"
+    },
+    {
+      "slug": "vespel-sp3",
+      "path": "materials/plastics/vespel-sp3.json",
+      "name": "Vespel SP-3 Polyimide",
+      "category": "Plastic",
+      "fabrication_processes": [
+        "Machining",
+        "Sintering"
+      ],
+      "common_forms": [
+        "Round Bar",
+        "Plate",
+        "Tube"
+      ],
+      "usage_frequency": "Specialty",
+      "youngs_modulus": 3.275,
+      "yield_strength": null,
+      "tensile_strength": 0.0585,
+      "density": 1.6,
       "magnetic_classification": "Diamagnetic"
     }
   ]

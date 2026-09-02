@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+
+  "identification": {
+    "name":       "Vespel SP-3 Polyimide",
+    "slug":       "vespel-sp3",
+    "category":   "Plastic",
+    "fabrication_processes": ["Machining", "Sintering"],
+    "common_forms": ["Round Bar", "Plate", "Tube"],
+    "common_form_notes": "Machined from isostatic (ISO) stock shapes: rod, tube, and square/disc/ring plaque, sold through distribution (e.g. Curbell Plastics, Boedeker). Production quantities are direct-formed (pressed and sintered from powder) by DuPont.",
+    "usage_frequency": "Specialty",
+    "notes": "MoS2-filled Vespel SP polyimide, DuPont Vespel SP-3 - the same base polyimide resin as unfilled SP-1, loaded with molybdenum disulfide (commonly documented as 15 wt% MoS2; the SP-3 data sheet itself says only 'a filled polymer'). The MoS2 is a solid lubricant that keeps friction low in vacuum and dry gas, where the graphite in SP-21/SP-22 loses lubricity - hence SP-3's use for seals and bearings in vacuum/dry service. All values here are for ISO material (machined from isostatic stock shapes), which is what is sold through distribution; DuPont notes some of this data is from limited production runs and subject to revision. youngs_modulus stores the 23 C ISO FLEXURAL modulus (3.275 GPa / 475 ksi, ASTM D790): DuPont publishes no separate tensile/Young's modulus for the Vespel SP grades and designates flexural modulus as the modulus of elasticity (same modeling call as the SP-1 entry); at 260 C the flexural modulus falls to 1.862 GPa (270 ksi). No tensile yield point is published (SP-3 breaks at ~4.0% elongation, ~58.5 MPa UTS), so yield_strength and the yield-based merit indices (M4-M6) are null. poissons_ratio is null - the SP-3 data sheet reports it as '-' and SP-1's 0.41 is not transferred because the MoS2 filler alters the elastic response. compressive_strength is the stress at 10% strain (127.6 MPa, ASTM D695); the material does not fracture in compression (stress at 1% strain is 34.5 MPa). shear_strength is null: the data sheet's ASTM D732 shear row is unpopulated, and a von Mises estimate does not apply - SP-3 has no tensile yield point and fails at ~4% elongation by brittle-ish fracture, not dislocation-slip yielding (see CLAUDE.md shear-derivation convention). fatigue_sn_curve is empty: the SP-3 data sheet lists axial and flexural fatigue endurance-limit rows but leaves every value blank. usable_temp_range (-240 to 300 C) is the Vespel SP-family service guidance from the S Line Design Handbook (300 C continuous in air; cryogenic low end - Vespel is documented in service to liquid-hydrogen temperature, -240 is nominal), NOT from the SP-3 data sheet, which only reports data to 260 C (500 F); MoS2-filled grades are primarily intended for vacuum/dry-gas service and the MoS2 can slowly oxidize in humid air. melting_point_tm and glass_transition_tg are null - Vespel SP is a thermoset-like condensation polyimide with no melt and no observable Tg below its decomposition temperature (>400 C) (S Line Design Handbook). CTE stored is the 23-260 C mean (52 um/m.K, ASTM D696). thermal_conductivity (0.47 W/m.K) was measured at 40 C. specific_heat is not published, so thermal_diffusivity (which would otherwise be computed from k/(rho.Cp)) is also null. Hardness is null on every scale - the SP-3 data sheet publishes no hardness value. electrical_conductivity is nominally 0% IACS - polyimide is an electrical insulator (the data sheet's volume-resistivity row is blank), not a specific sourced measurement. Not stored as schema fields, recorded here for reference: flexural strength 75.8 MPa (23 C) / 39.9 MPa (260 C) ASTM D790; Izod impact 21.3 J/m notched, 112 J/m unnotched ASTM D256; water absorption 0.23% (24 h, 23 C) / 0.65% (48 h, 50 C) ASTM D570; deformation under 14 MPa load at 50 C is 0.12% ASTM D621; unlubricated-in-air friction coefficient 0.25 at PV = 0.875 MPa.m/s, 0.17 at PV = 3.5 MPa.m/s, 0.03 in vacuum."
+  },
+
+  "typical_usage": "Seals, seal rings, and unlubricated bearings and bushings for vacuum, dry-gas, and dry-running service where graphite-filled grades lose lubricity - spacecraft mechanisms, semiconductor process equipment, vacuum pumps, and cryogenic valve components; also high-temperature electrical insulators needing dimensional stability to 300 C.",
+
+  "mechanical_common": {
+    "youngs_modulus":       { "value": 3.275,  "ref": "dupont-vespel-sp3-datasheet" },
+    "poissons_ratio":       { "value": null,   "ref": null },
+    "yield_strength":       { "value": null,   "ref": null },
+    "tensile_strength":     { "value": 0.0585, "ref": "dupont-vespel-sp3-datasheet" },
+    "compressive_modulus":  { "value": 2.413,  "ref": "dupont-vespel-sp3-datasheet" },
+    "compressive_strength": { "value": 127.6,  "ref": "dupont-vespel-sp3-datasheet" },
+    "usable_temp_range":    { "min": -240, "max": 300, "ref": "dupont-vespel-s-handbook" }
+  },
+
+  "mechanical_other": {
+    "microyield_strength":  { "value": null, "ref": null },
+    "creep_strength":       { "value": null, "ref": null },
+    "fatigue_sn_curve": {
+      "points": [],
+      "ref": null,
+      "stress_ratio": null,
+      "test_method": null
+    },
+    "fracture_toughness":   { "value": null, "ref": null },
+    "hardness_vickers":     { "value": null, "ref": null },
+    "hardness_brinell":     { "value": null, "ref": null },
+    "hardness_rockwell":    { "value": null, "scale": null, "ref": null },
+    "hardness_shore":       { "value": null, "scale": null, "ref": null },
+    "ductility":            { "min": null, "max": null, "typical": 4.0, "ref": "dupont-vespel-sp3-datasheet" },
+    "shear_strength":       { "value": null, "ref": null }
+  },
+
+  "physical": {
+    "density":                { "value": 1.60, "ref": "dupont-vespel-sp3-datasheet" },
+    "electrical_conductivity":{ "value": 0,    "ref": null },
+    "vapour_pressure":        { "value": null, "ref": null },
+    "thermal_expansion": {
+      "value": 52,
+      "table": [],
+      "ref": "dupont-vespel-sp3-datasheet"
+    },
+    "thermal_conductivity": {
+      "value": 0.47,
+      "table": [],
+      "ref": "dupont-vespel-sp3-datasheet"
+    },
+    "specific_heat": {
+      "value": null,
+      "table": [],
+      "ref": null
+    },
+    "thermal_diffusivity":    { "value": null, "ref": null },
+    "melting_point_tm":       { "value": null, "ref": null },
+    "glass_transition_tg":    { "value": null, "ref": null },
+    "magnetic_classification":{ "value": "Diamagnetic", "ref": null }
+  },
+
+  "references": ["dupont-vespel-sp3-datasheet", "dupont-vespel-s-handbook"],
+
+  "metadata": {
+    "submitted_by":  "scroberts",
+    "submitted_date": "2026-09-02",
+    "approved_by":   "scroberts",
+    "approved_date": "2026-09-02"
+  }
+}
