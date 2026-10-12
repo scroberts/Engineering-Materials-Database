@@ -248,13 +248,15 @@ function buildSidebar(currentFilters) {
       ${cat}
     </label>`).join('');
 
-  // Fabrication process checkboxes (collapsed by default — long list)
+  // Fabrication process checkboxes (collapsed by default — long list,
+  // but forced open if an active filter is hidden inside it)
   const fabGroup = document.getElementById('filter-fabrication');
   const SHORT_FAB = FABRICATION_PROCESSES.slice(0, 5);
   const LONG_FAB  = FABRICATION_PROCESSES.slice(5);
+  const fabOpen = LONG_FAB.some(p => currentFilters.fab.has(p));
   fabGroup.innerHTML =
     SHORT_FAB.map(p => checkboxHtml('fab', p, currentFilters.fab)).join('') +
-    `<details><summary>${LONG_FAB.length} more…</summary>` +
+    `<details${fabOpen ? ' open' : ''}><summary>${LONG_FAB.length} more…</summary>` +
     LONG_FAB.map(p => checkboxHtml('fab', p, currentFilters.fab)).join('') +
     `</details>`;
 
