@@ -1,6 +1,8 @@
 # UVIC Design Engineering Materials Database — Specification
 
 > **Living Document.** This specification evolves as the project develops. When requirements change, update this file and note the change in the relevant section.
+>
+> **Last synced with the codebase: 2026-11-24.** Implementation conventions and lessons learned (data-sourcing rules, fatigue-data handling, maintainer git workflow, punch list) live in [CLAUDE.md](CLAUDE.md); this file is the requirements-level description of what the system does.
 
 ---
 
@@ -23,6 +25,9 @@ This database serves undergraduate and graduate students at UVIC as a reference 
 - **Hosting:** The website is a static site hosted on GitHub Pages. There is no server-side runtime.
 - **Admin tooling:** Python scripts in the `tools/` directory handle data management tasks (manifest generation, schema validation, migration, BibTeX import). These run locally or in CI — they are not part of the website.
 - **Student submissions:** Students fill out an entry form on the website, download the result as a `.json` file, and submit it via a GitHub Pull Request. An administrator reviews the PR before merging.
+- **Continuous integration:** GitHub Actions validates every change to material data, references, tools, and core JS before it can reach the live site (see Section 8).
+- **Tests:** Core unit-conversion, merit-index, export, and HTML-import logic is covered by Node's built-in test runner (`node --test tests/`). Node is a dev-time dependency only — the site itself still has no build step and no JS dependencies.
+- **Analytics:** Privacy-friendly page-view counting via GoatCounter (no cookies, no personal data), loaded on every top-level page.
 
 ---
 
@@ -37,8 +42,8 @@ All values are stored in canonical units in the JSON files. The display layer co
 | Pressure / Moduli       | GPa            |                                                                    |
 | Compressive Strength    | MPa            | Exception to the GPa rule; entered and stored in MPa               |
 | Density                 | g/cm³          | Displayed in both g/cm³ and kg/m³                                  |
-| Temperature             | °C             |                                                                    |
-| Ductility               | % (0–100)      |                                                                    |
+| Temperature             | °C             | Melting point stores the **solidus**; the liquidus is documented in the material's `notes` |
+| Ductility               | %              | Elongation at break; elastomers and some plastics legitimately exceed 100 % |
 | Hardness                | Vickers (HV)   |                                                                    |
 | Fracture Toughness      | MPa·m^0.5      |                                                                    |
 | CTE                     | µm/m·°C        |                                                                    |
@@ -152,11 +157,11 @@ Each field has a unit selector dropdown and a reference selector dropdown.
 |---------------------|-------------------------------------------------------------------|-------------------------|-------|
 | Microyield Strength | Float                                                             | Pressure                | |
 | Creep Strength      | Float                                                             | Pressure                | |
-| Fatigue (S-N Curve) | Table of up to 10 rows: Float (stress amplitude), Integer (cycles)| Pressure / Cycles       | Enter data points from low cycle to high cycle. A curve is fitted through the points for display. |
+| Fatigue (S-N Curve) | Table of up to 10 rows: Float (maximum stress), Integer (cycles); plus Stress Ratio R and Test Method for the whole curve | Pressure / Cycles       | Enter data points from low cycle to high cycle. Stress is the **maximum** stress σ_max (numerically equal to stress amplitude only when R = −1). **Stress ratio** R = σ_min/σ_max (number or blank). **Test method**: Axial, Rotating Beam, Plane Bending, Torsion, or blank. Every point in one curve must share the same R, test method, and (unnotched) specimen condition; leave R/method blank if the source doesn't state them — never guess. R = −1, Axial is preferred when a choice exists. Notched-specimen data is out of scope. A curve is fitted through the points for display. |
 | Fracture Toughness  | Float                                                             | MPa·m½, ksi·in½         | Mode I (K_IC) unless noted. Rendered with superscript ½ in the browser. |
-| Hardness            | Float, Scale selector                                             | —                       | All available scales shown simultaneously. Missing scales are estimated (HV ↔ HB ≈ ×1.05; Rockwell per ASTM E140). Rockwell entry requires scale (A, B, C, etc.). |
+| Hardness            | Float, Scale selector                                             | —                       | All available scales shown simultaneously. Missing scales are estimated (HV ↔ HB ≈ ×1.05; Rockwell per ASTM E140). Rockwell entry requires scale (A, B, C, etc.). Shore hardness (scale A or D) is recorded separately for elastomers and plastics and is not converted to/from the metal scales. |
 | Ductility (% Elongation) | Float (min), Float (max), Float (typical)                   | %                       | Typical shown if entered. If only min and max are given, typical is the average flagged "(avg of range)". If only one bound is given, shown as "≥ min %" or "≤ max %". If no data, "—" is shown and no reference badge appears. |
-| Shear Strength      | Float, or calculated                                              | Pressure                | May be entered directly. If left blank and Yield Strength is available, the von Mises estimate τ = σ_y / √3 is shown with a "(von Mises estimate)" note and is also shown in the Calculated Properties section. |
+| Shear Strength      | Float, or calculated                                              | Pressure                | May be entered directly. If left blank and Yield Strength is available, the von Mises estimate τ = σ_y / √3 is shown with a "(von Mises estimate)" note and is also shown in the Calculated Properties section. The estimate applies only to ductile materials: it is never computed for the Ceramic, Composite, or Glass categories, which fail by brittle fracture rather than yielding. |
 
 ### 5.5 Physical and Thermal Properties
 
@@ -171,7 +176,7 @@ Each field has a reference selector dropdown.
 | Thermal Conductivity          | Float (single value) or table of up to 12 (Temperature °C, k W/m·K) pairs      | W/m·K                      | Temperature-dependent table rendered in the same expandable pattern as CTE |
 | Specific Heat                 | Float (single value) or table of up to 12 (Temperature °C, Cp J/kg·K) pairs    | J/kg·K                     | Temperature-dependent table rendered in the same expandable pattern as CTE |
 | Thermal Diffusivity           | Float                                                                           | cm²/s                      | If not entered, computed from k / (ρ · Cp) and labelled "(k/ρCp)" |
-| Melting Point (Tm)            | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For crystalline materials (metals, ceramics). Leave blank for amorphous materials. |
+| Melting Point (Tm)            | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. Records the **solidus** temperature for alloys; note the liquidus in `notes`. For crystalline materials (metals, ceramics). Leave blank for amorphous materials. |
 | Glass Transition Temp. (Tg)   | Float                                                                           | K / °C / °F (global unit)  | Stored in °C. For amorphous polymers and glasses. Leave blank for crystalline materials. |
 | Magnetic Classification       | Single select                                                                   | —                          | One of: Ferromagnetic (strongly magnetic — caution near field-sensitive instruments), Paramagnetic (weakly magnetic, generally acceptable), Diamagnetic (magnetically benign, preferred for precision optical/astronomical instruments). Displayed as a colour-coded badge. |
 
@@ -183,7 +188,7 @@ These are computed from entered values and displayed automatically. They are not
 |--------------------|----------------------|------------|--------------------------------------------------------------------------|
 | Specific Stiffness | E / ρ                | GPa·cm³/g  | Young's Modulus, Density                                                 |
 | Shear Modulus      | E / (2 × (1 + ν))   | GPa        | Young's Modulus, Poisson's Ratio                                         |
-| Shear Strength     | σ_y / √3            | MPa        | Yield Strength; shown only when Shear Strength is not directly entered   |
+| Shear Strength     | σ_y / √3            | MPa        | Yield Strength; shown only when Shear Strength is not directly entered, and never for Ceramic, Composite, or Glass |
 
 Calculated fields display "—" if any required input is missing.
 
@@ -214,7 +219,9 @@ Allows the user to select up to **10 materials** and plot any single numerical p
 
 ### 6.4 S-N Curve Chart
 
-For materials that have fatigue S-N curve data, a stress vs. cycles chart is available. When multiple materials are overlaid, each is colour-coded. A log-linear interpolation is drawn through the data points. The x-axis (cycles) uses a **logarithmic scale**; the y-axis (stress amplitude) uses a **linear scale**.
+For materials that have fatigue S-N curve data, a stress vs. cycles chart is available. When multiple materials are overlaid, each is colour-coded. A log-linear interpolation is drawn through the data points. The x-axis (cycles) uses a **logarithmic scale**; the y-axis (maximum stress) uses a **linear scale**.
+
+Each curve's legend entry shows its test conditions (e.g. "R = −1, Axial"), or "conditions undocumented" when R or the test method is unknown. On the compare page, a caveat banner appears whenever the overlaid curves do not all share one fully documented (R, test method) basis, warning that they should not be read as a direct ranking. Curves with different R values are not normalised (e.g. by a Walker equivalent-stress transform), because that needs a per-material fitted exponent most sources don't provide.
 
 ### 6.5 CTE vs Temperature Chart
 
@@ -286,7 +293,7 @@ Before downloading, the user selects a unit scope:
 - **Current units** — properties exported in the unit currently shown on screen (metric or imperial, as selected by the toolbar toggle).
 - **Canonical units** — every property exported in its canonical storage unit (GPa for pressure/moduli, MPa for compressive strength, g/cm³ for density, °C for temperature, etc.), regardless of the current display setting.
 
-**File format:** columns are `Property`, `Unit`, then one column per material name. Section divider rows (IDENTIFICATION, MECHANICAL, PHYSICAL, MERIT INDICES) separate the property groups. Missing values are empty cells; text values (category, fabrication processes, magnetic classification) appear as plain text.
+**File format:** columns are `Property`, `Unit`, then one column per material name. Section divider rows (IDENTIFICATION, MECHANICAL, PHYSICAL, CTE VS TEMPERATURE, FATIGUE S-N CURVE, MERIT INDICES) separate the property groups; the CTE and S-N sections appear only when the material(s) have that table data. Missing values are empty cells; text values (category, fabrication processes, magnetic classification) appear as plain text.
 
 The compare page export also includes a MERIT INDICES section (M1–M11 Ashby indices) with the computed value for each material.
 
@@ -300,7 +307,7 @@ The submission form allows students to create or edit a material entry and expor
 
 ### Disclaimer
 
-The following disclaimer is displayed prominently at the top of the submission form and on all material detail pages:
+The following disclaimer is shown as a modal on the user's first visit to any page (remembered per browser), and can be reopened at any time from the **Disclaimer** link in the site navigation:
 
 > **Disclaimer:** The data in this database is provided for educational reference only. It has been compiled from published sources but has not been independently verified. This data **must not** be used as the sole basis for safety-critical design decisions. Always verify material properties against primary sources and applicable standards before use in any application where failure could result in injury or harm.
 
@@ -310,6 +317,11 @@ The following disclaimer is displayed prominently at the top of the submission f
 - Unit selectors on entry fields convert to canonical units before export — the stored JSON always uses canonical units regardless of what units the student entered.
 - Calculated properties (Section 5.6) are shown as a live preview that updates as the student fills in the required fields.
 - Hovering over any property label shows the same tooltip definition as on the display pages.
+- Row-based tables (S-N points, CTE, thermal conductivity, specific heat) enforce the schema's row limits: the "+ Add" button disables once the limit is reached. Rows loaded from an existing file are never truncated, so an over-limit file can still be corrected.
+
+### Edit Mode
+
+Opening `submit.html?slug=<slug>` (the **Edit** button on a material detail page) puts the form in edit mode: the existing material is fetched and every field pre-filled, the slug is locked, and the download button becomes **Download Updated JSON**. After download, the form shows instructions for replacing the existing file in a pull request.
 
 ### Loading an Existing File
 
@@ -319,6 +331,15 @@ A file picker at the top of the form accepts a `.json` file. When a file is load
 - A notice is shown: *"Form pre-filled from uploaded file — please review all fields before downloading."*
 - If the uploaded file uses an older schema version, it is automatically migrated to the current version before populating the form.
 - Fields not present in the uploaded file are left blank.
+
+### Pre-fill from a Saved Reference Page
+
+A second file picker accepts a saved reference web page (`.html`). The page is parsed in the browser by `js/core/htmlImport.js` using site-specific rules for AZoM, MakeItFrom, MatWeb, SpaceMatDB, TheWorldMaterial, EngineersEdge, HighTempMetals, eFunda, and NIST; unrecognised sites fall back to a generic table scraper. Values are converted to canonical units.
+
+- If the page contains a canonical URL (`<link rel="canonical">` or `og:url`), a reference is created automatically and attached to every field the import populated. Otherwise the user is asked for the source URL, or can skip creating a reference.
+- Importing **overwrites** every field it has data for, including values typed earlier or loaded from a previous import, and reassigns that field's reference. This supports multi-source entry (e.g. mechanical properties from one site, thermal from another), but the user should re-review the form after each import.
+- When a page lists several rows that map to the same property, the first match wins.
+- These parsing rules duplicate those in `tools/parse_refs.py` (Section 9); a site layout change requires fixing both.
 
 ### Reference Entry During Submission
 
@@ -355,7 +376,16 @@ After the file is downloaded, the form displays instructions for submitting via 
 
 ### Reviewing Submissions
 
-Student submissions arrive as GitHub Pull Requests. The PR diff shows the full content of the new JSON file. Automated CI checks run `tools/validate.py` against any new or modified files in `materials/` and `references/`. The CI check must pass before a PR can be merged.
+Student submissions arrive as GitHub Pull Requests. The PR diff shows the full content of the new JSON file. Automated CI checks (GitHub Actions) must pass before a PR can be merged:
+
+| Check | Blocking? | What it verifies |
+|---|---|---|
+| `tools/validate.py` | Yes | Every material validates against the JSON Schema; every reference key exists in `references/index.json` (or in the file's own `new_references`) |
+| Manifest freshness | Yes | `materials/index.json` matches what `update_manifest.py` would generate (ignoring its timestamp) |
+| `tools/check_docs.py` | Yes | README.md and SPEC.md material counts match the manifest |
+| `tools/lint_physics.py` | No (advisory) | Physically implausible values, e.g. yield > UTS, Poisson's ratio outside 0–0.5, solidus ≥ liquidus, S-N stress rising with cycles |
+| No lingering `new_references` | Yes, on `main` only | No merged material still carries an unpromoted `new_references` block |
+| JS unit tests | Yes | `node --test tests/` passes (runs when `js/core/` or `tests/` change) |
 
 **PR review checklist (enforced via `.github/PULL_REQUEST_TEMPLATE.md`):**
 
@@ -376,7 +406,7 @@ python tools/import_new_refs.py --write   # promote any new_references into refe
 python tools/update_manifest.py           # regenerate materials/index.json
 ```
 
-Both outputs must be committed to `main`.
+Then delete the `new_references` block from the material file (`import_new_refs.py` adds entries to the index but does not strip the block). All of these changes must be committed to `main`; CI fails on `main` if a `new_references` block lingers.
 
 ---
 
@@ -388,12 +418,18 @@ Located in `tools/`. Run locally or in CI. Require `pip install -r tools/require
 |----------------------------|---------|
 | `tools/validate.py`        | Validate all `materials/**/*.json` against the current JSON Schema. Exits non-zero on failure. |
 | `tools/update_manifest.py` | Walk the `materials/` tree and regenerate `materials/index.json`. Run after every merge. |
-| `tools/migrate.py`         | Migrate material files from an older schema version to the current one. Originals are backed up to `tools/backup/` before modification. |
-| `tools/import_bibtex.py`   | Parse a `.bib` file and add new entries to `references/index.json`, generating short labels automatically. |
+| `tools/migrate.py`         | Migrate material files from an older schema version to the current one. Dry-run by default; pass `--write` to apply. Files are re-serialized, so review `git diff` (and restore the compact formatting) before committing — git history is the backup. |
+| `tools/import_bibtex.py`   | Parse a `.bib` file and add new entries to `references/index.json`, generating short labels automatically. Keeps the index sorted by key. |
 | `tools/import_new_refs.py` | Scan all material JSONs for `new_references` entries and merge any new keys into `references/index.json`. Dry-run by default; pass `--write` to apply. Run after merging a PR that used `new_references`. |
-| `tools/download_refs.py <dir>` | Fetch each URL in `references/index.json` and save as `<stub>.html` or `<stub>.pdf`. Skips already-downloaded files. Flags: `--delay SECS` (default 1.5), `--force`. Logs failures to `<dir>/failed.txt`. |
+| `tools/download_refs.py <dir>` | Fetch each URL in `references/index.json` and save as `<stub>.html` or `<stub>.pdf`. Skips already-downloaded files. Never fetches MatWeb (its terms prohibit automated access) — those are logged for manual download instead. Flags: `--delay SECS` (default 1.5), `--force`. Logs failures to `<dir>/failed.txt`. |
 | `tools/parse_refs.py <dir>` | Parse downloaded HTML files into material-schema-format JSON with canonical units. Detects site from filename prefix (`azom-*`, `makeitfrom-*`, `matweb-*`, etc.) and applies a site-specific parser. Flags: `--glob PATTERN` (e.g. `"azom*.html"`), `--output DIR` (default: `<dir>/parsed/`). |
-| `tools/compare_refs.py <pattern> --refs-dir <dir>` | Compare material JSON property values against parsed reference data. Reports: values with no reference, reference keys with no parsed file, and numeric mismatches. Prompts `y/n` to update mismatched values in-place. Flags: `--tolerance FRAC` (default 0.05 = 5%), `--no-fix`, `--verbose`. |
+| `tools/compare_refs.py <pattern> --refs-dir <dir>` | Compare material JSON property values against parsed reference data. Reports: values with no reference, reference keys with no parsed file, and numeric mismatches. Prompts `y/n` to update mismatched values in-place, changing only that one number so the file's formatting is preserved. Flags: `--tolerance FRAC` (default 0.05 = 5%), `--no-fix`, `--verbose`. |
+| `tools/lint_physics.py`    | Warn about physically implausible values the schema can't catch (see Section 8). Always exits 0 — advisory only. |
+| `tools/check_docs.py`      | Check that the material counts in README.md and SPEC.md match `materials/index.json`. Exits non-zero on mismatch. |
+
+### Tests
+
+`tests/` holds Node built-in test-runner suites (`node --test tests/` or `npm test`) for `js/core/units.js`, `derived.js`, `export.js`, and the pure helpers in `htmlImport.js`. The per-site DOM parsers in `htmlImport.js` are not covered, since they need a browser `DOMParser` and the project deliberately has no JS dependencies.
 
 ---
 
@@ -403,7 +439,7 @@ Each material JSON file contains a top-level `schema_version` integer. When the 
 
 1. The new schema is documented in `schema/vN.json`.
 2. A migration function is added to `tools/migrate.py` and to the in-browser `js/core/schema.js` migration chain.
-3. Existing files continue to work without modification — migration runs in-memory in the browser and in-place (with backup) via `tools/migrate.py`.
+3. Existing files continue to work without modification — migration runs in-memory in the browser and in-place via `tools/migrate.py --write`. Both runners apply steps repeatedly until the file reaches the current version, so a multi-step chain (v1 → v2 → v3) works regardless of the order migrations are listed in.
 
 This ensures old entries are never broken by format changes.
 
@@ -413,7 +449,8 @@ This ensures old entries are never broken by format changes.
 
 > Items in this section are incomplete or pending decisions. Remove entries once resolved.
 
-- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) and C/SiC Woven (all properties) have values without citations.
+- **Reference gaps** — Alumina Al₂O₃ (Cp, thermal diffusivity, melting point refs) has values without citations.
+- **Fatigue data coverage** — only a handful of materials have S-N curves. Several common steels and stainless steels are blocked on ASM Handbook Vol. 1/Vol. 19 (print/paywalled); aluminum 5052-H32 and 1100-O curves still lack a verifiable source. See the punch list in CLAUDE.md for details.
 
 ---
 

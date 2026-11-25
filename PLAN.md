@@ -1,10 +1,11 @@
 # UVIC Design Engineering Materials Database — Development Plan
 
-> **Historical planning snapshot, not a living doc.** Everything below was
-> written before/during the initial build and the "Build Order" checklist is
-> long since fully checked off. It's kept for the project history, but it's
-> stale in places (schema fields, repo structure, tool list) and isn't
-> updated as the project evolves. For current, maintained documentation see
+> **Build plan and history, not the current spec.** The repository structure,
+> schema, and page descriptions below were written before/during the initial
+> build (May 2026) and are stale in places. The "Build Order" checklist is
+> complete, and a dated log of the post-build work was appended below it
+> (last updated 2026-11-24). For current requirements and maintained
+> documentation see
 > [CLAUDE.md](CLAUDE.md) (architecture, conventions, punch list),
 > [README.md](README.md) (setup, structure), and
 > [SPEC.md](SPEC.md)/[schema/v1.json](schema/v1.json) (schema).
@@ -406,6 +407,20 @@ Install dependencies: `pip install -r tools/requirements.txt`
 - [x] 29. `js/pages/select.js` — results rendering: table with checkboxes, "Select All" link, "Compare Selected (N)" button → `compare.html?slugs=...`
 - [x] 30. `js/core/disclaimer.js` — add `select.html` to pages that load the disclaimer banner
 - [x] 31. End-to-end verification — full checklist from SPEC.md §12.12
+
+### Post-Build Work (after step 31)
+
+Not planned up front, so not numbered. Recorded here so the build history is complete; requirements-level changes were also written back into SPEC.md.
+
+- [x] **Data-verification tooling** (May 21–22) — `tools/parse_refs.py` and `tools/compare_refs.py` to cross-check stored values against downloaded reference pages; `melting_point_tm` standardized to the solidus across all materials
+- [x] **Merit-index review** (May 23–25) — M2/M3 exponent fix (applies to E only), redundant indices removed, M1–M11 renumbered and descriptions aligned with the Ansys Performance Indices booklet
+- [x] **Security hardening** (Jul 25) — all material- and URL-derived strings escaped before `innerHTML`
+- [x] **Pre-fill from HTML** (Jul 25) — `js/core/htmlImport.js`, a browser port of `parse_refs.py`'s site rules, wired into the submit form
+- [x] **Catalogue refinements** (Aug 1) — Wire/Foil common forms, usage-frequency reclassification, GoatCounter analytics
+- [x] **Fatigue S-N audit** (Aug 20) — `stress_ratio`/`test_method` added to the schema, compare-page caveat banner, 2024-T3/7075-T6/6061-T6 curves re-verified or replaced, 4130 curve added
+- [x] **Test suite and CI hardening** (Aug 20–21) — Node unit tests (`tests/`, 115 tests), JS-test workflow, manifest-freshness check, `tools/lint_physics.py` (advisory), `tools/check_docs.py`, lingering-`new_references` check
+- [x] **Code-quality pass** (Aug 21) — `submit.js` split into ES modules under `js/pages/submit/`, chart `aria-label`s, consistent cache policy and null checks, von Mises gated to ductile categories in code, MatWeb guard in `download_refs.py`, formatting-preserving patches in `compare_refs.py`
+- [x] **Material catalogue growth** (ongoing) — new materials across all categories, plus richer sourcing for existing entries
 
 ---
 
